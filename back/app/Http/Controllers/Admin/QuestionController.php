@@ -28,6 +28,13 @@ class QuestionController extends Controller
         return response()->json($question);
     }
 
+    public function edit(Question $question){
+        return view('admin.resume.question.edit', compact('question'));
+    }
+
+    public function show(Question $question){
+        return view('admin.resume.question.show', compact('question'));
+    }
 
     public function update(UpdateResumeQuestionRequest $request, Question $question){
         $data = $request->validated();
