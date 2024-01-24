@@ -20,8 +20,8 @@ else{
 
 ?>
 
-{{--@dd($k, $langru, $langkg, $l, $lang)--}}
 
+{{--@dd($l, $k, $langkg, $langru, $lang)--}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
