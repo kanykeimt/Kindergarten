@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             EnrollSeeder::class,
             FeedbackSeeder::class,
             GallerySeeder::class,
-
+            PaymentSeeder::class,
+            AttendanceSeeder::class,
         ]);
     }
 }

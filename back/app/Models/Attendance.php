@@ -9,4 +9,12 @@ class Attendance extends Model
 {
     use HasFactory;
     protected $guarded = false;
+    protected $fillable = [
+        'group_id', 'date', 'children',
+        // Add other fields as needed
+    ];
+
+    protected $casts = [
+        'children' => 'json',
+    ];
 }

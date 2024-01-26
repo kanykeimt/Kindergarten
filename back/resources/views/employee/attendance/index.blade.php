@@ -169,7 +169,7 @@
                             <td class="" style="font-size:20px">{{$child->name}} {{$child->surname}}</td>
                             @foreach($attendance as $at)
                                 @php
-                                    $data = json_decode($at->children, true);
+                                    dd($at)
                                 @endphp
                                 @if(array_key_exists($child->id, $data))
                                     @if($data[$child->id])

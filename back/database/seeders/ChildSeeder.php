@@ -24,7 +24,7 @@ class ChildSeeder extends Seeder
         $parentIds = User::where('role', 'ROLE_PARENT')->pluck('id')->toArray();
         $groupIds = Group::inRandomOrder()->pluck('id')->toArray();
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             Child::create([
                 'parent_id' => $faker->randomElement($parentIds),
                 'name' => $faker->word,

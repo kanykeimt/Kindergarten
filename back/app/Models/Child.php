@@ -11,6 +11,10 @@ class Child extends Model
     protected $table = 'children';
     protected $guarded = false;
 
+    protected $fillable = [
+        'group_id', 'name',
+        // Add other fields as needed
+    ];
     public function group()
     {
         return $this->belongsTo('App\Models\Group','group_id');
