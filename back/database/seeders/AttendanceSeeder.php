@@ -28,7 +28,7 @@ class AttendanceSeeder extends Seeder
                 $date = Carbon::now()->format('Y-m-d');
 
                 $childrenData = $this->generateChildrenData($childrenIds);
-
+                $childrenData = json_encode($childrenData);
                 Attendance::create([
                     'group_id' => $group,
                     'date' => $date,

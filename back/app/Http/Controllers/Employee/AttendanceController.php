@@ -14,15 +14,17 @@ use Illuminate\Support\Facades\Storage;
 class AttendanceController extends Controller
 {
     public function index(){
+        $group_id = Group::where('teacher_id', auth()->user()->id)
+            ->select('id')
+            ->get();
         $children = DB::table('groups')
             ->leftJoin('children', 'children.group_id', '=', 'groups.id')
             ->leftJoin('users', 'users.id', '=', 'children.parent_id')
             ->where('groups.teacher_id', auth()->user()->id)
             ->select('children.id', 'children.name', 'children.surname', 'children.birth_date', 'children.deleted', 'groups.id as group_id')
             ->get();
-        $group_id = Group::where('teacher_id', auth()->user()->id)
-            ->select('id')
-            ->get();
+
+
         $attendance = Attendance::where('group_id', $group_id[0]->id)
             ->whereBetween('date', [date('Y-m-01'), date('Y-m-31')])
             ->orderBy('date', 'asc')
