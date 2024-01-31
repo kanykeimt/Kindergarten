@@ -113,15 +113,15 @@
             <br><br><br>
             @for($index = 0; $index <= 3; $index++)
                 @php
-                    $currentDate = \Carbon\Carbon::now()->format('m');
-                    $characters = str_split($currentDate);
-                    $characters[1] = $characters[1]-$index;
-                    $currentDate = implode('', $characters);
+                    $currentDate = \Carbon\Carbon::now()->startOfMonth()->subMonths($index)->format('Y-m-d');
                 @endphp
-                <button class="accordion" >{{\Carbon\Carbon::create(null, $currentDate, 1)->format('F')}}</button>
+                <button class="accordion" >{{\Carbon\Carbon::parse($currentDate)->format('F Y')}}</button>
                 <div class="panel">
                     <div class="position-relative table-responsive">
-                        @php $range = \Carbon\Carbon::createFromDate(2023, $currentDate)->daysInMonth; @endphp
+                        @php
+                            $month = \Carbon\Carbon::parse($currentDate)->format('m');
+                            $range = \Carbon\Carbon::createFromDate(2024, $month, 1)->daysInMonth;
+                        @endphp
                         <table class="table table-hover">
                             <thead>
                             <tr>
