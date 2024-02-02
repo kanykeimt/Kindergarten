@@ -154,6 +154,10 @@ Route::group(
                 Route::delete('/{gallery}', [App\Http\Controllers\Admin\MainGalleryController::class, 'delete'])->name('admin.mainGallery.delete');
             });
 
+            Route::group(['prefix'=>'news'], function (){
+                Route::get('/', [App\Http\Controllers\Admin\NewsController::class, 'index'])->name('admin.news.index');
+            });
+
             Route::group(['prefix'=>'attendance'], function (){
                 Route::get('/', [App\Http\Controllers\Admin\AttendanceContoller::class, 'index'])->name('admin.attendance.index');
                 Route::post('/show', [App\Http\Controllers\Admin\AttendanceContoller::class, 'show'])->name('admin.attendance.show');

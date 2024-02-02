@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Storage;
 
-class GalleryController extends Controller
+class   GalleryController extends Controller
 {
     public function index(){
         $galleries = DB::table('galleries')
@@ -40,6 +40,7 @@ class GalleryController extends Controller
                 $count[$index] = $i;
                 $index++;
             }
+//            dd($galleries, $group_id, $created_at_dates);
             return view('employee.gallery.index', compact('galleries', 'created_at_dates',  'count', 'group_id'));
         }
         else

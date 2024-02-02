@@ -185,6 +185,7 @@ else{
             <li class=" nav-item"><a href="{{route('admin.attendance.index')}}"><i class="icon-user-following"></i><span class="menu-title" data-i18n="">@lang('lang.emp_attendance')</span></a>
             </li>
             <li class=" nav-item"><a href="{{route('admin.mainGallery.index')}}"><i class="fas fa-photo-video"></i><span class="menu-title" data-i18n="">@lang('lang.main_gallery')</span></a>
+            <li class=" nav-item"><a href="{{route('admin.news.index')}}"><i class="bi bi-newspaper"></i><span class="menu-title" data-i18n="">@lang('lang.news')</span></a>
             <li class=" nav-item"><a href="{{route('admin.feedback.index')}}"><i class="fas fa-comments"></i><span class="menu-title" data-i18n="">@lang('lang.feedbacks')</span></a>
             </li>
             <li class=" nav-item"><a href="#"><i class="icon-user"></i><span class="menu-title" data-i18n="">Аккаунт</span></a>
