@@ -40,7 +40,6 @@ class   GalleryController extends Controller
                 $count[$index] = $i;
                 $index++;
             }
-//            dd($galleries, $group_id, $created_at_dates);
             return view('employee.gallery.index', compact('galleries', 'created_at_dates',  'count', 'group_id'));
         }
         else
