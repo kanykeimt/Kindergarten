@@ -26,9 +26,10 @@ class GallerySeeder extends Seeder
         $groupIds = Group::inRandomOrder()->pluck('id')->toArray();
 
         for ($i = 0; $i < 10; $i++) {
+            $image = $faker->image(('storage/app/public/group_gallery'),500,312, null, false);
             Gallery::create([
                 'group_id' => $faker->randomElement($groupIds),
-                'image' => $faker->image(('storage/app/public/groupImages'),500,312, null, false),
+                'image' => 'storage/group_gallery/'. $image,
                 'video' => null,
                 'info' => $faker->sentence,
                 'created_at' => Carbon::now(),

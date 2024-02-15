@@ -24,7 +24,7 @@ class NewsController extends Controller
         foreach ($created_at_dates as $created_at_date){
             $i = 0;
             foreach ($news as $new){
-                if ($created_at_date === $new->created_at){
+                if ($created_at_date->created_at == $new->created_at){
                     $i++;
                 }
             }
@@ -33,11 +33,12 @@ class NewsController extends Controller
         }
         return view('admin.news.index', compact('news', 'groupses', 'created_at_dates', 'count'));
     }
-    public function delete($new){
-        dd($new);
-        $gallery = Gallery::where('id', $new)
+    public function create(){
+
+    }
+    public function delete($date){
+        $galleries = Gallery::where('created_at', $date)
             ->get();
-        $gallery->delete();
         foreach ($galleries as $gallery){
             $gallery->delete();
         }

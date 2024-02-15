@@ -23,11 +23,12 @@ class GroupSeeder extends Seeder
         $teacherIds = User::where('role', 'ROLE_TEACHER')->pluck('id')->toArray();
 
         foreach ($teacherIds as $teacherId) {
+            $image = $faker->image(('storage/app/public/groupImages'),500,312, null, false);
             Group::create([
                 'name' => $faker->word,
                 'limit' => $faker->numberBetween(5, 30),
                 'description' => $faker->paragraph,
-                'image' => $faker->image(('storage/app/public/groupImages'),500,312, null, false),
+                'image' => 'storage/groupImages/'. $image,
                 'teacher_id' => $teacherId,
             ]);
         }

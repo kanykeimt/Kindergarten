@@ -24,16 +24,19 @@ class EnrollSeeder extends Seeder
         $parentIds = User::where('role', 'ROLE_USER')->pluck('id')->toArray();
 
         for ($i = 0; $i < 5; $i++) {
+            $birth_certificate = $faker->image(('storage/app/public/enrollImages/birthCertificates'),500,312, null, false);
+            $med_certificate =$faker->image(('storage/app/public/enrollImages/medCertificates'),500,312, null, false);
+            $photo = $faker->image(('storage/app/public/enrollImages/photos'),500,312, null, false);
             Enroll::create([
                 'parent_id' => $faker->randomElement($parentIds),
                 'name' => $faker->word,
                 'surname' => $faker->word,
                 'birth_date' => $faker->dateTimeBetween('-7 years', '-2 years')->format('Y-m-d'),
                 'gender' => $faker->randomElement(['MALE', 'FEMALE']),
-                'birth_certificate' => $faker->image(('storage/app/public/childImages/birthCertificates'),500,312, null, false),
-                'med_certificate' => $faker->image(('storage/app/public/childImages/medCertificates'),500,312, null, false),
+                'birth_certificate' => 'storage/enrollImages/birthCertificates/'. $birth_certificate,
+                'med_certificate' => 'storage/enrollImages/medCertificates/'. $med_certificate,
                 'med_disability' => null,
-                'photo' => $faker->image(('storage/app/public/childImages/photos'),500,312, null, false),
+                'photo' => 'storage/enrollImages/photos/'. $photo,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]);

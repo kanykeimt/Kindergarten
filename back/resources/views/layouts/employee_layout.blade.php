@@ -122,19 +122,8 @@ else{
                 </ul>
                 <ul class="nav navbar-nav float-right">
                     <div class="navbar-nav">
-{{--                        <div class="dropdown">--}}
-{{--                            <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">--}}
-{{--                                <i class="bi-globe" style="font-size: 25px; color: #5f1dea"></i>--}}
-{{--                            </a>--}}
-{{--                            <ul class="dropdown-menu" style="padding:10px; right: 0; left: auto;!important;">--}}
-{{--                                <li class="dropbtnru"><a href="{{ $langru }}" class="dropdown-item">Русский</a></li>--}}
-{{--                                <li class="dropbtnkg"><a href="{{ $langkg }}" class="dropdown-item">Кыргызча</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
                         <div class="dropdown">
-                            <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="bi-globe" style="font-size: 25px; color: #5f1dea"></i>
-                            </a>
+                            <i class="bi-globe" style="font-size: 25px; color: #5f1dea"></i>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="padding: 10px">
                                 <li class="dropbtnru"><a href="{{ $langru }}" class="dropdown-item">Русский</a></li>
                                 <li class="dropbtnkg"><a href="{{ $langkg }}" class="dropdown-item">Кыргызча</a></li>                            </div>

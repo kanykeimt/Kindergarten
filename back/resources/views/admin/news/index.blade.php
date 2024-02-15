@@ -45,87 +45,6 @@
                 {{ session('status') }}
             </div>
         @endif
-{{--        @if(count($news) != 0)--}}
-{{--            @php--}}
-{{--                $index = 0;--}}
-{{--            @endphp--}}
-{{--            @foreach($news as $new)--}}
-{{--                <div class="card-body">--}}
-{{--                    <div class="card-header rounded-top" style="background-color: #cdb9f8; color: #000000">--}}
-{{--                        <form action="{{route('admin.news.delete', $new)}}" method="POST">--}}
-{{--                            @method('DELETE')--}}
-{{--                            @csrf--}}
-{{--                            {{ Carbon::parse($new->created_at)->format('d/m/Y')}}--}}
-{{--                            @foreach($groups as $group)--}}
-{{--                                @if($group->id == $new->group_is)--}}
-{{--                                    {{$group->name}}--}}
-{{--                                @endif--}}
-{{--                            @endforeach--}}
-{{--                            <button id="delete_button" type="button" class="border-0 bg-transparent" onclick="deletedBtn(this)">--}}
-{{--                                <i title="delete" class="fas fa-trash text-danger" role="button" style="font-size: 20px; font-weight: bold;"></i>--}}
-{{--                            </button>--}}
-{{--                        </form>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="card-body" style="background-color: #eee8fd; display: flex; align-items: center; justify-content: center">--}}
-{{--                    @php $j = 0; @endphp--}}
-{{--                    <div id="carouselExampleIndicators{{$index}}" class="carousel slide" data-ride="carousel">--}}
-{{--                        <ol class="carousel-indicators">--}}
-{{--                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>--}}
-{{--                            @for($i =1 ; $i < $index; $i++)--}}
-{{--                                <li data-target="#carouselExampleIndicators" data-slide-to="{{$i}}"></li>--}}
-{{--                            @endfor--}}
-{{--                        </ol>--}}
-{{--                        <div class="carousel-inner" style="max-width: 500px; overflow: hidden">--}}
-{{--                            @foreach($news as $new)--}}
-{{--                                @if($new->video === null)--}}
-{{--                                    @if($j === 0)--}}
-{{--                                        <div class="carousel-item active">--}}
-{{--                                            <img class="d-block w-100" src="{{asset($new->image)}}" >--}}
-{{--                                        </div>--}}
-{{--                                        @php $j++; @endphp--}}
-{{--                                    @else--}}
-{{--                                        <div class="carousel-item">--}}
-{{--                                            <img class="d-block w-100" src="{{asset($new->image)}}" alt="Second slide">--}}
-{{--                                        </div>--}}
-{{--                                    @endif--}}
-{{--                                @else--}}
-{{--                                    @if($j === 0)--}}
-{{--                                        <div class="carousel-item active">--}}
-{{--                                            <video class="d-block w-100" controls >--}}
-{{--                                                <source src="{{asset($new->video)}}">.--}}
-{{--                                            </video>--}}
-{{--                                        </div>--}}
-{{--                                        @php $j++; @endphp--}}
-{{--                                    @else--}}
-{{--                                        <div class="carousel-item">--}}
-{{--                                            <video class="d-block w-100" controls >--}}
-{{--                                                <source src="{{asset($new->video)}}">.--}}
-{{--                                            </video>--}}
-{{--                                        </div>--}}
-{{--                                    @endif--}}
-{{--                                @endif--}}
-{{--                                @php $text = $new->info @endphp--}}
-{{--                            @endforeach--}}
-{{--                        </div>--}}
-{{--                        <a class="carousel-control-prev" href="#carouselExampleIndicators{{$index}}" role="button" data-slide="prev">--}}
-{{--                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>--}}
-{{--                            <span class="sr-only">Previous</span>--}}
-{{--                        </a>--}}
-{{--                        <a class="carousel-control-next" href="#carouselExampleIndicators{{$index}}" role="button" data-slide="next">--}}
-{{--                            <span class="carousel-control-next-icon" aria-hidden="true"></span>--}}
-{{--                            <span class="sr-only">Next</span>--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="card-body rounded-bottom" style="background-color: #eee8fd">--}}
-{{--                    <h6>{{$new->info}}</h6>--}}
-{{--                </div>--}}
-{{--                <br>--}}
-{{--                @php $index++; $text = ""; @endphp--}}
-{{--            @endforeach--}}
-{{--        @endif--}}
-
         @if(count($news) != 0)
             <div class="card-body">
                 @php $index = 0; @endphp
@@ -141,7 +60,7 @@
                                 @endphp
                             @endif
                         @endforeach
-                        <form action="" method="POST">
+                        <form action="{{route('admin.news.delete', $created_at_date->created_at)}}" method="POST">
                             @method('DELETE')
                             @csrf
                             {{ Carbon::parse($created_at_date->created_at)->format('d/m/Y')}}  Group name:{{$group_name}}
@@ -163,7 +82,7 @@
                             @endif
                             <div class="carousel-inner" style="max-width: 500px; overflow: hidden">
                                 @foreach($news as $new)
-                                    @if($created_at_date === $new->created_at)
+                                    @if($created_at_date->created_at == $new->created_at)
                                         @if($new->video === null)
                                             @if($j === 0)
                                                 <div class="carousel-item active">
@@ -196,8 +115,8 @@
                                 @endforeach
                             </div>
                             @if($count[$index] > 1)
-                                <a class="carousel-control-prev" href="#carouselExampleIndicators{{$index}}" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <a class="carousel-control-prev" href="#carouselExampleIndicators{{$index}}"  role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon"  aria-hidden="true"></span>
                                     <span class="sr-only">Previous</span>
                                 </a>
                                 <a class="carousel-control-next" href="#carouselExampleIndicators{{$index}}" role="button" data-slide="next">
@@ -211,7 +130,7 @@
                         <h6>{{$new->info}}</h6>
                     </div>
                     <br>
-                    @php $index++; $new->info = ""; @endphp
+                    @php $index++; $test = ""; @endphp
                 @endforeach
             </div>
         @else

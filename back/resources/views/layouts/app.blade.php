@@ -215,9 +215,7 @@ else{
             @endif
             <div class="navbar-nav mx-auto">
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <i class="bi-globe" style="font-size: 25px; color: #5f1dea"></i>
-                    </a>
+                    <i class="bi-globe" style="font-size: 25px; color: #5f1dea"></i>
                     <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0" style="padding:10px; right: 0; left: auto;!important;">
                         <div class="dropbtnru"><a href="{{ $langru }}" class="dropdown-item">Русский</a></div>
                         <div class="dropbtnkg"><a href="{{ $langkg }}" class="dropdown-item">Кыргызча</a></div>
