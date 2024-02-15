@@ -22,6 +22,15 @@ class GroupSeeder extends Seeder
         $faker = Faker::create();
         $teacherIds = User::where('role', 'ROLE_TEACHER')->pluck('id')->toArray();
 
+        $image = $faker->image(('storage/app/public/groupImages'),500,312, null, false);
+        Group::create([
+            'name' => "All groups",
+            'limit' => $faker->numberBetween(5, 30),
+            'description' => $faker->paragraph,
+            'image' => 'storage/groupImages/'. $image,
+            'teacher_id' => 1,
+        ]);
+
         foreach ($teacherIds as $teacherId) {
             $image = $faker->image(('storage/app/public/groupImages'),500,312, null, false);
             Group::create([

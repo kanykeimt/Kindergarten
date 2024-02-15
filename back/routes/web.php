@@ -156,6 +156,7 @@ Route::group(
 
             Route::group(['prefix'=>'news'], function (){
                 Route::get('/', [App\Http\Controllers\Admin\NewsController::class, 'index'])->name('admin.news.index');
+                Route::post('/create', [App\Http\Controllers\Admin\NewsController::class, 'create'])->name('admin.news.create');
                 Route::delete('/{date}', [App\Http\Controllers\Admin\NewsController::class, 'delete'])->name('admin.news.delete');
             });
 

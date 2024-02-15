@@ -5,12 +5,23 @@
     <div class="container">
         <button type="button" class="btn btn-gradient-primary m-3" id="addGalleryBtn" onclick="showChildInfo()">@lang('lang.add_btn')</button>
         <div class="d-none" id="addGallery">
-            <form action="#" method="POST" enctype="multipart/form-data">
+            <form action="{{route('admin.news.create', 22)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="files" class="col-md-4 col-form-label text-md-end">@lang('lang.add_image'):</label>
                     <div class="col-md-6">
                         <input id="image" type="file" class="form-control" accept="image/*" name="images[]"multiple>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="group_id" class="col-md-4 col-form-label text-md-end">@lang('lang.child_group')</label>
+                    <div class="col-md-6">
+                        <select class="form-control col-md-12" name="groupId" id="groupId" @error('group_id') is-invalid @enderror required autocomplete="group_id">
+                            <option value="{{1}}">@lang('lang.all')</option>
+                            @foreach($groupses as $group)
+                                <option value="{{$group->id}}">{{$group->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -127,7 +138,7 @@
                         </div>
                     </div>
                     <div class="card-body rounded-bottom" style="background-color: #eee8fd">
-                        <h6>{{$new->info}}</h6>
+                        <h6>{{$text}}</h6>
                     </div>
                     <br>
                     @php $index++; $test = ""; @endphp

@@ -15,7 +15,7 @@ class   GalleryController extends Controller
     public function index(){
         $galleries = DB::table('galleries')
             ->leftJoin('groups', 'groups.id', '=', 'galleries.group_id')
-            ->where('groups.teacher_id', auth()->user()->id)
+            ->where('groups.teacher_id', auth()->user()->id or 1)
             ->select('galleries.id', 'galleries.image', 'galleries.video', 'galleries.info', 'galleries.created_at', 'galleries.group_id')
             ->orderBy('galleries.created_at','desc')
             ->get();
@@ -24,7 +24,7 @@ class   GalleryController extends Controller
             ->get();
         if (count($galleries) != 0){
             $created_at_dates = DB::table('galleries')
-                ->where('group_id', $galleries[0]->group_id)
+                ->where('group_id', $galleries[0]->group_id or 1)
                 ->distinct()
                 ->orderBy('created_at', 'desc')
                 ->pluck('created_at');

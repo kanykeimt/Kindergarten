@@ -11,6 +11,8 @@ class Gallery extends Model
     protected $table = 'galleries';
     protected $guarded = false;
 
+
+
     public function group()
     {
         return $this->belongsTo('App\Models\Group','group_id');

@@ -15,13 +15,13 @@ class ChildrenController extends Controller
 {
     public function index(Child $child){
         $galleries = DB::table('galleries')
-            ->where('galleries.group_id', $child->group_id)
+            ->where('galleries.group_id', $child->group_id or 1)
             ->select('galleries.id', 'galleries.image', 'galleries.video', 'galleries.info', 'galleries.created_at', 'galleries.group_id')
             ->orderBy('galleries.created_at','desc')
             ->get();
         if($galleries && $galleries->count()){
             $created_at_dates = DB::table('galleries')
-                ->where('group_id', $galleries[0]->group_id)
+                ->where('group_id', $galleries[0]->group_id or 1)
                 ->distinct()
                 ->orderBy('created_at', 'desc')
                 ->pluck('created_at');
