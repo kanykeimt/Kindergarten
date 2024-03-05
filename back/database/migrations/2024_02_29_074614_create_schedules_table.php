@@ -11,30 +11,35 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('children', function (Blueprint $table) {
+//        class_id
+//group_id
+//day
+//time_from
+//time_to
+        Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 20);
-            $table->string('surname', 50);
-            $table->unsignedBigInteger('parent_id');
+            $table->unsignedBigInteger('classes_id');
             $table->unsignedBigInteger('group_id');
-            $table->date('birth_date');
-            $table->string('gender', 10); #MALE FEMALE
-            $table->string('photo', 200);
-            $table->string('birth_certificate', 200);
-            $table->string('med_certificate', 200);
-            $table->string('med_disability', 200)->nullable();
-            $table->boolean('deleted')->default(false);
+            $table->unsignedBigInteger('day');
+            $table->time('time_from');
+            $table->time('time_to');
             $table->timestamps();
 
-            $table->index('parent_id');
-            $table->foreign('parent_id')
-                ->on('users')
+            $table->index('classes_id');
+            $table->foreign('classes_id')
+                ->on('classes')
                 ->references('id')
                 ->cascadeOnDelete();
 
             $table->index('group_id');
             $table->foreign('group_id')
                 ->on('groups')
+                ->references('id')
+                ->cascadeOnDelete();
+
+            $table->index('day');
+            $table->foreign('day')
+                ->on('days_of_week')
                 ->references('id')
                 ->cascadeOnDelete();
         });
@@ -45,6 +50,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('children');
+        Schema::dropIfExists('schedules');
     }
 };

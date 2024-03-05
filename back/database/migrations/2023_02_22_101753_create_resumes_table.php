@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('resumes', function (Blueprint $table) {
             $table->id();
-            $table->string('resume',200);
-            $table->string('full_name',100);
+            $table->string('full_name',80);
             $table->string('phone_number',20);
+            $table->string('resume', 200);
+            $table->json('answers');
             $table->timestamps();
         });
     }

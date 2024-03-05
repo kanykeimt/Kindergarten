@@ -13,21 +13,22 @@ return new class extends Migration
     {
         Schema::create('enrolls', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('parent_id');
-            $table->index('parent_id','enroll_user_idx');
-            $table->foreign('parent_id','enroll_user_fk')
-                ->on('users')
-                ->references('id')
-                ->cascadeOnDelete();
             $table->string('name',50);
             $table->string('surname',50);
+            $table->unsignedBigInteger('parent_id');
             $table->date('birth_date');
-            $table->string('gender')->nullable(); //MALE, FEMALE
+            $table->string('gender'); //MALE, FEMALE
             $table->string('birth_certificate',200);
             $table->string('med_certificate',200);
             $table->string('med_disability', 200)->nullable();
             $table->string('photo',200);
             $table->timestamps();
+
+            $table->index('parent_id');
+            $table->foreign('parent_id')
+                ->on('users')
+                ->references('id')
+                ->cascadeOnDelete();
         });
     }
 

@@ -13,17 +13,18 @@ return new class extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
-            $table->string('name',50);
-            $table->integer('limit');
-            $table->text('description');
-            $table->string('image',200);
+            $table->string('name', 50);
             $table->unsignedBigInteger('teacher_id');
-            $table->index('teacher_id', 'group_teacher_idx');
-            $table->foreign('teacher_id', 'group_teacher_fk')
+            $table->integer('limit');
+            $table->string('description', 100);
+            $table->string('image', 200);
+            $table->timestamps();
+
+            $table->index('teacher_id');
+            $table->foreign('teacher_id')
                 ->on('users')
                 ->references('id')
                 ->cascadeOnDelete();
-            $table->timestamps();
         });
     }
 

@@ -5,19 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Child extends Model
+class GalleryAddress extends Model
 {
     use HasFactory;
     public function group()
     {
         return $this->belongsTo(Group::class);
     }
-    public function parent()
+    public function gallery()
     {
-        return $this->belongsTo(User::class, 'parent_id');
-    }
-    public function payment()
-    {
-        return $this->hasMany('App\Models\Payment');
+        return $this->belongsTo(Gallery::class);
     }
 }

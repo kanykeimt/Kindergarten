@@ -8,22 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
     use HasFactory;
-    protected $table = 'groups';
-
-    protected $guarded = [];
-
-    public function gallery(){
-        return $this->hasMany('App\Models\Gallery');
-   }
-
-    public function children()
-    {
-        return $this->hasMany('App\Models\Child');
-    }
-
     public function teacher()
     {
-        return $this->belongsTo('App\Models\User', 'teacher_id');
+        return $this->belongsTo(User::class, 'teacher_id');
     }
-
+    public function child()
+    {
+        return $this->hasMany(Child::class);
+    }
+    public function attendance()
+    {
+        return $this->hasMany(ChildAttendance::class);
+    }
+    public function gallery_address()
+    {
+        return $this->hasMany(GalleryAddress::class);
+    }
+    public function schedule()
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }

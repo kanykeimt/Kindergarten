@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('feedback', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('parent_id');
-            $table->integer('stars');
-            $table->text('comment');
-            $table->index('parent_id', 'feedback_user_idx');
-            $table->foreign('parent_id', 'feedback_user_fk')
+            $table->unsignedBigInteger('user_id');
+            $table->integer('rating');
+            $table->string('comment', 100);
+            $table->timestamps();
+
+            $table->index('user_id');
+            $table->foreign('user_id')
                 ->on('users')
                 ->references('id')
                 ->cascadeOnDelete();
-            $table->timestamps();
-
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('feedback');
+        Schema::dropIfExists('reviews');
     }
 };

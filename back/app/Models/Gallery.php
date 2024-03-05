@@ -8,13 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Gallery extends Model
 {
     use HasFactory;
-    protected $table = 'galleries';
-    protected $guarded = false;
-
-
-
-    public function group()
+    public function gallery_address()
     {
-        return $this->belongsTo('App\Models\Group','group_id');
+        return $this->hasMany(GalleryAddress::class);
     }
 }

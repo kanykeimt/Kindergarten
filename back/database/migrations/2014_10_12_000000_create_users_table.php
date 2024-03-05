@@ -21,13 +21,19 @@ return new class extends Migration
             $table->string('profile_photo', 200)->nullable();
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('role')->default('ROLE_USER'); // ROLE_USER, ROLE_PARENT, ROLE_TEACHER, ROLE_ADMIN
-            $table->string('passport_back',200)->nullable();
             $table->string('passport_front',200)->nullable();
-            $table->integer('amount_child')->default(0);
+            $table->string('passport_back',200)->nullable();
+            $table->integer('amount_of_child')->default(0);
             $table->integer('deleted')->default(0);
+            $table->unsignedBigInteger('role');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->index('role');
+            $table->foreign('role')
+                ->on('roles')
+                ->references('id')
+                ->cascadeOnDelete();
         });
     }
 

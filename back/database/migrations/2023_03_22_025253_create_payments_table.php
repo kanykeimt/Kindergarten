@@ -14,16 +14,16 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('child_id');
-            $table->index('child_id','payments_children_idx');
-            $table->foreign('child_id','payments_children_fk')
-                ->on('children')
-                ->references('id')
-                ->cascadeOnDelete();
             $table->integer('payment_amount');
             $table->date('date_from');
             $table->date('date_to');
-            $table->boolean('expired')->default(false);
             $table->timestamps();
+
+            $table->index('child_id');
+            $table->foreign('child_id')
+                ->on('children')
+                ->references('id')
+                ->cascadeOnDelete();
         });
     }
 
