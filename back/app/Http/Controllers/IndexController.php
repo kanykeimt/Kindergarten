@@ -23,9 +23,9 @@ class IndexController extends Controller
         }
         $user = auth()->user();
         $galleries = MainGallery::all();
-        $feedbacks = DB::table('feedback')
-            ->leftJoin('users', 'users.id', '=', 'feedback.parent_id')
-            ->select('feedback.stars', 'feedback.comment', 'users.name', 'users.surname', 'users.profile_photo')
+        $feedbacks = DB::table('reviews')
+            ->leftJoin('users', 'users.id', '=', 'reviews.user_id')
+            ->select('reviews.rating', 'reviews.comment', 'users.name', 'users.surname', 'users.profile_photo')
             ->get();
         if($user){
             if($user->role === 'ROLE_ADMIN' or $user->role === 'ROLE_TEACHER' or $user->role === 'ROLE_PARENT' or $user->role === 'ROLE_USER'){

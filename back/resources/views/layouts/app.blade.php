@@ -173,7 +173,7 @@ else{
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary rounded-pill px-3 d-lg-block"
                             data-bs-toggle="modal" data-bs-target="#modalEnroll">
-                        @lang('lang.enroll')
+                        @lang('lang.enroll_child')
                     </button>
                 </div>
                 <div class="navbar-nav mx-auto">
@@ -182,7 +182,7 @@ else{
                             <img src="https://w7.pngwing.com/pngs/364/361/png-transparent-account-avatar-profile-user-avatars-icon.png" alt="Avatar" style="vertical-align: middle; width: 50px; height: 50px; border-radius: 50%;">
                         </a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0" style="right: 0;left: auto;!important;">
-                            @if(auth()->user()->role === 'ROLE_ADMIN')
+                            @if($role === 'Admin')
                                 <a href="{{route('admin')}}" class="dropdown-item" >@lang('lang.emp_page')</a>
                             @elseif(auth()->user()->role==='ROLE_TEACHER')
                                 <a href="{{route('employee', auth()->user()->id)}}" class="dropdown-item" >@lang('lang.emp_page')</a>

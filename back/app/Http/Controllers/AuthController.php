@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\SendCode;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,8 @@ class AuthController extends Controller
             if(Hash::check($request->password, $user->password)){
                 if($user->email_verified_at){
                     Auth::login($user);
-                    return redirect()->route('index');
+                    $role = Role::where('id', $user->role)->value('name');
+                    return redirect()->route('index', ['role' => $role]);
                 }
                 $code = random_int(100000, 999999);
                 Mail::to($user->email)->send(new SendCode($code));

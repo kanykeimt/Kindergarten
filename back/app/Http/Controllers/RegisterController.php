@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Jobs\SendCodeQueue;
 use App\Mail\SendCode;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -28,28 +29,31 @@ class RegisterController extends Controller
             'passport_front'=>'',
             'passport_back'=>''
         ]);
+
         $passport_front = null;
         $passport_back = null;
-        if(array_key_exists('passport_front',$data)){
+        if(array_key_exists('passport_front', $data)){
             $passport_front = Storage::disk('public')->put('passports', $data['passport_front']);
             $passport_front = "storage/".$passport_front;
         }
-        if(array_key_exists('passport_back',$data)){
-            $passport_back = Storage::disk('public')->put('passports',$data['passport_back']);
+        if(array_key_exists('passport_back', $data)){
+            $passport_back = Storage::disk('public')->put('passports', $data['passport_back']);
             $passport_back = "storage/".$passport_back;
         }
 
         $data['password'] = Hash::make($data['password']);
+        $userRole = Role::where('name', 'User')->get();
 
         $user = User::create([
-            'name'=>$data['name'],
-            'surname'=>$data['surname'],
-            'address'=>$data['address'],
-            'phone_number'=>$data['phone_number'],
-            'email'=>$data['email'],
-            'password'=>$data['password'],
-            'passport_front'=>$passport_front,
-            'passport_back'=>$passport_back
+            'name' => $data['name'],
+            'surname' => $data['surname'],
+            'address' => $data['address'],
+            'phone_number' => $data['phone_number'],
+            'email' => $data['email'],
+            'password' => $data['password'],
+            'passport_front' => $passport_front,
+            'passport_back' => $passport_back,
+            'role' => $userRole[0]->id,
         ]);
 
         $code = random_int(100000, 999999);
