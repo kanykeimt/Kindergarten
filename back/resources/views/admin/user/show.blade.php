@@ -28,7 +28,7 @@
                         </li>
                         <li class="list-group-item">
                             <b>@lang('lang.role')</b>
-                            <div class="">{{$user->role}}</div>
+                            <div class="">{{$role[0]->name}}</div>
                         </li>
                         <li class="list-group-item">
                             <b>@lang('lang.passport_front')</b>

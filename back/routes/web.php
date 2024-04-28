@@ -59,7 +59,7 @@ Route::group(
         Route::post('/main/payment/form', [App\Http\Controllers\User\PaymentController::class, 'form'])->name('payment.form');
         Route::post('/main/payment/create', [App\Http\Controllers\User\PaymentController::class, 'create'])->name('payment.create');
 
-        Route::post('/main/feedback/create', [App\Http\Controllers\User\FeedbackController::class, 'create'])->name('feedback.create');
+        Route::post('/main/review/create', [App\Http\Controllers\User\ReviewController::class, 'create'])->name('review.create');
 
         Route::group(['prefix'=>'employee'], function (){
             Route::get('/index/{user}', App\Http\Controllers\Employee\IndexController::class)->name('employee');

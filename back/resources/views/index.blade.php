@@ -600,10 +600,10 @@
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form method="POST" action="{{ route('feedback.create') }}" >
+                                        <form method="POST" action="{{ route('review.create') }}" >
                                             @csrf
                                             <div class="field" hidden="">
-                                                <input type="number" id="parent_id" name="parent_id" value="{{auth()->user()->id}}">
+                                                <input type="number" id="user_id" name="parent_id" value="{{auth()->user()->id}}">
                                             </div>
                                             <div class="field">
                                                 <div class="rate">

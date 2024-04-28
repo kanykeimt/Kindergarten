@@ -28,7 +28,7 @@ class IndexController extends Controller
             ->select('reviews.rating', 'reviews.comment', 'users.name', 'users.surname', 'users.profile_photo')
             ->get();
         if($user){
-            if($user->role === 'ROLE_ADMIN' or $user->role === 'ROLE_TEACHER' or $user->role === 'ROLE_PARENT' or $user->role === 'ROLE_USER'){
+            if($user->role === 1 or $user->role === 2 or $user->role === 3 or $user->role === 4){
                 $children = Child::where('parent_id', $user->id)->get();
                 return view('index', compact('children', 'feedbacks'));
             }

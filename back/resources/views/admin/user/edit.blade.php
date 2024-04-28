@@ -44,9 +44,9 @@
                     <div class="form-group">
                         <label for="exampleInput" class="form-label">@lang('lang.role'):</label>
                         <select name="role" style="width: 50% !important;"  class="form-control" id="role">
-                                <option value="ROLE_ADMIN">Админ</option>
-                                <option value="ROLE_TEACHER">@lang('lang.employee')</option>
-                                <option value="ROLE_PARENT">@lang('lang.parent')</option>
+                            @foreach($roles as $role)
+                                <option value="{{$role->id}}">{{$role->name}}</option>
+                            @endforeach
                         </select>
                         @error('role')
                         <p class="text-danger">{{$message}}</p>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Role;
 use App\Models\User;
 use App\Services\Admin\UserService;
 use Illuminate\Http\Response;
@@ -24,12 +25,14 @@ class UserController extends Controller
 
     public function index(){
         $users = User::all();
-        return view('admin.user.index', compact('users'));
+        $roles = Role::all();
+        return view('admin.user.index', compact('users', 'roles'));
 
     }
 
     public function edit(User $user){
-        return view('admin.user.edit', compact('user'));
+        $roles = Role::all();
+        return view('admin.user.edit', compact('user', 'roles'));
     }
 
     public function create(StoreRequest $request):Response
@@ -39,7 +42,8 @@ class UserController extends Controller
 
     public function show(User $user):View
     {
-        return view('admin.user.show',compact('user'));
+        $role = Role::where('id', $user->role)->get();
+        return view('admin.user.show',compact('user', 'role'));
     }
 
     public function update(UpdateUserRequest $request, User $user)

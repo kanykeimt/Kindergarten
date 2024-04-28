@@ -105,9 +105,9 @@
 
                     <div class="col-md-6">
                         <select style="width: 50% !important;" name="role" id="role">
-                            <option value="ROLE_ADMIN">Админ</option>
-                            <option value="ROLE_TEACHER">@lang('lang.employee')</option>
-                            <option value="ROLE_PARENT">@lang('lang.parent')</option>
+                            @foreach($roles as $role)
+                                <option value="{{$role->id}}">{{$role->name}}</option>
+                            @endforeach
                         </select>
                         @error('role')
                         <p class="text-danger">{{$message}}</p>
@@ -216,11 +216,11 @@
                                 <td class="">{{$user->name}}</td>
                                 <td class="">{{$user->surname}}</td>
                                 <td class="">
-                                    @if($user->role == 'ROLE_ADMIN')
+                                    @if($user->role == 1)
                                         Админ
-                                    @elseif($user->role == 'ROLE_TEACHER')
+                                    @elseif($user->role == 2)
                                         @lang('lang.employee')
-                                    @elseif($user->role == 'ROLE_PARENT')
+                                    @elseif($user->role == 3)
                                         @lang('lang.parent')
                                     @else
                                         @lang('lang.user')

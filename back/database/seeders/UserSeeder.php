@@ -35,7 +35,6 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'role' => $userRole->id,
                 'amount_of_child' => 0,
-                'remember_token' => Str::random(5),
                 'profile_photo' => null,
                 'passport_back' => null,
                 'passport_front' => null,
