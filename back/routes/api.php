@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/user/updatePassword', [App\Http\Controllers\ResetPasswordController::class, 'updatePassword'])->name('update.password');
 
-Route::post('/admin/user/create', [App\Http\Controllers\Admin\UserController::class, 'create'])->name('admin.user.create');
+
 Route::post('/admin/group/create',[App\Http\Controllers\Admin\GroupController::class, 'create'])->name('admin.group.create');
 
 

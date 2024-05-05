@@ -23,16 +23,16 @@ class IndexController extends Controller
         }
         $user = auth()->user();
         $galleries = MainGallery::all();
-        $feedbacks = DB::table('reviews')
+        $reviews = DB::table('reviews')
             ->leftJoin('users', 'users.id', '=', 'reviews.user_id')
             ->select('reviews.rating', 'reviews.comment', 'users.name', 'users.surname', 'users.profile_photo')
             ->get();
         if($user){
             if($user->role === 1 or $user->role === 2 or $user->role === 3 or $user->role === 4){
                 $children = Child::where('parent_id', $user->id)->get();
-                return view('index', compact('children', 'feedbacks'));
+                return view('index', compact('children', 'reviews'));
             }
         }
-        return view('index',compact('galleries', 'feedbacks'));
+        return view('index',compact('galleries', 'reviews'));
     }
 }

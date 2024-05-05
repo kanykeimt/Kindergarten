@@ -15,11 +15,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             UserSeeder::class,
-
-//            GroupSeeder::class,
-//            ChildSeeder::class,
-//            EnrollSeeder::class,
-//            FeedbackSeeder::class,
+            GroupSeeder::class,
+            ChildSeeder::class,
+            EnrollSeeder::class,
+            ReviewSeeder::class,
 //            GallerySeeder::class,
 //            PaymentSeeder::class,
 //            AttendanceSeeder::class,

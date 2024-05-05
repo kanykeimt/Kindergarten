@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\Storage;
 
 class ChildSeeder extends Seeder
 {
@@ -17,28 +18,32 @@ class ChildSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('children')->truncate();
+
+        $directory = 'public/childrenImages';
+        if (!Storage::exists($directory)) {
+            Storage::makeDirectory($directory);
+        }
 
         // Use Faker to generate random data for groups
         $faker = Faker::create();
-        $parentIds = User::where('role', 'ROLE_PARENT')->pluck('id')->toArray();
+        $parentIds = User::whereHas('role', function($query) {
+            $query->where('name', 'Parent');
+        })->pluck('id');
         $groupIds = Group::inRandomOrder()->pluck('id')->toArray();
 
+
         for ($i = 0; $i < 20; $i++) {
-            $birth_certificate = $faker->image(('storage/app/public/childImages/birthCertificates'),500,312, null, false);
-            $med_certificate =$faker->image(('storage/app/public/childImages/medCertificates'),500,312, null, false);
-            $photo = $faker->image(('storage/app/public/childImages/photos'),500,312, null, false);
+            $image = 'storage/childrenImages'.$faker->image(storage_path('app/' . $directory), 500, 312, null, false);
             Child::create([
                 'parent_id' => $faker->randomElement($parentIds),
                 'name' => $faker->word,
                 'surname' => $faker->word,
                 'birth_date' => $faker->dateTimeBetween('-7 years', '-2 years')->format('Y-m-d'),
                 'gender' => $faker->randomElement(['MALE', 'FEMALE']),
-                'birth_certificate' => 'storage/childImages/birthCertificates/'. $birth_certificate,
-                'med_certificate' => 'storage/childImages/medCertificates/'. $med_certificate,
+                'birth_certificate' => $image,
+                'med_certificate' => $image,
                 'med_disability' => null,
-                'photo' => 'storage/childImages/photos/'. $photo,
-                'payment' => false,
+                'photo' => $image,
                 'deleted' => 0,
                 'group_id' => $faker->randomElement($groupIds),
                 'created_at' => Carbon::now(),

@@ -65,7 +65,7 @@ class NewsController extends Controller
             }
         }
         $message = Lang::get('lang.add_successful');
-        return redirect()->back()->with('status', $message);;
+        return redirect()->back()->with('status', $message);
     }
     public function delete($date){
         $galleries = Gallery::where('created_at', $date)

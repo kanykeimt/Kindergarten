@@ -103,6 +103,7 @@ Route::group(
 
             Route::group(['prefix'=>'user'],function (){
                 Route::get('/',[App\Http\Controllers\Admin\UserController::class,'index'])->name('admin.user.index');
+                Route::post('/create', [App\Http\Controllers\Admin\UserController::class, 'create'])->name('admin.user.create');
                 Route::delete('/{user}', [App\Http\Controllers\Admin\UserController::class,'delete'])->name('admin.user.delete');
                 Route::get('/edit/{user}', [App\Http\Controllers\Admin\UserController::class,'edit'])->name('admin.user.edit');
                 Route::patch('/update/{user}', [App\Http\Controllers\Admin\UserController::class,'update'])->name('admin.user.update');

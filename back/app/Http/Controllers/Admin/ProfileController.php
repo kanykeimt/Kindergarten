@@ -30,7 +30,7 @@ class ProfileController extends Controller
             $passport_back = "storage/".$image;
         }
         if($request->hasFile('profile_photo')){
-            $profile_photo = Storage::disk('public')->put('profile', $data['profile_photo']);
+            $profile_photo = Storage::disk('public')->put('profilePhotos', $data['profile_photo']);
             $profile_photo = "storage/".$profile_photo;
         }
         $user->update([

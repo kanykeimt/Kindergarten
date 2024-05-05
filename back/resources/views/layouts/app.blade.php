@@ -32,7 +32,7 @@ else{
     <meta content="" name="description">
 
     <!-- Favicon -->
-{{--    <link href="{{asset('new_template/img/aruu%20logo1.png')}}" rel="icon">--}}
+    <link href="{{asset('new_template/img/aruu%20logo1.png')}}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

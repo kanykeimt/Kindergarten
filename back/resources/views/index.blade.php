@@ -554,23 +554,23 @@
                     <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
                 </div>
                 <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                    @foreach($feedbacks as $feedback)
+                    @foreach($reviews as $review)
                         <div class="testimonial-item bg-light rounded p-5">
-                            <p class="fs-5">{{$feedback->comment}}</p>
+                            <p class="fs-5">{{$review->comment}}</p>
                             <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                                @if($feedback->profile_photo != NULL)
-                                    <img class="img-fluid flex-shrink-0 rounded-circle" src="{{asset($feedback->profile_photo)}}" style="width: 90px; height: 90px;">
+                                @if($review->profile_photo != NULL)
+                                    <img class="img-fluid flex-shrink-0 rounded-circle" src="{{asset($review->profile_photo)}}" style="width: 90px; height: 90px;">
                                 @else
-                                    @php $firstLetter = mb_substr($feedback->name, 0, 1); $secondLetter = mb_substr($feedback->surname, 0, 1);@endphp
+                                    @php $firstLetter = mb_substr($review->name, 0, 1); $secondLetter = mb_substr($review->surname, 0, 1);@endphp
                                     <button class="avatar-button">
                                         <span class="avatar-text">{{$firstLetter}}{{$secondLetter}}</span>
                                     </button>
                                 @endif
 
                                 <div class="ps-3">
-                                    <h5 class="mb-1">{{$feedback->name}} {{$feedback->surname}}</h5>
+                                    <h5 class="mb-1">{{$review->name}} {{$review->surname}}</h5>
                                     @for($i = 1; $i <= 5; $i++)
-                                        @if($i <= $feedback->stars)
+                                        @if($i <= $review->rating)
                                             <span class="fa fa-star checked"></span>
                                         @else
                                             <span class="fa fa-star"></span>

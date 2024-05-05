@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\UpdateGroupRequest;
 use App\Models\Gallery;
 use App\Models\Group;
+use App\Models\Role;
 use App\Models\User;
 use App\Services\Admin\GalleryService;
 use App\Services\Admin\UserService;
@@ -27,10 +28,10 @@ class GroupController extends Controller
     }
     public function index(){
         $groups = Group::all();
-//        $teachers = User::where('role', 'ROLE_TEACHER')->get();
+        $teacherIds = Role::where('name','Teacher')->pluck('id');
         $teachers = DB::table('users')
             ->leftJoin('groups', 'groups.teacher_id', '=', 'users.id')
-            ->where('users.role',  'ROLE_TEACHER')
+            ->where('users.role',  $teacherIds[0])
             ->select('users.name as name', 'users.surname as surname',
                 'users.id as id', 'groups.teacher_id')
             ->where('teacher_id', '=', null)
@@ -44,8 +45,11 @@ class GroupController extends Controller
             'teacher_id' => 'required',
             'limit'=>'required',
             'description'=>'required|string',
-            'image'=>''
+            'image'=>'required'
         ]);
+        if (!Storage::exists('public/groupImages')) {
+            Storage::makeDirectory('public/groupImages');
+        }
         $image = Storage::disk('public')->put('groupImages', $data['image']);
         $image = "storage/".$image;
 
@@ -57,7 +61,8 @@ class GroupController extends Controller
             'image' => $image
         ]);
 
-        return response()->json($group);
+        $message = Lang::get('lang.add_successful');
+        return redirect()->back()->with('status', $message);
 
     }
 

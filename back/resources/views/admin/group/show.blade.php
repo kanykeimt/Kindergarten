@@ -1,11 +1,8 @@
 @extends('layouts.admin_layout')
 @section('content')
-    <div class="content-wrapper">
-        <div class="container mb-4 mt-4">
-
-            <!-- Profile Image -->
-            <div class="card card-primary card-outline">
-                <div class="card-body box-profile">
+    <div class="col-12">
+        <div class="bg-light rounded h-100 p-4">
+            <div class="card-body box-profile">
                     <ul class="list-group list-group-unbordered mb-3">
                         <li class="list-group-item">
                             <b>@lang('lang.emp_group_name'):</b>
@@ -36,7 +33,6 @@
                 <a href="{{route('admin.group.index')}}" class="btn btn-gradient-primary my-1">@lang('lang.back_btn')</a>
             </div>
         </div>
-    </div>
 
 @endsection
 

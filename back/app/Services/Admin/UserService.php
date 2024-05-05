@@ -18,6 +18,7 @@ class UserService
         $passport_front = null;
         $passport_back = null;
         $profile_photo = null;
+
         if(array_key_exists('passport_front', $data)){
             $image = Storage::disk('public')->put('passports', $data['passport_front']);
             $passport_front = "storage/".$image;
