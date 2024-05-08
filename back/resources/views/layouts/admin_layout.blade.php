@@ -286,22 +286,22 @@ else{
                 <h3 class="text-primary"><img class="rounded-circle" src="{{asset('new_template/img/aruu%20logo1.png')}}" alt="" style="width: 60px; height: 60px;">  ARUU</h3>
             </a>
             <div class="navbar-nav w-100">
-                <a href="{{route('admin.user.index')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'admin.user.index' ? 'active' : '' }}"><i class="fa fa-users me-2"></i>@lang('lang.users')</a>
-                <a href="{{route('admin.group.index')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'admin.group.index' ? 'active' : '' }}"><i class="fa fa-list me-2"></i>@lang('lang.groups')</a>
-                <a href="{{route('admin.children.index')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'admin.children.index' ? 'active' : '' }}"><i class="fa fa-child me-2"></i>@lang('lang.children')</a>
+                <a href="{{route('admin.user.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.user') ? 'active' : '' }}"><i class="fa fa-users me-2"></i>@lang('lang.users')</a>
+                <a href="{{route('admin.group.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.group') ? 'active' : '' }}"><i class="fa fa-list me-2"></i>@lang('lang.groups')</a>
+                <a href="{{route('admin.children.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.children') ? 'active' : '' }}"><i class="fa fa-child me-2"></i>@lang('lang.children')</a>
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link {{ (Route::currentRouteName() == 'admin.resume.question.index' or Route::currentRouteName() == 'admin.resume.index') ? 'active' : '' }} dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-file me-2"></i>@lang('lang.resume')</a>
+                    <a href="#" class="nav-link {{ (Str::startsWith(Route::currentRouteName(), 'admin.resume') or Str::startsWith(Route::currentRouteName(), 'admin.question')) ? 'active' : '' }} dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-file me-2"></i>@lang('lang.resume')</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         <a href="{{route('admin.resume.index')}}" class="dropdown-item">@lang('lang.comp_resumes')</a>
                         <a href="{{route('admin.resume.question.index')}}" class="dropdown-item">@lang('lang.resume_ques')</a>
                     </div>
                 </div>
-                <a href="{{route('admin.enroll.index')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'admin.enroll.index' ? 'active' : '' }}"><i class="fa fa-check-circle me-2"></i>@lang('lang.queue')</a>
-                <a href="{{route('admin.payment.index')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'admin.payment.index' ? 'active' : '' }}"><i class="fa fa-credit-card me-2"></i>@lang('lang.emp_payment')</a>
-                <a href="{{route('admin.attendance.index')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'admin.attendance.index' ? 'active' : '' }}"><i class="fa fa-calendar-check me-2"></i>@lang('lang.emp_attendance')</a>
-                <a href="{{route('admin.mainGallery.index')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'admin.mainGallery.index' ? 'active' : '' }}"><i class="fa fa-file-image me-2"></i>@lang('lang.main_gallery')</a>
-                <a href="{{route('admin.news.index')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'admin.news.index' ? 'active' : '' }}"><i class="fa fa-newspaper me-2"></i>@lang('lang.news')</a>
-                <a href="{{route('admin.feedback.index')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'admin.feedback.index' ? 'active' : '' }}"><i class="fa fa-comments me-2"></i>@lang('lang.feedbacks')</a>
+                <a href="{{route('admin.enroll.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.enroll') ? 'active' : '' }}"><i class="fa fa-check-circle me-2"></i>@lang('lang.queue')</a>
+                <a href="{{route('admin.payment.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.payment') ? 'active' : '' }}"><i class="fa fa-credit-card me-2"></i>@lang('lang.emp_payment')</a>
+                <a href="{{route('admin.attendance.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.attendance') ? 'active' : '' }}"><i class="fa fa-calendar-check me-2"></i>@lang('lang.emp_attendance')</a>
+                <a href="{{route('admin.mainGallery.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.mainGallery') ? 'active' : '' }}"><i class="fa fa-file-image me-2"></i>@lang('lang.main_gallery')</a>
+                <a href="{{route('admin.news.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.news') ? 'active' : '' }}"><i class="fa fa-newspaper me-2"></i>@lang('lang.news')</a>
+                <a href="{{route('admin.feedback.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.feedback') ? 'active' : '' }}"><i class="fa fa-comments me-2"></i>@lang('lang.feedbacks')</a>
             </div>
         </nav>
     </div>

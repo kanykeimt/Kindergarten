@@ -122,11 +122,11 @@ Route::group(
             });
 
             Route::group(['prefix'=>'children'], function (){
-                Route::get('/', [App\Http\Controllers\Admin\ChildrenController::class, 'index'])->name('admin.children.index');
-                Route::get('/edit/{child}', [App\Http\Controllers\Admin\ChildrenController::class, 'edit'])->name('admin.children.edit');
-                Route::get('/show/{child}', [App\Http\Controllers\Admin\ChildrenController::class, 'show'])->name('admin.children.show');
-                Route::patch('/update/{child}', [App\Http\Controllers\Admin\ChildrenController::class, 'update'])->name('admin.children.update');
-                Route::delete('/{child}', [App\Http\Controllers\Admin\ChildrenController::class, 'delete'])->name('admin.children.delete');
+                Route::get('/', [App\Http\Controllers\Admin\ChildController::class, 'index'])->name('admin.children.index');
+                Route::get('/edit/{child}', [App\Http\Controllers\Admin\ChildController::class, 'edit'])->name('admin.children.edit');
+                Route::get('/show/{child}', [App\Http\Controllers\Admin\ChildController::class, 'show'])->name('admin.children.show');
+                Route::patch('/update/{child}', [App\Http\Controllers\Admin\ChildController::class, 'update'])->name('admin.children.update');
+                Route::delete('/{child}', [App\Http\Controllers\Admin\ChildController::class, 'delete'])->name('admin.children.delete');
             });
             Route::group(['prefix'=>'enroll'], function (){
                 Route::get('/', [App\Http\Controllers\Admin\EnrollController::class, 'index'])->name('admin.enroll.index');

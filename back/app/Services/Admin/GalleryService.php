@@ -2,17 +2,10 @@
 
 namespace App\Services\Admin;
 
-use App\Http\Requests\Admin\User\StoreRequest;
-use App\Http\Requests\UpdateUserRequest;
 use App\Models\Gallery;
 use App\Models\Group;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use Nette\Utils\Image;
 
 class GalleryService
 {

@@ -55,10 +55,6 @@
                                 <img class="img-fluid img" src="{{asset($child->med_disability)}}" alt="child's medical disability certificate" style="width:70%;">
                             </div>
                         </li>
-                        <li class="list-group-item">
-                            <b>@lang('lang.payment_btn'):</b>
-                            <div class="">{{$child->payment}}</div>
-                        </li>
                     </ul>
                 </div>
             </div>

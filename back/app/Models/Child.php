@@ -8,6 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Child extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'surname',
+        'birth_date',
+        'gender',
+        'parent_id',
+        'group_id',
+        'photo',
+        'birth_certificate',
+        'med_certificate',
+        'med_disability',
+    ];
     public function group()
     {
         return $this->belongsTo(Group::class);

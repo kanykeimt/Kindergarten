@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin\Child;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateChildrenRequest extends FormRequest
+class CreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -17,21 +17,21 @@ class UpdateChildrenRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-            'name' => ['string', 'max:50'],
-            'surname' => ['string', 'max:50'],
-            'birth_date' => '',
-            'gender' => '',
-            'parent_id' => '',
-            'group_id' => '',
+            'name' => 'required|string',
+            'surname' => 'required|string',
+            'birth_date' => 'required',
+            'gender' => 'required',
+            'parent_id' => 'required',
+            'group_id' => 'required',
             'photo' => '',
             'birth_certificate' => '',
             'med_certificate' => '',
-            'med_disability' => '',
+            'med_disability' => ''
         ];
     }
 }

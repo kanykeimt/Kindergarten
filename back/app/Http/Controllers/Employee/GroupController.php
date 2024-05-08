@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateChildrenRequest;
+use App\Http\Requests\UpdateRequest;
 use App\Models\Child;
 use App\Models\Group;
 use App\Models\User;
@@ -51,7 +51,7 @@ class GroupController extends Controller
          return view('employee.group.edit', compact('children', 'parents'));
      }
 
-    public function update(UpdateChildrenRequest $request, Child $child){
+    public function update(UpdateRequest $request, Child $child){
         $data = $request->validated();
         DB::beginTransaction();
         $photo = $child->photo;

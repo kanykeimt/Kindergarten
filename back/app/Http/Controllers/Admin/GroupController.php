@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\User\StoreRequest;
+use App\Http\Requests\Admin\User\CreateRequest;
 use App\Http\Requests\UpdateGroupRequest;
 use App\Models\Gallery;
 use App\Models\Group;

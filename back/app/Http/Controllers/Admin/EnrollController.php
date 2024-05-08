@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\UpdateChildrenRequest;
+use App\Http\Requests\UpdateRequest;
 use App\Models\Child;
 use App\Models\Enroll;
 use App\Models\Group;

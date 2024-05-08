@@ -48,17 +48,18 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <label for="exampleInput" class="form-label">@lang('lang.role'):</label>
-                        <select name="role" style="width: 50% !important;"  class="form-control" id="role">
-                            @foreach($roles as $role)
-                                <option value="{{$role->id}}">{{$role->name}}</option>
-                            @endforeach
-                        </select>
+                        <label for="role" class="col-sm-2 col-form-label">@lang('lang.role'):</label>
+                        <div class="col-sm-8">
+                            <select class="form-select mb-3" aria-label="Default select example" id="role" name="role">
+                                @foreach($roles as $role)
+                                    <option value="{{$role->id}}" @if($role->id === $user->role) selected @endif>{{$role->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         @error('role')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
                     </div>
-                    <br>
                     <div class="form-group">
                         <label for="exampleInput" class="form-label">@lang('lang.passport_front'):</label>
                         <input type="file" class="form-control col-6" accept="image/png, image/gif, image/jpeg" name="passport_front" id="passport_front">

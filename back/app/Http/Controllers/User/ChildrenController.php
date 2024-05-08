@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateChildrenRequest;
+use App\Http\Requests\UpdateRequest;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 use App\Models\Child;
@@ -56,7 +56,7 @@ class ChildrenController extends Controller
         return view('user.children', compact('child', 'galleries', 'created_at_dates',  'count'));
     }
 
-    public function update(UpdateChildrenRequest $request, Child $child){
+    public function update(UpdateRequest $request, Child $child){
         $data = $request->validated();
         DB::beginTransaction();
         $photo = $child->photo;
