@@ -45,7 +45,8 @@ class QuestionService
             'question_ru' => $data['question_ru'],
         ]);
         DB::commit();
-        return redirect()->route('admin.resume.question.index');
+        $message = Lang::get('lang.update_question_successful');
+        return redirect()->route('admin.resume.question.index')->with('success', $message);
     }
 
     public function delete(Question $question)

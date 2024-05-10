@@ -9,9 +9,6 @@ use App\Http\Requests\UpdateResumeQuestionRequest;
 use App\Models\Question;
 use App\Services\Admin\QuestionService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Lang;
 
 class QuestionController extends Controller
 {

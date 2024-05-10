@@ -201,4 +201,13 @@ return [
     'add_question' => 'Суроо кошуу',
     'question_kg' => 'Суроо кыргыз тилинде',
     'question_ru' => 'Суроо орус тилинде',
+    'add_user_successful' => 'Колдонуучу ийгиликтүү кошулду',
+    'add_child_successful' => 'Бала ийгиликтүү кошулду',
+    'add_group_successful' => 'Группа ийгиликтүү кошулду',
+    'add_question_successful' => 'Суроо ийгиликтүү кошулду',
+    'update_user_successful' => 'Колдонуучунун маалыматы жаңыланды',
+    'update_child_successful' => 'Баланын маалыматы жаңыланды',
+    'update_group_successful' => 'Группанын маалыматы жаңыланды',
+    'update_question_successful' => 'Суроо жаңыланды',
+
 ];

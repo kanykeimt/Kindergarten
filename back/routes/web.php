@@ -112,13 +112,11 @@ Route::group(
 
             Route::group(['prefix'=>'group'], function (){
                 Route::get('/',[App\Http\Controllers\Admin\GroupController::class,'index'])->name('admin.group.index');
+                Route::post('/create',[App\Http\Controllers\Admin\GroupController::class, 'create'])->name('admin.group.create');
                 Route::get('/show/{group}',[App\Http\Controllers\Admin\GroupController::class, 'show'])->name('admin.group.show');
                 Route::get('/edit/{group}', [App\Http\Controllers\Admin\GroupController::class, 'edit'])->name('admin.group.edit');
                 Route::patch('/update/{group}', [App\Http\Controllers\Admin\GroupController::class, 'update'])->name('admin.group.update');
                 Route::delete('/{group}',[App\Http\Controllers\Admin\GroupController::class, 'delete'])->name('admin.group.delete');
-                Route::get('/Gallery/{group}', [App\Http\Controllers\Admin\GroupController::class, 'Gallery'])->name('admin.group.Gallery');
-                Route::post('/gallery/create/{group}',[App\Http\Controllers\Admin\GroupController::class, 'galleryCreate'])->name('admin.gallery.create');
-                Route::delete('/{gallery}',[App\Http\Controllers\Admin\GroupController::class, 'galleryDelete'])->name('admin.gallery.delete');
             });
 
             Route::group(['prefix'=>'children'], function (){

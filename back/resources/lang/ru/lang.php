@@ -202,4 +202,12 @@ return [
     'add_question' => 'Добавить вопрос',
     'question_kg' => 'Вопрос на кыргызском',
     'question_ru' => 'Вопрос на русском',
+    'add_user_successful' => 'Пользователь успешно добавлен',
+    'add_child_successful' => 'Ребенок успешно добавлен',
+    'add_group_successful' => 'Группа успешно добавлена',
+    'add_question_successful' => 'Вопрос успешно добавлен',
+    'update_user_successful' => 'Данные пользователя обновлены',
+    'update_child_successful' => 'Данные ребенка обновлены',
+    'update_group_successful' => 'Данные группы обновлены',
+    'update_question_successful' => 'Вопрос обновлен',
 ];

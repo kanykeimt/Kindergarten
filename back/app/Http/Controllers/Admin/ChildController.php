@@ -23,20 +23,14 @@ class ChildController extends Controller
     public function __construct(){
         $this->service = new ChildService();
     }
-    public function index(){
-        $children = Child::where('deleted', 0)->get();
-        $parents = User::where('deleted', 0)->get();
-        $groups = Group::all();
-        $amount_child_group = [];
-        foreach ($groups as $group){
-            $count = 0;
-            foreach ($children as $child){
-                if($group->id === $child->group_id){
-                    $count++;
-                }
-            }
-            $amount_child_group[$group->id] = $count;
-        }
+    public function index()
+    {
+        $data = $this->service->index();
+        $children = $data['children'];
+        $parents = $data['parents'];
+        $groups = $data['groups'];
+        $amount_child_group = $data['amount_child_group'];
+
         return view('admin.children.index', compact('children', 'parents', 'groups', 'amount_child_group'));
     }
 
@@ -45,15 +39,14 @@ class ChildController extends Controller
         return $this->service->create($request);
     }
 
-    public function edit(Child $child){
-        $user_id = Role::where('name', 'User')->first()->id;
-        $parents = User::where('role', '!=', $user_id)->get();
-        $groups = Group::all();
-        return view('admin.children.edit', compact('child', 'parents', 'groups'));
+    public function edit(Child $child)
+    {
+        return $this->service->edit($child);
     }
 
-    public function show(Child $child){
-        return view('admin.children.show', compact('child'));
+    public function show(Child $child)
+    {
+        return $this->service->show($child);
     }
 
     public function update(UpdateRequest $request, Child $child):RedirectResponse
@@ -61,26 +54,8 @@ class ChildController extends Controller
         return $this->service->update($request, $child);
     }
 
-    public function delete(Child $child){
-        $user_id = Role::where('name', 'User')->first()->id;
-        $parent = User::where('id', $child->parent_id)->get();
-        $parent = $parent[0];
-        DB::beginTransaction();
-        $child->update([
-            'deleted' => 1
-        ]);
-        $parent->update([
-            'amount_of_child' => $parent->amount_of_child - 1
-        ]);
-        DB::commit();
-        if ($parent->amount_of_child === 0){
-            DB::beginTransaction();
-            $parent->update([
-                'role' => $user_id
-            ]);
-            DB::commit();
-        }
-        $message = Lang::get('lang.delete_answer_child');
-        return redirect()->route('admin.children.index')->with('status',$message);
+    public function delete(Child $child):RedirectResponse
+    {
+        return $this->service->delete($child);
     }
 }

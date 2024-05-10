@@ -93,11 +93,6 @@
                                         </button>
                                     </form>
                                 </div>
-                                <div style="float: left;
-                                display: block;
-                                width: 25%;" class="text-center">
-                                    <a href="{{route('admin.group.Gallery', $group)}}" class="text"><i title="add photo or video" class="fas fa-photo-video"></i></a>
-                                </div>
                             </td>
                         </tr>
                     @endforeach

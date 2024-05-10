@@ -4,6 +4,7 @@ namespace App\Services\Admin;
 
 use App\Http\Requests\Admin\User\CreateRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +14,24 @@ use Illuminate\Support\Facades\Storage;
 
 class UserService
 {
+    public function index()
+    {
+        $users = User::all();
+        $roles = Role::all();
+        return view('admin.user.index', compact('users', 'roles'));
+    }
+
+    public function edit(User $user)
+    {
+        $roles = Role::all();
+        return view('admin.user.edit', compact('user', 'roles'));
+    }
+
+    public function show(User $user)
+    {
+        $role = Role::where('id', $user->role)->get();
+        return view('admin.user.show',compact('user', 'role'));
+    }
     public function create(CreateRequest $request): RedirectResponse
     {
         $data = $request->validated();
@@ -48,11 +67,12 @@ class UserService
             'passport_back'=>$passport_back
         ]);
 
-        $message = Lang::get('lang.add_successful');
+        $message = Lang::get('lang.add_user_successful');
         return redirect()->back()->with('status', $message);
     }
 
-    public function update(UpdateRequest $request, User $user){
+    public function update(UpdateRequest $request, User $user):RedirectResponse
+    {
         $data = $request->validated();
         DB::beginTransaction();
         $passport_back = $user->passport_back;
@@ -76,7 +96,14 @@ class UserService
             'passport_front' => $passport_front
         ]);
         DB::commit();
-        return redirect()->route('admin.user.index')->with('status','User data is Updated');
+        $message = Lang::get('lang.update_user_successful');
+        return redirect()->route('admin.user.index')->with('status',$message);
     }
 
+    public function delete(User $user):RedirectResponse
+    {
+        $user->delete();
+        $message = Lang::get('lang.delete_answer_user');
+        return redirect()->route('admin.user.index')->with('status',$message);
+    }
 }

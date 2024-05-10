@@ -3,125 +3,53 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\User\CreateRequest;
-use App\Http\Requests\UpdateGroupRequest;
+use App\Http\Requests\Admin\Group\UpdateRequest;
+use App\Http\Requests\Admin\Group\CreateRequest;
 use App\Models\Gallery;
 use App\Models\Group;
-use App\Models\Role;
-use App\Models\User;
-use App\Services\Admin\GalleryService;
-use App\Services\Admin\UserService;
+use App\Services\Admin\GroupService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
-use Illuminate\Support\Facades\Storage;
 
 
 class GroupController extends Controller
 {
-    private GalleryService $galleryService;
+    private GroupService $service;
 
     public function __construct()
     {
-        $this->galleryService = new GalleryService();
+        $this->service = new GroupService();
     }
     public function index(){
         $groups = Group::all();
-        $teacherIds = Role::where('name','Teacher')->pluck('id');
-        $teachers = DB::table('users')
-            ->leftJoin('groups', 'groups.teacher_id', '=', 'users.id')
-            ->where('users.role',  $teacherIds[0])
-            ->select('users.name as name', 'users.surname as surname',
-                'users.id as id', 'groups.teacher_id')
-            ->where('teacher_id', '=', null)
-            ->get();
+        $teachers = $this->service->index();
         return view('admin.group.index', compact('groups', 'teachers'));
     }
 
-    public function create(Request $request){
-        $data = $request->validate([
-            'name'=>'required|string',
-            'teacher_id' => 'required',
-            'limit'=>'required',
-            'description'=>'required|string',
-            'image'=>'required'
-        ]);
-        if (!Storage::exists('public/groupImages')) {
-            Storage::makeDirectory('public/groupImages');
-        }
-        $image = Storage::disk('public')->put('groupImages', $data['image']);
-        $image = "storage/".$image;
-
-        $group = Group::create([
-            'name' => $data['name'],
-            'teacher_id' => $request->teacher_id,
-            'limit' => $data['limit'],
-            'description' => $data['description'],
-            'image' => $image
-        ]);
-
-        $message = Lang::get('lang.add_successful');
-        return redirect()->back()->with('status', $message);
-
+    public function create(CreateRequest $request):RedirectResponse
+    {
+        return $this->service->create($request);
     }
 
-    public function show(Group $group){
-        return view('admin.group.show', compact('group'));
+    public function show(Group $group)
+    {
+        return $this->service->show($group);
     }
 
     public function edit(Group $group){
-        $teachers = User::where('role', 'ROLE_TEACHER')->get();
+        $teachers = $this->service->edit($group);
         return view('admin.group.edit',compact('group', 'teachers'));
     }
 
-    public function update(UpdateGroupRequest $request, Group $group){
-        $data = $request->validated();
-        DB::beginTransaction();
-        if(array_key_exists('image', $data)){
-            $image = Storage::disk('public')->put('groupImages', $data['image']);
-            $image = "storage/".$image;
-            $group->update([
-                'name' => $data['name'],
-                'teacher_id' => $data['teacher_id'],
-                'limit' => $data['limit'],
-                'description' => $data['description'],
-                'image' => $image,
-
-            ]);
-        }
-        else {
-            $group->update([
-                'name' => $data['name'],
-                'teacher_id' => $data['teacher_id'],
-                'limit' => $data['limit'],
-                'description' => $data['description'],
-            ]);
-        }
-        DB::commit();
-        return redirect()->route('admin.group.index')->with('status','Group data is Updated');
-    }
-
-    public function delete(Group $group){
-        $group->delete();
-        $message = Lang::get('lang.delete_answer_group');
-        return redirect()->route('admin.group.index')->with('status', $message);
-    }
-
-    public function Gallery(Group $group){
-        if(!$group) abort(404);
-        $galleries = $group->gallery;
-        return view('admin.group.addGallery',compact('group', 'galleries'));
-    }
-
-    public function galleryCreate(Request $request, Group $group)
+    public function update(UpdateRequest $request, Group $group):RedirectResponse
     {
-        $this->galleryService->store($request, $group);
+        return $this->service->update($request, $group);
+    }
 
-        return redirect()->back();
+    public function delete(Group $group)
+    {
+        return $this->service->delete($group);
     }
-    public function galleryDelete(Gallery $gallery){
-        $gallery->delete();
-        return redirect()->route('admin.group.Gallery');
-    }
+
 }
