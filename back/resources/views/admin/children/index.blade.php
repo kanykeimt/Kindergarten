@@ -151,9 +151,11 @@
             </div>
         </div>
     </div>
+
+
     <script>
         function deletedBtn(button){
-            let text = "@lang('lang.delete_question_group')";
+            let text = "@lang('lang.delete_question_child')";
             if (confirm(text) === true) {
                 button.setAttribute('type', 'submit');
             } else {

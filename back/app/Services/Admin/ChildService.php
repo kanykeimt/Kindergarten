@@ -116,7 +116,8 @@ class ChildService
         ]);
         DB::commit();
 
-        return redirect()->back();
+        $message = Lang::get('lang.add_child_successful');
+        return redirect()->back()->with('success', $message);
     }
 
     public function update(UpdateRequest $request, Child $child):RedirectResponse

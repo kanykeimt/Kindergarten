@@ -146,7 +146,7 @@
 
     <script>
         function deletedBtn(button){
-            let text = "@lang('lang.delete_question_group')";
+            let text = "@lang('lang.delete_question_user')";
             if (confirm(text) === true) {
                 button.setAttribute('type', 'submit');
             } else {

@@ -30,13 +30,13 @@ class EnrollSeeder extends Seeder
         })->pluck('id');
 
         for ($i = 0; $i < 5; $i++) {
-            $image = 'storage/enrollImages'.$faker->image(storage_path('app/' . $directory), 500, 312, null, false);
+            $image = 'storage/enrollImages/'.$faker->image(storage_path('app/' . $directory), 500, 312, null, false);
             Enroll::create([
                 'parent_id' => $faker->randomElement($parentIds),
                 'name' => $faker->word,
                 'surname' => $faker->word,
                 'birth_date' => $faker->dateTimeBetween('-7 years', '-2 years')->format('Y-m-d'),
-                'gender' => $faker->randomElement(['MALE', 'FEMALE']),
+                'gender' => $faker->randomElement(['Male', 'Female']),
                 'birth_certificate' => $image,
                 'med_certificate' => $image,
                 'med_disability' => null,
