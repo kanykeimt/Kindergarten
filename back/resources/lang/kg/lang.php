@@ -163,6 +163,7 @@ return [
     'delete_question_resume' => 'Бул резюмени чын эле тизмеден өчүрүүнү каалайсызбы?',
     'delete_answer_resume' => 'Бул резюме ийгиликтүү өчүрүлдү',
     'question' => 'Суроо',
+    'questions' => 'Суроолор',
     'delete_question_questions' => 'Бул суроону чын эле тизмеден өчүрүүнү каалайсызбы?',
     'delete_answer_questions' => 'Бул суроо ийгиликтүү өчүрүлдү',
     'queue' => 'Кезек',
@@ -196,4 +197,8 @@ return [
     'create_user_form' => 'Жаңы колдонуучу жаратуу үчүн форма',
     'create_group_form' => 'Жаңы группа жаратуу үчүн форма',
     'create_child_form' => 'Жаңы бала жаратуу үчүн форма',
+    'create_question_form' => 'Жаңы суроо жаратуу үчүн форма',
+    'add_question' => 'Суроо кошуу',
+    'question_kg' => 'Суроо кыргыз тилинде',
+    'question_ru' => 'Суроо орус тилинде',
 ];

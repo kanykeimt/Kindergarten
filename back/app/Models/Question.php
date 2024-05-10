@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'question_kg',
+        'question_ru',
+    ];
     public function getName()
     {
         $lang = app()->getLocale();

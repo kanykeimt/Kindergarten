@@ -24,14 +24,6 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <label for="exampleInput" class="form-label">@lang('lang.profile_photo'):</label>
-                        <input type="file" class="form-control col-6" accept="image/png, image/gif, image/jpeg" name="profile_photo" id="profile_photo">
-                        @error('profile_photo')
-                        <p class="text-danger">{{$message}}</p>
-                        @enderror
-                    </div>
-                    <br>
-                    <div class="form-group">
                         <label for="exampleInput" class="form-label">@lang('lang.address'):</label>
                         <input type="text" class="form-control col-6" name="address" id="address" value="{{$user->address}}" required autofocus oninvalid="this.setCostomValidity('пожалуйста, заполните это поле')" oninput="this.setCostomValidity('')">
                         @error('address')
@@ -62,6 +54,10 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInput" class="form-label">@lang('lang.passport_front'):</label>
+                        <div class="">
+                            <img class="img-fluid img" src="{{asset($user->passport_front)}}" alt="Child's birth certificate" style="width:70%;">
+                        </div>
+                        <br>
                         <input type="file" class="form-control col-6" accept="image/png, image/gif, image/jpeg" name="passport_front" id="passport_front">
                         @error('passport_front')
                         <p class="text-danger">{{$message}}</p>
@@ -70,6 +66,10 @@
                     <br>
                     <div class="form-group">
                         <label for="exampleInput" class="form-label">@lang('lang.passport_back'):</label>
+                        <div class="">
+                            <img class="img-fluid img" src="{{asset($user->passport_back)}}" alt="Child's birth certificate" style="width:70%;">
+                        </div>
+                        <br>
                         <input type="file" class="form-control col-6" accept="image/png, image/gif, image/jpeg" name="passport_back" id="passport_back">
                         @error('passport_back')
                         <p class="text-danger">{{$message}}</p>

@@ -96,8 +96,8 @@
                             <img class="img-fluid img" src="{{asset($child->birth_certificate)}}" alt="Child's birth certificate" style="width:70%;">
                         </div>
                         <br>
-                        <input type="file" class="form-control col-6" accept="image/png, image/gif, image/jpeg" name="birth_certification" id="birth_certification">
-                        @error('birth_certification')
+                        <input type="file" class="form-control col-6" accept="image/png, image/gif, image/jpeg" name="birth_certificate" id="birth_certificate">
+                        @error('birth_certificate')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
                     </div>
@@ -108,8 +108,8 @@
                             <img class="img-fluid img" src="{{asset($child->med_certificate)}}" alt="child's medical certificate" style="width:70%;">
                         </div>
                         <br>
-                        <input type="file" class="form-control col-6" accept="image/png, image/gif, image/jpeg" name="med_certification" id="med_certification">
-                        @error('med_certification')
+                        <input type="file" class="form-control col-6" accept="image/png, image/gif, image/jpeg" name="med_certificate" id="med_certificate">
+                        @error('med_certificate')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
                     </div>

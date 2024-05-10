@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Child\CreateRequest;
 use App\Http\Requests\Admin\Child\UpdateRequest;
 use App\Models\Child;
 use App\Models\Group;
+use App\Models\Role;
 use App\Models\User;
 use App\Services\Admin\ChildService;
 use Illuminate\Http\RedirectResponse;
@@ -45,7 +46,8 @@ class ChildController extends Controller
     }
 
     public function edit(Child $child){
-        $parents = User::where('role', '!=', 4)->get();
+        $user_id = Role::where('name', 'User')->first()->id;
+        $parents = User::where('role', '!=', $user_id)->get();
         $groups = Group::all();
         return view('admin.children.edit', compact('child', 'parents', 'groups'));
     }
@@ -60,6 +62,7 @@ class ChildController extends Controller
     }
 
     public function delete(Child $child){
+        $user_id = Role::where('name', 'User')->first()->id;
         $parent = User::where('id', $child->parent_id)->get();
         $parent = $parent[0];
         DB::beginTransaction();
@@ -73,7 +76,7 @@ class ChildController extends Controller
         if ($parent->amount_of_child === 0){
             DB::beginTransaction();
             $parent->update([
-                'role' => 4
+                'role' => $user_id
             ]);
             DB::commit();
         }

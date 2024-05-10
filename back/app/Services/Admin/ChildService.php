@@ -17,30 +17,38 @@ class ChildService
     {
         $data = $request->validated();
 
-        $directory = 'public/childrenImages/'.$data['group_id'];
-        if (!Storage::exists($directory)) {
-            Storage::makeDirectory($directory);
+        if (!Storage::exists('public/childrenImages/photos')) {
+            Storage::makeDirectory('public/childrenImages/photos');
         }
-        $path = 'childrenImages/'.$data['group_id'];
+        if (!Storage::exists('public/childrenImages/birthCertificates')) {
+            Storage::makeDirectory('public/childrenImages/birthCertificates');
+        }
+        if (!Storage::exists('public/childrenImages/medCertificates')) {
+            Storage::makeDirectory('public/childrenImages/medCertificates');
+        }
+        if (!Storage::exists('public/childrenImages/medDisabilities')) {
+            Storage::makeDirectory('public/childrenImages/medDisabilities');
+        }
 
         $photo = '';
         $birth_cert = '';
         $med_cert = '';
         $med_disability = '';
+
         if(array_key_exists('photo', $data)){
-            $photo = Storage::disk('public')->put($path, $data['photo']);
+            $photo = Storage::disk('public')->put('childrenImages/photos', $data['photo']);
             $photo = "storage/".$photo;
         }
         if(array_key_exists('birth_certificate', $data)){
-            $birth_cert = Storage::disk('public')->put($path, $data['birth_certificate']);
+            $birth_cert = Storage::disk('public')->put('childrenImages/birthCertificates', $data['birth_certificate']);
             $birth_cert = "storage/".$birth_cert;
         }
         if(array_key_exists('med_certificate', $data)){
-            $med_cert = Storage::disk('public')->put($path, $data['med_certificate']);
+            $med_cert = Storage::disk('public')->put('childrenImages/medCertificates', $data['med_certificate']);
             $med_cert = "storage/".$med_cert;
         }
         if(array_key_exists('med_disability', $data)){
-            $med_disability = Storage::disk('public')->put($path, $data['med_disability']);
+            $med_disability = Storage::disk('public')->put('childrenImages/medDisabilities', $data['med_disability']);
             $med_disability = "storage/".$med_disability;
         }
 
@@ -77,24 +85,26 @@ class ChildService
     public function update(UpdateRequest $request, Child $child):RedirectResponse
     {
         $data = $request->validated();
+
         $photo = $child->photo;
         $birth_certificate = $child->birth_certificate;
         $med_certificate = $child->med_certificate;
         $med_disability = $child->med_disability;
+
         if(array_key_exists('photo', $data)){
-            $image = Storage::disk('public')->put('childImages/photos', $data['photo']);
+            $image = Storage::disk('public')->put('childrenImages/photos', $data['photo']);
             $photo = "storage/".$image;
         }
         if(array_key_exists('birth_certificate', $data)){
-            $image = Storage::disk('public')->put('childImages/birthCertificates', $data['birth_certificate']);
+            $image = Storage::disk('public')->put('childrenImages/birthCertificates', $data['birth_certificate']);
             $birth_certificate = "storage/".$image;
         }
         if(array_key_exists('med_certificate', $data)){
-            $image = Storage::disk('public')->put('childImages/medCertificates', $data['med_certificate']);
+            $image = Storage::disk('public')->put('childrenImages/medCertificates', $data['med_certificate']);
             $med_certificate = "storage/".$image;
         }
         if(array_key_exists('med_disability', $data)){
-            $image = Storage::disk('public')->put('childImages/meDisabilities', $data['med_disability']);
+            $image = Storage::disk('public')->put('childrenImages/meDisabilities', $data['med_disability']);
             $med_disability = "storage/".$image;
         }
 

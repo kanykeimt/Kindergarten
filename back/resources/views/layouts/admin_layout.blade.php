@@ -292,8 +292,8 @@ else{
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link {{ (Str::startsWith(Route::currentRouteName(), 'admin.resume') or Str::startsWith(Route::currentRouteName(), 'admin.question')) ? 'active' : '' }} dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-file me-2"></i>@lang('lang.resume')</a>
                     <div class="dropdown-menu bg-transparent border-0">
-                        <a href="{{route('admin.resume.index')}}" class="dropdown-item">@lang('lang.comp_resumes')</a>
                         <a href="{{route('admin.resume.question.index')}}" class="dropdown-item">@lang('lang.resume_ques')</a>
+                        <a href="{{route('admin.resume.index')}}" class="dropdown-item">@lang('lang.comp_resumes')</a>
                     </div>
                 </div>
                 <a href="{{route('admin.enroll.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.enroll') ? 'active' : '' }}"><i class="fa fa-check-circle me-2"></i>@lang('lang.queue')</a>
@@ -383,6 +383,12 @@ else{
         <!-- Content Start -->
         <div class="container-fluid pt-4 px-4">
             <div class="row g-4">
+                @if (session('status'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('status') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                 @yield('content')
             </div>
         </div>

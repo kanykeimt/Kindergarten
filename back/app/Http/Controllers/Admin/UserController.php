@@ -33,7 +33,8 @@ class UserController extends Controller
     }
 
     public function create(CreateRequest $request): RedirectResponse
-    {        return $this->service->create($request);
+    {
+        return $this->service->create($request);
     }
 
     public function show(User $user):View

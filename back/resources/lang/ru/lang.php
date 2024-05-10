@@ -164,6 +164,7 @@ return [
     'delete_question_resume' => 'Вы действительно хотите удалить это резюме?',
     'delete_answer_resume' => 'Этот резюме успешно удалено',
     'question' => 'Вопрос',
+    'questions' => 'Вопросы',
     'delete_question_questions' => 'Вы действительно хотите удалить этот вопрос?',
     'delete_answer_questions' => 'Этот вопрос успешно удалено',
     'queue' => 'Очередь',
@@ -197,4 +198,8 @@ return [
     'create_user_form' => 'Форма для создания нового пользователя',
     'create_group_form' => 'Форма для создания новой группы',
     'create_child_form' => 'Форма для создания нового ребенка',
+    'create_question_form' => 'Форма для создания нового вопроса',
+    'add_question' => 'Добавить вопрос',
+    'question_kg' => 'Вопрос на кыргызском',
+    'question_ru' => 'Вопрос на русском',
 ];

@@ -57,7 +57,6 @@ class UserService
         DB::beginTransaction();
         $passport_back = $user->passport_back;
         $passport_front = $user->passport_front;
-        $profile_photo = $user->profile_photo;
         if(array_key_exists('passport_front', $data)){
             $image = Storage::disk('public')->put('passports', $data['passport_front']);
             $passport_front = "storage/".$image;
@@ -66,17 +65,13 @@ class UserService
             $image = Storage::disk('public')->put('passports', $data['passport_back']);
             $passport_back = "storage/".$image;
         }
-        if(array_key_exists('profile_photo', $data)){
-            $profile_photo = Storage::disk('public')->put('profilePhotos', $data['profile_photo']);
-            $profile_photo = "storage/".$profile_photo;
-        }
         $user->update([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'address' => $data['address'],
             'phone_number' => $data['phone_number'],
             'role' => $data['role'],
-            'profile_photo' => $profile_photo,
+            'profile_photo' => $user->profile_photo,
             'passport_back' => $passport_back,
             'passport_front' => $passport_front
         ]);

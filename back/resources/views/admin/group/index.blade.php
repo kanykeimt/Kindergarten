@@ -1,7 +1,7 @@
 @extends('layouts.admin_layout')
 @section('content')
     <div class="col-12">
-        <button type="button" class="btn btn-primary" style="margin-right:85%;" id="addUserBtnId" onclick="showForm()">@lang('lang.add_group')</button>
+        <button type="button" class="btn btn-primary" id="addUserBtnId" onclick="showForm()">@lang('lang.add_group')</button>
         <div class="d-none" id="addUserId" class="bg-light rounded h-100 p-4">
             <h6 class="mb-4">@lang('lang.create_group_form')</h6>
             <form action="{{route('admin.group.create')}}" method="POST" enctype="multipart/form-data">
