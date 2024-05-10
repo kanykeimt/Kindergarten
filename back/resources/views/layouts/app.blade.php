@@ -108,6 +108,55 @@ else{
     /* Change color of dropdown links on hover */
 
     /*# sourceMappingURL=style.css.map */
+
+
+    .alert {
+        position: relative;
+        top: 10px;
+        left: 0;
+        width: auto;
+        height: auto;
+        padding: 10px;
+        margin: 10px;
+        line-height: 1.8;
+        border-radius: 5px;
+        cursor: hand;
+        cursor: pointer;
+        font-family: sans-serif;
+        font-weight: 400;
+    }
+
+    .alertCheckbox {
+        display: none;
+    }
+
+    :checked + .alert {
+        display: none;
+    }
+
+    .alertText {
+        display: table;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .alertClose {
+        float: right;
+        padding-top: 5px;
+        font-size: 10px;
+    }
+
+    .clear {
+        clear: both;
+    }
+
+
+    .success {
+        background-color: #EFE;
+        border: 1px solid #DED;
+        color: #9A9;
+    }
 </style>
 <div class="container-xxl bg-white p-0">
     <!-- Spinner Start -->
@@ -559,6 +608,16 @@ else{
                         </div>
                     </div>
                 </div>
+
+                @if (session('status'))
+                    <label>
+                        <input type="checkbox" class="alertCheckbox" autocomplete="off" />
+                        <div class="alert success">
+                            <span class="alertClose">X</span>
+                            <span class="alertText">{{ session('status') }}<br class="clear"/></span>
+                        </div>
+                    </label>
+                @endif
                 @yield('content')
             </main>
         </div>

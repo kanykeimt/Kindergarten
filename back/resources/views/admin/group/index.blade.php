@@ -54,8 +54,8 @@
                     <thead>
                     <tr>
                         <th scope="col" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:2%">id</th>
-                        <th scope="col" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:30%">@lang('lang.emp_group_name')</th>
-                        <th scope="col" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:5%">@lang('lang.limit')</th>
+                        <th scope="col" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:40%">@lang('lang.emp_group_name')</th>
+                        <th scope="col" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:10%">@lang('lang.limit')</th>
                         <th scope="col" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:45%">@lang('lang.action')</th>
                     </tr>
                     <tr class="table-sm">
@@ -74,17 +74,17 @@
                             <td>
                                 <div style="float: left;
                                 display: block;
-                                width: 25%;" class="text-center">
+                                width: 33%;" class="text-center">
                                     <a href="{{route('admin.group.show', $group)}}"><i class="fa fa-info me-2"></i></a>
                                 </div>
                                 <div style="float: left;
                                 display: block;
-                                width: 25%;" class="text-center">
+                                width: 33%;" class="text-center">
                                     <a href="{{route('admin.group.edit', $group)}}" class="text-success"><i title="edit" class="fas fa-pen"></i></a>
                                 </div>
                                 <div style="float: left;
                                 display: block;
-                                width: 25%;" class="text-center">
+                                width: 33%;" class="text-center">
                                     <form action="{{route('admin.group.delete', $group->id)}}" method="POST">
                                         @method('DELETE')
                                         @csrf

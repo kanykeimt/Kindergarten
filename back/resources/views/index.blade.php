@@ -69,16 +69,6 @@
     </style>
     <!-- Carousel Start -->
     <div class="container-fluid p-0 mb-5">
-        <div>
-            @if (session('status'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('status') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
-        </div>
         <div class="owl-carousel header-carousel position-relative">
             <div class="owl-carousel-item position-relative">
                 <img class="img-fluid" src="{{asset('new_template/img/IMG_9157.PNG')}}" alt="">

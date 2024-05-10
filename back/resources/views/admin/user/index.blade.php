@@ -143,6 +143,7 @@
             </div>
         </div>
     </div>
+
     <script>
         function deletedBtn(button){
             let text = "@lang('lang.delete_question_group')";

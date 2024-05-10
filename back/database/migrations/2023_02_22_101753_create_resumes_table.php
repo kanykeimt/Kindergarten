@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('full_name',80);
             $table->string('phone_number',20);
-            $table->string('resume', 200);
+            $table->string('resume', 200)->nullable();
             $table->json('answers');
             $table->timestamps();
         });

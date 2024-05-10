@@ -9,6 +9,12 @@ class Resume extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'full_name',
+        'phone_number',
+        'resume',
+        'answers'
+    ];
     protected $casts = [
         'answers' => 'json',
     ];

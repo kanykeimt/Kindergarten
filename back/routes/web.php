@@ -45,8 +45,8 @@ Route::group(
 
         Route::get('main/faq', [App\Http\Controllers\HomeController::class, 'faq'])->name('faq');
 
-        Route::get('/main/vacancy', [App\Http\Controllers\User\VacancyController::class, 'index'])->name('vacancy');
-        Route::post('/main/vacancy/save', [App\Http\Controllers\User\VacancyController::class, 'save'])->name('vacancy.save');
+        Route::get('/main/vacancy', [\App\Http\Controllers\VacancyController::class, 'index'])->name('vacancy');
+        Route::post('/main/vacancy/create', [\App\Http\Controllers\VacancyController::class, 'create'])->name('vacancy.create');
 
         Route::get('/main/profile/{user}', [App\Http\Controllers\User\ProfileController::class, 'index'])->name('profile');
         Route::patch('/main/profile/update/{user}', [App\Http\Controllers\User\ProfileController::class, 'update'])->name('profile.update');
