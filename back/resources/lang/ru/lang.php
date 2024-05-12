@@ -123,9 +123,11 @@ return [
     'no_data' => 'Выбранном вами месяце нету данных, пожалуйста выберите другую дату',
     'add_payment' => 'Добавить платеж',
     'full_name_child' => 'Полное имя ребенка',
+    'full_name_parent' => 'Полное имя родителя',
     'from' => 'С',
     'to' => 'До',
     'payment_amount' => 'Сумма платежа',
+    'latest_payment' => 'Последний платеж',
 
 
     //Admin page
@@ -195,19 +197,32 @@ return [
     'gallery_no_data' => 'В галерее этой группы пока что нету никакой информации.',
     'news' => 'Новости',
     'all' => 'Все',
+
     'create_user_form' => 'Форма для создания нового пользователя',
     'create_group_form' => 'Форма для создания новой группы',
     'create_child_form' => 'Форма для создания нового ребенка',
     'create_question_form' => 'Форма для создания нового вопроса',
+
     'add_question' => 'Добавить вопрос',
     'question_kg' => 'Вопрос на кыргызском',
     'question_ru' => 'Вопрос на русском',
+
     'add_user_successful' => 'Пользователь успешно добавлен',
     'add_child_successful' => 'Ребенок успешно добавлен',
     'add_group_successful' => 'Группа успешно добавлена',
     'add_question_successful' => 'Вопрос успешно добавлен',
+    'add_payment_successful' => 'Оплата успешно добавлена',
+
     'update_user_successful' => 'Данные пользователя обновлены',
     'update_child_successful' => 'Данные ребенка обновлены',
     'update_group_successful' => 'Данные группы обновлены',
     'update_question_successful' => 'Вопрос обновлен',
+
+    'question_for_payment_date1' => 'Сумма оплаты достаточно до ',
+    'question_for_payment_date2' => ' числа',
+
+
+    'warning' => 'Предупреждение',
+    'message_content' => 'Содержание сообщения',
+    'message_delivered' => 'Сообщение доставлено',
 ];

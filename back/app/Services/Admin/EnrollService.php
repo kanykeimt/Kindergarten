@@ -44,4 +44,12 @@ class EnrollService
 
         return redirect()->route('admin.enroll.index')->with('status', $message);
     }
+
+
+    public function delete(Enroll $enroll)
+    {
+        $enroll->delete();
+        $message = Lang::get('lang.delete_answer_queue');
+        return redirect()->route('admin.enroll.index')->with('status', $message);
+    }
 }

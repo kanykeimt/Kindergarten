@@ -19,6 +19,10 @@ Route::group(
         'middleware' => 'setLocale'
     ],
     function(){
+        Route::group(['prefix' => 'chat'], function ()
+        {
+            Route::post('/create', [\App\Http\Controllers\ChatContoller::class, 'create'])->name('chat.create');
+        });
         Route::group(['prefix'=>'user'], function (){
             Route::get('/register', [App\Http\Controllers\RegisterController::class, 'form'])->name('user.register.form');
             Route::post('/register', [App\Http\Controllers\RegisterController::class, 'register'])->name('user.register');
@@ -92,7 +96,8 @@ Route::group(
 
             });
 
-            Route::group(['prefix' => 'payment'], function (){
+            Route::group(['prefix' => 'payment
+            '], function (){
                 Route::get('/index', [App\Http\Controllers\Employee\PaymentController::class, 'index'])->name('employee.payment.index');
                 Route::post('/create', [App\Http\Controllers\Employee\PaymentController::class, 'create'])->name('employee.payment.create');
             });
@@ -171,8 +176,12 @@ Route::group(
 
             Route::group(['prefix' => 'payment'], function (){
                 Route::get('/index', [App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('admin.payment.index');
+                Route::get('/edit/{child}', [App\Http\Controllers\Admin\PaymentController::class, 'edit'])->name('admin.payment.edit');
                 Route::post('/create', [App\Http\Controllers\Admin\PaymentController::class, 'create'])->name('admin.payment.create');
+                Route::get('warning/{payment}', [App\Http\Controllers\Admin\PaymentController::class, 'warning'])->name('admin.payment.warning');
             });
+
+
 
             Route::group(['prefix' => 'feedback'], function (){
                 Route::get('/index', [App\Http\Controllers\Admin\FeedbackController::class, 'index'])->name('admin.feedback.index');

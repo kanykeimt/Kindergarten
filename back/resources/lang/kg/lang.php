@@ -123,9 +123,11 @@ return [
     'no_data' => 'Сиз тандаган айда берилиштер жок, сураныч башка датаны тандаңыз',
     'add_payment' => 'Төлөмдү кошуу',
     'full_name_child' => 'Баланын толук аты-жөнү',
+    'full_name_parent' => 'Ата-эненин толук аты-жөнү',
     'from' => 'Баштап',
     'to' => 'Чейин',
     'payment_amount' => 'Төлөм өлчөмү',
+    'latest_payment' => 'Акыркы төлөм',
 
     //Admin page
     'welcome_admin' => 'Админ баракчасына кош келиңиз',
@@ -194,20 +196,33 @@ return [
     'gallery_no_data' => 'Азырынча бул группанын галереясында маалымат жок.',
     'news' => 'Жаңылыктар',
     'all' => 'Баары',
+
     'create_user_form' => 'Жаңы колдонуучу жаратуу үчүн форма',
     'create_group_form' => 'Жаңы группа жаратуу үчүн форма',
     'create_child_form' => 'Жаңы бала жаратуу үчүн форма',
     'create_question_form' => 'Жаңы суроо жаратуу үчүн форма',
+
     'add_question' => 'Суроо кошуу',
     'question_kg' => 'Суроо кыргыз тилинде',
     'question_ru' => 'Суроо орус тилинде',
+
     'add_user_successful' => 'Колдонуучу ийгиликтүү кошулду',
     'add_child_successful' => 'Бала ийгиликтүү кошулду',
     'add_group_successful' => 'Группа ийгиликтүү кошулду',
     'add_question_successful' => 'Суроо ийгиликтүү кошулду',
+    'add_payment_successful' => 'Төлөм ийгиликтүү кошулду',
+
     'update_user_successful' => 'Колдонуучунун маалыматы жаңыланды',
     'update_child_successful' => 'Баланын маалыматы жаңыланды',
     'update_group_successful' => 'Группанын маалыматы жаңыланды',
     'update_question_successful' => 'Суроо жаңыланды',
 
+    'question_for_payment_date1' => 'Төлөм суммасы ',
+    'question_for_payment_date2' => ' числого чейин жетиштүү',
+
+
+
+    'warning' => 'Эскертүү',
+    'message_content' => 'Кабардын мазмуну',
+    'message_delivered' => 'Билдирүү жеткирилди',
 ];

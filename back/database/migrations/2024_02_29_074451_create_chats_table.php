@@ -17,7 +17,6 @@ return new class extends Migration
             $table->unsignedBigInteger('to_user_id');
             $table->date('date');
             $table->string('message', 500);
-            $table->integer('message_status'); #0-delivered, 1-read
             $table->timestamps();
 
             $table->index('from_user_id');

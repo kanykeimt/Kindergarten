@@ -1,207 +1,122 @@
 @extends('layouts.admin_layout')
 @section('content')
-    <style>
-        .accordion {
-            background-color: #ac8af4;
-            color: white;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 20px;
-            transition: 0.4s;
-            border-radius: 10px;
 
-        }
-
-        .active, .accordion:hover {
-            background-color: #5f1dea;
-        }
-
-        .accordion:after {
-            content: '\002B';
-            color: black;
-            font-weight: bold;
-            float: right;
-            margin-left: 20px;
-        }
-
-        .active:after {
-            content: "\2212";
-        }
-
-        .panel {
-            padding: 0 18px;
-            background-color: #eee8fd;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.2s ease-out;
-            border-radius: 10px;
-        }
-    </style>
-    <div class="content-wrapper">
-        <div class="container" style="margin-top: 10px;">
-            @if (session('status'))
-                <div class="alert alert-success alert-dismissible fade show">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    {{ session('status') }}
-                </div>
-            @endif
-                <button type="button" class="btn btn-gradient-primary" style="margin-right:85%;" id="addPaymentBtnId" onclick="showForm()">@lang('lang.add_payment')</button>
-                <div class="d-none" id="addPaymentId">
-                    <form method="POST" action="{{route('admin.payment.create')}}">
-                        @csrf
-                        <div class="row mb-3">
-                            <label for="child_id" class="col-md-4 col-form-label text-md-end">{{ __('Child full name:') }}</label>
-                            <div class="col-md-6">
-                                <select class="form-control col-md-12" name="child_id" id="child_id" @error('child_id') is-invalid @enderror required autocomplete="child_id">
-                                    <option></option>
-                                    @foreach($children as $child)
-                                        <option value="{{$child->id}}">{{$child->name}}  {{$child->surname}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="date_from" class="col-md-4 col-form-label text-md-end">{{ __('Date from:') }}</label>
-                            <div class="col-md-6">
-                                <input id="date_from" type="date" class="form-control @error('date_from') is-invalid @enderror" name="date_from"  required autocomplete="date_from">
-                                @error('date_from')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="date_to" class="col-md-4 col-form-label text-md-end">{{ __('Date to:') }}</label>
-                            <div class="col-md-6">
-                                <input id="date_to" type="date" class="form-control @error('date_to') is-invalid @enderror" name="date_to"  required autocomplete="date_to">
-                                @error('date_to')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="payment_amount" class="col-md-4 col-form-label text-md-end">{{ __('Payment amount:') }}</label>
-                            <div class="col-md-6">
-                                <input id="payment_amount" type="number" class="form-control @error('payment_amount') is-invalid @enderror" name="payment_amount" value="" required autocomplete="payment_amount" autofocus>
-                                @error('payment_amount')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-
-
-                        <button type="submit" class="btn btn-secondary" style="margin-left: 65%;" onclick="cancelForm()">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-            <br><br><br>
-            @for($index = 0; $index <= 3; $index++)
-                @php
-                    $currentDate = \Carbon\Carbon::now()->startOfMonth()->subMonths($index)->format('Y-m-d');
-                @endphp
-                    <button class="accordion" >{{\Carbon\Carbon::parse($currentDate)->format('F Y')}}</button>
-                    <div class="panel">
-                        <div class="position-relative table-responsive">
-                            @php
-                                $month = \Carbon\Carbon::parse($currentDate)->format('m');
-                                $range = \Carbon\Carbon::createFromDate(2024, $month, 1)->daysInMonth;
-                            @endphp
-                            <table class="table table-hover">
+    <div class="col-sm-12">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                            aria-expanded="false" aria-controls="flush-collapseTwo">
+                        {{ date('F') }}
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                     aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <div class="table-responsive">
+                            <table class="table">
                                 <thead>
                                 <tr>
-                                    <th class="position-relative pr-4" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:40%">
-                                        <div class="d-inline" style="font-size: 15px">@lang('lang.full_name')</div>
-                                    </th>
-                                    <th class="position-relative pr-4" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:40%">
-                                        <div class="d-inline" style="font-size: 15px">@lang('lang.emp_group_name')</div>
-                                    </th>
-                                    @for($i = 1; $i <= $range; $i++)
-                                        <th class="position-relative pr-4" style="vertical-align:middle;overflow:hidden;cursor:pointer">
-                                            <div class="d-inline" style="font-size: 15px">{{$i}} </div>
-                                        </th>
-                                    @endfor
+                                    <th scope="col" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:2%">id</th>
+                                    <th scope="col" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:20%">@lang('lang.full_name_child')</th>
+                                    <th scope="col" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:10%">@lang('lang.to')</th>
+                                    <th scope="col" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:15%">@lang('lang.action')</th>
                                 </tr>
                                 <tr class="table-sm">
+                                    <th class=""><input class="form-control form-control-sm" value="" oninput="searchById(this.value)"></th>
                                     <th class=""><input class="form-control form-control-sm" value="" oninput="searchByName(this.value)"></th>
+                                    <th class=""><input class="form-control form-control-sm" value="" oninput="searchByName(this.value)"></th>
+                                    <th class=""></th>
                                 </tr>
                                 </thead>
-                                <tbody id="TableId">
-                                @foreach($children as $child)
-                                    <tr class="" data-child="{{$child->id}}" data-group_id="">
-                                        <td class="" style="font-size:20px">{{$child->name}} {{$child->surname}}</td>
-                                        <td class="" style="font-size:20px">{{$child->group_name}}</td>
-                                        @foreach($payment as $pay)
-                                            @if($child->id === $pay->child_id)
-                                                @for($i = 1; $i <= $range; $i++)
-                                                    @if('2023-'.$currentDate.'-'.str_pad($i, 2, '0', STR_PAD_LEFT) >= $pay->date_from && '2023-'.$currentDate.'-'.str_pad($i, 2, '0', STR_PAD_LEFT) <= $pay->date_to)
-                                                        <td class="" style="font-size:20px; background-color: #009900"></td>
-                                                    @else
-                                                        <td class="" style="font-size:20px; background-color: #990000"></td>
-                                                    @endif
-                                                @endfor
-                                            @endif
-                                        @endforeach
-                                        {{--                                <td class="" style="font-size:20px; background-color: #00bc8c"></td>--}}
+                                <tbody id="paymentTable">
+                                @foreach ($current_month_payments as $current_month_payment)
+                                    <tr>
+                                        <td>{{$current_month_payment->id}}</td>
+                                        <td @if(($current_month_payment->date_to) <= (date('Y-m-d'))) style="background: #FE7E7E"  @endif>{{$current_month_payment->name}} {{$current_month_payment->surname}}</td>
+                                        <td @if(($current_month_payment->date_to) <= (date('Y-m-d'))) style="background: #FE7E7E"  @endif>{{$current_month_payment->date_to}}</td>
+                                        <td>
+                                            <div style="float: left; display: block; width: 50%;" class="text-center">
+                                                <a href="{{route('admin.payment.warning', $current_month_payment->id)}}"><i style="color: #ffc107" title="@lang('lang.warning')" class="fa fa-question"></i></a>
+                                            </div>
+                                            <div style="float: left; display: block; width: 50%;" class="text-center">
+                                                <a href="{{route('admin.payment.edit', $current_month_payment->child_id)}}" class="text-success"><i title="@lang('lang.add_payment')" class="fas fa-plus"></i></a>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <br>
-            @endfor
-
+                </div>
+            </div>
         </div>
-        <script>
-            function searchByName(value){
-                let table = document.getElementById('TableId');
-                let rows = table.rows;
-                let n = rows.length;
-                for(let i = 0; i < n; i++){
-                    if(rows[i].cells[0].innerHTML.indexOf(value) === -1){
-                        rows[i].className = 'd-none';
-                    }
-                    else{
-                        rows[i].className = '';
-                    }
+    </div>
+
+    <div class="col-sm-12">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+                            aria-expanded="false" aria-controls="flush-collapseThree">
+                        Accordion Item #3
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse"
+                     aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        Sea sea sit sanctus magna gubergren kasd, magna justo ea lorem lorem. Elitr aliquyam ipsum clita consetetur duo at nonumy invidunt, invidunt eos dolore vero sit amet amet magna tempor clita, takimata diam justo stet erat et vero erat. Sit ipsum eirmod sea ut vero dolores sea clita nonumy, no.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function searchById(value){
+            let table = document.getElementById('paymentTable');
+            let rows = table.rows;
+            let n = rows.length;
+            for(let i = 0; i < n; i++){
+                if(rows[i].cells[0].innerHTML.indexOf(value) === -1){
+                    rows[i].className = 'd-none';
+                }
+                else{
+                    rows[i].className = '';
                 }
             }
-            function showForm(){
-                document.getElementById("addPaymentBtnId").className = "d-none";
-                document.getElementById("addPaymentId").className = "col-6";
+        }
+        function searchByName(value){
+            let table = document.getElementById('');
+            let rows = table.rows;
+            let n = rows.length;
+            for(let i = 0; i < n; i++){
+                if(rows[i].cells[1].innerHTML.indexOf(value) === -1){
+                    rows[i].className = 'd-none';
+                }
+                else{
+                    rows[i].className = '';
+                }
             }
-            function cancelForm(){
-                document.getElementById("addPaymentBtnId").className = "btn btn-primary";
-                document.getElementById("addPaymentId").className = "d-none";
+        }
+        function searchByDate(value){
+            let table = document.getElementById('table');
+            let rows = table.rows;
+            let n = rows.length;
+            for(let i = 0; i < n; i++){
+                if(rows[i].cells[2].innerHTML.indexOf(value) === -1){
+                    rows[i].className = 'd-none';
+                }
+                else{
+                    rows[i].className = '';
+                }
             }
-            let acc = document.getElementsByClassName("accordion");
-            let i;
-
-            for (i = 0; i < acc.length; i++) {
-                acc[i].addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    let panel = this.nextElementSibling;
-                    if (panel.style.maxHeight) {
-                        panel.style.maxHeight = null;
-                    } else {
-                        panel.style.maxHeight = panel.scrollHeight + "px";
-                    }
-                });
-            }
-        </script>
-    </div>
+        }
+    </script>
 @endsection
+
