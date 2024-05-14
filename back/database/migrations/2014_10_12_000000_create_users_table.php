@@ -24,10 +24,10 @@ return new class extends Migration
             $table->string('passport_front',200)->nullable();
             $table->string('passport_back',200)->nullable();
             $table->integer('amount_of_child')->default(0);
-            $table->integer('deleted')->default(0);
             $table->unsignedBigInteger('role');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index('role');
             $table->foreign('role')

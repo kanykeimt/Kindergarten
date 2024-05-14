@@ -130,7 +130,7 @@
                                     <form action="{{route('admin.user.delete', $user->id)}}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <button id="delete_button" type="button" class="border-0 bg-transparent" onclick="deletedBtn(this)">
+                                        <button id="delete_button" type="submit" class="border-0 bg-transparent" onclick="return deletedBtn()">
                                             <i title="delete" class="fas fa-trash text-danger" role="button"></i>
                                         </button>
                                     </form>
@@ -145,13 +145,9 @@
     </div>
 
     <script>
-        function deletedBtn(button){
+        function deletedBtn(){
             let text = "@lang('lang.delete_question_user')";
-            if (confirm(text) === true) {
-                button.setAttribute('type', 'submit');
-            } else {
-                button.setAttribute('type', 'button');
-            }
+            return confirm(text);
         }
         function searchById(value){
             let table = document.getElementById('userTable');

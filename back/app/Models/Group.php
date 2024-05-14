@@ -8,31 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'name',
-        'teacher_id',
-        'limit',
-        'description',
-        'image',
-    ];
+    protected $guarded = false;
     public function teacher()
     {
         return $this->belongsTo(User::class, 'teacher_id');
     }
     public function child()
     {
-        return $this->hasMany(Child::class);
+        return $this->hasMany(Child::class, 'group_id','id');
     }
     public function attendance()
     {
-        return $this->hasMany(ChildAttendance::class);
+        return $this->hasMany(ChildAttendance::class,'group_id','id');
     }
     public function gallery_address()
     {
-        return $this->hasMany(GalleryAddress::class);
+        return $this->hasMany(GalleryAddress::class,'group_id','id');
     }
     public function schedule()
     {
-        return $this->hasMany(Schedule::class);
+        return $this->hasMany(Schedule::class, 'group_id','id');
     }
 }

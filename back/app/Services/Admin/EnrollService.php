@@ -42,7 +42,7 @@ class EnrollService
         $enroll->delete();
         $message = Lang::get('lang.add_child_successful');
 
-        return redirect()->route('admin.enroll.index')->with('status', $message);
+        return redirect()->route('admin.enroll.index')->with('success', $message);
     }
 
 
@@ -50,6 +50,6 @@ class EnrollService
     {
         $enroll->delete();
         $message = Lang::get('lang.delete_answer_queue');
-        return redirect()->route('admin.enroll.index')->with('status', $message);
+        return redirect()->route('admin.enroll.index')->with('success', $message);
     }
 }

@@ -9,6 +9,7 @@ use App\Models\Role;
 use App\Models\User;
 use App\Services\Admin\UserService;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\View\View;
 
 class UserController extends Controller

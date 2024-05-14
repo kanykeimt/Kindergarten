@@ -11,7 +11,11 @@
                 <div class="container rounded bg-white">
                     <div class="row">
                         <div class="col-md-3 border-right">
-                            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{{asset($user->profile_photo)}}"><span class="text-black-50">{{$user->email}}</span><span> </span></div>
+                            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                                <div class="text-center">
+                                    <img class="rounded-circle" src="{{asset($user->profile_photo)}}" alt="User profile picture" style="width:150px; height:150px;">
+                                </div>
+                            </div>
                             <input type="file" class="form-control" id="profile_photo" name="profile_photo">
                         </div>
                         <div class="col-lg-8 border-right">

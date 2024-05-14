@@ -48,7 +48,7 @@ class GroupService
         ]);
 
         $message = Lang::get('lang.add_group_successful');
-        return redirect()->route('admin.group.index')->with('status', $message);
+        return redirect()->route('admin.group.index')->with('success', $message);
     }
 
     public function show(Group $group)
@@ -90,13 +90,26 @@ class GroupService
         }
         DB::commit();
         $message = Lang::get('lang.update_group_successful');
-        return redirect()->route('admin.group.index')->with('status',$message);
+        return redirect()->route('admin.group.index')->with('success',$message);
     }
 
     public function delete(Group $group)
     {
-        $group->delete();
-        $message = Lang::get('lang.delete_answer_group');
-        return redirect()->route('admin.group.index')->with('status', $message);
+        if(Group::find($group->id)->child()->exists()){
+            $message = Lang::get('lang.group_del_err_mes_child');
+            return redirect()->route('admin.group.index')->with('error',$message);
+
+        }
+        else {
+            $user = User::find($group->teacher_id);
+            DB::beginTransaction();
+            $user->update([
+                'role' => 3
+            ]);
+            DB::commit();
+            $group->delete();
+            $message = Lang::get('lang.delete_answer_group');
+            return redirect()->route('admin.group.index')->with('success', $message);
+        }
     }
 }

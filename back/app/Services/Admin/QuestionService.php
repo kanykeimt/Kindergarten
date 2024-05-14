@@ -53,6 +53,6 @@ class QuestionService
     {
         $question->delete();
         $message = Lang::get('lang.delete_answer_questions');
-        return redirect()->route('admin.resume.question.index')->with('status', $message);
+        return redirect()->route('admin.resume.question.index')->with('success', $message);
     }
 }

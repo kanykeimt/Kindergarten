@@ -9,12 +9,7 @@ class Payment extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'child_id',
-        'date_from',
-        'date_to',
-        'payment_amount',
-    ];
+    protected $guarded = false;
 
     public function child()
     {

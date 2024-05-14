@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->index('group_id');
-            $table->foreign('group_id')
+            $table->foreign('group_id', 'fk_gallery_addresses_group')
                 ->on('groups')
                 ->references('id')
                 ->cascadeOnDelete();

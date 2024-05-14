@@ -32,6 +32,6 @@ class ResumeService
     {
         $resume->delete();
         $message = Lang::get('lang.delete_answer_resume');
-        return redirect()->route('admin.resume.index')->with('status', $message);
+        return redirect()->route('admin.resume.index')->with('success', $message);
     }
 }

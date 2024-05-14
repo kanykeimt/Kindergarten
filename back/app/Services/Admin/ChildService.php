@@ -17,8 +17,8 @@ class ChildService
 {
     public function index()
     {
-        $children = Child::where('deleted', 0)->get();
-        $parents = User::where('deleted', 0)->get();
+        $children = Child::all();
+        $parents = User::all();
         $groups = Group::all();
         $amount_child_group = [];
         foreach ($groups as $group){
@@ -161,7 +161,7 @@ class ChildService
         ]);
         DB::commit();
         $message = Lang::get('lang.update_child_successful');
-        return redirect()->route('admin.children.index')->with('status',$message);
+        return redirect()->route('admin.children.index')->with('success',$message);
     }
 
     public function delete(Child $child):RedirectResponse
@@ -185,6 +185,6 @@ class ChildService
             DB::commit();
         }
         $message = Lang::get('lang.delete_answer_child');
-        return redirect()->route('admin.children.index')->with('status',$message);
+        return redirect()->route('admin.children.index')->with('success',$message);
     }
 }

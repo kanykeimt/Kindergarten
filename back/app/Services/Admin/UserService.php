@@ -4,6 +4,9 @@ namespace App\Services\Admin;
 
 use App\Http\Requests\Admin\User\CreateRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
+use App\Models\Child;
+use App\Models\Enroll;
+use App\Models\Group;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -68,7 +71,7 @@ class UserService
         ]);
 
         $message = Lang::get('lang.add_user_successful');
-        return redirect()->back()->with('status', $message);
+        return redirect()->back()->with('success', $message);
     }
 
     public function update(UpdateRequest $request, User $user):RedirectResponse
@@ -97,13 +100,28 @@ class UserService
         ]);
         DB::commit();
         $message = Lang::get('lang.update_user_successful');
-        return redirect()->route('admin.user.index')->with('status',$message);
+        return redirect()->route('admin.user.index')->with('success',$message);
     }
 
     public function delete(User $user):RedirectResponse
     {
-        $user->delete();
-        $message = Lang::get('lang.delete_answer_user');
-        return redirect()->route('admin.user.index')->with('status',$message);
+        $message = '';
+        if(User::find($user->id)->child()->exists()){
+            $message = Lang::get('lang.user_del_err_mes_child');
+            return redirect()->route('admin.user.index')->with('error',$message);
+        }
+        elseif(User::find($user->id)->group()->exists()){
+            $message = Lang::get('lang.user_del_err_mes_group');
+            return redirect()->route('admin.user.index')->with('error',$message);
+        }
+        if(User::find($user->id)->enroll()->exists()){
+            $message = Lang::get('lang.user_del_err_mes_child');
+            return redirect()->route('admin.user.index')->with('error',$message);
+        }
+        else{
+            $user->delete();
+            $message = Lang::get('lang.delete_answer_user');
+            return redirect()->route('admin.user.index')->with('success',$message);
+        }
     }
 }

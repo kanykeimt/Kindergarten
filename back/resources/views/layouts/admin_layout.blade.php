@@ -319,43 +319,34 @@ else{
             </form>
             <div class="navbar-nav align-items-center ms-auto">
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <i class="fa fa-envelope me-lg-2"></i>
-                        <span class="d-none d-lg-inline-flex">Message</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                        <a href="#" class="dropdown-item">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="ms-2">
-                                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                    <small>15 minutes ago</small>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="ms-2">
-                                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                    <small>15 minutes ago</small>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="ms-2">
-                                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                    <small>15 minutes ago</small>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item text-center">See all message</a>
-                    </div>
+
+{{--                    @if($chats->count() > 0)--}}
+{{--                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">--}}
+{{--                            <i class="fa fa-envelope me-lg-2"></i>--}}
+{{--                            <span class="d-none d-lg-inline-flex">Message</span>--}}
+{{--                        </a>--}}
+{{--                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">--}}
+{{--                            @foreach($chats as $chat)--}}
+{{--                                <a href="#" class="dropdown-item">--}}
+{{--                                    <div class="d-flex align-items-center">--}}
+{{--                                        <img class="rounded-circle" src="{{asset($from_user_data->profile_photo)}}" alt="" style="width: 40px; height: 40px;">--}}
+{{--                                        <div class="ms-2">--}}
+{{--                                            <h6 class="fw-normal mb-0">{{$from_user_data->name}} {{$from_user_data->surname}}</h6>--}}
+{{--                                            <small>{{$differenceInDays}}</small>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </a>--}}
+{{--                                <hr class="dropdown-divider">--}}
+{{--                            @endforeach--}}
+{{--                            <a href="#" class="dropdown-item text-center">See all message</a>--}}
+{{--                        </div>--}}
+{{--                    @else--}}
+{{--                        <a href="#" class="nav-link dropdown" >--}}
+{{--                            <i class="fa fa-envelope me-lg-2"></i>--}}
+{{--                            <span class="d-none d-lg-inline-flex">Message</span>--}}
+{{--                        </a>--}}
+{{--                    @endif--}}
+
                 </div>
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -383,9 +374,19 @@ else{
         <!-- Content Start -->
         <div class="container-fluid pt-4 px-4">
             <div class="row g-4">
-                @if (session('status'))
+                @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('status') }}
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @elseif(session('warning'))
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {!! nl2br(e(session('warning'))) !!}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @elseif(session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {!! nl2br(e(session('error'))) !!}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('description', 100);
             $table->string('image', 200);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index('teacher_id');
             $table->foreign('teacher_id')

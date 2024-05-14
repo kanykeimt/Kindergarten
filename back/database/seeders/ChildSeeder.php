@@ -65,7 +65,6 @@ class ChildSeeder extends Seeder
                 'birth_certificate' => $birthCertificate,
                 'med_certificate' => $medCertificate,
                 'med_disability' => $medDisability,
-                'deleted' => 0,
                 'group_id' => $group_id,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()

@@ -49,7 +49,6 @@ class UserSeeder extends Seeder
             'profile_photo' => $profilePhoto,
             'passport_back' => $passport,
             'passport_front' => $passport,
-            'deleted' => 0,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
@@ -67,7 +66,6 @@ class UserSeeder extends Seeder
                 'profile_photo' => $profilePhoto,
                 'passport_back' => $passport,
                 'passport_front' => $passport,
-                'deleted' => 0,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]);
@@ -86,7 +84,6 @@ class UserSeeder extends Seeder
                 'profile_photo' => $profilePhoto,
                 'passport_back' => $passport,
                 'passport_front' => $passport,
-                'deleted' => 0,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]);
@@ -105,7 +102,6 @@ class UserSeeder extends Seeder
                 'profile_photo' => $profilePhoto,
                 'passport_back' => $passport,
                 'passport_front' => $passport,
-                'deleted' => 0,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]);

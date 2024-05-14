@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('birth_certificate', 200);
             $table->string('med_certificate', 200);
             $table->string('med_disability', 200)->nullable();
-            $table->boolean('deleted')->default(false);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index('parent_id');
             $table->foreign('parent_id')
@@ -33,7 +33,7 @@ return new class extends Migration
                 ->cascadeOnDelete();
 
             $table->index('group_id');
-            $table->foreign('group_id')
+            $table->foreign('group_id', 'fk_children_groups_groups1_idx')
                 ->on('groups')
                 ->references('id')
                 ->cascadeOnDelete();

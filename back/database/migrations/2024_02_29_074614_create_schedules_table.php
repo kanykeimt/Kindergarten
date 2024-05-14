@@ -32,7 +32,7 @@ return new class extends Migration
                 ->cascadeOnDelete();
 
             $table->index('group_id');
-            $table->foreign('group_id')
+            $table->foreign('group_id', 'fk_schedules_group')
                 ->on('groups')
                 ->references('id')
                 ->cascadeOnDelete();
