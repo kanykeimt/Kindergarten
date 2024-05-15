@@ -82,11 +82,11 @@ Route::group(
             });
 
             Route::group(['prefix'=>'attendance'], function (){
-                Route::get('/', [App\Http\Controllers\Employee\AttendanceController::class, 'index'])->name('employee.attendance.index');
-                Route::post('/create', [App\Http\Controllers\Employee\AttendanceController::class, 'create'])->name('employee.attendance.create');
-                Route::post('/archive', [App\Http\Controllers\Employee\AttendanceController::class, 'showArchive'])->name('employee.attendance.archive');
-                Route::post('/archive/edit', [App\Http\Controllers\Employee\AttendanceController::class, 'editArchive'])->name('employee.attendance.archiveEdit');
-                Route::post('/archive/update/{attendance}', [App\Http\Controllers\Employee\AttendanceController::class, 'updateArchive'])->name('employee.attendance.archiveUpdate');
+                Route::get('/', [App\Http\Controllers\Employee\ChildAttendanceController::class, 'index'])->name('employee.attendance.index');
+                Route::post('/create', [App\Http\Controllers\Employee\ChildAttendanceController::class, 'create'])->name('employee.attendance.create');
+                Route::post('/archive', [App\Http\Controllers\Employee\ChildAttendanceController::class, 'showArchive'])->name('employee.attendance.archive');
+                Route::post('/archive/edit', [App\Http\Controllers\Employee\ChildAttendanceController::class, 'editArchive'])->name('employee.attendance.archiveEdit');
+                Route::post('/archive/update/{attendance}', [App\Http\Controllers\Employee\ChildAttendanceController::class, 'updateArchive'])->name('employee.attendance.archiveUpdate');
             });
 
             Route::group(['prefix'=>'gallery'], function (){
@@ -165,8 +165,11 @@ Route::group(
             });
 
             Route::group(['prefix'=>'attendance'], function (){
-                Route::get('/', [App\Http\Controllers\Admin\AttendanceContoller::class, 'index'])->name('admin.attendance.index');
-                Route::post('/show', [App\Http\Controllers\Admin\AttendanceContoller::class, 'show'])->name('admin.attendance.show');
+                Route::get('/', [App\Http\Controllers\Admin\ChildAttendanceContoller::class, 'index'])->name('admin.attendance.index');
+                Route::post('/createForm', [App\Http\Controllers\Admin\ChildAttendanceContoller::class, 'createForm'])->name('admin.attendance.createForm');
+                Route::post('/create', [App\Http\Controllers\Admin\ChildAttendanceContoller::class, 'create'])->name('admin.attendance.create');
+                Route::get('/archive', [App\Http\Controllers\Admin\ChildAttendanceContoller::class, 'archive'])->name('admin.attendance.archive');
+                Route::post('archiveShow', [App\Http\Controllers\Admin\ChildAttendanceContoller::class,'archiveShow'])->name('admin.attendance.archiveShow');
             });
 
             Route::group(['prefix' => 'profile'], function (){

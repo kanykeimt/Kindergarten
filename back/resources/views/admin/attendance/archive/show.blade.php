@@ -1,36 +1,8 @@
 @extends('layouts.admin_layout')
 @section('content')
-    <div class="col-12">
-        <button type="button" class="btn btn-primary" id="addUserBtnId" onclick="showForm()">@lang('lang.add_attendance')</button>
-        <div class="d-none" id="addUserId" class="bg-light rounded h-100 p-4">
-            <form action="{{route('admin.attendance.createForm')}}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="row mb-3">
-                    <label for="group_id" class="col-sm-3 col-form-label">@lang('lang.child_group'):</label>
-                    <div class="col-sm-7">
-                        <select class="form-select mb-3" aria-label="Default select example" id="group_id" name="group_id">
-                            <option></option>
-                            @foreach($groupsWithChildren as $group)
-                                <option value="{{$group->id}}">{{$group->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="date" class="col-sm-2 col-form-label">@lang('lang.date'):</label>
-                    <div class="col-sm-8">
-                        <input type="date" class="form-control" id="date" name="date" required autocomplete="date" min="" max="">
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-secondary" onclick="cancelForm()">@lang('lang.cancel')</button>
-                <button type="submit" class="btn btn-success">@lang('lang.saveBtn')</button>
-            </form>
-        </div>
-    </div>
 
 
-    @foreach($groupsWithChildren as $index => $group)
+    @foreach($attendances as $index => $group)
         <div class="col-sm-12">
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item">
@@ -79,9 +51,9 @@
                                                         @break
                                                     @endif
                                                 @endforeach
-                                                    @if (!$attendanceFound)
-                                                        <th></th>
-                                                    @endif
+                                                @if (!$attendanceFound)
+                                                    <th></th>
+                                                @endif
                                             @endfor
                                         </tr>
                                     @endforeach
@@ -96,30 +68,4 @@
         </div>
     @endforeach
 
-    <script>
-
-
-        dateInput.addEventListener('input', function() {
-            // Get the selected date
-            let selectedDate = new Date(this.value);
-
-            // Check if the selected date is a Sunday (day 0)
-            if (selectedDate.getDay() === 0) {
-                // If it's a Sunday, reset the value to the first day of the current month
-                let today = new Date();
-                let firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-                this.value = formatDate(firstDayOfMonth);
-                // Optionally, you can alert the user or display a message
-                alert('@lang('lang.select_sunday_error')');
-            }
-        });
-
-        // Function to format the date as "YYYY-MM-DD"
-        function formatDate(date) {
-            let year = date.getFullYear();
-            let month = (date.getMonth() + 1).toString().padStart(2, '0'); // Adding leading zero if needed
-            let day = date.getDate().toString().padStart(2, '0'); // Adding leading zero if needed
-            return `${year}-${month}-${day}`;
-        }
-    </script>
 @endsection

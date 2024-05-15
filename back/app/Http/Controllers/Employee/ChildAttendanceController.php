@@ -6,12 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Employee\UpdateArchiveRequest;
 use App\Models\Attendance;
 use App\Models\Child;
+use App\Models\ChildrenAttendance;
 use App\Models\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class AttendanceController extends Controller
+class ChildAttendanceController extends Controller
 {
     public function index(){
         $group_id = Group::where('teacher_id', auth()->user()->id)
@@ -21,11 +22,11 @@ class AttendanceController extends Controller
             ->leftJoin('children', 'children.group_id', '=', 'groups.id')
             ->leftJoin('users', 'users.id', '=', 'children.parent_id')
             ->where('groups.teacher_id', auth()->user()->id)
-            ->select('children.id', 'children.name', 'children.surname', 'children.birth_date', 'children.deleted', 'groups.id as group_id')
+            ->select('children.id', 'children.name', 'children.surname', 'children.birth_date', 'groups.id as group_id')
             ->get();
 
 
-        $attendance = Attendance::where('group_id', $group_id[0]->id)
+        $attendance = ChildrenAttendance::where('group_id', $group_id[0]->id)
             ->whereBetween('date', [date('Y-m-01'), date('Y-m-31')])
             ->orderBy('date', 'asc')
             ->select('date', 'children')

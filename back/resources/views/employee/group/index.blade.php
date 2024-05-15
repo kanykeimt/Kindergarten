@@ -183,28 +183,26 @@
                     </thead>
                     <tbody id="TableId">
                     @foreach($children as $child)
-                        @if($child->deleted === 0)
-                            <tr class="">
-                                <td class="">{{$child->name}} {{$child->surname}}</td>
-                                <td class="">{{$child->birth_date}}</td>
-                                @foreach($parents as $parent)
-                                    @if($child->parent_id === $parent->id)
-                                        <td class="">{{$parent->name}} {{$parent->surname}}</td>
-                                    @endif
-                                @endforeach
-                                <td class="py-1 px-1"><a href="{{route('employee.group.edit', $child->id)}}" class="mb-0 btn-sm btn btn-outline-info round">@lang('lang.edit_btn')</a></td>
-                                <td class="py-1 px-1"><a href="{{route('employee.group.show', $child->id)}}" class="mb-0 btn-sm btn btn-outline-success round">@lang('lang.show_btn')</a></td>
-                                <td class="py-1 px-1">
-                                    <form action="{{route('employee.group.delete', $child->id)}}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button id="delete_button" type="button" title="delete" class="mb-0 btn-sm btn btn-outline-danger round" onclick="deletedBtn(this)">
-                                            @lang('lang.delete_btn')
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endif
+                        <tr class="">
+                            <td class="">{{$child->name}} {{$child->surname}}</td>
+                            <td class="">{{$child->birth_date}}</td>
+                            @foreach($parents as $parent)
+                                @if($child->parent_id === $parent->id)
+                                    <td class="">{{$parent->name}} {{$parent->surname}}</td>
+                                @endif
+                            @endforeach
+                            <td class="py-1 px-1"><a href="{{route('employee.group.edit', $child->id)}}" class="mb-0 btn-sm btn btn-outline-info round">@lang('lang.edit_btn')</a></td>
+                            <td class="py-1 px-1"><a href="{{route('employee.group.show', $child->id)}}" class="mb-0 btn-sm btn btn-outline-success round">@lang('lang.show_btn')</a></td>
+                            <td class="py-1 px-1">
+                                <form action="{{route('employee.group.delete', $child->id)}}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button id="delete_button" type="button" title="delete" class="mb-0 btn-sm btn btn-outline-danger round" onclick="deletedBtn(this)">
+                                        @lang('lang.delete_btn')
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>

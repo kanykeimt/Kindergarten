@@ -298,7 +298,13 @@ else{
                 </div>
                 <a href="{{route('admin.enroll.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.enroll') ? 'active' : '' }}"><i class="fa fa-check-circle me-2"></i>@lang('lang.queue')</a>
                 <a href="{{route('admin.payment.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.payment') ? 'active' : '' }}"><i class="fa fa-credit-card me-2"></i>@lang('lang.emp_payment')</a>
-                <a href="{{route('admin.attendance.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.attendance') ? 'active' : '' }}"><i class="fa fa-calendar-check me-2"></i>@lang('lang.emp_attendance')</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.attendance') ? 'active' : '' }} dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-calendar-check me-2"></i>@lang('lang.emp_attendance')</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        <a href="{{route('admin.attendance.index')}}" class="dropdown-item">@lang('lang.current_attendance')</a>
+                        <a href="{{route('admin.attendance.archive')}}" class="dropdown-item">@lang('lang.archive_attendance')</a>
+                    </div>
+                </div>
                 <a href="{{route('admin.mainGallery.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.mainGallery') ? 'active' : '' }}"><i class="fa fa-file-image me-2"></i>@lang('lang.main_gallery')</a>
                 <a href="{{route('admin.news.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.news') ? 'active' : '' }}"><i class="fa fa-newspaper me-2"></i>@lang('lang.news')</a>
                 <a href="{{route('admin.feedback.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.feedback') ? 'active' : '' }}"><i class="fa fa-comments me-2"></i>@lang('lang.feedbacks')</a>
@@ -381,12 +387,12 @@ else{
                     </div>
                 @elseif(session('warning'))
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        {!! nl2br(e(session('warning'))) !!}
+                        {{ session('warning') }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @elseif(session('error'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        {!! nl2br(e(session('error'))) !!}
+                        {{ session('error') }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif

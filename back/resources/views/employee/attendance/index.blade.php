@@ -119,20 +119,18 @@
                         </thead>
                         <tbody id="TableId">
                         @foreach($children as $child)
-                            @if($child->deleted === 0)
-                                <tr class="" data-child="{{$child->id}}" data-group_id="{{$child->group_id}}">
-                                    <td class="" style="font-size:20px">{{$child->name}} {{$child->surname}}</td>
-                                    <td class="py-1 px-1"></td>
-                                    <td class="py-1 px-3">
-                                        <label class="container">
-                                            <input type="checkbox" onclick="selectChild({{$child->id}}, this)" id="{{'check'.$child->id}}">
-                                            <div class="checkmark"></div>
-                                        </label>
-                                    </td>
-                                    <td class="py-1 px-1">
-                                    </td>
-                                </tr>
-                            @endif
+                            <tr class="" data-child="{{$child->id}}" data-group_id="{{$child->group_id}}">
+                                <td class="" style="font-size:20px">{{$child->name}} {{$child->surname}}</td>
+                                <td class="py-1 px-1"></td>
+                                <td class="py-1 px-3">
+                                    <label class="container">
+                                        <input type="checkbox" onclick="selectChild({{$child->id}}, this)" id="{{'check'.$child->id}}">
+                                        <div class="checkmark"></div>
+                                    </label>
+                                </td>
+                                <td class="py-1 px-1">
+                                </td>
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>

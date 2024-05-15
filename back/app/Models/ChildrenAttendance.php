@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ChildAttendance extends Model
+class ChildrenAttendance extends Model
 {
     use HasFactory;
     protected $guarded = false;
     protected $fillable = [
-        'group_id', 'date', 'children',
+        'group_id', 'date', 'attendance',
         // Add other fields as needed
     ];
 
     protected $casts = [
-        'children' => 'json',
+        'attendance' => 'json',
     ];
     public function group()
     {

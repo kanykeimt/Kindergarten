@@ -19,7 +19,7 @@ class Group extends Model
     }
     public function attendance()
     {
-        return $this->hasMany(ChildAttendance::class,'group_id','id');
+        return $this->hasMany(ChildrenAttendance::class,'group_id','id');
     }
     public function gallery_address()
     {
