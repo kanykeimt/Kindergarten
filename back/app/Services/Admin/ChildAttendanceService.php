@@ -47,10 +47,10 @@ class ChildAttendanceService
             }])->get();
         }
         else{
-            $attendances = ChildrenAttendance::where('group_id', $data['group_id'])
-                ->whereYear('date', $year)
-                ->whereMonth('date', $month)
-                ->get();
+            $attendances = Group::where('id', $request->group_id)->with(['attendance' => function ($query) use ($year, $month) {
+                $query->whereYear('date', $year);
+                $query ->whereMonth('date', $month);
+            }])->get();
         }
         return $attendances;
     }

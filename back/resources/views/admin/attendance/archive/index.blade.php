@@ -22,7 +22,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-secondary" onclick="cancelForm()">@lang('lang.cancel')</button>
+                <button type="submit" class="btn btn-secondary" href="">@lang('lang.cancel')</button>
                 <button type="submit" class="btn btn-success">@lang('lang.next_btn')</button>
             </form>
         </div>

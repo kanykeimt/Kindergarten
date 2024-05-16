@@ -21,8 +21,8 @@
                                     <thead>
                                     <tr class="table-sm">
                                         <th class="">id</th>
-                                        <th class="">@lang('lang.full_name_child')</th>
-                                        @for($i = 1; $i <= \Carbon\Carbon::now()->startOfMonth()->diffInDays(\Carbon\Carbon::now()) + 1; $i++)
+                                        <th class="" style="">@lang('lang.full_name_child')</th>
+                                        @for($i = 1; $i <= cal_days_in_month(CAL_GREGORIAN, $month, $year); $i++)
                                             <th class="" >{{$i}}</th>
                                         @endfor
 
@@ -33,7 +33,7 @@
                                         <tr>
                                             <td>{{$child->id}}</td>
                                             <td >{{$child->name}} {{$child->surname}}</td>
-                                            @for($i = 1; $i <= \Carbon\Carbon::now()->startOfMonth()->diffInDays(\Carbon\Carbon::now()) + 1; $i++)
+                                            @for($i = 1; $i <= cal_days_in_month(CAL_GREGORIAN, $month, $year); $i++)
                                                 @php $attendanceFound = false; @endphp
                                                 @foreach($group->attendance as $attendance)
                                                     @if((date('j', strtotime($attendance->date)) == $i))
@@ -67,5 +67,10 @@
             </div>
         </div>
     @endforeach
+    <div class="col-12">
+        <a href="{{ url()->previous() }}" >
+            <button class="btn btn-secondary">@lang('lang.back_btn')</button>
+        </a>
+    </div>
 
 @endsection

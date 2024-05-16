@@ -60,8 +60,9 @@ class ChildAttendanceContoller extends Controller
             $message = Lang::get('lang.no_data_attendance');
             return redirect()->back()->with('warning', $message);
         }
-
-        return view('admin.attendance.archive.show', compact('attendances','date'));
+        $data = $request->validated();
+        [$year, $month] = explode('-', $data['date']);
+        return view('admin.attendance.archive.show', compact('attendances','date','year', 'month'));
     }
 
 }

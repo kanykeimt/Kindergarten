@@ -237,4 +237,5 @@ return [
     'select_sunday_error' => 'Жекшембиде белгилей албайсыз. Жумуш күнү эмес.',
     'archive_attendance' => 'Катышуунун архиви',
     'current_attendance' => 'Учурдагы ай',
+    'add_news' => 'Жаңылыктарды кошуу',
 ];

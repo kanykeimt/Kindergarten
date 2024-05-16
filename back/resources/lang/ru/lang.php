@@ -237,4 +237,5 @@ return [
     'select_sunday_error' => 'По воскресеньям отмечать нельзя. Не рабочий день.',
     'archive_attendance' => 'Архив посещений',
     'current_attendance' => 'Текущий месяц',
+    'add_news' => 'Добавить новость',
 ];
