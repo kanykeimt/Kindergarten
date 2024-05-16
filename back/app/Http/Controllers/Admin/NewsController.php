@@ -19,8 +19,8 @@ class NewsController extends Controller
         $this->service = $service;
     }
     public function index(){
-        $groups = Group::all();
-        return view('admin.news.index', compact('groups'));
+        $news = $this->service->news();
+        return view('admin.news.index', compact('news'));
     }
     public function create(CreateRequest $request){
         $message = $this->service->create($request);

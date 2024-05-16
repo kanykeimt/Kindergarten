@@ -12,6 +12,15 @@ use Illuminate\Support\Facades\Storage;
 
 class NewsService
 {
+    public function news()
+    {
+        $news = News::with(['group', 'media']) // Eager loading relationships
+        ->orderBy('created_at', 'desc')
+            ->get()
+            ->toArray();
+        dd($news);
+        return $news;
+    }
     public function create(CreateRequest $request)
     {
         $data = $request->validated();
