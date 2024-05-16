@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Gallery;
+use App\Models\Media;
 use App\Models\MainGallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;

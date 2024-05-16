@@ -22,7 +22,6 @@ class IndexController extends Controller
 
         }
         $user = auth()->user();
-        $galleries = MainGallery::all();
         $reviews = DB::table('reviews')
             ->leftJoin('users', 'users.id', '=', 'reviews.user_id')
             ->select('reviews.rating', 'reviews.comment', 'users.name', 'users.surname', 'users.profile_photo')
@@ -33,6 +32,6 @@ class IndexController extends Controller
                 return view('index', compact('children', 'reviews'));
             }
         }
-        return view('index',compact('galleries', 'reviews'));
+        return view('index',compact( 'reviews'));
     }
 }

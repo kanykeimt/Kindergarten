@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Group\UpdateRequest;
 use App\Http\Requests\Admin\Group\CreateRequest;
-use App\Models\Gallery;
+use App\Models\Media;
 use App\Models\Group;
 use App\Services\Admin\GroupService;
 use Illuminate\Http\RedirectResponse;

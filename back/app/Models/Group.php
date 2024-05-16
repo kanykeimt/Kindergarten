@@ -21,9 +21,9 @@ class Group extends Model
     {
         return $this->hasMany(ChildrenAttendance::class,'group_id','id');
     }
-    public function gallery_address()
+    public function news()
     {
-        return $this->hasMany(GalleryAddress::class,'group_id','id');
+        return $this->hasMany(News::class,'group_id','id');
     }
     public function schedule()
     {

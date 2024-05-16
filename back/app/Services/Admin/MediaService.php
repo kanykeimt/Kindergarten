@@ -2,12 +2,12 @@
 
 namespace App\Services\Admin;
 
-use App\Models\Gallery;
+use App\Models\Media;
 use App\Models\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class GalleryService
+class MediaService
 {
     public function store(Request $request, Group $group)
     {
@@ -19,7 +19,7 @@ class GalleryService
                 $imageName = Storage::disk('public')->put('group_gallery', $image);
                 $imageName = "storage/".$imageName;
 
-                Gallery::create([
+                Media::create([
                     'group_id'=>$group->id,
                     'image'=>$imageName,
                     'video'=>null,
@@ -31,7 +31,7 @@ class GalleryService
             foreach ($request->file('videos') as $video) {
                 $videoName = Storage::disk('public')->put('group_gallery', $video);
                 $videoName = "storage/".$videoName;
-                Gallery::create([
+                Media::create([
                     'group_id'=>$group->id,
                     'image'=>null,
                     'video'=>$videoName,

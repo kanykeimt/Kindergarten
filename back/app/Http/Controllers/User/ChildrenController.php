@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateRequest;
-use App\Models\Gallery;
+use App\Models\Media;
 use Illuminate\Http\Request;
 use App\Models\Child;
 use Illuminate\Support\Carbon;

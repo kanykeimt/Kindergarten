@@ -19,7 +19,7 @@
                 <div class="row mb-3">
                     <label for="media" class="col-sm-2 col-form-label">Медиа:</label>
                     <div class="col-sm-8">
-                        <input class="form-control" type="file" accept="image/*" id="media" name="media" multiple required>
+                        <input class="form-control" type="file" accept="image/*,video/*" id="media" name="media[]" multiple required>
                     </div>
                 </div>
                 <div class="row mb-3">

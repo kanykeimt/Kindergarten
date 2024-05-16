@@ -212,6 +212,7 @@ return [
     'add_group_successful' => 'Группа успешно добавлена',
     'add_question_successful' => 'Вопрос успешно добавлен',
     'add_payment_successful' => 'Оплата успешно добавлена',
+    'add_news_successful' => 'Новости успешно добавлены',
 
     'update_user_successful' => 'Данные пользователя обновлены',
     'update_child_successful' => 'Данные ребенка обновлены',

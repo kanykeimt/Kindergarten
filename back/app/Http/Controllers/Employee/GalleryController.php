@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
-use App\Models\Gallery;
+use App\Models\Media;
 use App\Models\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -55,7 +55,7 @@ class   GalleryController extends Controller
                 $imageName = Storage::disk('public')->put('group_gallery', $image);
                 $imageName = "storage/".$imageName;
 
-                Gallery::create([
+                Media::create([
                     'group_id'=>$group->id,
                     'image'=>$imageName,
                     'video'=>null,
@@ -67,7 +67,7 @@ class   GalleryController extends Controller
             foreach ($request->file('videos') as $video) {
                 $videoName = Storage::disk('public')->put('group_gallery', $video);
                 $videoName = "storage/".$videoName;
-                Gallery::create([
+                Media::create([
                     'group_id'=>$group->id,
                     'image'=>null,
                     'video'=>$videoName,
@@ -80,7 +80,7 @@ class   GalleryController extends Controller
     }
 
     public function delete($date){
-        $galleries = Gallery::where('created_at', $date)
+        $galleries = Media::where('created_at', $date)
             ->get();
         foreach ($galleries as $gallery){
             $gallery->delete();
