@@ -52,6 +52,7 @@ class NewsService
                     ]);
                 }
             }
+
             else{
                 News ::create([
                     'media_id' => $gallery->id,
