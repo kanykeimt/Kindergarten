@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('media',200);
             $table->string('type', 10); #image or video
-            $table->string('text', 200)->nullable();
             $table->timestamps();
         });
     }

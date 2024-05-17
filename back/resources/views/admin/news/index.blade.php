@@ -36,13 +36,11 @@
         </div>
     </div>
 
-
-    @foreach($news as $new)
-        @php $date = $new->created_at;@endphp
+    @foreach($dates as $index => $date)
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h6 class="mb-0">{{}}</h6>
+                    <h6 class="mb-0">{{\Carbon\Carbon::parse($date->created_at)->format('Y-m-d H:i')}}</h6>
                     <button id="delete_button" type="submit" class="border-0 bg-transparent">
                         <i title="delete" class="fas fa-trash text-danger" role="button"></i>
                     </button>
@@ -50,44 +48,64 @@
 
 
                 <!-- Carousel wrapper -->
-                <div id="carouselExampleIndicators" class="carousel slide">
+                <div id="carouselExampleIndicators-{{$index}}" class="carousel slide">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        @foreach($news as $k => $new)
+                            @if($new->created_at == $date->created_at)
+                                @php
+                                    $j=0;
+                                @endphp
+                                <button type="button" data-bs-target="#carouselExampleIndicators-{{$index}}" data-bs-slide-to="{{$k}}" class="{{$j == 0 ? 'active' : ''}}" aria-current="{{$j == 0 ? 'true' : ''}}" aria-label="Slide {{$k}}"></button>
+                                @php$j++; @endphp
+                            @endif
+                        @endforeach
                     </div>
                     <div class="carousel-inner" style="width: 100%; height: 500px;">
-                        <div class="carousel-item active" style="width: 100%; height: 100%;">
-                            <img src="https://imgupscaler.com/images/samples/Imgupscaler_2_2x.webp" alt="...">
-                        </div>
-                        <div class="carousel-item" style="width: 100%; height: 100%;">
-                            <img src="https://avatars.mds.yandex.net/i?id=b507a2b8d9382967a186c654f1eeaa74-5262078-images-taas-consumers&n=27&h=480&w=480" class="d-block w-100 h-100" alt="...">
-                        </div>
-                        <div class="carousel-item" style="width: 100%; height: 100%;">
-                            <video class="img-fluid" controls autoplay loop muted style="width: 100%; height: 100%;">
-                                <source src="https://mdbcdn.b-cdn.net/img/video/Tropical.mp4" type="video/mp4" />
-                            </video>
-                        </div>
+                        @php
+                            $firstItem = true; // Flag to track the first item
+                        @endphp
+                        @foreach($news as $new)
+                            @if($new->created_at == $date->created_at)
+                                @if($new->media->type == 'image')
+                                    <div class="carousel-item {{ $firstItem ? 'active' : '' }}" style="width: 100%; height: 100%;">
+                                        <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 100%;">
+                                            <img src="{{ asset($new->media->media) }}" class="img-fluid" alt="..." style="max-height: 100%; max-width: 100%;">
+                                        </div>
+                                    </div>
+
+                                @elseif($new->media->type = 'video')
+                                    <div class="carousel-item {{ $firstItem ? 'active' : '' }}" style="width: 100%; height: 100%;">
+                                        <video class="img-fluid" controls autoplay loop muted style="width: 100%; height: 100%;">
+                                            <source src="{{asset($new->media->media)}}" type="video/mp4" />
+                                        </video>
+                                    </div>
+                                @endif
+                                    @php
+                                        $firstItem = false; // Set the flag to false after the first item
+                                    @endphp
+                            @endif
+                        @endforeach
+
                     </div>
 
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators-{{$index}}" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators-{{$index}}" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
+
+
+
                 <!-- Carousel wrapper -->
                 <div class="border rounded p-4 pb-0 mb-4">
                     <figure class="text-center">
                         <blockquote class="blockquote">
-                            <p>A well-known quote, contained in a blockquote element.</p>
+                            <p>{{$date->text}}</p>
                         </blockquote>
-                        <figcaption class="blockquote-footer">
-                            Someone famous in <cite title="Source Title">Source Title</cite>
-                        </figcaption>
                     </figure>
                 </div>
             </div>

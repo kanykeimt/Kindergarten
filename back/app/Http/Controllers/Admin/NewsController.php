@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\News\CreateRequest;
 use App\Models\Media;
 use App\Models\Group;
+use App\Models\News;
 use App\Services\Admin\NewsService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,8 +20,10 @@ class NewsController extends Controller
         $this->service = $service;
     }
     public function index(){
+        $dates = $this->service->dates();
         $news = $this->service->news();
-        return view('admin.news.index', compact('news'));
+        $groups = Group::all();
+        return view('admin.news.index', compact('news', 'dates', 'groups'));
     }
     public function create(CreateRequest $request){
         $message = $this->service->create($request);

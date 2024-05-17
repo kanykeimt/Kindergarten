@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('group_id');
             $table->unsignedBigInteger('media_id');
+            $table->string('text', 200)->nullable();
             $table->timestamps();
 
             $table->index('group_id');
