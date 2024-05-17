@@ -37,6 +37,9 @@
     </div>
 
     @foreach($dates as $index => $date)
+        @php
+            $k=0;
+        @endphp
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
                 <div class="d-flex justify-content-between align-items-center mb-4">
@@ -49,17 +52,19 @@
 
                 <!-- Carousel wrapper -->
                 <div id="carouselExampleIndicators-{{$index}}" class="carousel slide">
-                    <div class="carousel-indicators">
-                        @foreach($news as $k => $new)
-                            @if($new->created_at == $date->created_at)
-                                @php
-                                    $j=0;
-                                @endphp
-                                <button type="button" data-bs-target="#carouselExampleIndicators-{{$index}}" data-bs-slide-to="{{$k}}" class="{{$j == 0 ? 'active' : ''}}" aria-current="{{$j == 0 ? 'true' : ''}}" aria-label="Slide {{$k}}"></button>
-                                @php$j++; @endphp
-                            @endif
-                        @endforeach
-                    </div>
+{{--                    <div class="carousel-indicators">--}}
+{{--                        @foreach($news as $new)--}}
+{{--                            @if($new->created_at == $date->created_at)--}}
+{{--                                @php--}}
+{{--                                    $j=0;--}}
+{{--                                @endphp--}}
+{{--                                <button type="button" data-bs-target="#carouselExampleIndicators-{{$index}}" data-bs-slide-to="{{$k}}" class="{{$j == 0 ? 'active' : ''}}" aria-current="{{$j == 0 ? 'true' : ''}}" aria-label="Slide-{{$k}}"></button>--}}
+{{--                                @php$j++;@endphp--}}
+{{--                            @endif--}}
+{{--                                @php $k++ @endphp--}}
+{{--                        @endforeach--}}
+{{--                            @php $k=0 @endphp--}}
+{{--                    </div>--}}
                     <div class="carousel-inner" style="width: 100%; height: 500px;">
                         @php
                             $firstItem = true; // Flag to track the first item

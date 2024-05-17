@@ -23,6 +23,7 @@ class NewsController extends Controller
         $dates = $this->service->dates();
         $news = $this->service->news();
         $groups = Group::all();
+
         return view('admin.news.index', compact('news', 'dates', 'groups'));
     }
     public function create(CreateRequest $request){
