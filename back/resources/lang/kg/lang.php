@@ -211,6 +211,7 @@ return [
     'add_group_successful' => 'Группа ийгиликтүү кошулду',
     'add_question_successful' => 'Суроо ийгиликтүү кошулду',
     'add_payment_successful' => 'Төлөм ийгиликтүү кошулду',
+    'add_news_successful' => 'Жанылыктар ийгиликтүү кошулду',
 
     'update_user_successful' => 'Колдонуучунун маалыматы жаңыланды',
     'update_child_successful' => 'Баланын маалыматы жаңыланды',

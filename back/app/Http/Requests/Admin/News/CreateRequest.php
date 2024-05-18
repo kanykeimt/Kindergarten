@@ -23,8 +23,9 @@ class CreateRequest extends FormRequest
     {
         return [
             'group_id'=>'required',
-            'media_id'=>'required',
-            'text'=>'required',
+            'media'=>'required',
+            'text'=>'',
         ];
     }
+
 }

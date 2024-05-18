@@ -11,21 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gallery_addresses', function (Blueprint $table) {
+        Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('group_id');
-            $table->unsignedBigInteger('gallery_id');
+            $table->unsignedBigInteger('media_id');
+            $table->string('text', 200)->nullable();
             $table->timestamps();
 
             $table->index('group_id');
-            $table->foreign('group_id', 'fk_gallery_addresses_group')
+            $table->foreign('group_id', 'fk_news_group')
                 ->on('groups')
                 ->references('id')
                 ->cascadeOnDelete();
 
-            $table->index('gallery_id');
-            $table->foreign('gallery_id')
-                ->on('gallery')
+            $table->index('media_id');
+            $table->foreign('media_id', 'fk_news_media')
+                ->on('media')
                 ->references('id')
                 ->cascadeOnDelete();
         });
@@ -36,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gallery_addresses');
+        Schema::dropIfExists('news');
     }
 };

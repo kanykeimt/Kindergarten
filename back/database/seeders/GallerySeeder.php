@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Child;
-use App\Models\Gallery;
+use App\Models\Media;
 use App\Models\Group;
 use App\Models\User;
 use Carbon\Carbon;
@@ -27,7 +27,7 @@ class GallerySeeder extends Seeder
 
         for ($i = 0; $i < 10; $i++) {
             $image = $faker->image(('storage/app/public/group_gallery'),500,312, null, false);
-            Gallery::create([
+            Media::create([
                 'group_id' => $faker->randomElement($groupIds),
                 'image' => 'storage/group_gallery/'. $image,
                 'video' => null,
