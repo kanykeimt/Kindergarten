@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('days_of_week', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 20);
+            $table->string('name_kg', 20);
+            $table->string('name_ru', 20);
             $table->timestamps();
         });
     }

@@ -172,6 +172,10 @@ Route::group(
                 Route::patch('/update/{menu}', [App\Http\Controllers\Admin\MenuController::class,'update'])->name('admin.menu.update');
             });
 
+            Route::group(['prefix' => 'schedule'], function (){
+                Route::get('/', [App\Http\Controllers\Admin\ScheduleController::class, 'index'])->name('admin.schedule.index');
+            });
+
             Route::group(['prefix'=>'attendance'], function (){
                 Route::get('/', [App\Http\Controllers\Admin\ChildAttendanceContoller::class, 'index'])->name('admin.attendance.index');
                 Route::post('/createForm', [App\Http\Controllers\Admin\ChildAttendanceContoller::class, 'createForm'])->name('admin.attendance.createForm');
