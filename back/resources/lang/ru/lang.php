@@ -213,11 +213,14 @@ return [
     'add_question_successful' => 'Вопрос успешно добавлен',
     'add_payment_successful' => 'Оплата успешно добавлена',
     'add_news_successful' => 'Новости успешно добавлены',
+    'add_menu_successful' => 'Меню успешно добавлено',
+
 
     'update_user_successful' => 'Данные пользователя обновлены',
     'update_child_successful' => 'Данные ребенка обновлены',
     'update_group_successful' => 'Данные группы обновлены',
     'update_question_successful' => 'Вопрос обновлен',
+    'update_menu_successful' => 'Меню обнавлено',
 
     'question_for_payment_date1' => 'Сумма оплаты достаточно до ',
     'question_for_payment_date2' => ' числа',
@@ -240,4 +243,24 @@ return [
     'current_attendance' => 'Текущий месяц',
     'add_news' => 'Добавить новость',
     'delete_question_news' => 'Вы действительно хотите удалить эту новость?',
-];
+    'add_menu' => 'Добавить меню',
+
+    'breakfast' => 'Завтрак',
+    'lunch' => 'Обед',
+    'snack' => 'Полдник',
+    'dinner' => 'Ужин',
+    'time_of_meals' => 'Время приема пищи',
+    'food_name' => 'Название еды',
+    'calories' => 'Калорийность',
+    'image' => 'Изображение',
+
+
+    'monday' => 'Понедельник',
+    'tuesday' => 'Вторник',
+    'wednesday' => 'Среда',
+    'thursday' => 'Четверг',
+    'friday' => 'Пятница',
+    'saturday' => 'Суббота',
+    'sunday' => 'Воскресенье',
+
+    ];

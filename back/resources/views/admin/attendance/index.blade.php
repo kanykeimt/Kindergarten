@@ -97,29 +97,34 @@
     @endforeach
 
     <script>
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the date input element
+            let dateInput = document.getElementById('date');
 
+            // Add event listener to the date input
+            dateInput.addEventListener('input', function() {
+                // Get the selected date
+                let selectedDate = new Date(this.value);
 
-        dateInput.addEventListener('input', function() {
-            // Get the selected date
-            let selectedDate = new Date(this.value);
+                // Check if the selected date is a Sunday (day 0)
+                if (selectedDate.getDay() === 0) {
+                    // If it's a Sunday, reset the value to the first day of the current month
+                    let today = new Date();
+                    let firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+                    this.value = formatDate(firstDayOfMonth);
+                    // Optionally, you can alert the user or display a message
+                    alert('@lang('lang.select_sunday_error')');
+                }
+            });
 
-            // Check if the selected date is a Sunday (day 0)
-            if (selectedDate.getDay() === 0) {
-                // If it's a Sunday, reset the value to the first day of the current month
-                let today = new Date();
-                let firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-                this.value = formatDate(firstDayOfMonth);
-                // Optionally, you can alert the user or display a message
-                alert('@lang('lang.select_sunday_error')');
+            // Function to format the date as "YYYY-MM-DD"
+            function formatDate(date) {
+                let year = date.getFullYear();
+                let month = (date.getMonth() + 1).toString().padStart(2, '0'); // Adding leading zero if needed
+                let day = date.getDate().toString().padStart(2, '0'); // Adding leading zero if needed
+                return `${year}-${month}-${day}`;
             }
         });
-
-        // Function to format the date as "YYYY-MM-DD"
-        function formatDate(date) {
-            let year = date.getFullYear();
-            let month = (date.getMonth() + 1).toString().padStart(2, '0'); // Adding leading zero if needed
-            let day = date.getDate().toString().padStart(2, '0'); // Adding leading zero if needed
-            return `${year}-${month}-${day}`;
-        }
     </script>
 @endsection

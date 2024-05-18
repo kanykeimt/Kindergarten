@@ -212,11 +212,13 @@ return [
     'add_question_successful' => 'Суроо ийгиликтүү кошулду',
     'add_payment_successful' => 'Төлөм ийгиликтүү кошулду',
     'add_news_successful' => 'Жанылыктар ийгиликтүү кошулду',
+    'add_menu_successful' => 'Меню ийгиликтүү кошулду',
 
     'update_user_successful' => 'Колдонуучунун маалыматы жаңыланды',
     'update_child_successful' => 'Баланын маалыматы жаңыланды',
     'update_group_successful' => 'Группанын маалыматы жаңыланды',
     'update_question_successful' => 'Суроо жаңыланды',
+    'update_menu_successful' => 'Меню жаңыланды',
 
     'question_for_payment_date1' => 'Төлөм суммасы ',
     'question_for_payment_date2' => ' числого чейин жетиштүү',
@@ -239,6 +241,23 @@ return [
     'archive_attendance' => 'Катышуунун архиви',
     'current_attendance' => 'Учурдагы ай',
     'add_news' => 'Жаңылыктарды кошуу',
-
     'delete_question_news' => 'Бул жаңылыкты чын эле өчүрүүнү каалайсызбы?',
+    'add_menu' => 'Меню кошуу',
+
+    'breakfast' => 'Эртең мененки тамак',
+    'lunch' => 'Түшкү тамак',
+    'snack' => 'Түштөн кийинки жеңил тамак',
+    'dinner' => 'Кечки тамак',
+    'time_of_meals' => 'Тамактануу убактысы',
+    'food_name' => 'Тамактын аты',
+    'calories' => 'Калориясы',
+    'image' => 'Сүрөт',
+
+    'monday' => 'Дүйшөмбү',
+    'tuesday' => 'Шейшемби',
+    'wednesday' => 'Шаршемби',
+    'thursday' => 'Бейшемби',
+    'friday' => 'Жума',
+    'saturday' => 'Ишемби',
+    'sunday' => 'Жекшемби',
 ];

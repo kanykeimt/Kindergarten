@@ -167,6 +167,9 @@ Route::group(
             Route::group(['prefix'=>'menu'], function ()
             {
                 Route::get('/',[App\Http\Controllers\Admin\MenuController::class,'index'])->name('admin.menu.index');
+                Route::post('/create',[App\Http\Controllers\Admin\MenuController::class,'create'])->name('admin.menu.create');
+                Route::get('/edit/{date}', [App\Http\Controllers\Admin\MenuController::class,'edit'])->name('admin.menu.edit');
+                Route::patch('/update/{menu}', [App\Http\Controllers\Admin\MenuController::class,'update'])->name('admin.menu.update');
             });
 
             Route::group(['prefix'=>'attendance'], function (){

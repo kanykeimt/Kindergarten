@@ -102,6 +102,7 @@ else{
 
         /*# sourceMappingURL=style.css.map */
     </style>
+    @yield('style')
 </head>
 
 <body>
@@ -240,6 +241,7 @@ else{
     </div>
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 </div>
+@yield('script')
 <!-- JavaScript Libraries -->
 <script>
     const links = document.querySelectorAll('.nav-link');
