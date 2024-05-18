@@ -6,6 +6,7 @@ use App\Http\Requests\Admin\News\CreateRequest;
 use App\Models\Group;
 use App\Models\Media;
 use App\Models\News;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,15 +14,25 @@ class NewsService
 {
     public function news()
     {
-        $news = News::with(['media'])
-            ->select('created_at', 'media_id')
-            ->distinct()
+        $news = News::with('media', 'group')
+            ->select(
+                DB::raw("strftime('%Y-%m-%d %H:%M', created_at) as datetime"),
+                'media_id',
+                'text',
+                DB::raw('COUNT(*) as count'),
+                DB::raw('CASE WHEN COUNT(*) = 1 THEN MAX(group_id) ELSE NULL END AS group_id')
+            )
+            ->groupBy('datetime', 'media_id', 'text')
             ->get();
+
         return $news;
     }
 
     public function dates(){
-        $dates = News::select('created_at', 'text',)->distinct()->get();
+        $dates = News::select(DB::raw("strftime('%Y-%m-%d %H:%M', created_at) as datetime"),'text')
+            ->distinct()
+            ->orderBy('created_at', 'desc')
+            ->get();
         return $dates;
     }
     public function create(CreateRequest $request)
@@ -75,6 +86,24 @@ class NewsService
         }
 
         $message = Lang::get('lang.add_news_successful');
+        return $message;
+    }
+
+    public function delete($date)
+    {
+        $news = News::whereBetween('created_at', [$date.':00',$date.':59'])
+            ->get();
+        $allMedia = News::whereBetween('created_at', [$date.':00',$date.':59'])
+            ->select('media_id')
+            ->distinct()
+            ->get();
+        foreach ($news as $new) {
+            $new->delete();
+        }
+        foreach ($allMedia as $media) {
+           Media::where('id', $media->media_id)->delete();
+        }
+        $message = Lang::get('lang.delete_answer');
         return $message;
     }
 }

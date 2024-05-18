@@ -49,62 +49,62 @@ else{
 
     <!-- Template Stylesheet -->
     <link href="{{asset('admin_template/css/style.css')}}" rel="stylesheet">
+    <style>
+
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: relative;
+            background-color: #f9f9f9;
+            width: 140px;
+        }
+
+        .dropbtnru
+        {
+            background: url('http://icons.iconarchive.com/icons/custom-icon-design/flag-3/16/Russia-Flag-icon.png') no-repeat left center;
+            padding-left: 25px;
+            width: auto;
+        }
+        .dropbtnkg
+        {
+            background: url('https://icons.iconarchive.com/icons/famfamfam/flag/16/kg-icon.png') no-repeat left center;
+            padding-left: 25px;
+            width: auto;
+        }
+
+        .dropbtnkg::after {
+            /*background: rgba(0, 0, 0, 0) url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-16.png") no-repeat scroll center center;*/
+            content: "";
+            height: 16px;
+            position: absolute;
+            right: 0;
+            top: 7px;
+            width: 16px;
+        }
+
+
+
+
+        .dropdown-content a:first-child
+        {
+            background: url('http://icons.iconarchive.com/icons/custom-icon-design/flag-3/16/Russia-Flag-icon.png') no-repeat left center;
+        }
+
+        .dropdown-content a:last-child
+        {
+            background: url('https://icons.iconarchive.com/icons/famfamfam/flag/16/kg-icon.png') no-repeat left center;
+        }
+
+        /* Links inside the dropdown */
+
+        /* Change color of dropdown links on hover */
+
+        /*# sourceMappingURL=style.css.map */
+    </style>
 </head>
 
 <body>
-<style>
-
-
-    /* Dropdown Content (Hidden by Default) */
-    .dropdown-content {
-        display: none;
-        position: relative;
-        background-color: #f9f9f9;
-        width: 140px;
-    }
-
-    .dropbtnru
-    {
-        background: url('http://icons.iconarchive.com/icons/custom-icon-design/flag-3/16/Russia-Flag-icon.png') no-repeat left center;
-        padding-left: 25px;
-        width: auto;
-    }
-    .dropbtnkg
-    {
-        background: url('https://icons.iconarchive.com/icons/famfamfam/flag/16/kg-icon.png') no-repeat left center;
-        padding-left: 25px;
-        width: auto;
-    }
-
-    .dropbtnkg::after {
-        /*background: rgba(0, 0, 0, 0) url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-16.png") no-repeat scroll center center;*/
-        content: "";
-        height: 16px;
-        position: absolute;
-        right: 0;
-        top: 7px;
-        width: 16px;
-    }
-
-
-
-
-    .dropdown-content a:first-child
-    {
-        background: url('http://icons.iconarchive.com/icons/custom-icon-design/flag-3/16/Russia-Flag-icon.png') no-repeat left center;
-    }
-
-    .dropdown-content a:last-child
-    {
-        background: url('https://icons.iconarchive.com/icons/famfamfam/flag/16/kg-icon.png') no-repeat left center;
-    }
-
-    /* Links inside the dropdown */
-
-    /* Change color of dropdown links on hover */
-
-    /*# sourceMappingURL=style.css.map */
-</style>
 <div class="container-xxl position-relative bg-white d-flex p-0">
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -142,6 +142,7 @@ else{
                     </div>
                 </div>
                 <a href="{{route('admin.news.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.news') ? 'active' : '' }}"><i class="fa fa-newspaper me-2"></i>@lang('lang.news')</a>
+                <a href="{{route('admin.menu.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.menu') ? 'active' : '' }}"><i class="fa fa-utensils me-2"></i>Меню</a>
                 <a href="{{route('admin.mainGallery.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.mainGallery') ? 'active' : '' }}"><i class="fa fa-file-image me-2"></i>@lang('lang.main_gallery')</a>
                 <a href="{{route('admin.feedback.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.feedback') ? 'active' : '' }}"><i class="fa fa-comments me-2"></i>@lang('lang.feedbacks')</a>
             </div>

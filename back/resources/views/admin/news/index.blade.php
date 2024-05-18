@@ -37,40 +37,34 @@
     </div>
 
     @foreach($dates as $index => $date)
-        @php
-            $k=0;
-        @endphp
+        @php $group_name = 0; @endphp
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h6 class="mb-0">{{\Carbon\Carbon::parse($date->created_at)->format('Y-m-d H:i')}}</h6>
-                    <button id="delete_button" type="submit" class="border-0 bg-transparent">
-                        <i title="delete" class="fas fa-trash text-danger" role="button"></i>
-                    </button>
+                    <h6 class="mb-0">{{$date->datetime}}</h6>
+                    <form action="{{route('admin.news.delete', $date->datetime)}}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button id="delete_button" type="submit" class="border-0 bg-transparent" onclick="return deletedBtn()">
+                            <i title="delete" class="fas fa-trash text-danger" role="button"></i>
+                        </button>
+                    </form>
                 </div>
 
 
                 <!-- Carousel wrapper -->
                 <div id="carouselExampleIndicators-{{$index}}" class="carousel slide">
-{{--                    <div class="carousel-indicators">--}}
-{{--                        @foreach($news as $new)--}}
-{{--                            @if($new->created_at == $date->created_at)--}}
-{{--                                @php--}}
-{{--                                    $j=0;--}}
-{{--                                @endphp--}}
-{{--                                <button type="button" data-bs-target="#carouselExampleIndicators-{{$index}}" data-bs-slide-to="{{$k}}" class="{{$j == 0 ? 'active' : ''}}" aria-current="{{$j == 0 ? 'true' : ''}}" aria-label="Slide-{{$k}}"></button>--}}
-{{--                                @php$j++;@endphp--}}
-{{--                            @endif--}}
-{{--                                @php $k++ @endphp--}}
-{{--                        @endforeach--}}
-{{--                            @php $k=0 @endphp--}}
-{{--                    </div>--}}
                     <div class="carousel-inner" style="width: 100%; height: 500px;">
                         @php
                             $firstItem = true; // Flag to track the first item
                         @endphp
                         @foreach($news as $new)
-                            @if($new->created_at == $date->created_at)
+                            @if($new->datetime == $date->datetime)
+                                @if($new->group == null)
+                                    @php $group_name = "All" @endphp
+                                @else
+                                    @php $group_name = $new->group->name @endphp
+                                @endif
                                 @if($new->media->type == 'image')
                                     <div class="carousel-item {{ $firstItem ? 'active' : '' }}" style="width: 100%; height: 100%;">
                                         <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 100%;">
@@ -106,18 +100,31 @@
 
 
                 <!-- Carousel wrapper -->
+                <br>
                 <div class="border rounded p-4 pb-0 mb-4">
                     <figure class="text-center">
                         <blockquote class="blockquote">
                             <p>{{$date->text}}</p>
                         </blockquote>
+                        <figcaption class="blockquote-footer">
+                            @if($group_name == "All")
+                                @lang('lang.all')
+                            @else
+                                {{$group_name}}
+                            @endif
+                        </figcaption>
                     </figure>
                 </div>
             </div>
         </div>
     @endforeach
 
-
+    <script>
+        function deletedBtn(){
+            let text = "@lang('lang.delete_question_news')";
+            return confirm(text);
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 @endsection

@@ -239,4 +239,6 @@ return [
     'archive_attendance' => 'Катышуунун архиви',
     'current_attendance' => 'Учурдагы ай',
     'add_news' => 'Жаңылыктарды кошуу',
+
+    'delete_question_news' => 'Бул жаңылыкты чын эле өчүрүүнү каалайсызбы?',
 ];

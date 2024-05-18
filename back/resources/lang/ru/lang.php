@@ -239,4 +239,5 @@ return [
     'archive_attendance' => 'Архив посещений',
     'current_attendance' => 'Текущий месяц',
     'add_news' => 'Добавить новость',
+    'delete_question_news' => 'Вы действительно хотите удалить эту новость?',
 ];

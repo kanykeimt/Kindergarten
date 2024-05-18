@@ -164,6 +164,11 @@ Route::group(
                 Route::delete('/{date}', [App\Http\Controllers\Admin\NewsController::class, 'delete'])->name('admin.news.delete');
             });
 
+            Route::group(['prefix'=>'menu'], function ()
+            {
+                Route::get('/',[App\Http\Controllers\Admin\MenuController::class,'index'])->name('admin.menu.index');
+            });
+
             Route::group(['prefix'=>'attendance'], function (){
                 Route::get('/', [App\Http\Controllers\Admin\ChildAttendanceContoller::class, 'index'])->name('admin.attendance.index');
                 Route::post('/createForm', [App\Http\Controllers\Admin\ChildAttendanceContoller::class, 'createForm'])->name('admin.attendance.createForm');
