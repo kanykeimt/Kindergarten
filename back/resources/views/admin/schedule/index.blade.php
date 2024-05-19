@@ -95,6 +95,7 @@
                                                                 <th class="">@lang('lang.classes_name')</th>
                                                                 <th class="">@lang('lang.from')</th>
                                                                 <th class="">@lang('lang.to')</th>
+                                                                <th class="" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:10%">@lang('lang.action')</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody id="groupTable">
@@ -104,6 +105,17 @@
                                                                         <td>{{$schedule->class_name}}</td>
                                                                         <td>{{$schedule->time_from}}</td>
                                                                         <td>{{$schedule->time_to}}</td>
+                                                                        <td>
+                                                                            <div style="float: left; display: block; width: 33%;" class="text-center">
+                                                                                <form action="{{route('admin.schedule.delete', $schedule->id)}}" method="POST">
+                                                                                    @method('DELETE')
+                                                                                    @csrf
+                                                                                    <button id="delete_button" type="submit" class="border-0 bg-transparent" onclick="return deletedBtn()">
+                                                                                        <i title="delete" class="fas fa-trash text-danger" role="button"></i>
+                                                                                    </button>
+                                                                                </form>
+                                                                            </div>
+                                                                        </td>
                                                                     </tr>
                                                                 @endif
                                                             @endforeach
@@ -111,7 +123,7 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                    <a href="{{route('admin.schedule.edit',['group_id'=>$group->id,'day_id'=>$day->id])}}" class="text-success float-end"><i class="fas fa-pen me-2"></i></a>
+                                                    <a href="{{route('admin.schedule.edit',['group_id'=>$group->id,'day_id'=>$day->id])}}" class="btn btn-success  float-end">@lang('lang.edit_btn')</a>
                                                 </div>
                                             @endforeach
                                         </div>

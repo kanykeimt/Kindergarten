@@ -3,11 +3,13 @@
 namespace App\Services\Admin;
 
 use App\Http\Requests\Admin\Schedule\CreateRequest;
+use App\Http\Requests\Admin\Schedule\UpdateRequest;
 use App\Models\Classes;
 use App\Models\DaysOfWeek;
 use App\Models\Group;
 use App\Models\Schedule;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 
 class ScheduleService
@@ -64,7 +66,7 @@ class ScheduleService
     public function edit($group_id, $day_id){
         $schedules = Schedule::where('group_id', $group_id)
         ->where('day', $day_id)
-        ->select('classes_id', 'time_from', 'time_to')
+        ->select('id','classes_id', 'time_from', 'time_to')
         ->get();
 
         $schedules = $schedules->sortBy([
@@ -72,5 +74,46 @@ class ScheduleService
         ]);
 
         return $schedules;
+    }
+
+    public function update(UpdateRequest $request)
+    {
+        $requestData = $request->all();
+        $data = [
+            'group_id' => $requestData['group_id'],
+            'day' => $requestData['day'],
+            'schedules' => []
+        ];
+
+        foreach ($requestData as $key => $value) {
+            if (strpos($key, 'classes_id-') === 0) {
+                // Extract the index from the parameter name
+                $index = (int) substr($key, strlen('classes_id-'));
+
+                $schedule = [
+                    'id' => $requestData['id-'.$index],
+                    'classes_id' => $value,
+                    'time_from' => $requestData['time_from-' . $index],
+                    'time_to' => $requestData['time_to-' . $index]
+                ];
+
+                // Add the schedule array to the 'schedules' array
+                $data['schedules'][] = $schedule;
+            }
+        }
+        foreach ($data['schedules'] as $schedule) {
+            $schedules = Schedule::where('id', $schedule['id'])->first();
+            DB::beginTransaction();
+            $schedules->update([
+                'classes_id' => $schedule['classes_id'],
+                'group_id' => $data['group_id'],
+                'day' => $data['day'],
+                'time_from' => $schedule['time_from'],
+                'time_to' => $schedule['time_to']
+            ]);
+            DB::commit();
+        }
+
+        return Lang::get('lang.update_user_successful');
     }
 }

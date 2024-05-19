@@ -2,8 +2,7 @@
 @section('content')
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">
-            <form action="" method="POST" enctype="multipart/form-data">
-                @method('patch')
+            <form action="{{route('admin.schedule.update')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row mb-3">
                     <label for="group_id" class="col-sm-3 col-form-label">@lang('lang.child_group'):</label>
@@ -32,12 +31,16 @@
                             <th class="">@lang('lang.classes_name')</th>
                             <th class="">@lang('lang.from')</th>
                             <th class="">@lang('lang.to')</th>
-                            <th class="" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:10%">@lang('lang.action')</th>
                         </tr>
                         </thead>
                         <tbody id="groupTable">
                         @foreach ($schedules as $indexOfSchedule => $schedule)
                             <tr>
+                                <td hidden="">
+                                    <div class="col-sm-8">
+                                        <input type="number" class="form-control"  id="id-{{$indexOfSchedule}}" name="id-{{$indexOfSchedule}}" value="{{$schedule->id}}">
+                                    </div>
+                                </td>
                                 <td>
                                     <select class="form-select mb-3" aria-label="Default select example" id="classes_id-{{$indexOfSchedule}}" name="classes_id-{{$indexOfSchedule}}">
                                         @foreach($classes as $class)
@@ -53,18 +56,6 @@
                                 <td>
                                     <div class="col-sm-8">
                                         <input type="time" class="form-control" id="time_to-{{$indexOfSchedule}}" value="{{$schedule->time_to}}" name="time_to-{{$indexOfSchedule}}" required autocomplete="time_to">
-                                    </div>
-                                <td>
-                                    <div style="float: left;
-                                display: block;
-                                width: 33%;" class="text-center">
-                                        <form action="" method="POST">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button id="delete_button" type="submit" class="border-0 bg-transparent" onclick="return deletedBtn()">
-                                                <i title="delete" class="fas fa-trash text-danger" role="button"></i>
-                                            </button>
-                                        </form>
                                     </div>
                                 </td>
                             </tr>
