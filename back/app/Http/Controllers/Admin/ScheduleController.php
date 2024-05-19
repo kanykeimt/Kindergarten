@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Schedule\CreateRequest;
+use App\Models\Classes;
 use App\Models\DaysOfWeek;
 use App\Models\Group;
 use App\Models\Schedule;
@@ -26,5 +27,13 @@ class ScheduleController extends Controller
     public function create(CreateRequest $request){
         $message = $this->service->create($request);
         return redirect()->route('admin.schedule.index')->with('success', $message);
+    }
+
+    public function edit($group_id, $day_id){
+        $schedules = $this->service->edit($group_id, $day_id);
+        $daysOfWeek = $this->service->daysOfWeek();
+        $group_name = Group::where('id', $group_id)->first()->name;
+        $classes = Classes::all();
+        return view('admin.schedule.edit', compact('schedules', 'daysOfWeek', 'classes','group_id','day_id', 'group_name'));
     }
 }

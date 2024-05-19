@@ -44,7 +44,7 @@
                     @foreach ($questions as $question)
                         <tr class=>
                             <td class="">{{$question->id}}</td>
-                            <td class="">{{$question->text}}</td>
+                            <td class="">{{$question->question}}</td>
                             <td>
                                 <div style="float: left;
                                 display: block;

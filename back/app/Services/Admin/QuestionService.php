@@ -13,14 +13,7 @@ class QuestionService
 {
     public function getAllQuestions()
     {
-        $lang = app()->getLocale();
         $questions = Question::all();
-
-        // Translate questions based on the current locale
-        foreach ($questions as $question) {
-            $question->text = $lang == 'kg' ? $question->question_kg : $question->question_ru;
-        }
-
         return $questions;
     }
     public function create(CreateRequest $request): RedirectResponse

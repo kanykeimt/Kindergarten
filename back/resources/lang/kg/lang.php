@@ -31,7 +31,7 @@ return [
     'child_name' => 'Aты',
     'child_surname' => 'Фамилиясы',
     'child_birth_date' => 'Туулган күнү',
-    'child_groupchild_group' => 'Группасынын аталышы',
+    'child_group' => 'Группасынын аталышы',
     'child_parent' => 'Ата-энесинин аты-жөнү',
     'child_number' => 'Ата-энесинин телефон номери',
     'child_gender' => 'Жынысы',
@@ -266,4 +266,5 @@ return [
     'classes_name_kg' => 'Сабактын кыргызча аталышы',
     'classes_name_ru' => 'Сабактын орусча аталышы',
     'add_schedule' => 'Сабак кошуу',
+    'classes_name' => 'Сабактын аталышы',
 ];

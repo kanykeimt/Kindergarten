@@ -175,6 +175,7 @@ Route::group(
             Route::group(['prefix' => 'schedule'], function (){
                 Route::get('/', [App\Http\Controllers\Admin\ScheduleController::class, 'index'])->name('admin.schedule.index');
                 Route::post('/create', [App\Http\Controllers\Admin\ScheduleController::class, 'create'])->name('admin.schedule.create');
+                Route::get('/edit/{group_id}/{day_id}', [App\Http\Controllers\Admin\ScheduleController::class, 'edit'])->name('admin.schedule.edit');
             });
 
             Route::group(['prefix'=>'attendance'], function (){

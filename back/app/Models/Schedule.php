@@ -17,9 +17,9 @@ class Schedule extends Model
 {
     use HasFactory;
     protected $guarded = false;
-    public function classes()
+    public function class()
     {
-        return $this->belongsTo(Classes::class);
+        return $this->belongsTo(Classes::class, 'classes_id');
     }
     public function group()
     {
