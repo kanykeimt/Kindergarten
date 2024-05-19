@@ -18,8 +18,7 @@ class ChildSeeder extends Seeder
      */
     public function run(): void
     {
-
-
+        DB::table('children')->truncate();
         // Use Faker to generate random data for groups
         $faker = Faker::create();
         $parentIds = User::whereHas('role', function($query) {

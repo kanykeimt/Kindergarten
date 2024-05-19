@@ -18,6 +18,7 @@ class EnrollSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::table('Enrolls')->truncate();
 
         $directory = 'public/enrollImages';
         if (!Storage::exists($directory)) {

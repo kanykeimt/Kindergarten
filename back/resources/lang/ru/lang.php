@@ -214,6 +214,7 @@ return [
     'add_payment_successful' => 'Оплата успешно добавлена',
     'add_news_successful' => 'Новости успешно добавлены',
     'add_menu_successful' => 'Меню успешно добавлено',
+    'add_schedule_successful' => 'Урок успешно добавлен',
 
 
     'update_user_successful' => 'Данные пользователя обновлены',
@@ -262,5 +263,9 @@ return [
     'friday' => 'Пятница',
     'saturday' => 'Суббота',
     'sunday' => 'Воскресенье',
-
+    'classes' => 'Уроки',
+    'dayOfWeek' => 'Дни недели',
+    'classes_name_kg' => 'Название урока на кыргызском',
+    'classes_name_ru' => 'Название урока на русском',
+    'add_schedule' => 'Добавить урок',
     ];

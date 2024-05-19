@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Classes;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -21,8 +22,12 @@ class DatabaseSeeder extends Seeder
             ChildSeeder::class,
             EnrollSeeder::class,
             ReviewSeeder::class,
-            DaysOfWeedSeeder::class,
             PaymentSeeder::class,
+            DaysOfWeedSeeder::class,
+            ClassesSeeder::class,
+            ScheduleSeeder::class,
+
+
 
 
         ]);

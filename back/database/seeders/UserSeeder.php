@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::table('users')->truncate();
         $userRole = Role::where('name', 'User')->first();
         $parentRole = Role::where('name','Parent')->first();
         $teacherRole = Role::where('name','Teacher')->first();

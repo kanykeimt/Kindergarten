@@ -16,6 +16,7 @@ use Illuminate\Support\Carbon;
 class Schedule extends Model
 {
     use HasFactory;
+    protected $guarded = false;
     public function classes()
     {
         return $this->belongsTo(Classes::class);
@@ -24,7 +25,7 @@ class Schedule extends Model
     {
         return $this->belongsTo(Group::class);
     }
-    public function days_of_week()
+    public function day()
     {
         return $this->belongsTo(DaysOfWeek::class, 'day');
     }

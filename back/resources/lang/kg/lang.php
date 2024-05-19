@@ -31,7 +31,7 @@ return [
     'child_name' => 'Aты',
     'child_surname' => 'Фамилиясы',
     'child_birth_date' => 'Туулган күнү',
-    'child_group' => 'Группасынын аталышы',
+    'child_groupchild_group' => 'Группасынын аталышы',
     'child_parent' => 'Ата-энесинин аты-жөнү',
     'child_number' => 'Ата-энесинин телефон номери',
     'child_gender' => 'Жынысы',
@@ -213,6 +213,7 @@ return [
     'add_payment_successful' => 'Төлөм ийгиликтүү кошулду',
     'add_news_successful' => 'Жанылыктар ийгиликтүү кошулду',
     'add_menu_successful' => 'Меню ийгиликтүү кошулду',
+    'add_schedule_successful' => 'Сабак ийгиликтүү кошулду',
 
     'update_user_successful' => 'Колдонуучунун маалыматы жаңыланды',
     'update_child_successful' => 'Баланын маалыматы жаңыланды',
@@ -260,4 +261,9 @@ return [
     'friday' => 'Жума',
     'saturday' => 'Ишемби',
     'sunday' => 'Жекшемби',
+    'classes' => 'Сабактар',
+    'dayOfWeek' => 'Аптанын күндөрү',
+    'classes_name_kg' => 'Сабактын кыргызча аталышы',
+    'classes_name_ru' => 'Сабактын орусча аталышы',
+    'add_schedule' => 'Сабак кошуу',
 ];

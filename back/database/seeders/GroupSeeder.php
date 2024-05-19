@@ -17,6 +17,7 @@ class GroupSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::table('groups')->truncate();
         $directory = 'public/groupImages';
         if (!Storage::exists($directory)) {
             Storage::makeDirectory($directory);
