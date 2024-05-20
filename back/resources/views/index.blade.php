@@ -1,6 +1,5 @@
 @extends('layouts.app')
-
-@section('content')
+@section('style')
     <style>
         .rate {
             float: left;
@@ -67,6 +66,9 @@
         }
 
     </style>
+@endsection
+@section('content')
+
     <!-- Carousel Start -->
     <div class="container-fluid p-0 mb-5">
         <div class="owl-carousel header-carousel position-relative">
@@ -540,7 +542,7 @@
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h1 class="mb-3">@lang('lang.feedback')</h1>
+                    <h1 class="mb-3">@lang('lang.review')</h1>
                     <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
                 </div>
                 <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">

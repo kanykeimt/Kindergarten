@@ -202,10 +202,10 @@ Route::group(
 
 
 
-            Route::group(['prefix' => 'feedback'], function (){
-                Route::get('/index', [App\Http\Controllers\Admin\FeedbackController::class, 'index'])->name('admin.feedback.index');
-                Route::delete('/{feedback}', [App\Http\Controllers\Admin\FeedbackController::class, 'delete'])->name('admin.feedback.delete');
-                Route::get('/show/{feedback}', [App\Http\Controllers\Admin\FeedbackController::class, 'show'])->name('admin.feedback.show');
+            Route::group(['prefix' => 'review'], function (){
+                Route::get('/index', [App\Http\Controllers\Admin\ReviewController::class, 'index'])->name('admin.review.index');
+                Route::delete('/{review}', [App\Http\Controllers\Admin\ReviewController::class, 'delete'])->name('admin.review.delete');
+                Route::get('/show/{review}', [App\Http\Controllers\Admin\ReviewController::class, 'show'])->name('admin.review.show');
             });
         });
     });

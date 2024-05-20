@@ -64,10 +64,10 @@
                         </tbody>
                     </table>
                 </div>
-        <div class="modal-footer">
-            <a href="{{route('admin.schedule.index')}}" class="btn btn-secondary">@lang('lang.back_btn')</a>
-            <button type="submit" class="btn btn-success">@lang('lang.save_btn')</button>
-        </div>
+                <div class="modal-footer">
+                    <a href="{{route('admin.schedule.index')}}" class="btn btn-secondary">@lang('lang.back_btn')</a>
+                    <button type="submit" class="btn btn-success">@lang('lang.save_btn')</button>
+                </div>
             </form>
         </div>
     </div>

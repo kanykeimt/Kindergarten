@@ -18,9 +18,8 @@ class ReviewSeeder extends Seeder
      */
     public function run(): void
     {
-//        DB::table('feedback')->truncate();
+        DB::table('reviews')->truncate();
 
-        // Use Faker to generate random data for groups
         $faker = Faker::create();
         $userIds = User::whereHas('role', function($query) {
             $query->where('name', 'Parent');
@@ -31,7 +30,7 @@ class ReviewSeeder extends Seeder
                 'user_id' => $faker->randomElement($userIds),
                 'rating' => $faker->numberBetween(1,5),
                 'comment' => $faker->sentence,
-                'created_at' => Carbon::now(),
+                'created_at' => $faker->dateTimeBetween('-30 days', 'now'),
                 'updated_at' => Carbon::now()
             ]);
         }

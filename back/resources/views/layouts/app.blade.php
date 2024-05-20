@@ -52,112 +52,113 @@ else{
 
     <!-- Template Stylesheet -->
     <link href="{{asset('new_template/css/style.css')}}" rel="stylesheet">
+    <style>
+
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: relative;
+            background-color: #f9f9f9;
+            width: 140px;
+        }
+
+        .dropbtnru
+        {
+            background: url('http://icons.iconarchive.com/icons/custom-icon-design/flag-3/16/Russia-Flag-icon.png') no-repeat left center;
+            padding-left: 25px;
+            width: auto;
+        }
+        .dropbtnkg
+        {
+            background: url('https://icons.iconarchive.com/icons/famfamfam/flag/16/kg-icon.png') no-repeat left center;
+            padding-left: 25px;
+            width: auto;
+        }
+
+        .dropbtnkg::after {
+            /*background: rgba(0, 0, 0, 0) url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-16.png") no-repeat scroll center center;*/
+            content: "";
+            height: 16px;
+            position: absolute;
+            right: 0;
+            top: 7px;
+            width: 16px;
+        }
+
+
+
+
+        .dropdown-content a:first-child
+        {
+            background: url('http://icons.iconarchive.com/icons/custom-icon-design/flag-3/16/Russia-Flag-icon.png') no-repeat left center;
+        }
+
+        .dropdown-content a:last-child
+        {
+            background: url('https://icons.iconarchive.com/icons/famfamfam/flag/16/kg-icon.png') no-repeat left center;
+        }
+
+        /* Links inside the dropdown */
+
+        /* Change color of dropdown links on hover */
+
+        /*# sourceMappingURL=style.css.map */
+
+
+        .alert {
+            position: relative;
+            top: 10px;
+            left: 0;
+            width: auto;
+            height: auto;
+            padding: 10px;
+            margin: 10px;
+            line-height: 1.8;
+            border-radius: 5px;
+            cursor: hand;
+            cursor: pointer;
+            font-family: sans-serif;
+            font-weight: 400;
+        }
+
+        .alertCheckbox {
+            display: none;
+        }
+
+        :checked + .alert {
+            display: none;
+        }
+
+        .alertText {
+            display: table;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .alertClose {
+            float: right;
+            padding-top: 5px;
+            font-size: 10px;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+
+        .success {
+            background-color: #EFE;
+            border: 1px solid #DED;
+            color: #9A9;
+        }
+    </style>
+    @yield('style')
 {{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />--}}
 </head>
 
 <body>
-<style>
-
-
-    /* Dropdown Content (Hidden by Default) */
-    .dropdown-content {
-        display: none;
-        position: relative;
-        background-color: #f9f9f9;
-        width: 140px;
-    }
-
-    .dropbtnru
-    {
-        background: url('http://icons.iconarchive.com/icons/custom-icon-design/flag-3/16/Russia-Flag-icon.png') no-repeat left center;
-        padding-left: 25px;
-        width: auto;
-    }
-    .dropbtnkg
-    {
-        background: url('https://icons.iconarchive.com/icons/famfamfam/flag/16/kg-icon.png') no-repeat left center;
-        padding-left: 25px;
-        width: auto;
-    }
-
-    .dropbtnkg::after {
-        /*background: rgba(0, 0, 0, 0) url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-16.png") no-repeat scroll center center;*/
-        content: "";
-        height: 16px;
-        position: absolute;
-        right: 0;
-        top: 7px;
-        width: 16px;
-    }
-
-
-
-
-    .dropdown-content a:first-child
-    {
-        background: url('http://icons.iconarchive.com/icons/custom-icon-design/flag-3/16/Russia-Flag-icon.png') no-repeat left center;
-    }
-
-    .dropdown-content a:last-child
-    {
-        background: url('https://icons.iconarchive.com/icons/famfamfam/flag/16/kg-icon.png') no-repeat left center;
-    }
-
-    /* Links inside the dropdown */
-
-    /* Change color of dropdown links on hover */
-
-    /*# sourceMappingURL=style.css.map */
-
-
-    .alert {
-        position: relative;
-        top: 10px;
-        left: 0;
-        width: auto;
-        height: auto;
-        padding: 10px;
-        margin: 10px;
-        line-height: 1.8;
-        border-radius: 5px;
-        cursor: hand;
-        cursor: pointer;
-        font-family: sans-serif;
-        font-weight: 400;
-    }
-
-    .alertCheckbox {
-        display: none;
-    }
-
-    :checked + .alert {
-        display: none;
-    }
-
-    .alertText {
-        display: table;
-        margin: 0 auto;
-        text-align: center;
-        font-size: 16px;
-    }
-
-    .alertClose {
-        float: right;
-        padding-top: 5px;
-        font-size: 10px;
-    }
-
-    .clear {
-        clear: both;
-    }
-
-
-    .success {
-        background-color: #EFE;
-        border: 1px solid #DED;
-        color: #9A9;
-    }
-</style>
 <div class="container-xxl bg-white p-0">
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -674,8 +675,10 @@ else{
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 </div>
 
+@yield('script')
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 {{--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>--}}
 <script src="{{asset('new_template/lib/wow/wow.min.js')}}"></script>
 <script src="{{asset('new_template/lib/easing/easing.min.js')}}"></script>

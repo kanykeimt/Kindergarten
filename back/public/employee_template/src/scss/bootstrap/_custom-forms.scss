@@ -31,7 +31,7 @@
   }
 
   &:focus ~ .custom-control-label::before {
-    // the mixin is not used here to make sure there is feedback
+    // the mixin is not used here to make sure there is review
     box-shadow: $custom-control-indicator-focus-box-shadow;
   }
 
