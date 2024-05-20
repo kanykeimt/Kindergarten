@@ -14,7 +14,7 @@ class NewsService
 {
     public function news()
     {
-        $news = News::with('media', 'group')
+        $news = News::with('media', 'children')
             ->select(
                 DB::raw("strftime('%Y-%m-%d %H:%M', created_at) as datetime"),
                 'media_id',

@@ -9,18 +9,7 @@ class Child extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'surname',
-        'birth_date',
-        'gender',
-        'parent_id',
-        'group_id',
-        'photo',
-        'birth_certificate',
-        'med_certificate',
-        'med_disability',
-    ];
+    protected $guarded = false;
     public function group()
     {
         return $this->belongsTo(Group::class);

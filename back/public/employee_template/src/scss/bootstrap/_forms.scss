@@ -139,7 +139,7 @@ select.form-control {
 // Build on `.form-control` with modifier classes to decrease or increase the
 // height and font-size of form controls.
 //
-// The `.form-group-* form-control` variations are sadly duplicated to avoid the
+// The `.form-children-* form-control` variations are sadly duplicated to avoid the
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
 .form-control-sm {
@@ -258,7 +258,7 @@ select.form-control-lg {
 // forms begin stacked on extra small (mobile) devices and then go inline when
 // viewports reach <768px.
 //
-// Requires wrapping inputs and labels with `.form-group` for proper display of
+// Requires wrapping inputs and labels with `.form-children` for proper display of
 // default HTML form controls and our custom form controls (e.g., input groups).
 
 .form-inline {
@@ -291,10 +291,10 @@ select.form-control-lg {
       margin-bottom: 0;
     }
 
-    // Allow folks to *not* use `.form-group`
+    // Allow folks to *not* use `.form-children`
     .form-control {
       display: inline-block;
-      width: auto; // Prevent labels from stacking above inputs in `.form-group`
+      width: auto; // Prevent labels from stacking above inputs in `.form-children`
       vertical-align: middle;
     }
 

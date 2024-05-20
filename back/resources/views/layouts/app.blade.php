@@ -185,7 +185,7 @@ else{
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav mx-auto">
                 @if(auth()->user())
-                    @if(auth()->user()->role === 'ROLE_ADMIN' or auth()->user()->role === 'ROLE_TEACHER' or auth()->user()->role === 'ROLE_PARENT')
+                    @if(auth()->user()->role === 1 or auth()->user()->role === 2 or auth()->user()->role === 3)
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">@lang('lang.my_children')</a>
                             <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">

@@ -1620,7 +1620,7 @@ var TempusDominusBootstrap4 = function ($) {
         }
 
         TempusDominusBootstrap4.prototype._init = function _init() {
-            if (this._element.hasClass('input-group')) {
+            if (this._element.hasClass('input-children')) {
                 var datepickerButton = this._element.find('.datepickerbutton');
                 if (datepickerButton.length === 0) {
                     this.component = this._element.find('[data-toggle="datetimepicker"]');

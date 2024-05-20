@@ -1211,7 +1211,7 @@
   var SELECTOR_TAB_LOADING = SELECTOR_TAB_CONTENT + " .tab-loading";
   var SELECTOR_TAB_PANE = SELECTOR_TAB_CONTENT + " .tab-pane";
   var SELECTOR_SIDEBAR_MENU_ITEM = '.main-sidebar .nav-item > a.nav-link';
-  var SELECTOR_SIDEBAR_SEARCH_ITEM = '.sidebar-search-results .list-group-item';
+  var SELECTOR_SIDEBAR_SEARCH_ITEM = '.sidebar-search-results .list-children-item';
   var SELECTOR_HEADER_MENU_ITEM = '.main-header .nav-item a.nav-link';
   var SELECTOR_HEADER_DROPDOWN_ITEM = '.main-header a.dropdown-item';
   var CLASS_NAME_IFRAME_MODE$1 = 'iframe-mode';
@@ -2173,7 +2173,7 @@
   var CLASS_NAME_ICON_CLOSE = 'fa-times';
   var CLASS_NAME_HEADER = 'nav-header';
   var CLASS_NAME_SEARCH_RESULTS = 'sidebar-search-results';
-  var CLASS_NAME_LIST_GROUP = 'list-group';
+  var CLASS_NAME_LIST_GROUP = 'list-children';
   var SELECTOR_DATA_WIDGET$1 = '[data-widget="sidebar-search"]';
   var SELECTOR_SIDEBAR = '.main-sidebar .nav-sidebar';
   var SELECTOR_NAV_LINK = '.nav-link';
@@ -2345,7 +2345,7 @@
 
       var groupItemElement = $__default["default"]('<a/>', {
         href: decodeURIComponent(link),
-        class: 'list-group-item'
+        class: 'list-children-item'
       });
       var searchTitleElement = $__default["default"]('<div/>', {
         class: 'search-title'

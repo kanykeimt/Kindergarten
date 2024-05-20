@@ -296,7 +296,7 @@
                 ) {
                     var clipPaths = el.__clipPaths;
 
-                    // Optimize when clipping on group with several elements
+                    // Optimize when clipping on children with several elements
                     if (isClipPathChanged(clipPaths, prevElClipPaths)) {
                         // If has previous clipping state, restore from it
                         if (prevElClipPaths) {

@@ -24,7 +24,7 @@ class GroupController extends Controller
     public function index(){
         $groups = Group::all();
         $teachers = $this->service->index();
-        return view('admin.group.index', compact('groups', 'teachers'));
+        return view('admin.children.index', compact('groups', 'teachers'));
     }
 
     public function create(CreateRequest $request):RedirectResponse
@@ -39,7 +39,7 @@ class GroupController extends Controller
 
     public function edit(Group $group){
         $teachers = $this->service->edit($group);
-        return view('admin.group.edit',compact('group', 'teachers'));
+        return view('admin.children.edit',compact('group', 'teachers'));
     }
 
     public function update(UpdateRequest $request, Group $group):RedirectResponse

@@ -97,7 +97,7 @@ define(function (require) {
 
             var clipPath = el.clipPath;
             if (clipPath) {
-                // clipPath 的变换是基于 group 的变换
+                // clipPath 的变换是基于 children 的变换
                 clipPath.parent = el;
                 clipPath.updateTransform();
 
@@ -117,14 +117,14 @@ define(function (require) {
                 for (var i = 0; i < children.length; i++) {
                     var child = children[i];
 
-                    // Force to mark as dirty if group is dirty
+                    // Force to mark as dirty if children is dirty
                     // FIXME __dirtyPath ?
                     child.__dirty = el.__dirty || child.__dirty;
 
                     this._updateAndAddDisplayable(child, clipPaths, includeIgnore);
                 }
 
-                // Mark group clean here
+                // Mark children clean here
                 el.__dirty = false;
 
             }

@@ -778,14 +778,14 @@ $form-switch-checked-bg-image:    url("data:image/svg+xml,<svg xmlns='http://www
 $form-switch-checked-bg-position: right center !default;
 // scss-docs-end form-switch-variables
 
-// scss-docs-start input-group-variables
+// scss-docs-start input-children-variables
 $input-group-addon-padding-y:           $input-padding-y !default;
 $input-group-addon-padding-x:           $input-padding-x !default;
 $input-group-addon-font-weight:         $input-font-weight !default;
 $input-group-addon-color:               $input-color !default;
 $input-group-addon-bg:                  $gray-200 !default;
 $input-group-addon-border-color:        $input-border-color !default;
-// scss-docs-end input-group-variables
+// scss-docs-end input-children-variables
 
 // scss-docs-start form-select-variables
 $form-select-padding-y:             $input-padding-y !default;
@@ -1298,9 +1298,9 @@ $progress-bar-transition:           width .6s ease !default;
 // scss-docs-end progress-variables
 
 
-// List group
+// List children
 
-// scss-docs-start list-group-variables
+// scss-docs-start list-children-variables
 $list-group-color:                  $gray-900 !default;
 $list-group-bg:                     $white !default;
 $list-group-border-color:           rgba($black, .125) !default;
@@ -1325,7 +1325,7 @@ $list-group-action-hover-color:     $list-group-action-color !default;
 
 $list-group-action-active-color:    $body-color !default;
 $list-group-action-active-bg:       $gray-200 !default;
-// scss-docs-end list-group-variables
+// scss-docs-end list-children-variables
 
 
 // Image thumbnails

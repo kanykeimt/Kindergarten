@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 |
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
+| be assigned to the "api" middleware children. Make something great!
 |
 */
 
@@ -27,6 +27,6 @@ Route::post('/admin/children/create', [App\Http\Controllers\Admin\ChildControlle
 
 Route::post('/admin/resume/question/create', [App\Http\Controllers\Admin\QuestionController::class, 'create'])->name('admin.resume.question.create');
 
-Route::post('/employee/group/create', [App\Http\Controllers\Employee\GroupController::class, 'create'])->name('employee.group.create');
+Route::post('/employee/children/create', [App\Http\Controllers\Employee\ChildrenController::class, 'create'])->name('employee.children.create');
 
 

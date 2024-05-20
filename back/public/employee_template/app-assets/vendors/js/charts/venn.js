@@ -1038,7 +1038,7 @@
             }
         }
 
-        // find all the disjoint clusters and group them together
+        // find all the disjoint clusters and children them together
         var disjointClusters = {}, setid;
         for (i = 0; i < circles.length; ++i) {
             setid = find(circles[i]).parent.setid;

@@ -214,6 +214,7 @@ return [
     'add_news_successful' => 'Жанылыктар ийгиликтүү кошулду',
     'add_menu_successful' => 'Меню ийгиликтүү кошулду',
     'add_schedule_successful' => 'Сабак ийгиликтүү кошулду',
+    'add_child_warning' => 'Бала администратордун уруксатынан кийин кошулат',
 
     'update_user_successful' => 'Колдонуучунун маалыматы жаңыланды',
     'update_child_successful' => 'Баланын маалыматы жаңыланды',
@@ -223,7 +224,6 @@ return [
 
     'question_for_payment_date1' => 'Төлөм суммасы ',
     'question_for_payment_date2' => ' числого чейин жетиштүү',
-
 
 
     'warning' => 'Эскертүү',
@@ -267,4 +267,12 @@ return [
     'classes_name_ru' => 'Сабактын орусча аталышы',
     'add_schedule' => 'Сабак кошуу',
     'classes_name' => 'Сабактын аталышы',
+
+
+
+
+
+
+    'parents' => 'Ата-энелер',
+    'parents_list' => 'Ата-энелер тизмеси',
 ];

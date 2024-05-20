@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| be assigned to the "web" middleware children. Make something great!
 |
 */
 Route::group(
@@ -68,17 +68,22 @@ Route::group(
         Route::group(['prefix'=>'employee'], function (){
             Route::get('/index/{user}', App\Http\Controllers\Employee\IndexController::class)->name('employee');
 
+            Route::group(['prefix' => 'users'], function (){
+                Route::get('/index', [App\Http\Controllers\Employee\UserController::class, 'index'])->name('employee.user.index');
+                Route::get('/show/{user}', [App\Http\Controllers\Employee\UserController::class, 'show'])->name('employee.user.show');
+            });
+
             Route::group(['prefix'=>'profile'], function (){
-                Route::get('/index/{user}', [App\Http\Controllers\Employee\ProfileController::class, 'index'])->name('employee.profile');
+                Route::get('/{user}', [App\Http\Controllers\Employee\ProfileController::class, 'index'])->name('employee.profile');
                 Route::patch('/update/{user}', [App\Http\Controllers\Employee\ProfileController::class, 'update'])->name('employee.profile.update');
             });
 
-            Route::group(['prefix'=>'group'], function (){
-                Route::get('/', [App\Http\Controllers\Employee\GroupController::class, 'index'])->name('employee.group.index');
-                Route::get('/show/{child}', [App\Http\Controllers\Employee\GroupController::class, 'show'])->name('employee.group.show');
-                Route::get('/edit/{child}', [App\Http\Controllers\Employee\GroupController::class, 'edit'])->name('employee.group.edit');
-                Route::patch('/update/{child}', [App\Http\Controllers\Employee\GroupController::class, 'update'])->name('employee.group.update');
-                Route::delete('/{child}', [App\Http\Controllers\Employee\GroupController::class, 'delete'])->name('employee.group.delete');
+            Route::group(['prefix'=>'children'], function (){
+                Route::get('/', [App\Http\Controllers\Employee\ChildrenController::class, 'index'])->name('employee.children.index');
+                Route::get('/show/{child}', [App\Http\Controllers\Employee\ChildrenController::class, 'show'])->name('employee.children.show');
+                Route::get('/edit/{child}', [App\Http\Controllers\Employee\ChildrenController::class, 'edit'])->name('employee.children.edit');
+                Route::patch('/update/{child}', [App\Http\Controllers\Employee\ChildrenController::class, 'update'])->name('employee.children.update');
+                Route::delete('/{child}', [App\Http\Controllers\Employee\ChildrenController::class, 'delete'])->name('employee.children.delete');
             });
 
             Route::group(['prefix'=>'attendance'], function (){
@@ -91,7 +96,7 @@ Route::group(
 
             Route::group(['prefix'=>'gallery'], function (){
                 Route::get('/', [App\Http\Controllers\Employee\GalleryController::class, 'index'])->name('employee.gallery.index');
-                Route::post('/create/{group}', [App\Http\Controllers\Employee\GalleryController::class, 'create'])->name('employee.gallery.create');
+                Route::post('/create/{children}', [App\Http\Controllers\Employee\GalleryController::class, 'create'])->name('employee.gallery.create');
                 Route::delete('/{date}', [App\Http\Controllers\Employee\GalleryController::class, 'delete'])->name('employee.gallery.delete');
 
             });
@@ -121,7 +126,7 @@ Route::group(
                 Route::get('/show/{group}',[App\Http\Controllers\Admin\GroupController::class, 'show'])->name('admin.group.show');
                 Route::get('/edit/{group}', [App\Http\Controllers\Admin\GroupController::class, 'edit'])->name('admin.group.edit');
                 Route::patch('/update/{group}', [App\Http\Controllers\Admin\GroupController::class, 'update'])->name('admin.group.update');
-                Route::delete('/{group}',[App\Http\Controllers\Admin\GroupController::class, 'delete'])->name('admin.group.delete');
+                Route::delete('/{group}',[App\Http\Controllers\Admin\GroupController::class, 'delete'])->name('admin.group .delete');
             });
 
             Route::group(['prefix'=>'children'], function (){
@@ -131,6 +136,7 @@ Route::group(
                 Route::patch('/update/{child}', [App\Http\Controllers\Admin\ChildController::class, 'update'])->name('admin.children.update');
                 Route::delete('/{child}', [App\Http\Controllers\Admin\ChildController::class, 'delete'])->name('admin.children.delete');
             });
+
             Route::group(['prefix'=>'enroll'], function (){
                 Route::get('/', [App\Http\Controllers\Admin\EnrollController::class, 'index'])->name('admin.enroll.index');
                 Route::get('/show/{enroll}', [App\Http\Controllers\Admin\EnrollController::class, 'show'])->name('admin.enroll.show');
@@ -199,8 +205,6 @@ Route::group(
                 Route::post('/create', [App\Http\Controllers\Admin\PaymentController::class, 'create'])->name('admin.payment.create');
                 Route::get('warning/{payment}', [App\Http\Controllers\Admin\PaymentController::class, 'warning'])->name('admin.payment.warning');
             });
-
-
 
             Route::group(['prefix' => 'review'], function (){
                 Route::get('/index', [App\Http\Controllers\Admin\ReviewController::class, 'index'])->name('admin.review.index');

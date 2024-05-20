@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="{{route('admin.group.index')}}" class="btn btn-gradient-primary my-1">@lang('lang.cancel')</a>
+                    <a href="{{route('admin.children.index')}}" class="btn btn-gradient-primary my-1">@lang('lang.cancel')</a>
                     <button type="submit" class="btn btn-gradient-secondary my-1">@lang('lang.saveBtn')</button>
                 </div>
             </form>

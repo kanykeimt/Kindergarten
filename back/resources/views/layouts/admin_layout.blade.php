@@ -124,7 +124,7 @@ else{
             </a>
             <div class="navbar-nav w-100">
                 <a href="{{route('admin.user.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.user') ? 'active' : '' }}"><i class="fa fa-users me-2"></i>@lang('lang.users')</a>
-                <a href="{{route('admin.group.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.group') ? 'active' : '' }}"><i class="fa fa-list me-2"></i>@lang('lang.groups')</a>
+                <a href="{{route('admin.children.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.children') ? 'active' : '' }}"><i class="fa fa-list me-2"></i>@lang('lang.groups')</a>
                 <a href="{{route('admin.children.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.children') ? 'active' : '' }}"><i class="fa fa-child me-2"></i>@lang('lang.children')</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link {{ (Str::startsWith(Route::currentRouteName(), 'admin.resume') or Str::startsWith(Route::currentRouteName(), 'admin.question')) ? 'active' : '' }} dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-file me-2"></i>@lang('lang.resume')</a>

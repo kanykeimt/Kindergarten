@@ -587,8 +587,8 @@ if (!require('../core/env').canvasSupported) {
 
         var vmlEl = this._vmlEl;
         if (!vmlEl) {
-            // FIXME 使用 group 在 left, top 都不是 0 的时候就无法显示了。
-            // vmlEl = vmlCore.createNode('group');
+            // FIXME 使用 children 在 left, top 都不是 0 的时候就无法显示了。
+            // vmlEl = vmlCore.createNode('children');
             vmlEl = vmlCore.doc.createElement('div');
             initRootElStyle(vmlEl);
 

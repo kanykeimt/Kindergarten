@@ -61,7 +61,7 @@
 
     this.$group = $.create('div');
 
-    // .btn-group-justified works with <a> elements as the <button> doesn't pick up the styles
+    // .btn-children-justified works with <a> elements as the <button> doesn't pick up the styles
     this.$buttons = $.create('a', 'a');
 
     this.$off = this.$buttons.eq(this.options.reverse ? 1 : 0);
@@ -143,7 +143,7 @@
 
       this.$group.append(this.$buttons).insertAfter(this.element);
 
-      // Necessarily after this.$group.append() (autofocus)
+      // Necessarily after this.$children.append() (autofocus)
       if (this.element.disabled) {
         this.$buttons.addClass('disabled');
 
@@ -160,7 +160,7 @@
       }
     },
     toggleChecked: function() {
-      // this.$group not focus (incorrect on form reset)
+      // this.$children not focus (incorrect on form reset)
       this.$buttons.toggleClass('active');
 
       this.$off.toggleClass(this.options.offCls);
@@ -287,7 +287,7 @@
   // HTML5 data-*.
   // <input data-on-label="43"> --> $('input').data('onLabel') == '43'.
   $.fn.checkboxpicker.defaults = {
-    baseGroupCls: 'btn-group',
+    baseGroupCls: 'btn-children',
     baseCls: 'btn',
     groupCls: null,
     cls: null,

@@ -29,7 +29,7 @@
                     </ul>
                 </div>
             <div class="modal-footer">
-                <a href="{{route('admin.group.index')}}" class="btn btn-secondary my-1">@lang('lang.back_btn')</a>
+                <a href="{{route('admin.children.index')}}" class="btn btn-secondary my-1">@lang('lang.back_btn')</a>
             </div>
             </div>
         </div>

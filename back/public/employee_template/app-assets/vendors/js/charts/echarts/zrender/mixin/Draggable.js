@@ -1,4 +1,4 @@
-// TODO Draggable for group
+// TODO Draggable for children
 // FIXME Draggable on element which has parent rotation or scale
 define(function (require) {
     function Draggable() {

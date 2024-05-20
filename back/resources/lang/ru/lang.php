@@ -215,7 +215,7 @@ return [
     'add_news_successful' => 'Новости успешно добавлены',
     'add_menu_successful' => 'Меню успешно добавлено',
     'add_schedule_successful' => 'Урок успешно добавлен',
-
+    'add_child_warning' => 'Ребенок добавиться после одобрения администратора',
 
     'update_user_successful' => 'Данные пользователя обновлены',
     'update_child_successful' => 'Данные ребенка обновлены',
@@ -225,7 +225,6 @@ return [
 
     'question_for_payment_date1' => 'Сумма оплаты достаточно до ',
     'question_for_payment_date2' => ' числа',
-
 
     'warning' => 'Предупреждение',
     'message_content' => 'Содержание сообщения',
@@ -255,7 +254,6 @@ return [
     'calories' => 'Калорийность',
     'image' => 'Изображение',
 
-
     'monday' => 'Понедельник',
     'tuesday' => 'Вторник',
     'wednesday' => 'Среда',
@@ -269,4 +267,12 @@ return [
     'classes_name_ru' => 'Название урока на русском',
     'add_schedule' => 'Добавить урок',
     'classes_name' => 'Название урока',
+
+
+
+
+
+
+    'parents' => 'Родители',
+    'parents_list' => 'Список родителей',
     ];

@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
 
-  // No need to set list-style: none; since .list-group-item is block level
+  // No need to set list-style: none; since .list-children-item is block level
   padding-left: 0; // reset padding because ul and ol
   margin-bottom: 0;
   @include border-radius($list-group-border-radius);
@@ -52,7 +52,7 @@
 
 // Individual list items
 //
-// Use on `li`s or `div`s within the `.list-group` parent.
+// Use on `li`s or `div`s within the `.list-children` parent.
 
 .list-group-item {
   position: relative;
@@ -99,7 +99,7 @@
 
 // Horizontal
 //
-// Change the layout of list group items from vertical (default) to horizontal.
+// Change the layout of list children items from vertical (default) to horizontal.
 
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
@@ -140,7 +140,7 @@
 
 // Flush list items
 //
-// Remove borders and border-radius to keep list group items edge-to-edge. Most
+// Remove borders and border-radius to keep list children items edge-to-edge. Most
 // useful within other components (e.g., cards).
 
 .list-group-flush {
@@ -156,8 +156,8 @@
 }
 
 
-// scss-docs-start list-group-modifiers
-// List group contextual variants
+// scss-docs-start list-children-modifiers
+// List children contextual variants
 //
 // Add modifier classes to change text and background color on individual items.
 // Organizationally, this must come after the `:hover` states.
@@ -171,4 +171,4 @@
 
   @include list-group-item-variant($state, $list-group-background, $list-group-color);
 }
-// scss-docs-end list-group-modifiers
+// scss-docs-end list-children-modifiers

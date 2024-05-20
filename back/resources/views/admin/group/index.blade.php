@@ -4,7 +4,7 @@
         <button type="button" class="btn btn-primary" id="addUserBtnId" onclick="showForm()">@lang('lang.add_group')</button>
         <div class="d-none" id="addUserId" class="bg-light rounded h-100 p-4">
             <h6 class="mb-4">@lang('lang.create_group_form')</h6>
-            <form action="{{route('admin.group.create')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('admin.children.create')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row mb-3">
                     <label for="name" class="col-sm-3 col-form-label">@lang('lang.emp_group_name'):</label>
@@ -75,17 +75,17 @@
                                 <div style="float: left;
                                 display: block;
                                 width: 33%;" class="text-center">
-                                    <a href="{{route('admin.group.show', $group)}}"><i class="fa fa-info me-2"></i></a>
+                                    <a href="{{route('admin.children.show', $group)}}"><i class="fa fa-info me-2"></i></a>
                                 </div>
                                 <div style="float: left;
                                 display: block;
                                 width: 33%;" class="text-center">
-                                    <a href="{{route('admin.group.edit', $group)}}" class="text-success"><i title="edit" class="fas fa-pen"></i></a>
+                                    <a href="{{route('admin.children.edit', $group)}}" class="text-success"><i title="edit" class="fas fa-pen"></i></a>
                                 </div>
                                 <div style="float: left;
                                 display: block;
                                 width: 33%;" class="text-center">
-                                    <form action="{{route('admin.group.delete', $group->id)}}" method="POST">
+                                    <form action="{{route('admin.children.delete', $group->id)}}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button id="delete_button" type="button" class="border-0 bg-transparent" onclick="deletedBtn(this)">
