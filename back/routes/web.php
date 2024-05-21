@@ -89,9 +89,16 @@ Route::group(
             Route::group(['prefix'=>'attendance'], function (){
                 Route::get('/', [App\Http\Controllers\Employee\ChildAttendanceController::class, 'index'])->name('employee.attendance.index');
                 Route::post('/create', [App\Http\Controllers\Employee\ChildAttendanceController::class, 'create'])->name('employee.attendance.create');
-                Route::post('/archive', [App\Http\Controllers\Employee\ChildAttendanceController::class, 'showArchive'])->name('employee.attendance.archive');
-                Route::post('/archive/edit', [App\Http\Controllers\Employee\ChildAttendanceController::class, 'editArchive'])->name('employee.attendance.archiveEdit');
-                Route::post('/archive/update/{attendance}', [App\Http\Controllers\Employee\ChildAttendanceController::class, 'updateArchive'])->name('employee.attendance.archiveUpdate');
+                Route::get('/archive', [App\Http\Controllers\Employee\ChildAttendanceController::class, 'showArchive'])->name('employee.attendance.archive');
+                Route::post('archiveShow', [App\Http\Controllers\Employee\ChildAttendanceController::class,'archiveShow'])->name('employee.attendance.archiveShow');
+//                Route::post('/archive/edit', [App\Http\Controllers\Employee\ChildAttendanceController::class, 'editArchive'])->name('employee.attendance.archiveEdit');
+//                Route::post('/archive/update/{attendance}', [App\Http\Controllers\Employee\ChildAttendanceController::class, 'updateArchive'])->name('employee.attendance.archiveUpdate');
+            });
+
+            Route::group(['prefix'=>'news'], function (){
+                Route::get('/', [App\Http\Controllers\Admin\NewsController::class, 'index'])->name('admin.news.index');
+                Route::post('/create', [App\Http\Controllers\Admin\NewsController::class, 'create'])->name('admin.news.create');
+                Route::delete('/{date}', [App\Http\Controllers\Admin\NewsController::class, 'delete'])->name('admin.news.delete');
             });
 
             Route::group(['prefix'=>'gallery'], function (){
@@ -126,7 +133,7 @@ Route::group(
                 Route::get('/show/{group}',[App\Http\Controllers\Admin\GroupController::class, 'show'])->name('admin.group.show');
                 Route::get('/edit/{group}', [App\Http\Controllers\Admin\GroupController::class, 'edit'])->name('admin.group.edit');
                 Route::patch('/update/{group}', [App\Http\Controllers\Admin\GroupController::class, 'update'])->name('admin.group.update');
-                Route::delete('/{group}',[App\Http\Controllers\Admin\GroupController::class, 'delete'])->name('admin.group .delete');
+                Route::delete('/{group}',[App\Http\Controllers\Admin\GroupController::class, 'delete'])->name('admin.group.delete');
             });
 
             Route::group(['prefix'=>'children'], function (){

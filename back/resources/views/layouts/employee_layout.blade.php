@@ -125,28 +125,19 @@ else{
             <div class="navbar-nav w-100">
                 <a href="{{route('employee.user.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'employee.user') ? 'active' : '' }}"><i class="fa fa-users me-2"></i>@lang('lang.parents')</a>
                 <a href="{{route('employee.children.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'employee.children') ? 'active' : '' }}"><i class="fa fa-list me-2"></i>@lang('lang.emp_group')</a>
-                <a href="{{route('admin.children.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.children') ? 'active' : '' }}"><i class="fa fa-child me-2"></i>@lang('lang.children')</a>
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link {{ (Str::startsWith(Route::currentRouteName(), 'admin.resume') or Str::startsWith(Route::currentRouteName(), 'admin.question')) ? 'active' : '' }} dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-file me-2"></i>@lang('lang.resume')</a>
+                    <a href="#" class="nav-link {{ Str::startsWith(Route::currentRouteName(), 'employee.attendance') ? 'active' : '' }} dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-calendar-check me-2"></i>@lang('lang.emp_attendance')</a>
                     <div class="dropdown-menu bg-transparent border-0">
-                        <a href="{{route('admin.resume.question.index')}}" class="dropdown-item">@lang('lang.resume_ques')</a>
-                        <a href="{{route('admin.resume.index')}}" class="dropdown-item">@lang('lang.comp_resumes')</a>
+                        <a href="{{route('employee.attendance.index')}}" class="dropdown-item">@lang('lang.current_attendance')</a>
+                        <a href="{{route('employee.attendance.archive')}}" class="dropdown-item">@lang('lang.archive_attendance')</a>
                     </div>
                 </div>
-                <a href="{{route('admin.enroll.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.enroll') ? 'active' : '' }}"><i class="fa fa-check-circle me-2"></i>@lang('lang.queue')</a>
                 <a href="{{route('admin.payment.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.payment') ? 'active' : '' }}"><i class="fa fa-credit-card me-2"></i>@lang('lang.emp_payment')</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.attendance') ? 'active' : '' }} dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-calendar-check me-2"></i>@lang('lang.emp_attendance')</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="{{route('admin.attendance.index')}}" class="dropdown-item">@lang('lang.current_attendance')</a>
-                        <a href="{{route('admin.attendance.archive')}}" class="dropdown-item">@lang('lang.archive_attendance')</a>
-                    </div>
-                </div>
+
                 <a href="{{route('admin.news.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.news') ? 'active' : '' }}"><i class="fa fa-newspaper me-2"></i>@lang('lang.news')</a>
-                <a href="{{route('admin.menu.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.menu') ? 'active' : '' }}"><i class="fa fa-utensils me-2"></i>Меню</a>
                 <a href="{{route('admin.schedule.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.schedule') ? 'active' : '' }}"><i class="fa fa-book me-2"></i>@lang('lang.classes')</a>
                 <a href="{{route('admin.mainGallery.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.mainGallery') ? 'active' : '' }}"><i class="fa fa-file-image me-2"></i>@lang('lang.main_gallery')</a>
-                <a href="{{route('admin.review.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.review') ? 'active' : '' }}"><i class="fa fa-comments me-2"></i>@lang('lang.feedbacks')</a>
+
             </div>
         </nav>
     </div>

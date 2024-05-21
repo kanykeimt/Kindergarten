@@ -4,7 +4,7 @@
         <div class="bg-light rounded h-100 p-4">
             <h3 class="mb-4">@lang('lang.edit_btn')</h3>
             <div class="container">
-                <form action="{{route('admin.children.update', $group->id)}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.group.update', $group->id)}}" method="POST" enctype="multipart/form-data">
                     @method('patch')
                     @csrf
                     <div class="form-group">
@@ -56,7 +56,7 @@
                     </div>
                     <br>
                     <div class="modal-footer">
-                        <a href="{{route('admin.children.index')}}" class="btn btn-secondary">@lang('lang.back_btn')</a>
+                        <a href="{{route('admin.group.index')}}" class="btn btn-secondary">@lang('lang.back_btn')</a>
                         <button type="submit" class="btn btn-success">@lang('lang.save_btn')</button>
                     </div>
                 </form>
