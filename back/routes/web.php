@@ -98,13 +98,21 @@ Route::group(
             Route::group(['prefix'=>'news'], function (){
                 Route::get('/', [App\Http\Controllers\Employee\NewsController::class, 'index'])->name('employee.news.index');
                 Route::post('/create', [App\Http\Controllers\Employee\NewsController::class, 'create'])->name('employee.news.create');
-                Route::get('/edit/{child}', [App\Http\Controllers\Employee\PaymentController::class, 'edit'])->name('employee.payment.edit');
-                Route::post('/create', [App\Http\Controllers\Employee\PaymentController::class, 'create'])->name('employee.payment.create');
+                Route::delete('/{date}', [App\Http\Controllers\Employee\NewsController::class, 'delete'])->name('employee.news.delete');
             });
             Route::group(['prefix' => 'payment'], function (){
                 Route::get('/index', [App\Http\Controllers\Employee\PaymentController::class, 'index'])->name('employee.payment.index');
                 Route::get('/warning/{payment}', [App\Http\Controllers\Employee\PaymentController::class, 'warning'])->name('employee.payment.warning');
+                Route::get('/edit/{child}', [App\Http\Controllers\Employee\PaymentController::class, 'edit'])->name('employee.payment.edit');
                 Route::post('/create', [App\Http\Controllers\Employee\PaymentController::class, 'create'])->name('employee.payment.create');
+            });
+
+            Route::group(['prefix' => 'schedule'], function (){
+                Route::get('/', [App\Http\Controllers\Employee\ScheduleController::class, 'index'])->name('employee.schedule.index');
+                Route::post('/create', [App\Http\Controllers\Employee\ScheduleController::class, 'create'])->name('employee.schedule.create');
+                Route::get('/edit/{group_id}/{day_id}', [App\Http\Controllers\Employee\ScheduleController::class, 'edit'])->name('employee.schedule.edit');
+                Route::post('/update', [App\Http\Controllers\Employee\ScheduleController::class, 'update'])->name('employee.schedule.update');
+                Route::delete('/{schedule}', [App\Http\Controllers\Employee\ScheduleController::class, 'delete'])->name('employee.schedule.delete');
             });
 
             Route::group(['prefix'=>'gallery'], function (){

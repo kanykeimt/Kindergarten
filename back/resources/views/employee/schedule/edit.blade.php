@@ -1,16 +1,16 @@
-@extends('layouts.admin_layout')
+@extends('layouts.employee_layout')
 @section('content')
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">
-            <form action="{{route('admin.schedule.update')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('employee.schedule.update')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row mb-3">
                     <label for="group_id" class="col-sm-3 col-form-label">@lang('lang.child_group'):</label>
                     <div class="col-sm-6" hidden="">
-                        <input type="text" class="form-control" id="classes_name_kg" value="{{$group_id}}" name="group_id" required autocomplete="group_id">
+                        <input type="text" class="form-control" id="classes_name_kg" value="{{auth()->user()->group->id}}" name="group_id" required autocomplete="group_id">
                     </div>
                     <div class="col-sm-7">
-                        <input type="text" class="form-control" value="{{$group_name}}"  required disabled>
+                        <input type="text" class="form-control" value="{{auth()->user()->group->name}}"  required disabled>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -63,7 +63,7 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <a href="{{route('admin.schedule.index')}}" class="btn btn-secondary">@lang('lang.back_btn')</a>
+                    <a href="{{route('employee.schedule.index')}}" class="btn btn-secondary">@lang('lang.back_btn')</a>
                     <button type="submit" class="btn btn-success">@lang('lang.save_btn')</button>
                 </div>
             </form>

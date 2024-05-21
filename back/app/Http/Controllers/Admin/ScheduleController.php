@@ -32,10 +32,9 @@ class ScheduleController extends Controller
 
     public function edit($group_id, $day_id){
         $schedules = $this->service->edit($group_id, $day_id);
-        $daysOfWeek = $this->service->daysOfWeek();
-        $group_name = Group::where('id', $group_id)->first()->name;
+        $day = DaysOfWeek::where('id', $day_id)->first();
         $classes = Classes::all();
-        return view('admin.schedule.edit', compact('schedules', 'daysOfWeek', 'classes','group_id','day_id', 'group_name'));
+        return view('admin.schedule.edit', compact('schedules', 'day', 'classes'));
     }
 
     public function delete(Schedule $schedule){
