@@ -26,17 +26,22 @@
                         <textarea style="height: 500px;" type="text" id="message" name="message" class="form-control col-6" required>{{$message_content}}</textarea>
                     </div>
                 </div>
-                <button class="btn btn-secondary">@lang('lang.cancel')</button>
+                <button class="btn btn-secondary" href="{{route('admin.payment.index')}}">@lang('lang.cancel')</button>
                 <button type="submit"  class="btn btn-success">@lang('lang.saveBtn')</button>
             </form>
         </div>
     </div>
     <script>
-        @if(session('status')){
+            @if(session('status')){
             alert("{{ session('status') }}");
             window.history.back();
         }
         @endif
     </script>
+
+
+@endsection
+@section('script')
+
 @endsection
 

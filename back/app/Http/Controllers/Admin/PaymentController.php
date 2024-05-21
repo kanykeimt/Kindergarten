@@ -24,9 +24,12 @@ class PaymentController extends Controller
 
     public function index()
     {
-        $current_month_payments = $this->service->current_month_data();
-        $previous_month_payments = $this->service->previous_month_data();
-        return view('admin.payment.index',compact('current_month_payments'));
+        $payments = [] ;
+        $current_date = now();
+        for($i = 0; $i < 2; $i++){
+            $payments[$current_date->copy()->subMonths($i)->format('n')] = $this->service->payments($current_date->copy()->subMonths($i));
+        }
+        return view('admin.payment.index',compact( 'payments'));
     }
 
     public function edit(Child $child)

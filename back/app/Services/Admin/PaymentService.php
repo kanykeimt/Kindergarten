@@ -12,26 +12,13 @@ use Illuminate\Support\Facades\Lang;
 class PaymentService
 {
 
-    public function current_month_data()
-    {
-        $current_month = date('n');
-        $current_month_payments = Payment::join('children', 'payments.child_id', '=', 'children.id')
-            ->select('payments.*', 'children.name', 'children.surname')
-            ->whereMonth('date_from', $current_month)
-            ->get();
-        return $current_month_payments;
+
+    public function payments($date){
+        $payments = Payment::whereMonth('date_from', $date->month)
+            ->whereYear('date_from', $date->year)->get();
+        return $payments;
     }
 
-    public function previous_month_data()
-    {
-        $previous_month = date('n') - 1;
-
-        $previous_month_payments = Payment::join('children', 'payments.child_id', '=', 'children.id')
-            ->select('payments.*', 'children.name', 'children.surname')
-            ->whereMonth('date_from', $previous_month)
-            ->get();
-        return $previous_month_payments;
-    }
 
     public function child_payment_data(Child $child)
     {

@@ -100,6 +100,10 @@ Route::group(
                 Route::post('/create', [App\Http\Controllers\Employee\NewsController::class, 'create'])->name('employee.news.create');
                 Route::delete('/{date}', [App\Http\Controllers\Employee\NewsController::class, 'delete'])->name('employee.news.delete');
             });
+            Route::group(['prefix' => 'payment'], function (){
+                Route::get('/index', [App\Http\Controllers\Employee\PaymentController::class, 'index'])->name('employee.payment.index');
+                Route::post('/create', [App\Http\Controllers\Employee\PaymentController::class, 'create'])->name('employee.payment.create');
+            });
 
             Route::group(['prefix'=>'gallery'], function (){
                 Route::get('/', [App\Http\Controllers\Employee\GalleryController::class, 'index'])->name('employee.gallery.index');
@@ -108,10 +112,7 @@ Route::group(
 
             });
 
-            Route::group(['prefix' => 'payment'], function (){
-                Route::get('/index', [App\Http\Controllers\Employee\PaymentController::class, 'index'])->name('employee.payment.index');
-                Route::post('/create', [App\Http\Controllers\Employee\PaymentController::class, 'create'])->name('employee.payment.create');
-            });
+
         });
 
         Route::group(['prefix'=>'admin', 'middleware'=>'admin'], function (){
