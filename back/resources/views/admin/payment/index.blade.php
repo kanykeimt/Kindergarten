@@ -58,29 +58,6 @@
         </div>
     @endforeach
 
-
-
-    <div class="col-sm-12">
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingThree">
-                    <button class="accordion-button collapsed" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
-                            aria-expanded="false" aria-controls="flush-collapseThree">
-                        Accordion Item #3
-                    </button>
-                </h2>
-                <div id="flush-collapseThree" class="accordion-collapse collapse"
-                     aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">
-                        Sea sea sit sanctus magna gubergren kasd, magna justo ea lorem lorem. Elitr aliquyam ipsum clita consetetur duo at nonumy invidunt, invidunt eos dolore vero sit amet amet magna tempor clita, takimata diam justo stet erat et vero erat. Sit ipsum eirmod sea ut vero dolores sea clita nonumy, no.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <script>
         function searchById(value){
             let table = document.getElementById('paymentTable');

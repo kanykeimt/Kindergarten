@@ -1,4 +1,4 @@
-@extends('layouts.admin_layout')
+@extends('layouts.employee_layout')
 @section('content')
 
     <div class="col-12">
@@ -26,7 +26,7 @@
                         <textarea style="height: 500px;" type="text" id="message" name="message" class="form-control col-6" required>{{$message_content}}</textarea>
                     </div>
                 </div>
-                <button class="btn btn-secondary" href="{{route('admin.payment.index')}}">@lang('lang.cancel')</button>
+                <button class="btn btn-secondary" href="{{route('employee.payment.index')}}">@lang('lang.cancel')</button>
                 <button type="submit"  class="btn btn-success">@lang('lang.saveBtn')</button>
             </form>
         </div>

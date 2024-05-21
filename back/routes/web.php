@@ -98,10 +98,12 @@ Route::group(
             Route::group(['prefix'=>'news'], function (){
                 Route::get('/', [App\Http\Controllers\Employee\NewsController::class, 'index'])->name('employee.news.index');
                 Route::post('/create', [App\Http\Controllers\Employee\NewsController::class, 'create'])->name('employee.news.create');
-                Route::delete('/{date}', [App\Http\Controllers\Employee\NewsController::class, 'delete'])->name('employee.news.delete');
+                Route::get('/edit/{child}', [App\Http\Controllers\Employee\PaymentController::class, 'edit'])->name('employee.payment.edit');
+                Route::post('/create', [App\Http\Controllers\Employee\PaymentController::class, 'create'])->name('employee.payment.create');
             });
             Route::group(['prefix' => 'payment'], function (){
                 Route::get('/index', [App\Http\Controllers\Employee\PaymentController::class, 'index'])->name('employee.payment.index');
+                Route::get('/warning/{payment}', [App\Http\Controllers\Employee\PaymentController::class, 'warning'])->name('employee.payment.warning');
                 Route::post('/create', [App\Http\Controllers\Employee\PaymentController::class, 'create'])->name('employee.payment.create');
             });
 
@@ -210,7 +212,7 @@ Route::group(
                 Route::get('/index', [App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('admin.payment.index');
                 Route::get('/edit/{child}', [App\Http\Controllers\Admin\PaymentController::class, 'edit'])->name('admin.payment.edit');
                 Route::post('/create', [App\Http\Controllers\Admin\PaymentController::class, 'create'])->name('admin.payment.create');
-                Route::get('warning/{payment}', [App\Http\Controllers\Admin\PaymentController::class, 'warning'])->name('admin.payment.warning');
+                Route::get('/warning/{payment}', [App\Http\Controllers\Admin\PaymentController::class, 'warning'])->name('admin.payment.warning');
             });
 
             Route::group(['prefix' => 'review'], function (){
