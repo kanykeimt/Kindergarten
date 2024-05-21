@@ -96,9 +96,9 @@ Route::group(
             });
 
             Route::group(['prefix'=>'news'], function (){
-                Route::get('/', [App\Http\Controllers\Admin\NewsController::class, 'index'])->name('admin.news.index');
-                Route::post('/create', [App\Http\Controllers\Admin\NewsController::class, 'create'])->name('admin.news.create');
-                Route::delete('/{date}', [App\Http\Controllers\Admin\NewsController::class, 'delete'])->name('admin.news.delete');
+                Route::get('/', [App\Http\Controllers\Employee\NewsController::class, 'index'])->name('employee.news.index');
+                Route::post('/create', [App\Http\Controllers\Employee\NewsController::class, 'create'])->name('employee.news.create');
+                Route::delete('/{date}', [App\Http\Controllers\Employee\NewsController::class, 'delete'])->name('employee.news.delete');
             });
 
             Route::group(['prefix'=>'gallery'], function (){
@@ -108,8 +108,7 @@ Route::group(
 
             });
 
-            Route::group(['prefix' => 'payment
-            '], function (){
+            Route::group(['prefix' => 'payment'], function (){
                 Route::get('/index', [App\Http\Controllers\Employee\PaymentController::class, 'index'])->name('employee.payment.index');
                 Route::post('/create', [App\Http\Controllers\Employee\PaymentController::class, 'create'])->name('employee.payment.create');
             });
