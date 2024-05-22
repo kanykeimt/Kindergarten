@@ -46,11 +46,12 @@ Route::group(
 
         Route::get('/main/children/{child}', [App\Http\Controllers\User\ChildController::class, 'index'])->name('children');
         Route::patch('/main/children/update/{child}', [App\Http\Controllers\User\ChildController::class, 'update'])->name('children.update');
+        Route::post('/main/children/payment', [App\Http\Controllers\User\ChildController::class, 'payment'])->name('children.payment');
 
-        Route::post('/main/payment', [App\Http\Controllers\User\PaymentController::class, 'index'])->name('payment');
-        Route::get('/main/payment/{child}', [App\Http\Controllers\User\PaymentController::class, 'index'])->name('payment.child');
-        Route::post('/main/payment/form', [App\Http\Controllers\User\PaymentController::class, 'form'])->name('payment.form');
-        Route::post('/main/payment/create', [App\Http\Controllers\User\PaymentController::class, 'create'])->name('payment.create');
+//        Route::post('/main/payment', [App\Http\Controllers\User\PaymentController::class, 'index'])->name('payment');
+//        Route::get('/main/payment/{child}', [App\Http\Controllers\User\PaymentController::class, 'index'])->name('payment.child');
+//        Route::post('/main/payment/form', [App\Http\Controllers\User\PaymentController::class, 'form'])->name('payment.form');
+//        Route::post('/main/payment/create', [App\Http\Controllers\User\PaymentController::class, 'create'])->name('payment.create');
 
         Route::post('/main/review/create', [App\Http\Controllers\User\ReviewController::class, 'create'])->name('review.create');
 

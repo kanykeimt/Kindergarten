@@ -611,15 +611,27 @@ else{
                     </div>
                 </div>
 
-                @if (session('status'))
-                    <label>
-                        <input type="checkbox" class="alertCheckbox" autocomplete="off" />
-                        <div class="alert success">
-                            <span class="alertClose">X</span>
-                            <span class="alertText">{{ session('status') }}<br class="clear"/></span>
-                        </div>
-                    </label>
-                @endif
+                <div class="container-fluid p-4">
+                    <div class="row g-4">
+                        @if (session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @elseif(session('warning'))
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                {{ session('warning') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @elseif(session('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ session('error') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+
                 @yield('content')
             </main>
         </div>

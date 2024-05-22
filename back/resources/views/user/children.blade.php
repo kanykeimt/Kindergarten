@@ -2,283 +2,277 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="container">
-        @foreach($dates as $index => $date)
-            <div class="col-12">
-                <div class="bg-light rounded h-100 p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h6 class="mb-0">{{$date->datetime}}</h6>
+    <div class="container d-flex justify-content-center">
+        <div class="col-sm-10">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">@lang('lang.emp_group_name'): {{$child->group->name}}</h6>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                aria-selected="true">@lang('lang.news')</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-profile" type="button" role="tab"
+                                aria-controls="pills-profile" aria-selected="false">@lang('lang.child_info_btn')</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-contact" type="button" role="tab"
+                                aria-controls="pills-contact" aria-selected="false">@lang('lang.payment_btn')</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        @foreach($dates as $index => $date)
+                            <div class="col-12">
+                                <div class="rounded h-100 p-4" style="background-color: #f8f9fa;">
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <h6 class="mb-0">{{$date->datetime}}</h6>
+                                    </div>
+
+
+                                    <!-- Carousel wrapper -->
+                                    <div id="carouselExampleIndicators-{{$index}}" class="carousel slide">
+                                        <div class="carousel-inner" style="width: 100%; height: 500px;">
+                                            @php
+                                                $firstItem = true; // Flag to track the first item
+                                            @endphp
+                                            @foreach($news as $new)
+                                                @if($new->datetime == $date->datetime)
+                                                    @if($new->media->type == 'image')
+                                                        <div class="carousel-item {{ $firstItem ? 'active' : '' }}" style="width: 100%; height: 100%;">
+                                                            <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 100%;">
+                                                                <img src="{{ asset($new->media->media) }}" class="img-fluid" alt="..." style="max-height: 100%; max-width: 100%;">
+                                                            </div>
+                                                        </div>
+
+                                                    @elseif($new->media->type = 'video')
+                                                        <div class="carousel-item {{ $firstItem ? 'active' : '' }}" style="width: 100%; height: 100%;">
+                                                            <video class="img-fluid" controls autoplay loop muted style="width: 100%; height: 100%;">
+                                                                <source src="{{asset($new->media->media)}}" type="video/mp4" />
+                                                            </video>
+                                                        </div>
+                                                    @endif
+                                                    @php
+                                                        $firstItem = false; // Set the flag to false after the first item
+                                                    @endphp
+                                                @endif
+                                            @endforeach
+
+                                        </div>
+
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators-{{$index}}" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators-{{$index}}" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+
+
+
+                                    <!-- Carousel wrapper -->
+                                    <br>
+                                    <div class="border rounded p-4 pb-0 mb-4">
+                                        <figure class="text-center">
+                                            <blockquote class="blockquote">
+                                                <p>{{$date->text}}</p>
+                                            </blockquote>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                        @endforeach
                     </div>
-
-
-                    <!-- Carousel wrapper -->
-                    <div id="carouselExampleIndicators-{{$index}}" class="carousel slide">
-                        <div class="carousel-inner" style="width: 100%; height: 500px;">
-                            @php
-                                $firstItem = true; // Flag to track the first item
-                            @endphp
-                            @foreach($news as $new)
-                                @if($new->datetime == $date->datetime)
-                                    @if($new->media->type == 'image')
-                                        <div class="carousel-item {{ $firstItem ? 'active' : '' }}" style="width: 100%; height: 100%;">
-                                            <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 100%;">
-                                                <img src="{{ asset($new->media->media) }}" class="img-fluid" alt="..." style="max-height: 100%; max-width: 100%;">
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <div class="container d-flex justify-content-center">
+                            <div class="col-12">
+                                <div class="rounded h-100 p-4" style="background-color: #f8f9fa;">
+                                    <h3 class="mb-4">@lang('lang.edit_btn')</h3>
+                                    <div class="container">
+                                        <form action="{{route('children.update', $child->id)}}" method="POST" enctype="multipart/form-data">
+                                            @method('patch')
+                                            @csrf
+                                            <div class="form-group">
+                                                <label for="name" class="form-label">@lang('lang.child_name'):</label>
+                                                <input type="text" class="form-control col-6" name="name" id="name" value="{{$child->name}}" required autofocus oninvalid="this.setCostomValidity('пожалуйста, заполните это поле')" oninput="this.setCostomValidity('')">
+                                                @error('name')
+                                                <p class="text-danger">{{$message}}</p>
+                                                @enderror
                                             </div>
-                                        </div>
+                                            <br>
+                                            <div class="form-group">
+                                                <label for="surname" class="form-label">@lang('lang.child_surname'):</label>
+                                                <input type="text" class="form-control col-6" name="surname" id="surname" value="{{$child->surname}}" required autofocus oninvalid="this.setCostomValidity('пожалуйста, заполните это поле')" oninput="this.setCostomValidity('')">
+                                                @error('surname')
+                                                <p class="text-danger">{{$message}}</p>
+                                                @enderror
+                                            </div>
+                                            <br>
+                                            <div class="form-group">
+                                                <label for="birth_date" class="form-label">@lang('lang.child_birth_date'):</label>
+                                                <input type="date" class="form-control" id="birth_date" value="{{$child->birth_date}}" name="birth_date" autocomplete="birth_date">
+                                                @error('birth_date')
+                                                <p class="text-danger">{{$message}}</p>
+                                                @enderror
+                                            </div>
+                                            <br>
+                                            <div class="form-group">
+                                                <label for="gender" class="form-label">@lang('lang.child_gender'):</label>
+                                                <div class="col-sm-8">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="gender" id="option-1" value="Male" required {{ $child->gender == "Male" ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="option-1">@lang('lang.gender_male')</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="gender" id="option-2" value="Female" required {{ $child->gender == "Female" ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="option-2">@lang('lang.gender_female')</label>
+                                                    </div>
+                                                </div>
+                                                @error('gender')
+                                                <p class="text-danger">{{$message}}</p>
+                                                @enderror
+                                            </div>
+                                            <br>
 
-                                    @elseif($new->media->type = 'video')
-                                        <div class="carousel-item {{ $firstItem ? 'active' : '' }}" style="width: 100%; height: 100%;">
-                                            <video class="img-fluid" controls autoplay loop muted style="width: 100%; height: 100%;">
-                                                <source src="{{asset($new->media->media)}}" type="video/mp4" />
-                                            </video>
-                                        </div>
-                                    @endif
-                                    @php
-                                        $firstItem = false; // Set the flag to false after the first item
-                                    @endphp
-                                @endif
-                            @endforeach
+                                            <div class="form-group">
+                                                <label for="exampleInput" class="form-label">@lang('lang.child_photo'):</label>
+                                                <div class="">
+                                                    <img class="img-fluid" src="{{asset($child->photo)}}" alt="Child's photo" style="width:70%;">
+                                                </div>
+                                                <br>
+                                                <input type="file" class="form-control col-6" accept="image/png, image/gif, image/jpeg" name="photo" id="photo">
+                                                @error('photo')
+                                                <p class="text-danger">{{$message}}</p>
+                                                @enderror
+                                            </div>
+                                            <br>
+                                            <div class="form-group">
+                                                <label for="exampleInput" class="form-label">@lang('lang.child_birth_cert'):</label>
+                                                <div class="">
+                                                    <img class="img-fluid img" src="{{asset($child->birth_certificate)}}" alt="Child's birth certificate" style="width:70%;">
+                                                </div>
+                                                <br>
+                                                <input type="file" class="form-control col-6" accept="image/png, image/gif, image/jpeg" name="birth_certificate" id="birth_certificate">
+                                                @error('birth_certificate')
+                                                <p class="text-danger">{{$message}}</p>
+                                                @enderror
+                                            </div>
+                                            <br>
+                                            <div class="form-group">
+                                                <label for="exampleInput" class="form-label">@lang('lang.child_med_cert'):</label>
+                                                <div class="">
+                                                    <img class="img-fluid img" src="{{asset($child->med_certificate)}}" alt="child's medical certificate" style="width:70%;">
+                                                </div>
+                                                <br>
+                                                <input type="file" class="form-control col-6" accept="image/png, image/gif, image/jpeg" name="med_certificate" id="med_certificate">
+                                                @error('med_certificate')
+                                                <p class="text-danger">{{$message}}</p>
+                                                @enderror
+                                            </div>
+                                            <br>
+                                            <div class="form-group">
+                                                <label for="exampleInput" class="form-label">@lang('lang.child_med_dis'):</label>
+                                                <div class="">
+                                                    <img class="img-fluid img" src="{{asset($child->med_disability)}}" alt="child's medical disability certificate" style="width:70%;">
+                                                </div>
+                                                <br>
+                                                <input type="file" class="form-control col-6" accept="image/png, image/gif, image/jpeg" name="med_disability" id="med_disability">
+                                                @error('med_disability')
+                                                <p class="text-danger">{{$message}}</p>
+                                                @enderror
+                                            </div>
+                                            <br>
 
+
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-success">@lang('lang.save_btn')</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators-{{$index}}" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators-{{$index}}" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                     </div>
-
-
-
-                    <!-- Carousel wrapper -->
-                    <br>
-                    <div class="border rounded p-4 pb-0 mb-4">
-                        <figure class="text-center">
-                            <blockquote class="blockquote">
-                                <p>{{$date->text}}</p>
-                            </blockquote>
-                        </figure>
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                        <div class="container d-flex justify-content-center">
+                            <div class="col-12">
+                                <div class="rounded h-100 p-4" style="background-color: #f8f9fa;">
+                                    <div id="addUserId">
+                                        <form action="{{route('children.payment')}}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="row mb-3">
+                                                <label for="child_id" class="col-sm-3 col-form-label">@lang('lang.full_name_child'):</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control col-6" value="{{$child->name}} {{$child->surname}}" required disabled>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3" hidden="">
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control col-6" name="child_id" id="child_id" value="{{$child->id}}" required>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <label for="date_from" class="col-sm-2 col-form-label">@lang('lang.from'):</label>
+                                                <div class="col-sm-8">
+                                                    <input type="date" class="form-control" id="date_from" name="date_from" value="" required autocomplete="date_from">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3" hidden="">
+                                                <label for="date_to" class="col-sm-2 col-form-label">@lang('lang.to'):</label>
+                                                <div class="col-sm-8">
+                                                    <input type="date" class="form-control" value="" id="date_to" name="date_to" required autocomplete="date_to">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <label for="payment_amount" class="col-sm-2 col-form-label">@lang('lang.payment_amount'):</label>
+                                                <div class="col-sm-8">
+                                                    <input type="number" class="form-control" id="payment_amount" name="payment_amount" required autocomplete="payment_amount">
+                                                </div>
+                                            </div>
+                                            <a href="{{route('index')}}" class="btn btn-secondary">@lang('lang.back_btn')</a>
+                                            <button type="button" onclick="approveBtn(this)" class="btn btn-success">@lang('lang.saveBtn')</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <br>
-        @endforeach
+        </div>
     </div>
 
+@endsection
 
-{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">--}}
-{{--    <div class="container">--}}
+@section('script')
+    <script>
+        function approveBtn(button){
+            let date_from = document.getElementById('date_from').value;
+            let payment_amount = document.getElementById('payment_amount').value;
+            let days = Math.round(payment_amount/270);
+            date_from = new Date(date_from);
+            let daysExcludingSundays = 0;
+            while (daysExcludingSundays < days) {
+                if (date_from.getDay() !== 0) {
+                    daysExcludingSundays++;
+                }
+                date_from.setDate(date_from.getDate() + 1);
+            }
+            let date_to = date_from.toISOString().slice(0, 10);
 
-{{--        <div class="d-flex justify-content-center">--}}
-{{--            <button type="button" class="btn btn-primary rounded-pill m-3" id="childInfoBtn" onclick="showChildInfo()">--}}
-{{--                @lang('lang.child_info_btn')--}}
-{{--            </button>--}}
-{{--            <a href="{{route('payment', $child->id)}}">--}}
-{{--                <button type="button" class="btn btn-primary rounded-pill m-3"  id="paymentBtn" >--}}
-{{--                    @lang('lang.payment_btn')--}}
-{{--                </button>--}}
-{{--            </a>--}}
-{{--        </div>--}}
-
-{{--        <div class="d-none" id="childInfo">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="card mb-4">--}}
-{{--                        <h5 class="card-header">@lang('lang.child_info')</h5>--}}
-{{--                        <form id="form" action="{{route('children.update', $child->id)}}" method="post"--}}
-{{--                              enctype="multipart/form-data">--}}
-{{--                            @method('patch')--}}
-{{--                            @csrf--}}
-{{--                            <div class="card-body">--}}
-{{--                                <div class="d-flex align-items-start align-items-sm-center gap-4">--}}
-{{--                                    <img--}}
-{{--                                        src="{{asset($child->photo)}}"--}}
-{{--                                        alt="user-avatar"--}}
-{{--                                        class="d-block rounded img-fluid"--}}
-{{--                                        height="100"--}}
-{{--                                        width="100"--}}
-{{--                                        id="uploadedAvatar"--}}
-{{--                                    />--}}
-{{--                                    <div class="">--}}
-{{--                                        <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">--}}
-{{--                                            <input--}}
-{{--                                                type="file"--}}
-{{--                                                id="photo"--}}
-{{--                                                name="photo"--}}
-{{--                                                class="account-file-input form-control"--}}
-{{--                                            />--}}
-{{--                                        </label>--}}
-{{--                                        <p class="text-muted mb-0">@lang('lang.profile_photo_msg')</p>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <hr class="my-0"/>--}}
-{{--                            <div class="card-body">--}}
-{{--                                <div class="row">--}}
-{{--                                    <div class="mb-3 col-md-6">--}}
-{{--                                        <h6 for="name" class="form-label"><b>@lang('lang.child_name'):</b></h6>--}}
-{{--                                        <div class="text-secondary">{{$child->name}}</div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="mb-3 col-md-6">--}}
-{{--                                        <h6 for="surname" class="form-label"><b>@lang('lang.child_surname'):</b></h6>--}}
-{{--                                        <div class="text-secondary">{{$child->surname}}</div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="mb-3 col-md-6">--}}
-{{--                                        <h6 for="email" class="form-label"><b>@lang('lang.child_birth_date'):</b></h6>--}}
-{{--                                        <div class="text-secondary">{{$child->birth_date}}</div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="mb-3 col-md-6">--}}
-{{--                                        <h6 class="form-label" for="phone_number"><b>@lang('lang.child_group'):</b></h6>--}}
-{{--                                        <div class="text-secondary">{{$child->group->name}}</div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="mb-3 col-md-6">--}}
-{{--                                        <h6 for="address" class="form-label"><b>@lang('lang.child_parent'):</b></h6>--}}
-{{--                                        <div--}}
-{{--                                            class="text-secondary">{{$child->parent->name}} {{$child->parent->surname}}</div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="mb-3 col-md-6">--}}
-{{--                                        <h6 for="address" class="form-label"><b>@lang('lang.child_gender'):</b></h6>--}}
-{{--                                        <div class="text-secondary">--}}
-{{--                                            @if($child->gender === 'Male')--}}
-{{--                                                @lang('lang.gender_male')--}}
-{{--                                            @else--}}
-{{--                                                @lang('lang.gender_female')--}}
-{{--                                            @endif--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="mb-3 col-md-6">--}}
-{{--                                        <h6 for="birth_certificate" class="form-label"><b>@lang('lang.child_birth_cert'):</b>--}}
-{{--                                        </h6>--}}
-{{--                                        <input type="file" class="form-control" id="birth_certificate"--}}
-{{--                                               name="birth_certificate" placeholder="" value="">--}}
-{{--                                    </div>--}}
-{{--                                    <div class="mb-3 col-md-6">--}}
-{{--                                        <h6 for="med_certificate" class="form-label"><b>@lang('lang.child_med_cert'):</b></h6>--}}
-{{--                                        <input type="file" class="form-control" id="med_certificate"--}}
-{{--                                               name="med_certificate">--}}
-{{--                                    </div>--}}
-{{--                                    <div class="mb-3 col-md-6">--}}
-{{--                                        <img class="img-fluid" src="{{asset($child->birth_certificate)}}">--}}
-{{--                                    </div>--}}
-{{--                                    <div class="mb-3 col-md-6">--}}
-{{--                                        <img class="img-fluid" src="{{asset($child->med_certificate)}}">--}}
-{{--                                    </div>--}}
-{{--                                    @if($child->med_disability != null)--}}
-{{--                                        <div class="mb-3 col-md-6">--}}
-{{--                                            <h6 for="med_disability" class="form-label"><b>@lang('lang.child_med_dis'):</b></h6>--}}
-{{--                                            <input type="file" class="form-control" id="med_disability"--}}
-{{--                                                   name="med_disability" placeholder="" value="">--}}
-{{--                                        </div>--}}
-{{--                                        <div class="mb-3 col-md-6"></div>--}}
-{{--                                        <div class="mb-3 col-md-6">--}}
-{{--                                            <img class="img-fluid" src="{{asset($child->med_disability)}}">--}}
-{{--                                        </div>--}}
-{{--                                    @endif--}}
-{{--                                </div>--}}
-{{--                                <div class="mt-auto">--}}
-{{--                                    <button type="submit" class="btn btn-primary ms-auto float-end rounded-pill">@lang('lang.save_btn')--}}
-{{--                                    </button>--}}
-{{--                                    <button type="button" class="btn btn-secondary ms-auto float-end mx-3 rounded-pill"--}}
-{{--                                            onclick="hideChildInfo()">@lang('lang.hide_btn')--}}
-{{--                                    </button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </form>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="card-body">--}}
-{{--            @if($galleries != null)--}}
-{{--                @php $index = 0; @endphp--}}
-{{--                @foreach($created_at_dates as $created_at_date)--}}
-{{--                    <div class="card-header rounded-top"--}}
-{{--                         style="background-color: #cdb9f8; color: #000000">{{ Carbon::parse($created_at_date)->format('d/m/Y')}}</div>--}}
-{{--                    <div class="card-body" style="background-color: #eee8fd; display: flex; align-items: center; justify-content: center">--}}
-{{--                        @php $j = 0; @endphp--}}
-{{--                        <div id="carouselExampleIndicators{{$index}}" class="carousel slide" data-ride="carousel">--}}
-{{--                            @if($count[$index] > 1)--}}
-{{--                                <ol class="carousel-indicators">--}}
-{{--                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>--}}
-{{--                                    @for($i =1 ; $i < $count[$index]; $i++)--}}
-{{--                                        <li data-target="#carouselExampleIndicators" data-slide-to="{{$i}}"></li>--}}
-{{--                                    @endfor--}}
-{{--                                </ol>--}}
-{{--                            @endif--}}
-{{--                            <div class="carousel-inner" style="max-width: 500px; overflow: hidden">--}}
-{{--                                @foreach($galleries as $gallery)--}}
-{{--                                    @if($created_at_date === $gallery->created_at)--}}
-{{--                                        @if($gallery->video === null)--}}
-{{--                                            @if($j === 0)--}}
-{{--                                                <div class="carousel-item active">--}}
-{{--                                                    <img class="d-block w-100" src="{{asset($gallery->image)}}" >--}}
-{{--                                                </div>--}}
-{{--                                                @php $j++; @endphp--}}
-{{--                                            @else--}}
-{{--                                                <div class="carousel-item">--}}
-{{--                                                    <img class="d-block w-100" src="{{asset($gallery->image)}}" alt="Second slide">--}}
-{{--                                                </div>--}}
-{{--                                            @endif--}}
-{{--                                        @else--}}
-{{--                                            @if($j === 0)--}}
-{{--                                                <div class="carousel-item active">--}}
-{{--                                                    <video class="d-block w-100" controls >--}}
-{{--                                                        <source src="{{asset($gallery->video)}}">.--}}
-{{--                                                    </video>--}}
-{{--                                                </div>--}}
-{{--                                                @php $j++; @endphp--}}
-{{--                                            @else--}}
-{{--                                                <div class="carousel-item">--}}
-{{--                                                    <video class="d-block w-100" controls >--}}
-{{--                                                        <source src="{{asset($gallery->video)}}">.--}}
-{{--                                                    </video>--}}
-{{--                                                </div>--}}
-{{--                                            @endif--}}
-{{--                                        @endif--}}
-{{--                                        @php $text = $gallery->info @endphp--}}
-{{--                                    @endif--}}
-{{--                                @endforeach--}}
-{{--                            </div>--}}
-{{--                            @if($count[$index] > 1)--}}
-{{--                                <a class="carousel-control-prev" href="#carouselExampleIndicators{{$index}}" role="button" data-slide="prev">--}}
-{{--                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>--}}
-{{--                                    <span class="sr-only">Previous</span>--}}
-{{--                                </a>--}}
-{{--                                <a class="carousel-control-next" href="#carouselExampleIndicators{{$index}}" role="button" data-slide="next">--}}
-{{--                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>--}}
-{{--                                    <span class="sr-only">Next</span>--}}
-{{--                                </a>--}}
-{{--                            @endif--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-body rounded-bottom" style="background-color: #eee8fd">--}}
-{{--                        <h6>{{$text}}</h6>--}}
-{{--                    </div>--}}
-{{--                    <br>--}}
-{{--                    @php $index++; $text = ""; @endphp--}}
-{{--                @endforeach--}}
-{{--            @else--}}
-{{--                <div class="card-body" style="background-color: #eee8fd; display: flex; align-items: center; justify-content: center">--}}
-{{--                    <h4>@lang('lang.gallery_no_data')</h4>--}}
-{{--                </div>--}}
-{{--            @endif--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--    <script>--}}
-{{--        function showChildInfo() {--}}
-{{--            document.getElementById("childInfo").className = "container-xxl flex-grow-1 container-p-y";--}}
-{{--            document.getElementById("childInfoBtn").className = "btn btn-primary rounded-pill m-3";--}}
-{{--        }--}}
-
-{{--        function hideChildInfo() {--}}
-{{--            document.getElementById("childInfo").className = "d-none";--}}
-{{--            document.getElementById("childInfoBtn").className = "btn btn-primary rounded-pill m-3";--}}
-{{--        }--}}
-{{--    </script>--}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+            if (confirm("@lang('lang.question_for_payment_date1')"+date_to+"@lang('lang.question_for_payment_date2')") === true) {
+                button.setAttribute('type', 'submit');
+                document.getElementById('date_to').value = date_to;
+            } else {
+                button.setAttribute('type', 'button')
+            }
+        }
+    </script>
 @endsection

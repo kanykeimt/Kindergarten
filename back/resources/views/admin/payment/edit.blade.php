@@ -39,6 +39,9 @@
                 </form>
             </div>
         </div>
+
+@endsection
+@section('script')
     <script>
         function approveBtn(button){
             let date_from = document.getElementById('date_from').value;
