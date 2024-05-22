@@ -575,7 +575,7 @@
                     @endforeach
                 </div>
                 @if(auth()->user())
-                    @if(auth()->user()->role != 'ROLE_USER')
+                    @if(auth()->user()->role_name != 'User')
                         <div class="d-flex justify-content-center container-xxl py-5">
                             <button type="button" class="btn btn-primary rounded-pill px-3 d-lg-block"
                                     data-bs-toggle="modal" data-bs-target="#feedback" style="font-size: large">

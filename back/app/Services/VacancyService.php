@@ -21,10 +21,11 @@ class VacancyService
         foreach ($questions as $question) {
             $question->text = $lang == 'kg' ? $question->question_kg : $question->question_ru;
         }
-        if (auth()->user()->role != 4){
+        if ((auth()->user() != null) and (auth()->user()->role != 4)){
             $children = Child::where('parent_id', auth()->user()->id)->get();
             return view('vacancy', compact('children', 'questions'));
         }
+
         return view('vacancy', compact('questions'));
     }
     public function create(CreateRequest $request):RedirectResponse

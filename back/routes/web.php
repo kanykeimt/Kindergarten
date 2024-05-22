@@ -23,18 +23,7 @@ Route::group(
         {
             Route::post('/create', [\App\Http\Controllers\ChatContoller::class, 'create'])->name('chat.create');
         });
-        Route::group(['prefix'=>'user'], function (){
-            Route::get('/register', [App\Http\Controllers\RegisterController::class, 'form'])->name('user.register.form');
-            Route::post('/register', [App\Http\Controllers\RegisterController::class, 'register'])->name('user.register');
-            Route::get('/login', [App\Http\Controllers\AuthController::class, 'form'])->name('user.auth.form');
-            Route::post('/login', [App\Http\Controllers\AuthController::class, 'userAuth'])->name('user.auth');
-            Route::get('/logout', App\Http\Controllers\LogoutController::class)->name('user.logout');
-            Route::get('/resetPassword', [App\Http\Controllers\ResetPasswordController::class, 'form'])->name('reset.password.form');
-            Route::post('/resetPassword', [App\Http\Controllers\ResetPasswordController::class, 'sendLink'])->name('reset.password.link');
-            Route::get('/resetPassword/{email}', [App\Http\Controllers\ResetPasswordController::class, 'changePassword'])->name('change.password.form');
-            Route::post('/enroll/create', [App\Http\Controllers\EnrollController::class, 'create'])->name('enroll.create');
-            Route::get('/enroll', [App\Http\Controllers\EnrollController::class,'index'])->name('enroll.index');
-        });
+
         Route::get('/{user?}',App\Http\Controllers\IndexController::class)->name('index');
         Route::get('/verification/form/{user}', [App\Http\Controllers\VerificateController::class, 'form'])->name('verification.form');
         Route::post('/verification/email', [App\Http\Controllers\VerificateController::class, 'verification'])->name('verification');
@@ -55,8 +44,8 @@ Route::group(
         Route::get('/main/profile/{user}', [App\Http\Controllers\User\ProfileController::class, 'index'])->name('profile');
         Route::patch('/main/profile/update/{user}', [App\Http\Controllers\User\ProfileController::class, 'update'])->name('profile.update');
 
-        Route::get('/main/children/{child}', [App\Http\Controllers\User\ChildrenController::class, 'index'])->name('children');
-        Route::patch('/main/children/update/{child}', [App\Http\Controllers\User\ChildrenController::class, 'update'])->name('children.update');
+        Route::get('/main/children/{child}', [App\Http\Controllers\User\ChildController::class, 'index'])->name('children');
+        Route::patch('/main/children/update/{child}', [App\Http\Controllers\User\ChildController::class, 'update'])->name('children.update');
 
         Route::post('/main/payment', [App\Http\Controllers\User\PaymentController::class, 'index'])->name('payment');
         Route::get('/main/payment/{child}', [App\Http\Controllers\User\PaymentController::class, 'index'])->name('payment.child');
@@ -64,6 +53,19 @@ Route::group(
         Route::post('/main/payment/create', [App\Http\Controllers\User\PaymentController::class, 'create'])->name('payment.create');
 
         Route::post('/main/review/create', [App\Http\Controllers\User\ReviewController::class, 'create'])->name('review.create');
+
+        Route::group(['prefix'=>'user'], function (){
+            Route::get('/register', [App\Http\Controllers\RegisterController::class, 'form'])->name('user.register.form');
+            Route::post('/register', [App\Http\Controllers\RegisterController::class, 'register'])->name('user.register');
+            Route::get('/login', [App\Http\Controllers\AuthController::class, 'form'])->name('user.auth.form');
+            Route::post('/login', [App\Http\Controllers\AuthController::class, 'userAuth'])->name('user.auth');
+            Route::get('/logout', App\Http\Controllers\LogoutController::class)->name('user.logout');
+            Route::get('/resetPassword', [App\Http\Controllers\ResetPasswordController::class, 'form'])->name('reset.password.form');
+            Route::post('/resetPassword', [App\Http\Controllers\ResetPasswordController::class, 'sendLink'])->name('reset.password.link');
+            Route::get('/resetPassword/{email}', [App\Http\Controllers\ResetPasswordController::class, 'changePassword'])->name('change.password.form');
+            Route::post('/enroll/create', [App\Http\Controllers\EnrollController::class, 'create'])->name('enroll.create');
+            Route::get('/enroll', [App\Http\Controllers\EnrollController::class,'index'])->name('enroll.index');
+        });
 
         Route::group(['prefix'=>'employee'], function (){
             Route::get('/index/{user}', App\Http\Controllers\Employee\IndexController::class)->name('employee');

@@ -185,7 +185,7 @@ else{
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav mx-auto">
                 @if(auth()->user())
-                    @if(auth()->user()->role === 1 or auth()->user()->role === 2 or auth()->user()->role === 3)
+                    @if($children->count() != 0)
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">@lang('lang.my_children')</a>
                             <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
@@ -208,9 +208,9 @@ else{
                 <div class="nav-item">
                     <a href="{{route('condition')}}" class="nav-link">@lang('lang.conditions')</a>
                 </div>
-                <div class="nav-item dropdown">
-                    <a href="{{route('gallery')}}" class="nav-link">Галерея</a>
-                </div>
+{{--                <div class="nav-item dropdown">--}}
+{{--                    <a href="{{route('gallery')}}" class="nav-link">Галерея</a>--}}
+{{--                </div>--}}
                 <div class="nav-item">
                     <a href="{{route('contact')}}" class="nav-link">@lang('lang.contact')</a>
                 </div>

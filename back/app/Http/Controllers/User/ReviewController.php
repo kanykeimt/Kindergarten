@@ -13,7 +13,7 @@ class ReviewController extends Controller
     public function create(Request $request){
         $data = $request->validate([
             'user_id' => 'required',
-            'stars' => 'required',
+            'rating' => 'required',
             'comment' => 'required'
         ]);
         Review::create([
