@@ -19,14 +19,8 @@ class IndexController extends Controller
     }
     public function __invoke(Request $request)
     {
-        $user = auth()->user();
         $reviews = $this->service->reviews();
-        if (($user != null) and ($user->role_name == "Admin" or "Teacher" or "Parent")){
-            $children = $this->service->children($user);
-            return view('index', compact('children', 'reviews'));
-        }
-        else{
-            return view('index', compact('reviews'));
-        }
+        return view('index', compact('reviews'));
+
     }
 }

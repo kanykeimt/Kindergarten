@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Child;
+use App\Models\Gallery;
 use App\Models\MainGallery;
 use Illuminate\Http\Request;
 
@@ -29,16 +30,7 @@ class HomeController extends Controller
     }
 
     public function gallery(){
-        $galleries = MainGallery::all();
-        $user = auth()->user();
-        $children = null;
-        if($user){
-           if($user->role === 'ROLE_ADMIN' or $user->role === 'ROLE_TEACHER' or $user->role === 'ROLE_PARENT'){
-                $children = Child::where('parent_id', $user->id)->get();
-                return view('gallery', compact('children', 'galleries'));
-            }
-            return view('gallery',compact('galleries'));
-        }
+        $galleries = Gallery::all();
         return view('gallery', compact('galleries'));
     }
 

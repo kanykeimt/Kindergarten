@@ -20,16 +20,6 @@ class VacancyController extends Controller
         $this->service = new VacancyService;
     }
     public function index(){
-//        $questions = $this->service->getAllQuestions();
-//        $user = auth()->user();
-//        if($user){
-//            if($user->role === 1 or $user->role === 2 or $user->role === 3){
-//                $children = $this->service->children();
-//                return view('vacancy', compact('children', 'questions'));
-//            }
-//            return view('vacancy', compact('questions'));
-//        }
-//        return view('vacancy', compact('questions'));
         return $this->service->index();
     }
 

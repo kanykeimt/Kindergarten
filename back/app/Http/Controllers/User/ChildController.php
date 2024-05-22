@@ -24,10 +24,8 @@ class ChildController extends Controller
     public function index(Child $child){
         $dates = $this->service->dates($child);
         $news = $this->service->news($child);
-        $user = auth()->user();
         $reviews = $this->indexService->reviews();
-        $children = $this->indexService->children($user);
-        return view('user.children', compact('child', 'dates', 'news', 'reviews', 'children'));
+        return view('user.children', compact('child', 'dates', 'news', 'reviews'));
 
 
 //        $galleries = DB::table('galleries')

@@ -17,11 +17,10 @@ class ReviewController extends Controller
             'comment' => 'required'
         ]);
         Review::create([
-            'user_id' => $data['parent_id'],
-            'stars' => $data['stars'],
+            'user_id' => $data['user_id'],
+            'rating' => $data['rating'],
             'comment' => $data['comment']
         ]);
-        dd($data);
         $message = Lang::get('lang.feedback_accepted_msg');
         return redirect()->route('index')->with('status',$message);
     }

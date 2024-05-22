@@ -13,8 +13,4 @@ class IndexService
         return $reviews;
     }
 
-    public function children($user){
-        $children = Child::where('parent_id', $user->id)->get();
-        return $children;
-    }
 }

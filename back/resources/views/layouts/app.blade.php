@@ -185,6 +185,7 @@ else{
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav mx-auto">
                 @if(auth()->user())
+                    @php $children = \App\Models\Child::where('parent_id',auth()->user()->id)->get() @endphp
                     @if($children->count() != 0)
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">@lang('lang.my_children')</a>
@@ -208,9 +209,9 @@ else{
                 <div class="nav-item">
                     <a href="{{route('condition')}}" class="nav-link">@lang('lang.conditions')</a>
                 </div>
-{{--                <div class="nav-item dropdown">--}}
-{{--                    <a href="{{route('gallery')}}" class="nav-link">Галерея</a>--}}
-{{--                </div>--}}
+                <div class="nav-item dropdown">
+                    <a href="{{route('gallery')}}" class="nav-link">Галерея</a>
+                </div>
                 <div class="nav-item">
                     <a href="{{route('contact')}}" class="nav-link">@lang('lang.contact')</a>
                 </div>
@@ -640,8 +641,8 @@ else{
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h3 class="text-white mb-4">@lang('lang.ftr_link')</h3>
-                    <a class="btn btn-link text-white-50" href="">@lang('lang.contact')</a>
-                    <a class="btn btn-link text-white-50" href="">@lang('lang.conditions')</a>
+                    <a class="btn btn-link text-white-50" href="{{route('contact')}}">@lang('lang.contact')</a>
+                    <a class="btn btn-link text-white-50" href="{{route('vacancy')}}">@lang('lang.conditions')</a>
                     <a class="btn btn-link text-white-50" href="{{route('vacancy')}}">@lang('lang.vacancy')</a>
                     <a class="btn btn-link text-white-50" href="{{route('gallery')}}">Галерея</a>
                 </div>
@@ -678,6 +679,7 @@ else{
 @yield('script')
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 
 {{--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>--}}
 <script src="{{asset('new_template/lib/wow/wow.min.js')}}"></script>

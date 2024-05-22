@@ -68,6 +68,7 @@
         @endforeach
     </div>
 
+
 {{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">--}}
 {{--    <div class="container">--}}
 

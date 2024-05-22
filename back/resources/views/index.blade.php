@@ -550,17 +550,17 @@
                         <div class="testimonial-item bg-light rounded p-5">
                             <p class="fs-5">{{$review->comment}}</p>
                             <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                                @if($review->profile_photo != NULL)
-                                    <img class="img-fluid flex-shrink-0 rounded-circle" src="{{asset($review->profile_photo)}}" style="width: 90px; height: 90px;">
+                                @if($review->user->profile_photo != null)
+                                    <img class="img-fluid flex-shrink-0 rounded-circle" src="{{asset($review->user->profile_photo)}}" style="width: 90px; height: 90px;">
                                 @else
-                                    @php $firstLetter = mb_substr($review->name, 0, 1); $secondLetter = mb_substr($review->surname, 0, 1);@endphp
+                                    @php $firstLetter = mb_substr($review->user->name, 0, 1); $secondLetter = mb_substr($review->surname, 0, 1);@endphp
                                     <button class="avatar-button">
                                         <span class="avatar-text">{{$firstLetter}}{{$secondLetter}}</span>
                                     </button>
                                 @endif
 
                                 <div class="ps-3">
-                                    <h5 class="mb-1">{{$review->name}} {{$review->surname}}</h5>
+                                    <h5 class="mb-1">{{$review->user->name}} {{$review->user->surname}}</h5>
                                     @for($i = 1; $i <= 5; $i++)
                                         @if($i <= $review->rating)
                                             <span class="fa fa-star checked"></span>
@@ -595,19 +595,19 @@
                                         <form method="POST" action="{{ route('review.create') }}" >
                                             @csrf
                                             <div class="field" hidden="">
-                                                <input type="number" id="user_id" name="parent_id" value="{{auth()->user()->id}}">
+                                                <input type="number" id="user_id" name="user_id" value="{{auth()->user()->id}}">
                                             </div>
                                             <div class="field">
                                                 <div class="rate">
-                                                    <input type="radio" id="star5" name="stars" value="5" />
+                                                    <input type="radio" id="star5" name="rating" value="5" />
                                                     <label for="star5" title="5">5 stars</label>
-                                                    <input type="radio" id="star4" name="stars" value="4" />
+                                                    <input type="radio" id="star4" name="rating" value="4" />
                                                     <label for="star4" title="4">4 stars</label>
-                                                    <input type="radio" id="star3" name="stars" value="3" />
+                                                    <input type="radio" id="star3" name="rating" value="3" />
                                                     <label for="star3" title="3">3 stars</label>
-                                                    <input type="radio" id="star2" name="stars" value="2" />
+                                                    <input type="radio" id="star2" name="rating" value="2" />
                                                     <label for="star2" title="2">2 stars</label>
-                                                    <input type="radio" id="star1" name="stars" value="1" />
+                                                    <input type="radio" id="star1" name="rating" value="1" />
                                                     <label for="star1" title="1">1 star</label>
                                                 </div>
                                             </div>
