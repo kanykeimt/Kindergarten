@@ -132,11 +132,10 @@ else{
                         <a href="{{route('employee.attendance.archive')}}" class="dropdown-item">@lang('lang.archive_attendance')</a>
                     </div>
                 </div>
-                <a href="{{route('employee.payment.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.payment') ? 'active' : '' }}"><i class="fa fa-credit-card me-2"></i>@lang('lang.emp_payment')</a>
+                <a href="{{route('employee.payment.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'employee.payment') ? 'active' : '' }}"><i class="fa fa-credit-card me-2"></i>@lang('lang.emp_payment')</a>
 
                 <a href="{{route('employee.news.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'employee.news') ? 'active' : '' }}"><i class="fa fa-newspaper me-2"></i>@lang('lang.news')</a>
                 <a href="{{route('employee.schedule.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'employee.schedule') ? 'active' : '' }}"><i class="fa fa-book me-2"></i>@lang('lang.classes')</a>
-                <a href="{{route('admin.mainGallery.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.mainGallery') ? 'active' : '' }}"><i class="fa fa-file-image me-2"></i>@lang('lang.main_gallery')</a>
 
             </div>
         </nav>

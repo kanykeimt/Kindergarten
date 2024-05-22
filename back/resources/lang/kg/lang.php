@@ -104,8 +104,6 @@ return [
     'emp_position_info' => 'Тарбиячы',
     'emp_group_name' => 'Группанын аталышы',
     'add_btn' => 'Жаңы киргизүү',
-    'add_image' => 'Галереяга сүрөт киргизүү',
-    'add_video' => 'Галереяга видео киргизүү',
     'add_info' => 'Галереяга текст киргизүү',
     'add_info_plh' => 'Жаңы маалымат жазыңыз...',
     'saveBtn' => 'Сактоо',
@@ -215,6 +213,7 @@ return [
     'add_menu_successful' => 'Меню ийгиликтүү кошулду',
     'add_schedule_successful' => 'Сабак ийгиликтүү кошулду',
     'add_child_warning' => 'Бала администратордун уруксатынан кийин кошулат',
+    'add_gallery_successful' => 'Медиа ийгиликтүү кошулду',
 
     'update_user_successful' => 'Колдонуучунун маалыматы жаңыланды',
     'update_child_successful' => 'Баланын маалыматы жаңыланды',
@@ -277,4 +276,5 @@ return [
     'parents' => 'Ата-энелер',
     'parents_list' => 'Ата-энелер тизмеси',
     'archive_show' => 'Архивди көрүү',
+    'add_media_to_gallery' => 'Сүрөт\видео кошуу',
 ];

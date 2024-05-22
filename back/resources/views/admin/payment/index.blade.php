@@ -21,8 +21,8 @@
                                     <tr>
                                         <th scope="col" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:2%">id</th>
                                         <th scope="col" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:15%">@lang('lang.full_name_child')</th>
-                                        <th scope="col" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:15%">@lang('lang.to')</th>
                                         <th scope="col" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:15%">@lang('lang.child_group')</th>
+                                        <th scope="col" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:15%">@lang('lang.to')</th>
                                         <th scope="col" style="vertical-align:middle;overflow:hidden;cursor:pointer;width:15%">@lang('lang.action')</th>
                                     </tr>
                                     <tr class="table-sm">

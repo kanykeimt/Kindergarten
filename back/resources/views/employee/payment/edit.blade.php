@@ -19,7 +19,7 @@
                     <div class="row mb-3">
                         <label for="date_from" class="col-sm-2 col-form-label">@lang('lang.from'):</label>
                         <div class="col-sm-8">
-                            <input type="date" class="form-control" id="date_from" name="date_from" value="{{$payment_data->date_to}}" required autocomplete="date_from">
+                            <input type="date" class="form-control" id="date_from" name="date_from" value="{{$payment_data != null ? $payment_data->date_to : ''}}" required autocomplete="date_from">
                         </div>
                     </div>
                     <div class="row mb-3" hidden="">

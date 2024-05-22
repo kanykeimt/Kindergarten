@@ -128,6 +128,11 @@ Route::group(
         Route::group(['prefix'=>'admin', 'middleware'=>'admin'], function (){
             Route::get('/index', \App\Http\Controllers\Admin\IndexController::class)->name('admin');
 
+            Route::group(['prefix' => 'profile'], function (){
+                Route::get('/{user}', [App\Http\Controllers\Admin\ProfileController::class, 'index'])->name('admin.profile');
+                Route::patch('/update/{user}', [App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('admin.profile.update');
+            });
+
             Route::group(['prefix'=>'user'],function (){
                 Route::get('/',[App\Http\Controllers\Admin\UserController::class,'index'])->name('admin.user.index');
                 Route::post('/create', [App\Http\Controllers\Admin\UserController::class, 'create'])->name('admin.user.create');
@@ -154,13 +159,6 @@ Route::group(
                 Route::delete('/{child}', [App\Http\Controllers\Admin\ChildController::class, 'delete'])->name('admin.children.delete');
             });
 
-            Route::group(['prefix'=>'enroll'], function (){
-                Route::get('/', [App\Http\Controllers\Admin\EnrollController::class, 'index'])->name('admin.enroll.index');
-                Route::get('/show/{enroll}', [App\Http\Controllers\Admin\EnrollController::class, 'show'])->name('admin.enroll.show');
-                Route::post('/approve/{enroll}', [App\Http\Controllers\Admin\EnrollController::class, 'approve'])->name('admin.enroll.approve');
-                Route::delete('/{enroll}', [App\Http\Controllers\Admin\EnrollController::class, 'delete'])->name('admin.enroll.delete');
-            });
-
             Route::group(['prefix'=>'resume'], function (){
                 Route::get('/', [App\Http\Controllers\Admin\ResumeController::class, 'index'])->name('admin.resume.index');
                 Route::get('/show/{resume}', [App\Http\Controllers\Admin\ResumeController::class, 'show'])->name('admin.resume.show');
@@ -175,10 +173,26 @@ Route::group(
                 Route::delete('/{question}', [App\Http\Controllers\Admin\QuestionController::class, 'delete'])->name('admin.resume.question.delete');
             });
 
-            Route::group(['prefix'=>'mainGallery'], function (){
-                Route::get('/', [App\Http\Controllers\Admin\MainGalleryController::class, 'index'])->name('admin.mainGallery.index');
-                Route::post('/create', [App\Http\Controllers\Admin\MainGalleryController::class, 'create'])->name('admin.mainGallery.create');
-                Route::delete('/{gallery}', [App\Http\Controllers\Admin\MainGalleryController::class, 'delete'])->name('admin.mainGallery.delete');
+            Route::group(['prefix'=>'enroll'], function (){
+                Route::get('/', [App\Http\Controllers\Admin\EnrollController::class, 'index'])->name('admin.enroll.index');
+                Route::get('/show/{enroll}', [App\Http\Controllers\Admin\EnrollController::class, 'show'])->name('admin.enroll.show');
+                Route::post('/approve/{enroll}', [App\Http\Controllers\Admin\EnrollController::class, 'approve'])->name('admin.enroll.approve');
+                Route::delete('/{enroll}', [App\Http\Controllers\Admin\EnrollController::class, 'delete'])->name('admin.enroll.delete');
+            });
+
+            Route::group(['prefix' => 'payment'], function (){
+                Route::get('/index', [App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('admin.payment.index');
+                Route::get('/edit/{child}', [App\Http\Controllers\Admin\PaymentController::class, 'edit'])->name('admin.payment.edit');
+                Route::post('/create', [App\Http\Controllers\Admin\PaymentController::class, 'create'])->name('admin.payment.create');
+                Route::get('/warning/{payment}', [App\Http\Controllers\Admin\PaymentController::class, 'warning'])->name('admin.payment.warning');
+            });
+
+            Route::group(['prefix'=>'attendance'], function (){
+                Route::get('/', [App\Http\Controllers\Admin\ChildAttendanceContoller::class, 'index'])->name('admin.attendance.index');
+                Route::post('/createForm', [App\Http\Controllers\Admin\ChildAttendanceContoller::class, 'createForm'])->name('admin.attendance.createForm');
+                Route::post('/create', [App\Http\Controllers\Admin\ChildAttendanceContoller::class, 'create'])->name('admin.attendance.create');
+                Route::get('/archive', [App\Http\Controllers\Admin\ChildAttendanceContoller::class, 'archive'])->name('admin.attendance.archive');
+                Route::post('archiveShow', [App\Http\Controllers\Admin\ChildAttendanceContoller::class,'archiveShow'])->name('admin.attendance.archiveShow');
             });
 
             Route::group(['prefix'=>'news'], function (){
@@ -203,24 +217,10 @@ Route::group(
                 Route::delete('/{schedule}', [App\Http\Controllers\Admin\ScheduleController::class, 'delete'])->name('admin.schedule.delete');
             });
 
-            Route::group(['prefix'=>'attendance'], function (){
-                Route::get('/', [App\Http\Controllers\Admin\ChildAttendanceContoller::class, 'index'])->name('admin.attendance.index');
-                Route::post('/createForm', [App\Http\Controllers\Admin\ChildAttendanceContoller::class, 'createForm'])->name('admin.attendance.createForm');
-                Route::post('/create', [App\Http\Controllers\Admin\ChildAttendanceContoller::class, 'create'])->name('admin.attendance.create');
-                Route::get('/archive', [App\Http\Controllers\Admin\ChildAttendanceContoller::class, 'archive'])->name('admin.attendance.archive');
-                Route::post('archiveShow', [App\Http\Controllers\Admin\ChildAttendanceContoller::class,'archiveShow'])->name('admin.attendance.archiveShow');
-            });
-
-            Route::group(['prefix' => 'profile'], function (){
-                Route::get('/{user}', [App\Http\Controllers\Admin\ProfileController::class, 'index'])->name('admin.profile');
-                Route::patch('/update/{user}', [App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('admin.profile.update');
-            });
-
-            Route::group(['prefix' => 'payment'], function (){
-                Route::get('/index', [App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('admin.payment.index');
-                Route::get('/edit/{child}', [App\Http\Controllers\Admin\PaymentController::class, 'edit'])->name('admin.payment.edit');
-                Route::post('/create', [App\Http\Controllers\Admin\PaymentController::class, 'create'])->name('admin.payment.create');
-                Route::get('/warning/{payment}', [App\Http\Controllers\Admin\PaymentController::class, 'warning'])->name('admin.payment.warning');
+            Route::group(['prefix' => 'gallery'], function (){
+                Route::get('/', [App\Http\Controllers\Admin\GalleryController::class, 'index'])->name('admin.gallery.index');
+                Route::post('/create', [App\Http\Controllers\Admin\GalleryController::class, 'create'])->name('admin.gallery.create');
+                Route::delete('/{date}', [App\Http\Controllers\Admin\GalleryController::class, 'delete'])->name('admin.gallery.delete');
             });
 
             Route::group(['prefix' => 'review'], function (){
@@ -228,6 +228,7 @@ Route::group(
                 Route::delete('/{review}', [App\Http\Controllers\Admin\ReviewController::class, 'delete'])->name('admin.review.delete');
                 Route::get('/show/{review}', [App\Http\Controllers\Admin\ReviewController::class, 'show'])->name('admin.review.show');
             });
+
         });
     });
 

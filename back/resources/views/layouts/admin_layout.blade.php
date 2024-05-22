@@ -145,7 +145,7 @@ else{
                 <a href="{{route('admin.news.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.news') ? 'active' : '' }}"><i class="fa fa-newspaper me-2"></i>@lang('lang.news')</a>
                 <a href="{{route('admin.menu.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.menu') ? 'active' : '' }}"><i class="fa fa-utensils me-2"></i>Меню</a>
                 <a href="{{route('admin.schedule.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.schedule') ? 'active' : '' }}"><i class="fa fa-book me-2"></i>@lang('lang.classes')</a>
-                <a href="{{route('admin.mainGallery.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.mainGallery') ? 'active' : '' }}"><i class="fa fa-file-image me-2"></i>@lang('lang.main_gallery')</a>
+                <a href="{{route('admin.gallery.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.gallery') ? 'active' : '' }}"><i class="fa fa-file-image me-2"></i>@lang('lang.main_gallery')</a>
                 <a href="{{route('admin.review.index')}}" class="nav-item nav-link {{ Str::startsWith(Route::currentRouteName(), 'admin.review') ? 'active' : '' }}"><i class="fa fa-comments me-2"></i>@lang('lang.feedbacks')</a>
             </div>
         </nav>

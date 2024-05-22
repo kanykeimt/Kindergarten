@@ -104,8 +104,6 @@ return [
     'emp_position_info' => 'Воспитатель',
     'emp_group_name' => 'Название Группы',
     'add_btn' => 'Добавить',
-    'add_image' => 'Добавить изображение в галерею',
-    'add_video' => 'Добавить видео в галерею',
     'add_info' => 'Добавить текст в галерею',
     'add_info_plh' => 'Напишите новую информацию...',
     'saveBtn' => 'Сохранить',
@@ -216,6 +214,7 @@ return [
     'add_menu_successful' => 'Меню успешно добавлено',
     'add_schedule_successful' => 'Урок успешно добавлен',
     'add_child_warning' => 'Ребенок добавиться после одобрения администратора',
+    'add_gallery_successful' => 'Медиа успешно добавлена',
 
     'update_user_successful' => 'Данные пользователя обновлены',
     'update_child_successful' => 'Данные ребенка обновлены',
@@ -277,4 +276,6 @@ return [
     'parents' => 'Родители',
     'parents_list' => 'Список родителей',
     'archive_show' => 'Посмотреть архив',
+    'add_media_to_gallery' => 'Добавить фото\видео',
+
     ];
