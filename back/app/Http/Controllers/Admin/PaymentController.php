@@ -24,12 +24,12 @@ class PaymentController extends Controller
 
     public function index()
     {
-        $payments = [] ;
+        $monthsWithChildren = [] ;
         $current_date = now();
         for($i = 0; $i < 2; $i++){
-            $payments[$current_date->copy()->subMonths($i)->format('n')] = $this->service->payments($current_date->copy()->subMonths($i));
+            $monthsWithChildren[$current_date->copy()->subMonths($i)->format('n')] = $this->service->payments($current_date->copy()->subMonths($i));
         }
-        return view('admin.payment.index',compact( 'payments'));
+        return view('admin.payment.index',compact( 'monthsWithChildren'));
     }
 
     public function edit(Child $child)
@@ -45,6 +45,7 @@ class PaymentController extends Controller
 
     public function warning(Payment $payment)
     {
+        dd($payment);
         $warning_data = $this->service->warning_data($payment);
         $message_content = $this->service->message_content($payment, $warning_data);
 

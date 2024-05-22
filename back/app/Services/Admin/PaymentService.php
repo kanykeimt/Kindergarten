@@ -7,6 +7,7 @@ use App\Models\Child;
 use App\Models\Payment;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 
 class PaymentService
@@ -14,9 +15,13 @@ class PaymentService
 
 
     public function payments($date){
-        $payments = Payment::whereMonth('date_from', $date->month)
-            ->whereYear('date_from', $date->year)->get();
-        return $payments;
+        $children = Child::all()->sortBy('name');
+        $month = $date->month;
+        $year = $date->year;
+        foreach($children as $child){
+            $child->payment = $child->payment()->whereMonth('date_from', $month)->whereYear('date_from', $year)->first();
+        }
+        return $children;
     }
 
 
@@ -74,12 +79,25 @@ class PaymentService
     public function create(CreateRequest $request):RedirectResponse
     {
         $data = $request->validated();
-        Payment::create([
-            'child_id' => $data['child_id'],
-            'date_from' => $data['date_from'],
-            'date_to' => $data['date_to'],
-            'payment_amount' => $data['payment_amount'],
-        ]);
+        $payment = Payment::where('date_to', $data['date_from'])
+            ->where('child_id', $data['child_id'])
+            ->first();
+        if($payment !== null){
+            DB::beginTransaction();
+            $payment->update([
+                'date_to' => $data['date_to'],
+                'payment_amount' => $payment->payment_amount + $data['payment_amount'],
+            ]);
+            DB::commit();
+        }
+        else{
+            Payment::create([
+                'child_id' => $data['child_id'],
+                'date_from' => $data['date_from'],
+                'date_to' => $data['date_to'],
+                'payment_amount' => $data['payment_amount'],
+            ]);
+        }
         $message = Lang::get('lang.add_payment_successful');
         return redirect()->route('admin.payment.index')->with('success', $message);
     }

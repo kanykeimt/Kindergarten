@@ -31,7 +31,8 @@
                                         <th class=""></th>
                                     </tr>
                                     </thead>
-                                    <tbody id="paymentTable">
+                                    <tbody id="paymentTable">\
+                                    @php $indexOfChild = 1 @endphp
                                     @foreach ($month as $child)
                                         <tr>
                                             <td>{{$child->id}}</td>
@@ -50,7 +51,7 @@
                                                 <td>{{$child->name}} {{$child->surname}}</td>
                                                 <td>No</td>
                                                 <td>
-                                                    <div style="float: left; display: block; width: 50%;" class="text-center">
+                                                    <div style="float: left; display: block; width: 100%;" class="text-center">
                                                         <a href=""><i style="color: #ffc107" title="@lang('lang.warning')" class="fa fa-question"></i></a>
                                                     </div>
                                                     <div style="float: left; display: block; width: 50%;" class="text-center">
@@ -58,11 +59,9 @@
                                                     </div>
                                                 </td>
                                             @endif
-
-
                                         </tr>
+                                        @php $indexOfChild++ @endphp
                                     @endforeach
-
                                     </tbody>
                                 </table>
                             </div>

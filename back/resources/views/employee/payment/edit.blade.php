@@ -13,7 +13,7 @@
                     </div>
                     <div class="row mb-3" hidden="">
                         <div class="col-sm-7">
-                            <input type="text" class="form-control col-6" name="child_id" id="child_id" value="{{$payment_data->child_id}}" required>
+                            <input type="text" class="form-control col-6" name="child_id" id="child_id" value="{{$child->id}}" required>
                         </div>
                     </div>
                     <div class="row mb-3">
