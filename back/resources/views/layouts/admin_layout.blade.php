@@ -117,7 +117,7 @@ else{
 
 
     <!-- Sidebar Start -->
-    <div class="sidebar pe-4 pb-3">
+    <div class="sidebar pe-4 pb-3" >
         <nav class="navbar bg-light navbar-light">
             <a href="{{route('index')}}" class="navbar-brand mx-4 mb-3">
                 <h3 class="text-primary"><img class="rounded-circle" src="{{asset('new_template/img/aruu%20logo1.png')}}" alt="" style="width: 60px; height: 60px;">  ARUU</h3>
@@ -204,7 +204,7 @@ else{
                 </div>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <img class="rounded-circle me-lg-2" src="{{asset(auth()->user()->profile_photo)}}" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle me-lg-2" src="{{auth()->user()->profile_photo != null ? asset(auth()->user()->profile_photo) : asset('new_template/img/avatar.png')}}" alt="" style="width: 40px; height: 40px;">
                         <span class="d-none d-lg-inline-flex">{{auth()->user()->name}} {{auth()->user()->surname}}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">

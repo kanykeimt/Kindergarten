@@ -45,7 +45,6 @@ class PaymentController extends Controller
 
     public function warning(Payment $payment)
     {
-        dd($payment);
         $warning_data = $this->service->warning_data($payment);
         $message_content = $this->service->message_content($payment, $warning_data);
 

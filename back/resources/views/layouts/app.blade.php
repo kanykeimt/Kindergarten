@@ -171,18 +171,20 @@ else{
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-        <a href="" class="navbar-brand">
-            <h1 class="m-0 text-primary">
-                <a href="{{route('index')}}">
-                    <img src="{{asset('new_template/img/aruu%20logo1.png')}}" style="height: 100px; width: 100px" alt="">
-                    <img src="{{asset('new_template/img/aruu%20logo2.png')}}" style="height: 100px; width: 100px">
-                </a>
-            </h1>
-        </a>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="navbar-nav mx-auto">
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
         <div class="collapse navbar-collapse" id="navbarCollapse">
+            <a href="" class="navbar-brand">
+                <h1 class="m-0 text-primary">
+                    <a href="{{route('index')}}">
+                        <img src="{{asset('new_template/img/aruu%20logo1.png')}}" style="height: 100px; width: 100px" alt="">
+                        <img src="{{asset('new_template/img/aruu%20logo2.png')}}" style="height: 100px; width: 100px">
+                    </a>
+                </h1>
+            </a>
             <div class="navbar-nav mx-auto">
                 @if(auth()->user())
                     @php $children = \App\Models\Child::where('parent_id',auth()->user()->id)->get() @endphp
@@ -219,51 +221,7 @@ else{
                     <a href="{{route('vacancy')}}" class="nav-link">@lang('lang.vacancy')</a>
                 </div>
             </div>
-            @if(auth()->user())
-                <div class="navbar-nav mx-auto">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary rounded-pill px-3 d-lg-block"
-                            data-bs-toggle="modal" data-bs-target="#modalEnroll">
-                        @lang('lang.enroll_child')
-                    </button>
-                </div>
-                <div class="navbar-nav mx-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img src="https://w7.pngwing.com/pngs/364/361/png-transparent-account-avatar-profile-user-avatars-icon.png" alt="Avatar" style="vertical-align: middle; width: 50px; height: 50px; border-radius: 50%;">
-                        </a>
-                        <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0" style="right: 0;left: auto;!important;">
-                            @if(auth()->user()->role === 1)
-                                <a href="{{route('admin')}}" class="dropdown-item" >@lang('lang.emp_page')</a>
-                            @elseif(auth()->user()->role===2)
-                                <a href="{{route('employee', auth()->user()->id)}}" class="dropdown-item" >@lang('lang.emp_page')</a>
-                            @else
-                                <a href="{{route('profile', auth()->user()->id)}}" class="dropdown-item" >@lang('lang.user_profile')</a>
-                            @endif
-                            <a class="dropdown-item" onclick="location.href='{{route('user.logout')}}'" type="button">@lang('lang.log_out')</a>
-                        </div>
-                    </div>
-                </div>
-            @else
-                <div class="navbar-nav mx-auto">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary rounded-pill px-3 d-lg-block"
-                            data-bs-toggle="modal" data-bs-target="#modalMessage">
-                        @lang('lang.enroll')
-                    </button>
-                </div>
-                <div class="navbar-nav mx-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img src="https://w7.pngwing.com/pngs/364/361/png-transparent-account-avatar-profile-user-avatars-icon.png" alt="Avatar" style="vertical-align: middle; width: 50px; height: 50px; border-radius: 50%;">
-                        </a>
-                        <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0" style="right: 0;left: auto;!important;">
-                            <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSignIn">@lang('lang.log_in')</a>
-                            <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSignUp">@lang('lang.sign_up')</a>
-                        </div>
-                    </div>
-                </div>
-            @endif
+
             <div class="navbar-nav mx-auto">
                 <div class="nav-item dropdown">
                     <i class="bi-globe" style="font-size: 25px; color: #5f1dea"></i>
@@ -274,6 +232,55 @@ else{
                 </div>
             </div>
         </div>
+        @if(auth()->user())
+            <div class="navbar-nav mx-auto">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary rounded-pill px-3 d-lg-block"
+                        data-bs-toggle="modal" data-bs-target="#modalEnroll">
+                    @lang('lang.enroll_child')
+                </button>
+            </div>
+        @else
+            <div class="navbar-nav mx-auto">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary rounded-pill px-3 d-lg-block"
+                        data-bs-toggle="modal" data-bs-target="#modalMessage">
+                    @lang('lang.enroll')
+                </button>
+            </div>
+            <div class="navbar-nav mx-auto">
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <img src="https://w7.pngwing.com/pngs/364/361/png-transparent-account-avatar-profile-user-avatars-icon.png" alt="Avatar" style="vertical-align: middle; width: 50px; height: 50px; border-radius: 50%;">
+                    </a>
+                    <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0" style="right: 0;left: auto;!important;">
+                        <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSignIn">@lang('lang.log_in')</a>
+                        <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSignUp">@lang('lang.sign_up')</a>
+                    </div>
+                </div>
+            </div>
+        @endif
+        @if(auth()->user())
+            <div class="navbar-nav mx-auto">
+                <div class="nav-item dropdown">
+
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <img src="{{auth()->user()->profile_photo != null ? asset(auth()->user()->profile_photo) : asset('new_template/img/avatar.png')}}" alt="Avatar" style="vertical-align: middle; width: 50px; height: 50px; border-radius: 50%;">
+                    </a>
+                    <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0" style="right: 0;left: auto;!important;">
+                        @if(auth()->user()->role_name->name == 'Admin')
+                            <a href="{{route('admin')}}" class="dropdown-item" >@lang('lang.emp_page')</a>
+                        @elseif(auth()->user()->role->name = 'Teacher')
+                            <a href="{{route('employee', auth()->user()->id)}}" class="dropdown-item" >@lang('lang.emp_page')</a>
+                        @else
+                            <a href="{{route('profile', auth()->user()->id)}}" class="dropdown-item" >@lang('lang.user_profile')</a>
+                        @endif
+                        <a class="dropdown-item" onclick="location.href='{{route('user.logout')}}'" type="button">@lang('lang.log_out')</a>
+                    </div>
+                </div>
+            </div>
+        @endif
+
     </nav>
     <!-- Navbar End -->
         <div id="app">
@@ -611,26 +618,22 @@ else{
                     </div>
                 </div>
 
-                <div class="container-fluid p-4">
-                    <div class="row g-4">
-                        @if (session('success'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                {{ session('success') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        @elseif(session('warning'))
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                {{ session('warning') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        @elseif(session('error'))
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                {{ session('error') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        @endif
+                @if (session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                </div>
+                @elseif(session('warning'))
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {{ session('warning') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @elseif(session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
 
                 @yield('content')
             </main>
