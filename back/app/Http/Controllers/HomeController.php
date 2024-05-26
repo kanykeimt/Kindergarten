@@ -5,25 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Child;
 use App\Models\Gallery;
 use App\Models\MainGallery;
+use App\Services\IndexService;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    private IndexService $service;
+    public function __construct(IndexService $service)
     {
-//        $this->middleware('auth');
+        $this->service = $service;
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+
     public function index()
     {
         return view('home');
@@ -54,6 +47,12 @@ class HomeController extends Controller
 
     public function condition(){
         return view('user.condition');
+    }
+
+    public function menu(){
+        $formattedDates = $this->service->dates();
+        $menus = $this->service->menus();
+        return view('user.menu', compact('formattedDates', 'menus'));
     }
 
     public function faq(){
