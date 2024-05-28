@@ -52,110 +52,110 @@ else{
 
     <!-- Template Stylesheet -->
     <link href="{{asset('new_template/css/style.css')}}" rel="stylesheet">
-    <style>
+{{--    <style>--}}
 
 
-        /* Dropdown Content (Hidden by Default) */
-        .dropdown-content {
-            display: none;
-            position: relative;
-            background-color: #f9f9f9;
-            width: 140px;
-        }
+{{--        /* Dropdown Content (Hidden by Default) */--}}
+{{--        .dropdown-content {--}}
+{{--            display: none;--}}
+{{--            position: relative;--}}
+{{--            background-color: #f9f9f9;--}}
+{{--            width: 140px;--}}
+{{--        }--}}
 
-        .dropbtnru
-        {
-            background: url('http://icons.iconarchive.com/icons/custom-icon-design/flag-3/16/Russia-Flag-icon.png') no-repeat left center;
-            padding-left: 25px;
-            width: auto;
-        }
-        .dropbtnkg
-        {
-            background: url('https://icons.iconarchive.com/icons/famfamfam/flag/16/kg-icon.png') no-repeat left center;
-            padding-left: 25px;
-            width: auto;
-        }
+{{--        .dropbtnru--}}
+{{--        {--}}
+{{--            background: url('http://icons.iconarchive.com/icons/custom-icon-design/flag-3/16/Russia-Flag-icon.png') no-repeat left center;--}}
+{{--            padding-left: 25px;--}}
+{{--            width: auto;--}}
+{{--        }--}}
+{{--        .dropbtnkg--}}
+{{--        {--}}
+{{--            background: url('https://icons.iconarchive.com/icons/famfamfam/flag/16/kg-icon.png') no-repeat left center;--}}
+{{--            padding-left: 25px;--}}
+{{--            width: auto;--}}
+{{--        }--}}
 
-        .dropbtnkg::after {
-            /*background: rgba(0, 0, 0, 0) url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-16.png") no-repeat scroll center center;*/
-            content: "";
-            height: 16px;
-            position: absolute;
-            right: 0;
-            top: 7px;
-            width: 16px;
-        }
-
-
+{{--        .dropbtnkg::after {--}}
+{{--            /*background: rgba(0, 0, 0, 0) url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-16.png") no-repeat scroll center center;*/--}}
+{{--            content: "";--}}
+{{--            height: 16px;--}}
+{{--            position: absolute;--}}
+{{--            right: 0;--}}
+{{--            top: 7px;--}}
+{{--            width: 16px;--}}
+{{--        }--}}
 
 
-        .dropdown-content a:first-child
-        {
-            background: url('http://icons.iconarchive.com/icons/custom-icon-design/flag-3/16/Russia-Flag-icon.png') no-repeat left center;
-        }
-
-        .dropdown-content a:last-child
-        {
-            background: url('https://icons.iconarchive.com/icons/famfamfam/flag/16/kg-icon.png') no-repeat left center;
-        }
-
-        /* Links inside the dropdown */
-
-        /* Change color of dropdown links on hover */
-
-        /*# sourceMappingURL=style.css.map */
 
 
-        .alert {
-            position: relative;
-            top: 10px;
-            left: 0;
-            width: auto;
-            height: auto;
-            padding: 10px;
-            margin: 10px;
-            line-height: 1.8;
-            border-radius: 5px;
-            cursor: hand;
-            cursor: pointer;
-            font-family: sans-serif;
-            font-weight: 400;
-        }
+{{--        .dropdown-content a:first-child--}}
+{{--        {--}}
+{{--            background: url('http://icons.iconarchive.com/icons/custom-icon-design/flag-3/16/Russia-Flag-icon.png') no-repeat left center;--}}
+{{--        }--}}
 
-        .alertCheckbox {
-            display: none;
-        }
+{{--        .dropdown-content a:last-child--}}
+{{--        {--}}
+{{--            background: url('https://icons.iconarchive.com/icons/famfamfam/flag/16/kg-icon.png') no-repeat left center;--}}
+{{--        }--}}
 
-        :checked + .alert {
-            display: none;
-        }
+{{--        /* Links inside the dropdown */--}}
 
-        .alertText {
-            display: table;
-            margin: 0 auto;
-            text-align: center;
-            font-size: 16px;
-        }
+{{--        /* Change color of dropdown links on hover */--}}
 
-        .alertClose {
-            float: right;
-            padding-top: 5px;
-            font-size: 10px;
-        }
-
-        .clear {
-            clear: both;
-        }
+{{--        /*# sourceMappingURL=style.css.map */--}}
 
 
-        .success {
-            background-color: #EFE;
-            border: 1px solid #DED;
-            color: #9A9;
-        }
+{{--        .alert {--}}
+{{--            position: relative;--}}
+{{--            top: 10px;--}}
+{{--            left: 0;--}}
+{{--            width: auto;--}}
+{{--            height: auto;--}}
+{{--            padding: 10px;--}}
+{{--            margin: 10px;--}}
+{{--            line-height: 1.8;--}}
+{{--            border-radius: 5px;--}}
+{{--            cursor: hand;--}}
+{{--            cursor: pointer;--}}
+{{--            font-family: sans-serif;--}}
+{{--            font-weight: 400;--}}
+{{--        }--}}
+
+{{--        .alertCheckbox {--}}
+{{--            display: none;--}}
+{{--        }--}}
+
+{{--        :checked + .alert {--}}
+{{--            display: none;--}}
+{{--        }--}}
+
+{{--        .alertText {--}}
+{{--            display: table;--}}
+{{--            margin: 0 auto;--}}
+{{--            text-align: center;--}}
+{{--            font-size: 16px;--}}
+{{--        }--}}
+
+{{--        .alertClose {--}}
+{{--            float: right;--}}
+{{--            padding-top: 5px;--}}
+{{--            font-size: 10px;--}}
+{{--        }--}}
+
+{{--        .clear {--}}
+{{--            clear: both;--}}
+{{--        }--}}
 
 
-    </style>
+{{--        .success {--}}
+{{--            background-color: #EFE;--}}
+{{--            border: 1px solid #DED;--}}
+{{--            color: #9A9;--}}
+{{--        }--}}
+
+
+{{--    </style>--}}
     @yield('style')
 {{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />--}}
 </head>
@@ -260,7 +260,7 @@ else{
                             <img src="https://w7.pngwing.com/pngs/364/361/png-transparent-account-avatar-profile-user-avatars-icon.png" alt="Avatar" style="vertical-align: middle; width: 50px; height: 50px; border-radius: 50%;">
                         </a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0" style="right: 0;left: auto;!important;">
-                            <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSignIn">@lang('lang.log_in')</a>
+                            <a href="{{route('user.auth.form')}}" class="dropdown-item" >@lang('lang.log_in')</a>
                             <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSignUp">@lang('lang.sign_up')</a>
                         </div>
                     </div>

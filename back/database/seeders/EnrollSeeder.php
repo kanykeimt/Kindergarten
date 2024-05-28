@@ -26,7 +26,7 @@ class EnrollSeeder extends Seeder
         }
         // Use Faker to generate random data for groups
         $faker = Faker::create();
-        $parentIds = User::whereHas('role', function($query) {
+        $parentIds = User::whereHas('role_name', function($query) {
             $query->where('name', 'User');
         })->pluck('id');
 

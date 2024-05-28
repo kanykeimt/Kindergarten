@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthUserRequest;
 use App\Mail\SendCode;
 use App\Models\Role;
 use App\Models\User;
@@ -17,7 +18,7 @@ class AuthController extends Controller
         return view('login');
     }
 
-    public function userAuth(Request $request){
+    public function userAuth(AuthUserRequest $request){
         $user = User::where('email', $request->email)->get();
         if(count($user)){
             $user = $user[0];
