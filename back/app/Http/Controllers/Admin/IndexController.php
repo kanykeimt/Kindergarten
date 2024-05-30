@@ -17,12 +17,15 @@ class IndexController extends Controller
     }
     public function __invoke()
     {
-//        $chats = $this->service->chats();
-//        $from_user_data = User::where('id', $chats->first()->from_user_id)->first();
-//        $startDate = Carbon::parse($chats[0]->date);
-//        $currentDate = Carbon::now();
-//
-//        $differenceInDays = $currentDate->diffInHours($startDate);
-        return view('admin.index');
+
+        $chats = Chat::where('to_user_id', auth()->user()->id)->get();
+        dd($chats);
+        $chats = $this->service->chats();
+        $from_user_data = User::where('id', $chats->first()->from_user_id)->first();
+        $startDate = Carbon::parse($chats[0]->date);
+        $currentDate = Carbon::now();
+
+        $differenceInDays = $currentDate->diffInHours($startDate);
+        return view('admin.index', compact('chats', 'from_user_data', 'differenceInDays'))  ;
     }
 }
