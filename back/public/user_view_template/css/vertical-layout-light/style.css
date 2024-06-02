@@ -25077,22 +25077,22 @@ dl li {
 
 .add-items input[type="text"]::-webkit-input-placeholder {
   font-size: 1rem;
-  color: #9b9b9b;
+  color: #3b3b3b;
 }
 
 .add-items input[type="text"]:-moz-placeholder {
   font-size: 1rem;
-  color: #9b9b9b;
+    color: #3b3b3b;
 }
 
 .add-items input[type="text"]::-moz-placeholder {
   font-size: 1rem;
-  color: #9b9b9b;
+    color: #3b3b3b;
 }
 
 .add-items input[type="text"]:-ms-input-placeholder {
   font-size: 1rem;
-  color: #9b9b9b;
+    color: #3b3b3b;
 }
 
 .add-items .btn, .add-items .fc button, .fc .add-items button, .add-items .ajax-upload-dragdrop .ajax-file-upload, .ajax-upload-dragdrop .add-items .ajax-file-upload, .add-items .swal2-modal .swal2-buttonswrapper .swal2-styled, .swal2-modal .swal2-buttonswrapper .add-items .swal2-styled, .add-items .wizard > .actions a, .wizard > .actions .add-items a {

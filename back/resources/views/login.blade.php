@@ -11,13 +11,8 @@
     <link rel="stylesheet" href="{{asset('user_view_template/vendors/feather/feather.css')}}">
     <link rel="stylesheet" href="{{asset('user_view_template/vendors/ti-icons/css/themify-icons.css')}}">
     <link rel="stylesheet" href="{{asset('user_view_template/vendors/css/vendor.bundle.base.css')}}">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
     <link rel="stylesheet" href="{{asset('user_view_template/css/vertical-layout-light/style.css')}}">
-    <!-- endinject -->
-    <link rel="shortcut icon" href="{{asset('user_view_template/images/favicon.png')}}" />
+    <link href="{{asset('new_template/img/aruu%20logo1.png')}}" rel="icon">
 </head>
 
 <body>

@@ -261,7 +261,7 @@ else{
                         </a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0" style="right: 0;left: auto;!important;">
                             <a href="{{route('user.auth.form')}}" class="dropdown-item" >@lang('lang.log_in')</a>
-                            <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSignUp">@lang('lang.sign_up')</a>
+                            <a href="{{ route('user.register.form') }}" class="dropdown-item">@lang('lang.sign_up')</a>
                         </div>
                     </div>
                 </div>
