@@ -1,138 +1,95 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Aruu</title>
 
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('user.register') }}" enctype="multipart/form-data">
+
+    <link rel="stylesheet" href="{{asset('user_view_template/vendors/feather/feather.css')}}">
+    <link rel="stylesheet" href="{{asset('user_view_template/vendors/ti-icons/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('user_view_template/vendors/css/vendor.bundle.base.css')}}">
+    <link rel="stylesheet" href="{{asset('user_view_template/css/vertical-layout-light/style.css')}}">
+    <link href="{{asset('new_template/img/aruu%20logo1.png')}}" rel="icon">
+</head>
+
+<body>
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth px-0">
+            <div class="row w-100 mx-0">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                        <div class="brand-logo">
+                            <img src="{{asset('new_template/img/aruu%20logo1.png')}}" style="height: 90px; width: 90px" alt="logo">
+                            <img src="{{asset('new_template/img/aruu%20logo2.png')}}" style="height: 100px; width: 100px">
+                        </div>
+                        <form class="pt-3" method="POST" action="{{ route('user.register') }}">
                             @csrf
-
-                            <div class="row mb-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                    @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-lg" name="name" id="name" placeholder="@lang('lang.name')">
+                                @if(session('errorWithName'))
+                                    <p class="text-danger">{{session('errorWithName')}}</p>
+                                    <script>
+                                        document.getElementById('name').value = "{{session('name')}}";
+                                    </script>
+                                @endif
                             </div>
-
-                            <div class="row mb-3">
-                                <label for="surname" class="col-md-4 col-form-label text-md-end">{{ __('Surname') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
-                                    @error('surname')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-lg" name="surname" id="surname" placeholder="@lang('lang.surname')">
+                                @if(session('errorWithSurname'))
+                                    <p class="text-danger">{{session('errorWithSurname')}}</p>
+                                    <script>
+                                        document.getElementById('name').value = "{{session('surname')}}";
+                                    </script>
+                                @endif
                             </div>
-
-                            <div class="row mb-3">
-                                <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Home Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address">
-
-                                    @error('address')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control form-control-lg" name="email" id="email" placeholder="@lang('lang.email')">
+                                @if(session('errorWithEmail'))
+                                    <p class="text-danger">{{session('errorWithEmail')}}</p>
+                                    <script>
+                                        document.getElementById('email').value = "{{session('email')}}";
+                                    </script>
+                                @endif
                             </div>
-
-                            <div class="row mb-3">
-                                <label for="phone_number" class="col-md-4 col-form-label text-md-end">{{ __('Phone Number') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus>
-
-                                    @error('phone_number')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control form-control-lg" name="password" id="password" placeholder="@lang('lang.password')">
+                                @if(session('errorWithPassword'))
+                                    <p class="text-danger">{{session('errorWithPassword')}}</p>
+                                    <script>
+                                        document.getElementById('email').value = "{{session('email')}}";
+                                    </script>
+                                @endif
                             </div>
-
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                    @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="passport_back" class="col-md-4 col-form-label text-md-end">{{ __('Passport Back') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="passport_back" type="file" class="form-control @error('passport_back') is-invalid @enderror" name="passport_back" value="{{ old('passport_back') }}">
-
-                                    @error('passport_back')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="passport_front" class="col-md-4 col-form-label text-md-end">{{ __('Passport Front') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="passport_front" type="file" class="form-control @error('passport_front') is-invalid @enderror" name="passport_front" value="{{ old('passport_front') }}">
-
-                                    @error('passport_front')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
-                                    </button>
-                                </div>
+                            <div class="mt-3 d-flex justify-content-end">
+                                <button type="button" href="{{route('index')}}" class="btn btn-secondary mr-2">@lang('lang.close_btn')</button>
+                                <button type="submit" class="btn btn-primary">@lang('lang.log_in')</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- content-wrapper ends -->
     </div>
-@endsection
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="{{asset('user_view_template/vendors/js/vendor.bundle.base.js')}}"></script>
+<!-- endinject -->
+<!-- Plugin js for this page -->
+<!-- End plugin js for this page -->
+<!-- inject:js -->
+<script src="{{asset('user_view_template/js/off-canvas.js')}}"></script>
+<script src="{{asset('user_view_template/js/hoverable-collapse.js')}}"></script>
+<script src="{{asset('user_view_template/js/template.js')}}"></script>
+<script src="{{asset('user_view_template/js/settings.js')}}"></script>
+<script src="{{asset('user_view_template/js/todolist.js')}}"></script>
+<!-- endinject -->
+</body>
+
+</html>

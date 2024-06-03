@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Email verification</title>
+    <title>Verification Code</title>
 </head>
 <body>
-
-
-<p>
-    {{"code => ".$code}}
-</p>
-
-<p>Thank you</p>
+<h1>Your Verification Code</h1>
+<p>Your verification code is: {{ $code }}</p>
 </body>
 </html>

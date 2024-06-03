@@ -25,7 +25,7 @@ class GroupSeeder extends Seeder
 
         // Use Faker to generate random data for groups
         $faker = Faker::create();
-        $teacherIds = User::whereHas('role', function($query) {
+        $teacherIds = User::whereHas('role_name', function($query) {
             $query->where('name', 'Teacher');
         })->pluck('id');
 

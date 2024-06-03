@@ -21,7 +21,7 @@ class ReviewSeeder extends Seeder
         DB::table('reviews')->truncate();
 
         $faker = Faker::create();
-        $userIds = User::whereHas('role', function($query) {
+        $userIds = User::whereHas('role_name', function($query) {
             $query->where('name', 'Parent');
         })->pluck('id');
 
