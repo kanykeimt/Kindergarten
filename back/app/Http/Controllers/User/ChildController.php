@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Payment\CreateRequest;
 use App\Http\Requests\UpdateChildRequest;
 use App\Http\Requests\UpdateRequest;
+use App\Models\DaysOfWeek;
 use App\Models\Media;
 use App\Services\IndexService;
 use App\Services\User\ChildService;
@@ -27,7 +28,9 @@ class ChildController extends Controller
         $dates = $this->service->dates($child);
         $news = $this->service->news($child);
         $reviews = $this->indexService->reviews();
-        return view('user.children', compact('child', 'dates', 'news', 'reviews'));
+        $schedules =  $this->service->schedules($child);
+        $dayOfWeek = $this->service->dayOfWeek();
+        return view('user.children', compact('child', 'dates', 'news', 'reviews', 'schedules', 'dayOfWeek'));
 
     }
 

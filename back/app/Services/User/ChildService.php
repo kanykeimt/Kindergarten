@@ -5,8 +5,10 @@ namespace App\Services\User;
 use App\Http\Requests\Admin\Payment\CreateRequest;
 use App\Http\Requests\UpdateChildRequest;
 use App\Models\Child;
+use App\Models\DaysOfWeek;
 use App\Models\News;
 use App\Models\Payment;
+use App\Models\Schedule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Storage;
@@ -105,5 +107,27 @@ class ChildService
             ]);
         }
         return Lang::get('lang.add_payment_successful');
+    }
+
+    public function schedules(Child $child){
+        $schedules = Schedule::where('group_id', $child->group->id)->get();
+        foreach ($schedules as $schedule) {
+            $schedule->class_name = $schedule->class->name;
+        }
+        $schedules = $schedules->sortBy([
+            ['day', 'asc'],
+            ['time_from', 'asc']
+        ]);
+        return $schedules;
+    }
+
+    public function dayOfWeek(){
+        $dayOfWeek = DaysOfWeek::all();
+
+        foreach ($dayOfWeek as $day) {
+            $day->name = $day->name;
+        }
+
+        return $dayOfWeek;
     }
 }
