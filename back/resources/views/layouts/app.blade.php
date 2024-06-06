@@ -260,8 +260,8 @@ else{
                             <img src="https://w7.pngwing.com/pngs/364/361/png-transparent-account-avatar-profile-user-avatars-icon.png" alt="Avatar" style="vertical-align: middle; width: 50px; height: 50px; border-radius: 50%;">
                         </a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0" style="right: 0;left: auto;!important;">
-                            <a href="{{route('user.auth.form')}}" class="dropdown-item" >@lang('lang.log_in')</a>
-                            <a href="{{ route('user.register.form') }}" class="dropdown-item">@lang('lang.sign_up')</a>
+                            <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSignIn">@lang('lang.log_in')</a>
+                            <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSignUp">@lang('lang.sign_up')</a>
                         </div>
                     </div>
                 </div>
@@ -399,29 +399,6 @@ else{
                                         @endif
                                     </div>
 
-                                    <!-- Home Address input -->
-                                    <div class="field">
-                                        <i class="icon fas fa-map-marker-alt"></i>
-                                        <input type="text" id="address" name="address" placeholder="@lang('lang.address')" class="login__input @error('address') is-invalid @enderror" required autocomplete="address">
-                                        @if(session('errorWithAddress'))
-                                            <p class="text-danger">{{session('errorWithAddress')}}</p>
-                                            <script>
-                                                document.getElementById('address').value = "{{session('address')}}";
-                                            </script>
-                                        @endif
-                                    </div>
-
-                                    <!-- Phone Number input -->
-                                    <div class="field">
-                                        <i class="icon fas fa-phone-alt"></i>
-                                        <input type="text" id="phone_number" name="phone_number" placeholder="@lang('lang.phone_number')" class="login__input @error('phone_number') is-invalid @enderror" required autocomplete="phone_number">
-                                        @if(session('errorWithPhoneNumber'))
-                                            <p class="text-danger">{{session('errorWithPhoneNumber')}}</p>
-                                            <script>
-                                                document.getElementById('phone_number').value = "{{session('phone_number')}}";
-                                            </script>
-                                        @endif
-                                    </div>
                                     <!-- Email input -->
                                     <div class="field">
                                         <i class="icon fas fa-at"></i>
@@ -442,6 +419,30 @@ else{
                                             <p class="text-danger">{{session('errorWithPassword')}}</p>
                                             <script>
                                                 document.getElementById('email').value = "{{session('email')}}";
+                                            </script>
+                                        @endif
+                                    </div>
+
+                                    <!-- Home Address input -->
+                                    <div class="field">
+                                        <i class="icon fas fa-map-marker-alt"></i>
+                                        <input type="text" id="address" name="address" placeholder="@lang('lang.address')" class="login__input @error('address') is-invalid @enderror" required autocomplete="address">
+                                        @if(session('errorWithAddress'))
+                                            <p class="text-danger">{{session('errorWithAddress')}}</p>
+                                            <script>
+                                                document.getElementById('address').value = "{{session('address')}}";
+                                            </script>
+                                        @endif
+                                    </div>
+
+                                    <!-- Phone Number input -->
+                                    <div class="field">
+                                        <i class="icon fas fa-phone-alt"></i>
+                                        <input type="text" id="phone_number" name="phone_number" placeholder="@lang('lang.phone_number')" class="login__input @error('phone_number') is-invalid @enderror" required autocomplete="phone_number">
+                                        @if(session('errorWithPhoneNumber'))
+                                            <p class="text-danger">{{session('errorWithPhoneNumber')}}</p>
+                                            <script>
+                                                document.getElementById('phone_number').value = "{{session('phone_number')}}";
                                             </script>
                                         @endif
                                     </div>
@@ -482,81 +483,129 @@ else{
                         </div>
                     </div>
                 </div>
-                <!-- Modal Enroll -->
-                <div class="modal fade"  id="modalEnroll" tabindex="-1" aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog" >
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">@lang('lang.enroll_child')</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
+                @if(auth()->user())
+                    <!-- Modal Enroll -->
+                    <div class="modal fade"  id="modalEnroll" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog" >
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">@lang('lang.enroll_child')</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
 
-                                <form id="form" method="POST" action="{{route('enroll.create')}}" enctype="multipart/form-data">
-                                    @csrf
-                                    <!-- Name input -->
-                                    <div class="field">
-                                        <i class="icon fas fa-user"></i>
-                                        <input type="text" id="name" name="name" placeholder="@lang('lang.child_name')" class="login__input @error('name') is-invalid @enderror" required autocomplete="name">
-                                        @if(session('errorWithName'))
-                                            <p class="text-danger">{{session('errorWithName')}}</p>
-                                            <script>
-                                                document.getElementById('name').value = "{{session('name')}}";
-                                            </script>
-                                        @endif
-                                    </div>
-                                    <!-- Surname input -->
-                                    <div class="field" >
-                                        <i class="icon fas fa-user"></i>
-                                        <input type="text" id="surname" name="surname" placeholder="@lang('lang.child_surname')" class="login__input @error('surname') is-invalid @enderror" required autocomplete="surname">
-                                        @if(session('errorWithSurname'))
-                                            <p class="text-danger">{{session('errorWithSurname')}}</p>
-                                            <script>
-                                                document.getElementById('surname').value = "{{session('surname')}}";
-                                            </script>
-                                        @endif
-                                    </div>
-                                    <!-- Birth date input -->
-                                    <div class="form-outline mb-2" style="padding: 10px">
-                                        <label for="birth_date" class="form-label" style="font-weight: 700;">@lang('lang.child_birth_date')</label>
-                                        <div class="col-md-6 ">
-                                            <input id="birth_date" type="date" class="form-control @error('birth_date') is-invalid @enderror" name="birth_date" value="{{ old('birth_date') }}" required autofocus oninvalid="this.setCustomValidity('Please fill in the field')" oninput="this.setCustomValidity('')">
-                                            @error('birth_date')
+                                    <form id="form" method="POST" action="{{route('enroll.create')}}" enctype="multipart/form-data">
+                                        @csrf
+                                        <!-- Home Address input -->
+                                        <div class="field">
+                                            <i class="icon fas fa-map-marker-alt"></i>
+                                            <input type="text" id="address" name="address" placeholder="@lang('lang.address')" class="login__input @error('address') is-invalid @enderror" required autocomplete="address">
+                                            @if(session('errorWithAddress'))
+                                                <p class="text-danger">{{session('errorWithAddress')}}</p>
+                                                <script>
+                                                    document.getElementById('address').value = "{{session('address')}}";
+                                                </script>
+                                            @endif
+                                        </div>
+
+                                        <!-- Phone Number input -->
+                                        <div class="field">
+                                            <i class="icon fas fa-phone-alt"></i>
+                                            <input type="text" id="phone_number" name="phone_number" placeholder="@lang('lang.phone_number')" class="login__input @error('phone_number') is-invalid @enderror" required autocomplete="phone_number">
+                                            @if(session('errorWithPhoneNumber'))
+                                                <p class="text-danger">{{session('errorWithPhoneNumber')}}</p>
+                                                <script>
+                                                    document.getElementById('phone_number').value = "{{session('phone_number')}}";
+                                                </script>
+                                            @endif
+                                        </div>
+
+                                        <!-- Passport front input -->
+                                        <div class="field">
+                                            <label for="fileF" class="form-label">@lang('lang.parent_passport_front')</label>
+                                            <input id="passport_front" type="file" class="form-control @error('passport_front') is-invalid @enderror" name="passport_front" value="{{ old('passport_front') }}" required>
+
+                                            @error('passport_front')
                                             <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
                                             @enderror
                                         </div>
-                                    </div>
-                                    <!-- Gender input -->
-                                    <div class="form-outline mb-2" style="padding: 10px">
-                                        <label for="gender" class="form-label" style="font-weight: 700;">@lang('lang.child_gender')</label>
-                                        <div class="col-md-6">
-                                            <div class="radioDiv">
-                                                <input type="radio" name="gender" id="option-1" value="Male">
-                                                <input type="radio" name="gender" id="option-2" value="Female">
-                                                <label for="option-1" class="option option-1">
-                                                    <div class="dot"></div>
-                                                    <span>@lang('lang.gender_male')</span>
-                                                </label>
-                                                <label for="option-2" class="option option-2">
-                                                    <div class="dot"></div>
-                                                    <span>@lang('lang.gender_female')</span>
-                                                </label>
-                                                @error('gender')
+
+                                        <!-- Passport back input -->
+                                        <div class="field">
+                                            <label for="fileB" class="form-label">@lang('lang.parent_passport_back')</label>
+                                            <input id="passport_back" type="file" class="form-control @error('passport_back') is-invalid @enderror" name="passport_back" value="{{ old('passport_back') }}" required>
+
+                                            @error('passport_back')
+                                            <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Name input -->
+                                        <div class="field">
+                                            <i class="icon fas fa-user"></i>
+                                            <input type="text" id="name" name="name" placeholder="@lang('lang.child_name_form')" class="login__input @error('name') is-invalid @enderror" required autocomplete="name">
+                                            @if(session('errorWithName'))
+                                                <p class="text-danger">{{session('errorWithName')}}</p>
+                                                <script>
+                                                    document.getElementById('name').value = "{{session('name')}}";
+                                                </script>
+                                            @endif
+                                        </div>
+                                        <!-- Surname input -->
+                                        <div class="field" >
+                                            <i class="icon fas fa-user"></i>
+                                            <input type="text" id="surname" name="surname" placeholder="@lang('lang.child_surname_form')" class="login__input @error('surname') is-invalid @enderror" required autocomplete="surname">
+                                            @if(session('errorWithSurname'))
+                                                <p class="text-danger">{{session('errorWithSurname')}}</p>
+                                                <script>
+                                                    document.getElementById('surname').value = "{{session('surname')}}";
+                                                </script>
+                                            @endif
+                                        </div>
+                                        <!-- Birth date input -->
+                                        <div class="form-outline mb-2" style="padding: 10px">
+                                            <label for="birth_date" class="form-label" style="font-weight: 700;">@lang('lang.child_birth_date')</label>
+                                            <div class="col-md-6 ">
+                                                <input id="birth_date" type="date" class="form-control @error('birth_date') is-invalid @enderror" name="birth_date" value="{{ old('birth_date') }}" required autofocus oninvalid="this.setCustomValidity('Please fill in the field')" oninput="this.setCustomValidity('')">
+                                                @error('birth_date')
                                                 <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- Photo input -->
-                                    <div class="form-outline mb-2" style="padding: 10px">
-                                        <label for="photo" class="form-label" style="font-weight: 700;">@lang('lang.child_photo')</label>
-                                        <div class="col-md-6">
+                                        <!-- Gender input -->
+                                        <div class="form-outline mb-2" style="padding: 10px">
+                                            <label for="gender" class="form-label" style="font-weight: 700;">@lang('lang.child_gender')</label>
+                                            <div class="col-md-6">
+                                                <div class="radioDiv">
+                                                    <input type="radio" name="gender" id="option-1" value="Male">
+                                                    <input type="radio" name="gender" id="option-2" value="Female">
+                                                    <label for="option-1" class="option option-1">
+                                                        <div class="dot"></div>
+                                                        <span>@lang('lang.gender_male')</span>
+                                                    </label>
+                                                    <label for="option-2" class="option option-2">
+                                                        <div class="dot"></div>
+                                                        <span>@lang('lang.gender_female')</span>
+                                                    </label>
+                                                    @error('gender')
+                                                    <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Photo input -->
+                                        <div class="form-outline mb-2" style="padding: 10px">
+                                            <label for="photo" class="form-label" style="font-weight: 700;">@lang('lang.child_photo')</label>
                                             <input id="photo" type="file" accept="image/png, image/gif, image/jpeg" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('photo') }}" required autofocus oninvalid="this.setCustomValidity('Please select a file')" oninput="this.setCustomValidity('')">
                                             @error('photo')
                                             <span class="invalid-feedback" role="alert">
@@ -564,11 +613,9 @@ else{
                                                             </span>
                                             @enderror
                                         </div>
-                                    </div>
-                                    <!-- Birth certificate input -->
-                                    <div class="form-outline mb-2" style="padding: 10px">
-                                        <label for="birth_certificate" class="form-label" style="font-weight: 700;">@lang('lang.child_birth_cert')</label>
-                                        <div class="col-md-6">
+                                        <!-- Birth certificate input -->
+                                        <div class="form-outline mb-2" style="padding: 10px">
+                                            <label for="birth_certificate" class="form-label" style="font-weight: 700;">@lang('lang.child_birth_cert')</label>
                                             <input id="birth_certificate" type="file"  class="form-control @error('birth_certificate') is-invalid @enderror" name="birth_certificate" value="{{ old('birth_certificate') }}" required autofocus oninvalid="this.setCustomValidity('Please select a file')" oninput="this.setCustomValidity('')">
                                             @error('birth_certificate')
                                             <span class="invalid-feedback" role="alert">
@@ -576,11 +623,9 @@ else{
                                                             </span>
                                             @enderror
                                         </div>
-                                    </div>
-                                    <!-- Med certificate input -->
-                                    <div class="form-outline mb-2" style="padding: 10px">
-                                        <label for="med_certificate" class="form-label" style="font-weight: 700;">@lang('lang.child_med_cert')</label>
-                                        <div class="col-md-6">
+                                        <!-- Med certificate input -->
+                                        <div class="form-outline mb-2" style="padding: 10px">
+                                            <label for="med_certificate" class="form-label" style="font-weight: 700;">@lang('lang.child_med_cert')</label>
                                             <input id="med_certificate" type="file" class="form-control @error('med_certificate') is-invalid @enderror" name="med_certificate" value="{{ old('med_certificate') }}" required autofocus oninvalid="this.setCustomValidity('Please select a file')" oninput="this.setCustomValidity('')">
                                             @error('med_certificate')
                                             <span class="invalid-feedback" role="alert">
@@ -588,30 +633,26 @@ else{
                                                             </span>
                                             @enderror
                                         </div>
-                                    </div>
-                                    <!-- Med disability input -->
-                                    <div class="form-outline mb-2" style="padding: 10px">
-                                        <label for="med_disability" class="form-label" style="font-weight: 700;">@lang('lang.child_med_dis')</label>
-                                        <div class="col-md-6">
+                                        <!-- Med disability input -->
+                                        <div class="form-outline mb-2" style="padding: 10px">
+                                            <label for="med_disability" class="form-label" style="font-weight: 700;">@lang('lang.child_med_dis')</label>
                                             <input id="med_disability" type="file" class="form-control @error('med_disability') is-invalid @enderror" name="med_disability" value="{{ old('med_disability') }}">
                                             @error('med_disability')
-                                            <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                             @enderror
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">@lang('lang.close_btn')</button>
-                                        <!-- Submit button -->
-                                        <button type="submit" class="btn btn-success btn-block">@lang('lang.to_enroll')</button>
-                                    </div>
-                                </form>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">@lang('lang.close_btn')</button>
+                                            <!-- Submit button -->
+                                            <button type="submit" class="btn btn-success btn-block">@lang('lang.to_enroll')</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
 
                 @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EnrollCreateRequest;
 use App\Models\Child;
 use App\Models\Enroll;
 use App\Models\User;
@@ -17,13 +18,8 @@ class EnrollController extends Controller
         $this->service = new EnrollService();
     }
 
-    public function index(){
-        $enroll = Enroll::all();
-        $children = Child::all();
-        return view('enroll', compact('enroll', 'children'));
-    }
-
-    public function create(Request $request){
+    public function store(EnrollCreateRequest $request){
         return $this->service->store($request);
     }
+
 }

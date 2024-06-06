@@ -66,8 +66,7 @@ Route::group(
             Route::get('/resetPassword', [App\Http\Controllers\ResetPasswordController::class, 'form'])->name('reset.password.form');
             Route::post('/resetPassword', [App\Http\Controllers\ResetPasswordController::class, 'sendLink'])->name('reset.password.link');
             Route::get('/resetPassword/{email}', [App\Http\Controllers\ResetPasswordController::class, 'changePassword'])->name('change.password.form');
-            Route::post('/enroll/create', [App\Http\Controllers\EnrollController::class, 'create'])->name('enroll.create');
-            Route::get('/enroll', [App\Http\Controllers\EnrollController::class,'index'])->name('enroll.index');
+            Route::post('/enroll', [App\Http\Controllers\EnrollController::class, 'store'])->name('enroll.create');
         });
 
         Route::group(['prefix'=>'employee'], function (){
