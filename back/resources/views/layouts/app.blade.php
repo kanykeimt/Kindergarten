@@ -498,6 +498,7 @@ else{
 
                                     <form id="form" method="POST" action="{{route('enroll.create')}}" enctype="multipart/form-data">
                                         @csrf
+                                        <input type="number" id="parent_id" name="parent_id" value="{{auth()->user()->id}}" required hidden="">
                                         <!-- Home Address input -->
                                         <div class="field">
                                             <i class="icon fas fa-map-marker-alt"></i>

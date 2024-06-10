@@ -17,7 +17,6 @@ class EnrollService
     {
         $data = $request->validated();
         $user = User::where('id', $data['parent_id'])->first();
-        dd($data, $user);
         DB::beginTransaction();
         $passport_back = $user->passport_back;
         $passport_front = $user->passport_front;
@@ -61,7 +60,6 @@ class EnrollService
             'med_certificate' => $med_cert,
             'med_disability' => $med_dis,
         ]);
-        dd($enroll);
         $message = Lang::get('lang.child_added_queue');
         return back()->with('success', $message);
     }
