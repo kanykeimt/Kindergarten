@@ -423,54 +423,6 @@ else{
                                         @endif
                                     </div>
 
-                                    <!-- Home Address input -->
-                                    <div class="field">
-                                        <i class="icon fas fa-map-marker-alt"></i>
-                                        <input type="text" id="address" name="address" placeholder="@lang('lang.address')" class="login__input @error('address') is-invalid @enderror" required autocomplete="address">
-                                        @if(session('errorWithAddress'))
-                                            <p class="text-danger">{{session('errorWithAddress')}}</p>
-                                            <script>
-                                                document.getElementById('address').value = "{{session('address')}}";
-                                            </script>
-                                        @endif
-                                    </div>
-
-                                    <!-- Phone Number input -->
-                                    <div class="field">
-                                        <i class="icon fas fa-phone-alt"></i>
-                                        <input type="text" id="phone_number" name="phone_number" placeholder="@lang('lang.phone_number')" class="login__input @error('phone_number') is-invalid @enderror" required autocomplete="phone_number">
-                                        @if(session('errorWithPhoneNumber'))
-                                            <p class="text-danger">{{session('errorWithPhoneNumber')}}</p>
-                                            <script>
-                                                document.getElementById('phone_number').value = "{{session('phone_number')}}";
-                                            </script>
-                                        @endif
-                                    </div>
-
-                                    <!-- Passport front input -->
-                                    <div class="field">
-                                        <label for="fileF" class="form-label">@lang('lang.passport_front')</label>
-                                        <input id="passport_front" type="file" class="form-control @error('passport_front') is-invalid @enderror" name="passport_front" value="{{ old('passport_front') }}">
-
-                                        @error('passport_front')
-                                        <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                        @enderror
-                                    </div>
-
-                                    <!-- Passport back input -->
-                                    <div class="field">
-                                        <label for="fileB" class="form-label">@lang('lang.passport_back')</label>
-                                        <input id="passport_back" type="file" class="form-control @error('passport_back') is-invalid @enderror" name="passport_back" value="{{ old('passport_back') }}">
-
-                                        @error('passport_back')
-                                        <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                        @enderror
-                                    </div>
-
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">@lang('lang.close_btn')</button>
