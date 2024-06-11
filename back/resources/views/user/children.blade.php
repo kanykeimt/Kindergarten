@@ -51,6 +51,31 @@
             box-shadow: 0px 5px 0px 0px #d84213;
         }
 
+        .bg-blue.box-shadow {
+            box-shadow: 0px 5px 0px 0px #0056b3;
+        }
+
+        .bg-red.box-shadow {
+            box-shadow: 0px 5px 0px 0px #a71d2a;
+        }
+
+        .bg-teal.box-shadow {
+            box-shadow: 0px 5px 0px 0px #198754;
+        }
+
+        .bg-cyan.box-shadow {
+            box-shadow: 0px 5px 0px 0px #117a8b;
+        }
+
+        .bg-lime.box-shadow {
+            box-shadow: 0px 5px 0px 0px #afb42b;
+        }
+
+        .bg-amber.box-shadow {
+            box-shadow: 0px 5px 0px 0px #ffb300;
+        }
+
+
         .bg-sky {
             background-color: #02c2c7;
         }
@@ -78,6 +103,31 @@
         .bg-lightred {
             background-color: #ff5722;
         }
+
+        .bg-blue {
+            background-color: #007bff;
+        }
+
+        .bg-red {
+            background-color: #dc3545;
+        }
+
+        .bg-teal {
+            background-color: #20c997;
+        }
+
+        .bg-cyan {
+            background-color: #17a2b8;
+        }
+
+        .bg-lime {
+            background-color: #cddc39;
+        }
+
+        .bg-amber {
+            background-color: #ffc107;
+        }
+
 
         .padding-15px-lr {
             padding-left: 15px;
@@ -161,7 +211,6 @@
     </style>
 @endsection
 @section('content')
-
     <div class="container d-flex justify-content-center">
         <div class="col-sm-10">
             <div class="bg-light rounded h-100 p-4">
@@ -402,154 +451,36 @@
                                     <thead>
                                     <tr class="bg-light-gray">
                                         <th class="text-uppercase">Time</th>
-                                        <th class="text-uppercase">Monday</th>
-                                        <th class="text-uppercase">Tuesday</th>
-                                        <th class="text-uppercase">Wednesday</th>
-                                        <th class="text-uppercase">Thursday</th>
-                                        <th class="text-uppercase">Friday</th>
-                                        <th class="text-uppercase">Saturday</th>
+                                        @foreach($daysOfWeek as $dayOfWeek)
+                                            @if($dayOfWeek->id == 7)
+                                                @break
+                                            @endif
+                                            <th class="text-uppercase">{{$dayOfWeek->name}}</th>
+
+                                        @endforeach
+
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td class="align-middle" data-label="Time">09:00am</td>
-                                        <td data-label="Monday">
-                                            <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Dance</span>
-                                            <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                            <div class="font-size13 text-light-gray">Ivana Wong</div>
-                                        </td>
-                                        <td data-label="Tuesday">
-                                            <span class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Yoga</span>
-                                            <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                            <div class="font-size13 text-light-gray">Marta Healy</div>
-                                        </td>
-                                        <td data-label="Wednesday">
-                                            <span class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Music</span>
-                                            <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                            <div class="font-size13 text-light-gray">Ivana Wong</div>
-                                        </td>
-                                        <td data-label="Thursday">
-                                            <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Dance</span>
-                                            <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                            <div class="font-size13 text-light-gray">Ivana Wong</div>
-                                        </td>
-                                        <td data-label="Friday">
-                                            <span class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Art</span>
-                                            <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                            <div class="font-size13 text-light-gray">Kate Alley</div>
-                                        </td>
-                                        <td data-label="Saturday">
-                                            <span class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">English</span>
-                                            <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                            <div class="font-size13 text-light-gray">James Smith</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="align-middle" data-label="Time">10:00am</td>
-                                        <td data-label="Monday">
-                                            <span class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Music</span>
-                                            <div class="margin-10px-top font-size14">10:00-11:00</div>
-                                            <div class="font-size13 text-light-gray">Ivana Wong</div>
-                                        </td>
-                                        <td class="bg-light-gray" data-label="Tuesday"></td>
-                                        <td data-label="Wednesday">
-                                            <span class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Art</span>
-                                            <div class="margin-10px-top font-size14">10:00-11:00</div>
-                                            <div class="font-size13 text-light-gray">Kate Alley</div>
-                                        </td>
-                                        <td data-label="Thursday">
-                                            <span class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Yoga</span>
-                                            <div class="margin-10px-top font-size14">10:00-11:00</div>
-                                            <div class="font-size13 text-light-gray">Marta Healy</div>
-                                        </td>
-                                        <td data-label="Friday">
-                                            <span class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">English</span>
-                                            <div class="margin-10px-top font-size14">10:00-11:00</div>
-                                            <div class="font-size13 text-light-gray">James Smith</div>
-                                        </td>
-                                        <td class="bg-light-gray" data-label="Saturday"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="align-middle" data-label="Time">11:00am</td>
-                                        <td data-label="Monday">
-                                            <span class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Break</span>
-                                            <div class="margin-10px-top font-size14">11:00-12:00</div>
-                                        </td>
-                                        <td data-label="Tuesday">
-                                            <span class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Break</span>
-                                            <div class="margin-10px-top font-size14">11:00-12:00</div>
-                                        </td>
-                                        <td data-label="Wednesday">
-                                            <span class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Break</span>
-                                            <div class="margin-10px-top font-size14">11:00-12:00</div>
-                                        </td>
-                                        <td data-label="Thursday">
-                                            <span class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Break</span>
-                                            <div class="margin-10px-top font-size14">11:00-12:00</div>
-                                        </td>
-                                        <td data-label="Friday">
-                                            <span class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Break</span>
-                                            <div class="margin-10px-top font-size14">11:00-12:00</div>
-                                        </td>
-                                        <td data-label="Saturday">
-                                            <span class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Break</span>
-                                            <div class="margin-10px-top font-size14">11:00-12:00</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="align-middle" data-label="Time">12:00pm</td>
-                                        <td class="bg-light-gray" data-label="Monday"></td>
-                                        <td data-label="Tuesday">
-                                            <span class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Art</span>
-                                            <div class="margin-10px-top font-size14">12:00-1:00</div>
-                                            <div class="font-size13 text-light-gray">Kate Alley</div>
-                                        </td>
-                                        <td data-label="Wednesday">
-                                            <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Dance</span>
-                                            <div class="margin-10px-top font-size14">12:00-1:00</div>
-                                            <div class="font-size13 text-light-gray">Ivana Wong</div>
-                                        </td>
-                                        <td data-label="Thursday">
-                                            <span class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Music</span>
-                                            <div class="margin-10px-top font-size14">12:00-1:00</div>
-                                            <div class="font-size13 text-light-gray">Ivana Wong</div>
-                                        </td>
-                                        <td class="bg-light-gray" data-label="Friday"></td>
-                                        <td data-label="Saturday">
-                                            <span class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Yoga</span>
-                                            <div class="margin-10px-top font-size14">12:00-1:00</div>
-                                            <div class="font-size13 text-light-gray">Marta Healy</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="align-middle" data-label="Time">01:00pm</td>
-                                        <td data-label="Monday">
-                                            <span class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">English</span>
-                                            <div class="margin-10px-top font-size14">1:00-2:00</div>
-                                            <div class="font-size13 text-light-gray">James Smith</div>
-                                        </td>
-                                        <td data-label="Tuesday">
-                                            <span class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Music</span>
-                                            <div class="margin-10px-top font-size14">1:00-2:00</div>
-                                            <div class="font-size13 text-light-gray">Ivana Wong</div>
-                                        </td>
-                                        <td class="bg-light-gray" data-label="Wednesday"></td>
-                                        <td data-label="Thursday">
-                                            <span class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">English</span>
-                                            <div class="margin-10px-top font-size14">1:00-2:00</div>
-                                            <div class="font-size13 text-light-gray">James Smith</div>
-                                        </td>
-                                        <td data-label="Friday">
-                                            <span class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Yoga</span>
-                                            <div class="margin-10px-top font-size14">1:00-2:00</div>
-                                            <div class="font-size13 text-light-gray">Marta Healy</div>
-                                        </td>
-                                        <td data-label="Saturday">
-                                            <span class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Music</span>
-                                            <div class="margin-10px-top font-size14">1:00-2:00</div>
-                                            <div class="font-size13 text-light-gray">Ivana Wong</div>
-                                        </td>
-                                    </tr>
+                                    @for($i = 0; $i < count($hours) - 1; $i++)
+                                        <tr>
+                                            <td class="align-middle" data-label="Time">{{$hours[$i]}}</td>
+                                            @foreach($daysOfWeek as $indexOfDay => $dayOfWeek)
+                                                @if($dayOfWeek->id == 7)
+                                                    @break
+                                                @endif
+                                                <td data-label="{{$dayOfWeek->id}}">
+                                                    @foreach($schedules as $schedule)
+                                                        @if(($schedule->day == $dayOfWeek->id) && ($schedule->time_from >= $hours[$i]) && ($schedule->time_from < $hours[$i + 1]) && ($schedule->time_to >= $hours[$i + 1]) )
+                                                            <span class="bg-{{ \Illuminate\Support\Arr::random($colorNames) }} padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">{{$schedule->class_name}}</span>
+                                                            <div class="margin-10px-top font-size14">{{$schedule->time_from}}-{{$schedule->time_to}}</div>
+                                                        @endif
+                                                    @endforeach
+
+                                                </td>
+                                            @endforeach
+                                        </tr>
+                                    @endfor
                                     </tbody>
                                 </table>
                             </div>

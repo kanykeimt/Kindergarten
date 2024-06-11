@@ -15,6 +15,7 @@ use App\Models\Child;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use function Sodium\add;
 
 class ChildController extends Controller
 {
@@ -29,8 +30,28 @@ class ChildController extends Controller
         $news = $this->service->news($child);
         $reviews = $this->indexService->reviews();
         $schedules =  $this->service->schedules($child);
-        $dayOfWeek = $this->service->dayOfWeek();
-        return view('user.children', compact('child', 'dates', 'news', 'reviews', 'schedules', 'dayOfWeek'));
+        $daysOfWeek = $this->service->dayOfWeek();
+        $colorNames = [
+            "sky",
+            "orange",
+            "green",
+            "yellow",
+            "pink",
+            "purple",
+            "lightred",
+            "blue",
+            "red",
+            "teal",
+            "cyan",
+            "lime",
+            "amber"
+        ];
+        $hours = [];
+        for ($i = 8; $i <= 18; $i++) {
+            $hour = sprintf("%02d:00", $i);
+            $hours[] = $hour;
+        }
+        return view('user.children', compact('child', 'dates', 'news', 'reviews', 'schedules', 'daysOfWeek', 'colorNames', 'hours'));
 
     }
 
