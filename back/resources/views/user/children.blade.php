@@ -1,7 +1,216 @@
 @php use Carbon\Carbon; @endphp
 @extends('layouts.app')
-@section('content')
+@section('style')
+    <style>
+        body {
+            margin-top: 20px;
+        }
 
+        .bg-light-gray {
+            background-color: #f7f7f7;
+        }
+
+        .table-bordered thead td, .table-bordered thead th {
+            border-bottom-width: 2px;
+        }
+
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table-bordered td, .table-bordered th {
+            border: 1px solid #dee2e6;
+        }
+
+        .bg-sky.box-shadow {
+            box-shadow: 0px 5px 0px 0px #00a2a7;
+        }
+
+        .bg-orange.box-shadow {
+            box-shadow: 0px 5px 0px 0px #af4305;
+        }
+
+        .bg-green.box-shadow {
+            box-shadow: 0px 5px 0px 0px #4ca520;
+        }
+
+        .bg-yellow.box-shadow {
+            box-shadow: 0px 5px 0px 0px #dcbf02;
+        }
+
+        .bg-pink.box-shadow {
+            box-shadow: 0px 5px 0px 0px #e82d8b;
+        }
+
+        .bg-purple.box-shadow {
+            box-shadow: 0px 5px 0px 0px #8343e8;
+        }
+
+        .bg-lightred.box-shadow {
+            box-shadow: 0px 5px 0px 0px #d84213;
+        }
+
+        .bg-blue.box-shadow {
+            box-shadow: 0px 5px 0px 0px #0056b3;
+        }
+
+        .bg-red.box-shadow {
+            box-shadow: 0px 5px 0px 0px #a71d2a;
+        }
+
+        .bg-teal.box-shadow {
+            box-shadow: 0px 5px 0px 0px #198754;
+        }
+
+        .bg-cyan.box-shadow {
+            box-shadow: 0px 5px 0px 0px #117a8b;
+        }
+
+        .bg-lime.box-shadow {
+            box-shadow: 0px 5px 0px 0px #afb42b;
+        }
+
+        .bg-amber.box-shadow {
+            box-shadow: 0px 5px 0px 0px #ffb300;
+        }
+
+
+        .bg-sky {
+            background-color: #02c2c7;
+        }
+
+        .bg-orange {
+            background-color: #e95601;
+        }
+
+        .bg-green {
+            background-color: #5bbd2a;
+        }
+
+        .bg-yellow {
+            background-color: #f0d001;
+        }
+
+        .bg-pink {
+            background-color: #ff48a4;
+        }
+
+        .bg-purple {
+            background-color: #9d60ff;
+        }
+
+        .bg-lightred {
+            background-color: #ff5722;
+        }
+
+        .bg-blue {
+            background-color: #007bff;
+        }
+
+        .bg-red {
+            background-color: #dc3545;
+        }
+
+        .bg-teal {
+            background-color: #20c997;
+        }
+
+        .bg-cyan {
+            background-color: #17a2b8;
+        }
+
+        .bg-lime {
+            background-color: #cddc39;
+        }
+
+        .bg-amber {
+            background-color: #ffc107;
+        }
+
+
+        .padding-15px-lr {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .padding-5px-tb {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .margin-10px-bottom {
+            margin-bottom: 10px;
+        }
+
+        .border-radius-5 {
+            border-radius: 5px;
+        }
+
+        .margin-10px-top {
+            margin-top: 10px;
+        }
+
+        .font-size14 {
+            font-size: 14px;
+        }
+
+        .text-light-gray {
+            color: #d6d5d5;
+        }
+
+        .font-size13 {
+            font-size: 13px;
+        }
+
+        .table-bordered td, .table-bordered th {
+            border: 1px solid #dee2e6;
+        }
+
+        .table td, .table th {
+            padding: .75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+
+        @media (max-width: 768px) {
+            .table-responsive {
+                overflow-x: auto;
+            }
+
+            .table thead {
+                display: none;
+            }
+
+            .table tr {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            .table td {
+                display: block;
+                text-align: right;
+                font-size: 13px;
+                border-bottom: 1px solid #dee2e6;
+                padding: 8px;
+                position: relative;
+            }
+
+            .table td::before {
+                content: attr(data-label);
+                float: left;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+
+            .table td:last-child {
+                border-bottom: 0;
+            }
+        }
+
+    </style>
+@endsection
+@section('content')
     <div class="container d-flex justify-content-center">
         <div class="col-sm-10">
             <div class="bg-light rounded h-100 p-4">
@@ -21,6 +230,11 @@
                         <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-contact" type="button" role="tab"
                                 aria-controls="pills-contact" aria-selected="false">@lang('lang.payment_btn')</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-classes-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-classes" type="button" role="tab"
+                                aria-controls="pills-classes" aria-selected="false">@lang('lang.classes')</button>
                     </li>
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
@@ -118,23 +332,6 @@
                                                 <label for="birth_date" class="form-label">@lang('lang.child_birth_date'):</label>
                                                 <input type="date" class="form-control" id="birth_date" value="{{$child->birth_date}}" name="birth_date" autocomplete="birth_date">
                                                 @error('birth_date')
-                                                <p class="text-danger">{{$message}}</p>
-                                                @enderror
-                                            </div>
-                                            <br>
-                                            <div class="form-group">
-                                                <label for="gender" class="form-label">@lang('lang.child_gender'):</label>
-                                                <div class="col-sm-8">
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="gender" id="option-1" value="Male" required {{ $child->gender == "Male" ? 'checked' : '' }}>
-                                                        <label class="form-check-label" for="option-1">@lang('lang.gender_male')</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="gender" id="option-2" value="Female" required {{ $child->gender == "Female" ? 'checked' : '' }}>
-                                                        <label class="form-check-label" for="option-2">@lang('lang.gender_female')</label>
-                                                    </div>
-                                                </div>
-                                                @error('gender')
                                                 <p class="text-danger">{{$message}}</p>
                                                 @enderror
                                             </div>
@@ -243,6 +440,52 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-classes" role="tabpanel" aria-labelledby="pills-classes-tab">
+                        <div class="container">
+                            <div class="timetable-img text-center">
+                                <img src="img/content/timetable.png" alt="">
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered text-center">
+                                    <thead>
+                                    <tr class="bg-light-gray">
+                                        <th class="text-uppercase">Time</th>
+                                        @foreach($daysOfWeek as $dayOfWeek)
+                                            @if($dayOfWeek->id == 7)
+                                                @break
+                                            @endif
+                                            <th class="text-uppercase">{{$dayOfWeek->name}}</th>
+
+                                        @endforeach
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @for($i = 0; $i < count($hours) - 1; $i++)
+                                        <tr>
+                                            <td class="align-middle" data-label="Time">{{$hours[$i]}}</td>
+                                            @foreach($daysOfWeek as $indexOfDay => $dayOfWeek)
+                                                @if($dayOfWeek->id == 7)
+                                                    @break
+                                                @endif
+                                                <td data-label="{{$dayOfWeek->id}}">
+                                                    @foreach($schedules as $schedule)
+                                                        @if(($schedule->day == $dayOfWeek->id) && ($schedule->time_from >= $hours[$i]) && ($schedule->time_from < $hours[$i + 1]) && ($schedule->time_to >= $hours[$i + 1]) )
+                                                            <span class="bg-{{ \Illuminate\Support\Arr::random($colorNames) }} padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">{{$schedule->class_name}}</span>
+                                                            <div class="margin-10px-top font-size14">{{$schedule->time_from}}-{{$schedule->time_to}}</div>
+                                                        @endif
+                                                    @endforeach
+
+                                                </td>
+                                            @endforeach
+                                        </tr>
+                                    @endfor
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

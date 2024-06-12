@@ -58,16 +58,15 @@ Route::group(
         Route::post('/main/review/create', [App\Http\Controllers\User\ReviewController::class, 'create'])->name('review.create');
 
         Route::group(['prefix'=>'user'], function (){
-            Route::get('/register', [App\Http\Controllers\RegisterController::class, 'form'])->name('user.register.form');
+            Route::get('/form/register', [App\Http\Controllers\RegisterController::class, 'form'])->name('user.register.form');
             Route::post('/register', [App\Http\Controllers\RegisterController::class, 'register'])->name('user.register');
-            Route::get('/login', [App\Http\Controllers\AuthController::class, 'form'])->name('user.auth.form');
+            Route::get('/form/login', [App\Http\Controllers\AuthController::class, 'form'])->name('user.auth.form');
             Route::post('/login', [App\Http\Controllers\AuthController::class, 'userAuth'])->name('user.auth');
             Route::get('/logout', App\Http\Controllers\LogoutController::class)->name('user.logout');
             Route::get('/resetPassword', [App\Http\Controllers\ResetPasswordController::class, 'form'])->name('reset.password.form');
             Route::post('/resetPassword', [App\Http\Controllers\ResetPasswordController::class, 'sendLink'])->name('reset.password.link');
             Route::get('/resetPassword/{email}', [App\Http\Controllers\ResetPasswordController::class, 'changePassword'])->name('change.password.form');
-            Route::post('/enroll/create', [App\Http\Controllers\EnrollController::class, 'create'])->name('enroll.create');
-            Route::get('/enroll', [App\Http\Controllers\EnrollController::class,'index'])->name('enroll.index');
+            Route::post('/enroll', [App\Http\Controllers\EnrollController::class, 'store'])->name('enroll.create');
         });
 
         Route::group(['prefix'=>'employee'], function (){
@@ -242,5 +241,4 @@ Route::group(
 
 
 
-//Route::auth();
 

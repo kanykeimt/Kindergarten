@@ -25,7 +25,7 @@ class Schedule extends Model
     {
         return $this->belongsTo(Group::class);
     }
-    public function day()
+    public function dayOfWeek()
     {
         return $this->belongsTo(DaysOfWeek::class, 'day');
     }

@@ -1,20 +1,22 @@
 <?php
+
+
+use Illuminate\Support\Facades\Route;
+
 $l = request()->segment(1, '');
 $lang = url()->current();
 $k = Route::current()->uri;
 
 $langru = "";
 $langkg = "";
-if($l == "ru"){
+if ($l == "ru") {
     $langru = $lang;
     $langkg = str_replace("/ru", "", $lang);
-}
-else if($l == ""){
-    $langru = $lang.'/ru';
+} else if ($l == "") {
+    $langru = $lang . '/ru';
     $langkg = $lang;
-}
-else{
-    $langru = str_replace($k, "ru/".$k, $lang);
+} else {
+    $langru = str_replace($k, "ru/" . $k, $lang);
     $langkg = $lang;
 }
 
@@ -22,7 +24,7 @@ else{
 
 
 {{--@dd($l, $k, $langkg, $langru, $lang)--}}
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -37,7 +39,9 @@ else{
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap"
+        rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -52,118 +56,74 @@ else{
 
     <!-- Template Stylesheet -->
     <link href="{{asset('new_template/css/style.css')}}" rel="stylesheet">
-{{--    <style>--}}
+    <style>
+
+        .dropbtnru {
+            background: url('http://icons.iconarchive.com/icons/custom-icon-design/flag-3/16/Russia-Flag-icon.png') no-repeat left center;
+            padding-left: 25px;
+            width: auto;
+        }
+
+        .dropbtnkg {
+            background: url('https://icons.iconarchive.com/icons/famfamfam/flag/16/kg-icon.png') no-repeat left center;
+            padding-left: 25px;
+            width: auto;
+        }
+
+        .dropbtnkg::after {
+            /*background: rgba(0, 0, 0, 0) url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-16.png") no-repeat scroll center center;*/
+            content: "";
+            height: 16px;
+            position: absolute;
+            right: 0;
+            top: 7px;
+            width: 16px;
+        }
 
 
-{{--        /* Dropdown Content (Hidden by Default) */--}}
-{{--        .dropdown-content {--}}
-{{--            display: none;--}}
-{{--            position: relative;--}}
-{{--            background-color: #f9f9f9;--}}
-{{--            width: 140px;--}}
-{{--        }--}}
+        .dropdown-content a:first-child {
+            background: url('http://icons.iconarchive.com/icons/custom-icon-design/flag-3/16/Russia-Flag-icon.png') no-repeat left center;
+        }
 
-{{--        .dropbtnru--}}
-{{--        {--}}
-{{--            background: url('http://icons.iconarchive.com/icons/custom-icon-design/flag-3/16/Russia-Flag-icon.png') no-repeat left center;--}}
-{{--            padding-left: 25px;--}}
-{{--            width: auto;--}}
-{{--        }--}}
-{{--        .dropbtnkg--}}
-{{--        {--}}
-{{--            background: url('https://icons.iconarchive.com/icons/famfamfam/flag/16/kg-icon.png') no-repeat left center;--}}
-{{--            padding-left: 25px;--}}
-{{--            width: auto;--}}
-{{--        }--}}
+        .dropdown-content a:last-child {
+            background: url('https://icons.iconarchive.com/icons/famfamfam/flag/16/kg-icon.png') no-repeat left center;
+        }
 
-{{--        .dropbtnkg::after {--}}
-{{--            /*background: rgba(0, 0, 0, 0) url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-16.png") no-repeat scroll center center;*/--}}
-{{--            content: "";--}}
-{{--            height: 16px;--}}
-{{--            position: absolute;--}}
-{{--            right: 0;--}}
-{{--            top: 7px;--}}
-{{--            width: 16px;--}}
-{{--        }--}}
+        /* Links inside the dropdown */
+
+        /* Change color of dropdown links on hover */
+
+        /*# sourceMappingURL=style.css.map */
 
 
+        .alert {
+            position: relative;
+            top: 10px;
+            left: 0;
+            width: auto;
+            height: auto;
+            padding: 10px;
+            margin: 10px;
+            line-height: 1.8;
+            border-radius: 5px;
+            cursor: hand;
+            font-family: sans-serif;
+            font-weight: 400;
+        }
 
+        :checked + .alert {
+            display: none;
+        }
+    </style>
 
-{{--        .dropdown-content a:first-child--}}
-{{--        {--}}
-{{--            background: url('http://icons.iconarchive.com/icons/custom-icon-design/flag-3/16/Russia-Flag-icon.png') no-repeat left center;--}}
-{{--        }--}}
-
-{{--        .dropdown-content a:last-child--}}
-{{--        {--}}
-{{--            background: url('https://icons.iconarchive.com/icons/famfamfam/flag/16/kg-icon.png') no-repeat left center;--}}
-{{--        }--}}
-
-{{--        /* Links inside the dropdown */--}}
-
-{{--        /* Change color of dropdown links on hover */--}}
-
-{{--        /*# sourceMappingURL=style.css.map */--}}
-
-
-{{--        .alert {--}}
-{{--            position: relative;--}}
-{{--            top: 10px;--}}
-{{--            left: 0;--}}
-{{--            width: auto;--}}
-{{--            height: auto;--}}
-{{--            padding: 10px;--}}
-{{--            margin: 10px;--}}
-{{--            line-height: 1.8;--}}
-{{--            border-radius: 5px;--}}
-{{--            cursor: hand;--}}
-{{--            cursor: pointer;--}}
-{{--            font-family: sans-serif;--}}
-{{--            font-weight: 400;--}}
-{{--        }--}}
-
-{{--        .alertCheckbox {--}}
-{{--            display: none;--}}
-{{--        }--}}
-
-{{--        :checked + .alert {--}}
-{{--            display: none;--}}
-{{--        }--}}
-
-{{--        .alertText {--}}
-{{--            display: table;--}}
-{{--            margin: 0 auto;--}}
-{{--            text-align: center;--}}
-{{--            font-size: 16px;--}}
-{{--        }--}}
-
-{{--        .alertClose {--}}
-{{--            float: right;--}}
-{{--            padding-top: 5px;--}}
-{{--            font-size: 10px;--}}
-{{--        }--}}
-
-{{--        .clear {--}}
-{{--            clear: both;--}}
-{{--        }--}}
-
-
-{{--        .success {--}}
-{{--            background-color: #EFE;--}}
-{{--            border: 1px solid #DED;--}}
-{{--            color: #9A9;--}}
-{{--        }--}}
-
-
-{{--    </style>--}}
     @yield('style')
-{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />--}}
 </head>
 
 <body>
 <div class="container-xxl bg-white p-0">
     <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div id="spinner"
+         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
             <span class="sr-only">@lang('lang.loading_msg')</span>
         </div>
@@ -176,7 +136,7 @@ else{
         <a href="" class="navbar-brand">
             <a href="{{route('index')}}">
                 <img src="{{asset('new_template/img/aruu%20logo1.png')}}" style="height: 100px; width: 100px" alt="">
-                <img src="{{asset('new_template/img/aruu%20logo2.png')}}" style="height: 100px; width: 100px">
+                <img src="{{asset('new_template/img/aruu%20logo2.png')}}" style="height: 100px; width: 100px" alt="">
             </a>
         </a>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -188,10 +148,12 @@ else{
                     @php $children = \App\Models\Child::where('parent_id',auth()->user()->id)->get() @endphp
                     @if($children->count() != 0)
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">@lang('lang.my_children')</a>
+                            <a href="#" class="nav-link dropdown-toggle"
+                               data-bs-toggle="dropdown">@lang('lang.my_children')</a>
                             <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
                                 @foreach($children as $child)
-                                    <a href="{{route('children', $child->id)}}" class="dropdown-item">{{$child->name}} {{$child->surname}}</a>
+                                    <a href="{{route('children', $child->id)}}"
+                                       class="dropdown-item">{{$child->name}} {{$child->surname}}</a>
                                 @endforeach
                             </div>
                         </div>
@@ -221,6 +183,16 @@ else{
                     <a href="{{route('vacancy')}}" class="nav-link">@lang('lang.vacancy')</a>
                 </div>
             </div>
+            <div class="navbar-nav mx-auto">
+                <div class="nav-item dropdown">
+                    <i class="bi-globe" style="font-size: 25px; color: #5f1dea"></i>
+                    <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
+                         style="padding:10px; right: 0; left: auto;!important;">
+                        <div class="dropbtnru"><a href="{{ $langru }}" class="dropdown-item">Русский</a></div>
+                        <div class="dropbtnkg"><a href="{{ $langkg }}" class="dropdown-item">Кыргызча</a></div>
+                    </div>
+                </div>
+            </div>
             @if(auth()->user())
                 <div class="navbar-nav mx-auto">
                     <!-- Button trigger modal -->
@@ -232,17 +204,24 @@ else{
                 <div class="navbar-nav mx-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img src="https://w7.pngwing.com/pngs/364/361/png-transparent-account-avatar-profile-user-avatars-icon.png" alt="Avatar" style="vertical-align: middle; width: 50px; height: 50px; border-radius: 50%;">
+                            <img
+                                src="https://w7.pngwing.com/pngs/364/361/png-transparent-account-avatar-profile-user-avatars-icon.png"
+                                alt="Avatar"
+                                style="vertical-align: middle; width: 50px; height: 50px; border-radius: 50%;">
                         </a>
-                        <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0" style="right: 0;left: auto;!important;">
+                        <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
+                             style="right: 0;left: auto;!important;">
                             @if(auth()->user()->role_name->name == 'Admin')
-                                <a href="{{route('admin')}}" class="dropdown-item" >@lang('lang.emp_page')</a>
+                                <a href="{{route('admin')}}" class="dropdown-item">@lang('lang.emp_page')</a>
                             @elseif(auth()->user()->role_name->name == 'Teacher')
-                                <a href="{{route('employee', auth()->user()->id)}}" class="dropdown-item" >@lang('lang.emp_page')</a>
+                                <a href="{{route('employee', auth()->user()->id)}}"
+                                   class="dropdown-item">@lang('lang.emp_page')</a>
                             @else
-                                <a href="{{route('profile', auth()->user()->id)}}" class="dropdown-item" >@lang('lang.user_profile')</a>
+                                <a href="{{route('profile', auth()->user()->id)}}"
+                                   class="dropdown-item">@lang('lang.user_profile')</a>
                             @endif
-                            <a class="dropdown-item" onclick="location.href='{{route('user.logout')}}'" type="button">@lang('lang.log_out')</a>
+                            <a class="dropdown-item" onclick="location.href='{{route('user.logout')}}'"
+                               type="button">@lang('lang.log_out')</a>
                         </div>
                     </div>
                 </div>
@@ -257,152 +236,224 @@ else{
                 <div class="navbar-nav mx-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img src="https://w7.pngwing.com/pngs/364/361/png-transparent-account-avatar-profile-user-avatars-icon.png" alt="Avatar" style="vertical-align: middle; width: 50px; height: 50px; border-radius: 50%;">
+                            <img
+                                src="https://w7.pngwing.com/pngs/364/361/png-transparent-account-avatar-profile-user-avatars-icon.png"
+                                alt="Avatar"
+                                style="vertical-align: middle; width: 50px; height: 50px; border-radius: 50%;">
                         </a>
-                        <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0" style="right: 0;left: auto;!important;">
-                            <a href="{{route('user.auth.form')}}" class="dropdown-item" >@lang('lang.log_in')</a>
-                            <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSignUp">@lang('lang.sign_up')</a>
+                        <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
+                             style="right: 0;left: auto;!important;">
+                            <a href="" class="dropdown-item" data-bs-toggle="modal"
+                               data-bs-target="#modalSignIn">@lang('lang.log_in')</a>
+                            <a href="" class="dropdown-item" data-bs-toggle="modal"
+                               data-bs-target="#modalSignUp">@lang('lang.sign_up')</a>
                         </div>
                     </div>
                 </div>
             @endif
-            <div class="navbar-nav mx-auto">
-                <div class="nav-item dropdown">
-                    <i class="bi-globe" style="font-size: 25px; color: #5f1dea"></i>
-                    <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0" style="padding:10px; right: 0; left: auto;!important;">
-                        <div class="dropbtnru"><a href="{{ $langru }}" class="dropdown-item">Русский</a></div>
-                        <div class="dropbtnkg"><a href="{{ $langkg }}" class="dropdown-item">Кыргызча</a></div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </nav>
     <!-- Navbar End -->
-        <div id="app">
-            <main class="py-4">
-                <!-- Modal Message -->
-                <div class="modal fade" id="modalMessage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content" style="z-index: 9999">
-                            <div class="modal-header">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <!-- Email input -->
-                                    <div class="form-outline mb-3">
-                                        <label class="form-label" for="email">@lang('lang.not_user_msg')</label>
-                                    </div>
-                                    <!-- Submit button -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary btn-block"
-                                                data-bs-toggle="modal" data-bs-target="#modalSignIn">
-                                            @lang('lang.log_in')
-                                        </button>
-                                        <button type="button" class="btn btn-primary btn-block"
-                                                data-bs-toggle="modal" data-bs-target="#modalSignUp">
-                                            @lang('lang.sign_up')
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
+    <div id="app">
+        <main class="py-4">
+            <!-- Modal Message -->
+            <div class="modal fade" id="modalMessage" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="z-index: 9999">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <!-- Email input -->
+                                <div class="form-outline mb-3">
+                                    <label class="form-label" for="email">@lang('lang.not_user_msg')</label>
+                                </div>
+                                <!-- Submit button -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary btn-block"
+                                            data-bs-toggle="modal" data-bs-target="#modalSignIn">
+                                        @lang('lang.log_in')
+                                    </button>
+                                    <button type="button" class="btn btn-primary btn-block"
+                                            data-bs-toggle="modal" data-bs-target="#modalSignUp">
+                                        @lang('lang.sign_up')
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <!-- Modal SignIN -->
-                <div class="modal fade" id="modalSignIn" tabindex="-1" aria-labelledby="exampleModalLabel"
+            </div>
+            <!-- Modal SignIN -->
+            <div class="modal fade" id="modalSignIn" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">@lang('lang.log_in')</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" action="{{ route('user.auth') }}">
+                                @csrf
+                                <!-- Email input -->
+                                <div class="field">
+                                    <i class="icon fas fa-user"></i>
+                                    <input type="email" id="email" name="email" placeholder="@lang('lang.email')"
+                                           class="login__input @error('email') is-invalid @enderror" required
+                                           autocomplete="email">
+                                    @if(session('errorWithEmail'))
+                                        <p class="text-danger">{{session('errorWithEmail')}}</p>
+                                        <script>
+                                            document.getElementById('email').value = "{{session('email')}}";
+                                        </script>
+                                    @endif
+                                </div>
+                                <div class="field">
+                                    <i class="icon fas fa-lock"></i>
+                                    <input type="password" id="password" name="password"
+                                           placeholder="@lang('lang.password')"
+                                           class="login__input @error('password') is-invalid @enderror" required
+                                           autocomplete="new-password">
+                                    @if(session('errorWithPassword'))
+                                        <p class="text-danger">{{session('errorWithPassword')}}</p>
+                                        <script>
+                                            document.getElementById('email').value = "{{session('email')}}";
+                                        </script>
+                                    @endif
+                                </div>
+
+
+                                <!-- 2 column grid layout for inline styling -->
+                                <div class="row">
+                                    <!-- Simple link -->
+                                    <a href="{{route('reset.password.form')}}">@lang('lang.forgotten_password')</a>
+                                </div>
+                                <!-- Submit button -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary "
+                                            data-bs-dismiss="modal">@lang('lang.close_btn')</button>
+                                    <!-- <button type="button" class="btn btn-primary">Sign in</button> -->
+                                    <button type="submit"
+                                            class="btn btn-primary btn-block">@lang('lang.log_in')</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal SignUP -->
+            <div class="modal fade" id="modalSignUp" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">@lang('lang.sign_up')</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" action="{{ route('user.register') }}" enctype="multipart/form-data">
+                                @csrf
+                                <!-- Name input -->
+                                <div class="field">
+                                    <i class="icon fas fa-user"></i>
+                                    <input type="text" id="name" name="name" placeholder="@lang('lang.name')"
+                                           class="login__input @error('name') is-invalid @enderror" required
+                                           autocomplete="name">
+                                    @if(session('errorWithName'))
+                                        <p class="text-danger">{{session('errorWithName')}}</p>
+                                        <script>
+                                            document.getElementById('name').value = "{{session('name')}}";
+                                        </script>
+                                    @endif
+                                </div>
+                                <!-- Surname input -->
+                                <div class="field">
+                                    <i class="icon fas fa-user"></i>
+                                    <input type="text" id="surname" name="surname" placeholder="@lang('lang.surname')"
+                                           class="login__input @error('surname') is-invalid @enderror" required
+                                           autocomplete="surname">
+                                    @if(session('errorWithSurname'))
+                                        <p class="text-danger">{{session('errorWithSurname')}}</p>
+                                        <script>
+                                            document.getElementById('surname').value = "{{session('surname')}}";
+                                        </script>
+                                    @endif
+                                </div>
+
+                                <!-- Email input -->
+                                <div class="field">
+                                    <i class="icon fas fa-at"></i>
+                                    <input type="email" id="email" name="email" placeholder="@lang('lang.email')"
+                                           class="login__input @error('email') is-invalid @enderror" required
+                                           autocomplete="email">
+                                    @if(session('errorWithEmail'))
+                                        <p class="text-danger">{{session('errorWithEmail')}}</p>
+                                        <script>
+                                            document.getElementById('email').value = "{{session('email')}}";
+                                        </script>
+                                    @endif
+                                </div>
+
+                                <!-- Password input -->
+                                <div class="field">
+                                    <i class="icon fas fa-lock"></i>
+                                    <input type="password" id="password" name="password"
+                                           placeholder="@lang('lang.password')"
+                                           class="login__input @error('password') is-invalid @enderror" required
+                                           autocomplete="new-password">
+                                    @if(session('errorWithPassword'))
+                                        <p class="text-danger">{{session('errorWithPassword')}}</p>
+                                        <script>
+                                            document.getElementById('email').value = "{{session('email')}}";
+                                        </script>
+                                    @endif
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">@lang('lang.close_btn')</button>
+                                    <!-- Submit button -->
+                                    <button type="submit"
+                                            class="btn btn-success btn-block">@lang('lang.next_btn')</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if(auth()->user())
+                <!-- Modal Enroll -->
+                <div class="modal fade" id="modalEnroll" tabindex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">@lang('lang.log_in')</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">@lang('lang.enroll_child')</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST" action="{{ route('user.auth') }}" >
+
+                                <form id="form" method="POST" action="{{route('enroll.create')}}"
+                                      enctype="multipart/form-data">
                                     @csrf
-                                    <!-- Email input -->
-                                    <div class="field">
-                                        <i class="icon fas fa-user"></i>
-                                        <input type="email" id="email" name="email" placeholder="@lang('lang.email')" class="login__input @error('email') is-invalid @enderror" required autocomplete="email">
-                                        @if(session('errorWithEmail'))
-                                            <p class="text-danger">{{session('errorWithEmail')}}</p>
-                                            <script>
-                                                document.getElementById('email').value = "{{session('email')}}";
-                                            </script>
-                                        @endif
-                                    </div>
-                                    <div class="field">
-                                        <i class="icon fas fa-lock"></i>
-                                        <input type="password" id="password" name="password" placeholder="@lang('lang.password')" class="login__input @error('password') is-invalid @enderror" required autocomplete="new-password">
-                                        @if(session('errorWithPassword'))
-                                            <p class="text-danger">{{session('errorWithPassword')}}</p>
-                                            <script>
-                                                document.getElementById('email').value = "{{session('email')}}";
-                                            </script>
-                                        @endif
-                                    </div>
-
-
-                                    <!-- 2 column grid layout for inline styling -->
-                                    <div class="row">
-                                        <!-- Simple link -->
-                                        <a href="{{route('reset.password.form')}}">@lang('lang.forgotten_password')</a>
-                                    </div>
-                                    <!-- Submit button -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary "
-                                                data-bs-dismiss="modal">@lang('lang.close_btn')</button>
-                                        <!-- <button type="button" class="btn btn-primary">Sign in</button> -->
-                                        <button type="submit" class="btn btn-primary btn-block">@lang('lang.log_in')</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal SignUP -->
-                <div class="modal fade" id="modalSignUp" tabindex="-1" aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">@lang('lang.sign_up')</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form method="POST" action="{{ route('user.register') }}" enctype="multipart/form-data">
-                                    @csrf
-                                    <!-- Name input -->
-                                    <div class="field">
-                                        <i class="icon fas fa-user"></i>
-                                        <input type="text" id="name" name="name" placeholder="@lang('lang.name')" class="login__input @error('name') is-invalid @enderror" required autocomplete="name">
-                                        @if(session('errorWithName'))
-                                            <p class="text-danger">{{session('errorWithName')}}</p>
-                                            <script>
-                                                document.getElementById('name').value = "{{session('name')}}";
-                                            </script>
-                                        @endif
-                                    </div>
-                                    <!-- Surname input -->
-                                    <div class="field">
-                                        <i class="icon fas fa-user"></i>
-                                        <input type="text" id="surname" name="surname" placeholder="@lang('lang.surname')" class="login__input @error('surname') is-invalid @enderror" required autocomplete="surname">
-                                        @if(session('errorWithSurname'))
-                                            <p class="text-danger">{{session('errorWithSurname')}}</p>
-                                            <script>
-                                                document.getElementById('surname').value = "{{session('surname')}}";
-                                            </script>
-                                        @endif
-                                    </div>
-
+                                    <input type="number" id="parent_id" name="parent_id" value="{{auth()->user()->id}}"
+                                           required hidden="">
                                     <!-- Home Address input -->
                                     <div class="field">
                                         <i class="icon fas fa-map-marker-alt"></i>
-                                        <input type="text" id="address" name="address" placeholder="@lang('lang.address')" class="login__input @error('address') is-invalid @enderror" required autocomplete="address">
+                                        <input type="text" id="address" name="address"
+                                               placeholder="@lang('lang.address')"
+                                               class="login__input @error('address') is-invalid @enderror" required
+                                               autocomplete="address">
                                         @if(session('errorWithAddress'))
                                             <p class="text-danger">{{session('errorWithAddress')}}</p>
                                             <script>
@@ -414,7 +465,10 @@ else{
                                     <!-- Phone Number input -->
                                     <div class="field">
                                         <i class="icon fas fa-phone-alt"></i>
-                                        <input type="text" id="phone_number" name="phone_number" placeholder="@lang('lang.phone_number')" class="login__input @error('phone_number') is-invalid @enderror" required autocomplete="phone_number">
+                                        <input type="text" id="phone_number" name="phone_number"
+                                               placeholder="@lang('lang.phone_number')"
+                                               class="login__input @error('phone_number') is-invalid @enderror" required
+                                               autocomplete="phone_number">
                                         @if(session('errorWithPhoneNumber'))
                                             <p class="text-danger">{{session('errorWithPhoneNumber')}}</p>
                                             <script>
@@ -422,34 +476,14 @@ else{
                                             </script>
                                         @endif
                                     </div>
-                                    <!-- Email input -->
-                                    <div class="field">
-                                        <i class="icon fas fa-at"></i>
-                                        <input type="email" id="email" name="email" placeholder="@lang('lang.email')" class="login__input @error('email') is-invalid @enderror" required autocomplete="email">
-                                        @if(session('errorWithEmail'))
-                                            <p class="text-danger">{{session('errorWithEmail')}}</p>
-                                            <script>
-                                                document.getElementById('email').value = "{{session('email')}}";
-                                            </script>
-                                        @endif
-                                    </div>
-
-                                    <!-- Password input -->
-                                    <div class="field">
-                                        <i class="icon fas fa-lock"></i>
-                                        <input type="password" id="password" name="password" placeholder="@lang('lang.password')" class="login__input @error('password') is-invalid @enderror" required autocomplete="new-password">
-                                        @if(session('errorWithPassword'))
-                                            <p class="text-danger">{{session('errorWithPassword')}}</p>
-                                            <script>
-                                                document.getElementById('email').value = "{{session('email')}}";
-                                            </script>
-                                        @endif
-                                    </div>
 
                                     <!-- Passport front input -->
                                     <div class="field">
-                                        <label for="fileF" class="form-label">@lang('lang.passport_front')</label>
-                                        <input id="passport_front" type="file" class="form-control @error('passport_front') is-invalid @enderror" name="passport_front" value="{{ old('passport_front') }}">
+                                        <label for="fileF"
+                                               class="form-label">@lang('lang.parent_passport_front')</label>
+                                        <input id="passport_front" type="file"
+                                               class="form-control @error('passport_front') is-invalid @enderror"
+                                               name="passport_front" value="{{ old('passport_front') }}" required>
 
                                         @error('passport_front')
                                         <span class="invalid-feedback" role="alert">
@@ -460,8 +494,10 @@ else{
 
                                     <!-- Passport back input -->
                                     <div class="field">
-                                        <label for="fileB" class="form-label">@lang('lang.passport_back')</label>
-                                        <input id="passport_back" type="file" class="form-control @error('passport_back') is-invalid @enderror" name="passport_back" value="{{ old('passport_back') }}">
+                                        <label for="fileB" class="form-label">@lang('lang.parent_passport_back')</label>
+                                        <input id="passport_back" type="file"
+                                               class="form-control @error('passport_back') is-invalid @enderror"
+                                               name="passport_back" value="{{ old('passport_back') }}" required>
 
                                         @error('passport_back')
                                         <span class="invalid-feedback" role="alert">
@@ -470,36 +506,13 @@ else{
                                         @enderror
                                     </div>
 
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">@lang('lang.close_btn')</button>
-                                        <!-- Submit button -->
-                                        <button type="submit" class="btn btn-success btn-block">@lang('lang.next_btn')</button>
-                                    </div>
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal Enroll -->
-                <div class="modal fade"  id="modalEnroll" tabindex="-1" aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog" >
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">@lang('lang.enroll_child')</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-
-                                <form id="form" method="POST" action="{{route('enroll.create')}}" enctype="multipart/form-data">
-                                    @csrf
                                     <!-- Name input -->
                                     <div class="field">
                                         <i class="icon fas fa-user"></i>
-                                        <input type="text" id="name" name="name" placeholder="@lang('lang.child_name')" class="login__input @error('name') is-invalid @enderror" required autocomplete="name">
+                                        <input type="text" id="name" name="name"
+                                               placeholder="@lang('lang.child_name_form')"
+                                               class="login__input @error('name') is-invalid @enderror" required
+                                               autocomplete="name">
                                         @if(session('errorWithName'))
                                             <p class="text-danger">{{session('errorWithName')}}</p>
                                             <script>
@@ -508,9 +521,12 @@ else{
                                         @endif
                                     </div>
                                     <!-- Surname input -->
-                                    <div class="field" >
+                                    <div class="field">
                                         <i class="icon fas fa-user"></i>
-                                        <input type="text" id="surname" name="surname" placeholder="@lang('lang.child_surname')" class="login__input @error('surname') is-invalid @enderror" required autocomplete="surname">
+                                        <input type="text" id="surname" name="surname"
+                                               placeholder="@lang('lang.child_surname_form')"
+                                               class="login__input @error('surname') is-invalid @enderror" required
+                                               autocomplete="surname">
                                         @if(session('errorWithSurname'))
                                             <p class="text-danger">{{session('errorWithSurname')}}</p>
                                             <script>
@@ -520,9 +536,14 @@ else{
                                     </div>
                                     <!-- Birth date input -->
                                     <div class="form-outline mb-2" style="padding: 10px">
-                                        <label for="birth_date" class="form-label" style="font-weight: 700;">@lang('lang.child_birth_date')</label>
+                                        <label for="birth_date" class="form-label"
+                                               style="font-weight: 700;">@lang('lang.child_birth_date')</label>
                                         <div class="col-md-6 ">
-                                            <input id="birth_date" type="date" class="form-control @error('birth_date') is-invalid @enderror" name="birth_date" value="{{ old('birth_date') }}" required autofocus oninvalid="this.setCustomValidity('Please fill in the field')" oninput="this.setCustomValidity('')">
+                                            <input id="birth_date" type="date"
+                                                   class="form-control @error('birth_date') is-invalid @enderror"
+                                                   name="birth_date" value="{{ old('birth_date') }}" required autofocus
+                                                   oninvalid="this.setCustomValidity('Please fill in the field')"
+                                                   oninput="this.setCustomValidity('')">
                                             @error('birth_date')
                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -532,7 +553,8 @@ else{
                                     </div>
                                     <!-- Gender input -->
                                     <div class="form-outline mb-2" style="padding: 10px">
-                                        <label for="gender" class="form-label" style="font-weight: 700;">@lang('lang.child_gender')</label>
+                                        <label for="gender" class="form-label"
+                                               style="font-weight: 700;">@lang('lang.child_gender')</label>
                                         <div class="col-md-6">
                                             <div class="radioDiv">
                                                 <input type="radio" name="gender" id="option-1" value="Male">
@@ -555,84 +577,95 @@ else{
                                     </div>
                                     <!-- Photo input -->
                                     <div class="form-outline mb-2" style="padding: 10px">
-                                        <label for="photo" class="form-label" style="font-weight: 700;">@lang('lang.child_photo')</label>
-                                        <div class="col-md-6">
-                                            <input id="photo" type="file" accept="image/png, image/gif, image/jpeg" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('photo') }}" required autofocus oninvalid="this.setCustomValidity('Please select a file')" oninput="this.setCustomValidity('')">
-                                            @error('photo')
-                                            <span class="invalid-feedback" role="alert">
+                                        <label for="photo" class="form-label"
+                                               style="font-weight: 700;">@lang('lang.child_photo')</label>
+                                        <input id="photo" type="file" accept="image/png, image/gif, image/jpeg"
+                                               class="form-control @error('photo') is-invalid @enderror" name="photo"
+                                               value="{{ old('photo') }}" required autofocus
+                                               oninvalid="this.setCustomValidity('Please select a file')"
+                                               oninput="this.setCustomValidity('')">
+                                        @error('photo')
+                                        <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
-                                            @enderror
-                                        </div>
+                                        @enderror
                                     </div>
                                     <!-- Birth certificate input -->
                                     <div class="form-outline mb-2" style="padding: 10px">
-                                        <label for="birth_certificate" class="form-label" style="font-weight: 700;">@lang('lang.child_birth_cert')</label>
-                                        <div class="col-md-6">
-                                            <input id="birth_certificate" type="file"  class="form-control @error('birth_certificate') is-invalid @enderror" name="birth_certificate" value="{{ old('birth_certificate') }}" required autofocus oninvalid="this.setCustomValidity('Please select a file')" oninput="this.setCustomValidity('')">
-                                            @error('birth_certificate')
-                                            <span class="invalid-feedback" role="alert">
+                                        <label for="birth_certificate" class="form-label"
+                                               style="font-weight: 700;">@lang('lang.child_birth_cert')</label>
+                                        <input id="birth_certificate" type="file"
+                                               class="form-control @error('birth_certificate') is-invalid @enderror"
+                                               name="birth_certificate" value="{{ old('birth_certificate') }}" required
+                                               autofocus oninvalid="this.setCustomValidity('Please select a file')"
+                                               oninput="this.setCustomValidity('')">
+                                        @error('birth_certificate')
+                                        <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
-                                            @enderror
-                                        </div>
+                                        @enderror
                                     </div>
                                     <!-- Med certificate input -->
                                     <div class="form-outline mb-2" style="padding: 10px">
-                                        <label for="med_certificate" class="form-label" style="font-weight: 700;">@lang('lang.child_med_cert')</label>
-                                        <div class="col-md-6">
-                                            <input id="med_certificate" type="file" class="form-control @error('med_certificate') is-invalid @enderror" name="med_certificate" value="{{ old('med_certificate') }}" required autofocus oninvalid="this.setCustomValidity('Please select a file')" oninput="this.setCustomValidity('')">
-                                            @error('med_certificate')
-                                            <span class="invalid-feedback" role="alert">
+                                        <label for="med_certificate" class="form-label"
+                                               style="font-weight: 700;">@lang('lang.child_med_cert')</label>
+                                        <input id="med_certificate" type="file"
+                                               class="form-control @error('med_certificate') is-invalid @enderror"
+                                               name="med_certificate" value="{{ old('med_certificate') }}" required
+                                               autofocus oninvalid="this.setCustomValidity('Please select a file')"
+                                               oninput="this.setCustomValidity('')">
+                                        @error('med_certificate')
+                                        <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
-                                            @enderror
-                                        </div>
+                                        @enderror
                                     </div>
                                     <!-- Med disability input -->
                                     <div class="form-outline mb-2" style="padding: 10px">
-                                        <label for="med_disability" class="form-label" style="font-weight: 700;">@lang('lang.child_med_dis')</label>
-                                        <div class="col-md-6">
-                                            <input id="med_disability" type="file" class="form-control @error('med_disability') is-invalid @enderror" name="med_disability" value="{{ old('med_disability') }}">
-                                            @error('med_disability')
-                                            <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                            @enderror
-                                        </div>
+                                        <label for="med_disability" class="form-label"
+                                               style="font-weight: 700;">@lang('lang.child_med_dis')</label>
+                                        <input id="med_disability" type="file"
+                                               class="form-control @error('med_disability') is-invalid @enderror"
+                                               name="med_disability" value="{{ old('med_disability') }}">
+                                        @error('med_disability')
+                                        <span class="invalid-feedback"
+                                              role="alert"><strong>{{ $message }}</strong></span>
+                                        @enderror
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">@lang('lang.close_btn')</button>
                                         <!-- Submit button -->
-                                        <button type="submit" class="btn btn-success btn-block">@lang('lang.to_enroll')</button>
+                                        <button type="submit"
+                                                class="btn btn-success btn-block">@lang('lang.to_enroll')</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
+            @endif
 
-                @if (session('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @elseif(session('warning'))
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        {{ session('warning') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @elseif(session('error'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        {{ session('error') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @elseif(session('warning'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ session('warning') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @elseif(session('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
 
-                @yield('content')
-            </main>
-        </div>
+            @yield('content')
+        </main>
+    </div>
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
@@ -660,7 +693,8 @@ else{
                     <div class="position-relative h-100">
                         <iframe class="position-relative rounded w-100 h-100"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1525.4065374147297!2d71.7189939!3d40.124168999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bbedf2e5dc890f%3A0x54b20d73a0a38c62!2z0JTQtdGC0YHQutC40Lkg0YHQsNC0INCQ0YDRg9GD!5e0!3m2!1sru!2skg!4v1684086382078!5m2!1sru!2skg"
-                                frameborder="0" style="min-height: 400px; border:0;" allowfullscreen="" aria-hidden="false"
+                                style="min-height: 400px; border:0;" allowfullscreen=""
+                                aria-hidden="false"
                                 tabindex="0"></iframe>
                     </div>
                 </div>

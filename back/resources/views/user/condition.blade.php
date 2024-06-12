@@ -2,7 +2,7 @@
 @extends('layouts.app')
 @section('content')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
-    <div class="container">
+    <div class="container d-flex justify-content-center">
         <div class="card-body">
             <div class="service_rows">
                 <br>
