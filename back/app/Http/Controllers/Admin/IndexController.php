@@ -19,7 +19,6 @@ class IndexController extends Controller
     {
 
         $chats = Chat::where('to_user_id', auth()->user()->id)->get();
-        dd($chats);
         $chats = $this->service->chats();
         $from_user_data = User::where('id', $chats->first()->from_user_id)->first();
         $startDate = Carbon::parse($chats[0]->date);
