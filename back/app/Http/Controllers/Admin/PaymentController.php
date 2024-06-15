@@ -43,12 +43,11 @@ class PaymentController extends Controller
         return $this->service->create($request);
     }
 
-    public function warning(Payment $payment)
+    public function warning(Child $child)
     {
-        $warning_data = $this->service->warning_data($payment);
-        $message_content = $this->service->message_content($payment, $warning_data);
-
-        return view('admin.payment.warning', compact('warning_data', 'payment', 'message_content'));
+        $message_content = $this->service->message_content($child);
+        dd($message_content);
+        return view('admin.payment.warning', compact( 'message_content'));
 
     }
 }

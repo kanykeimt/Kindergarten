@@ -189,7 +189,7 @@ Route::group(
                 Route::get('/index', [App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('admin.payment.index');
                 Route::get('/edit/{child}', [App\Http\Controllers\Admin\PaymentController::class, 'edit'])->name('admin.payment.edit');
                 Route::post('/create', [App\Http\Controllers\Admin\PaymentController::class, 'create'])->name('admin.payment.create');
-                Route::get('/warning/{payment}', [App\Http\Controllers\Admin\PaymentController::class, 'warning'])->name('admin.payment.warning');
+                Route::get('/warning/{child}', [App\Http\Controllers\Admin\PaymentController::class, 'warning'])->name('admin.payment.warning');
             });
 
             Route::group(['prefix'=>'attendance'], function (){

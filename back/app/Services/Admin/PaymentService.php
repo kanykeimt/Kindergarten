@@ -33,8 +33,10 @@ class PaymentService
         return $payment_data;
     }
 
-    public function warning_data(Payment $payment)
+    public function warning_data(Child $child)
     {
+        $data = Payment::where('child_id', $child->id)->latest('created_at')->first();
+        dd($data);
         $data = Child::join('users', 'children.parent_id', '=', 'users.id')
             ->select('users.id as user_id', 'users.name as user_name', 'users.surname as user_surname','children.name as child_name','children.surname as child_surname')
             ->where('children.id', $payment->child_id)
@@ -43,7 +45,9 @@ class PaymentService
         return $data;
     }
 
-    public function message_content($payment, $warning_data){
+    public function message_content($child){
+        $payment = Payment::where('child_id', $child->id)->latest('created_at')->first();
+        if ($payment == null)
         $dateToFormatted = Carbon::parse($payment->date_to)->format('d-m-Y');
         $message_content = '';
         $lang = app()->getLocale();
@@ -52,7 +56,7 @@ class PaymentService
 
 Бул кат менен бала бакчага акча төлөө зарылдыгын эскертебиз. Биздин шарттарга ылайык, төлөм [{$dateToFormatted}] чейин кабыл алынышы керек.
 
-Көрсөтүлгөн мөөнөткө чейин төлөөнү суранабыз. Төлөө убагында аткарылбаса, балаңыздын ({$warning_data->child_name} {$warning_data->child_surname}) бала бакчанын иш-чараларына катышуусу токтотулушу мүмкүн экенин эскертебиз.
+Көрсөтүлгөн мөөнөткө чейин төлөөнү суранабыз. Төлөө убагында аткарылбаса, балаңыздын ({$child->name} {$child->surname}) бала бакчанын иш-чараларына катышуусу токтотулушу мүмкүн экенин эскертебиз.
 
 Эгерде сизде кандайдыр бир суроолор же кыйынчылыктар болсо, жардам алуу үчүн биздин администратор менен байланышуудан тартынбаңыз.
 
@@ -65,7 +69,7 @@ class PaymentService
 
 Настоящим письмом мы хотели бы напомнить Вам о необходимости оплаты за детский сад. В соответствии с нашими положениями и условиями, оплата должна быть произведена до [{$dateToFormatted}].
 
-Просим вас оплатить до указанного срока. Пожалуйста, примите во внимание, что невыполнение оплаты может повлечь за собой приостановку участия вашего ребенка ({$warning_data->child_name} {$warning_data->child_surname}) в деятельности детского сада.
+Просим вас оплатить до указанного срока. Пожалуйста, примите во внимание, что невыполнение оплаты может повлечь за собой приостановку участия вашего ребенка ({$child->name} {$child->surname}) в деятельности детского сада.
 
 Если у вас возникли какие-либо вопросы или затруднения, не стесняйтесь обращаться к нашему администратору для получения помощи.
 
