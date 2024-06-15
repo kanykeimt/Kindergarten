@@ -119,7 +119,7 @@ else{
     <!-- Sidebar Start -->
     <div class="sidebar pe-4 pb-3" >
         <nav class="navbar bg-light navbar-light">
-            <a href="{{route('index')}}" class="navbar-brand mx-4 mb-3">
+            <a href="{{route('admin')}}" class="navbar-brand mx-4 mb-3">
                 <h3 class="text-primary"><img class="rounded-circle" src="{{asset('new_template/img/aruu%20logo1.png')}}" alt="" style="width: 60px; height: 60px;">  ARUU</h3>
             </a>
             <div class="navbar-nav w-100">
