@@ -13,7 +13,7 @@ class SendCode extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public int $code = 0;
+    public $code;
 
     public function __construct(int $code)
     {
@@ -22,8 +22,10 @@ class SendCode extends Mailable
 
 
     public function build()
-    {   $code = $this->code;
-        return $this->from('bekwebdeveloper@gmail.com', 'Email verification!')
-            ->view('emails.sendCode', compact('code'));
+    {
+        return $this->view('emails.sendCode')
+            ->with([
+                'code' => $this->code,
+            ]);
     }
 }

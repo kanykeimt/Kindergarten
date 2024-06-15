@@ -1,6 +1,7 @@
 <?php
 
 use App\Services\Localization\LocalizationService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -235,6 +236,7 @@ Route::group(
 
         });
     });
+Auth::routes(['verify' => true]);
 
 
 

@@ -19,7 +19,7 @@ class RegisterController extends Controller
     }
     public function register(RegisterRequest $request){
         $user = $this->service->create($request);
-        $code = random_int(100000, 999999);
+        $code = rand(100000, 999999);
         Mail::to($user->email)->send(new SendCode($code));
         Session::put('code', $code);
         return redirect()->route('verification.form', $user->id);
