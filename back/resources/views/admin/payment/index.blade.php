@@ -42,24 +42,20 @@
                                                 <td @if(($child->payment->date_to) <= (date('Y-'.\Carbon\Carbon::create()->month($indexOfMonth)->format('m').'-d'))) style="background: #FE7E7E"  @endif>{{$child->name}} {{$child->surname}}</td>
                                                 <td class="">{{$child->group->name}}</td>
                                                 <td @if(($child->payment->date_to) <= (date('Y-'.\Carbon\Carbon::create()->month($indexOfMonth)->format('m').'-d'))) style="background: #FE7E7E"  @endif>{{$child->payment->date_to}}</td>
-                                                <td>
-                                                    <div style="float: left; display: block; width: 50%;" class="text-center">
-                                                        <a href="{{route('admin.payment.warning', $child->id)}}"><i style="color: #ffc107" title="@lang('lang.warning')" class="fa fa-question"></i></a>
-                                                    </div>
-                                                    <div style="float: left; display: block; width: 50%;" class="text-center">
-                                                        <a href="{{route('admin.payment.edit', $child->id)}}" class="text-success"><i title="@lang('lang.add_payment')" class="fas fa-plus"></i></a>
-                                                    </div>
-                                                </td>
+
                                             @else
                                                 <td>{{$child->name}} {{$child->surname}}</td>
                                                 <td class="">{{$child->group->name}}</td>
-                                                <td>No</td>
-                                                <td>
-                                                    <div style="float: left; display: block; width: 100%;" class="text-center">
-                                                        <a href="{{route('admin.payment.edit', $child->id)}}" class="text-success"><i title="@lang('lang.add_payment')" class="fas fa-plus"></i></a>
-                                                    </div>
-                                                </td>
+                                                <td>@lang('lang.no_payment')</td>
                                             @endif
+                                            <td>
+                                                <div style="float: left; display: block; width: 50%;" class="text-center">
+                                                    <a href="{{route('admin.payment.warning', $child->id)}}"><i style="color: #ffc107" title="@lang('lang.warning')" class="fa fa-question"></i></a>
+                                                </div>
+                                                <div style="float: left; display: block; width: 50%;" class="text-center">
+                                                    <a href="{{route('admin.payment.edit', $child->id)}}" class="text-success"><i title="@lang('lang.add_payment')" class="fas fa-plus"></i></a>
+                                                </div>
+                                            </td>
                                         </tr>
                                         @php $indexOfChild++ @endphp
                                     @endforeach

@@ -23,7 +23,7 @@ class SendResetPasswordLink extends Mailable
 
    public function build(){
        $email = $this->email;
-       return $this->from('bekwebdeveloper@gmail.com', 'Change password!')
+       return $this->from('kanysh150@gmail.com', 'Change password!')
            ->view('emails.sendResetPasswordLink', compact('email'));
    }
 

@@ -281,4 +281,9 @@ return [
     'parents_list' => 'Ата-энелер тизмеси',
     'archive_show' => 'Архивди көрүү',
     'add_media_to_gallery' => 'Сүрөт\видео кошуу',
+    'no_payment' => 'Кардар төлөм жүргүзө элек',
+    'new_password' => 'Жаңы сыр сөз',
+    'confirm_password' => 'Сыр сөздү кайталаңыз',
+    'change_password' => 'Сыр сөздү өзгөртүү',
+    'update_password' => 'Сыр сөздү жаңылоо',
 ];

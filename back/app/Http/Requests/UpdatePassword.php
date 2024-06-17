@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Chat;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateRequest extends FormRequest
+class UpdatePassword extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,9 @@ class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'from_user_id' => '',
-            'to_user_id' => 'required|integer|exists:users,id',
-            'message' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:6',
+            'password_confirmation' => 'required'
         ];
     }
 }

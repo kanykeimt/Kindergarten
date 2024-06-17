@@ -46,8 +46,7 @@ class PaymentController extends Controller
     public function warning(Child $child)
     {
         $message_content = $this->service->message_content($child);
-        dd($message_content);
-        return view('admin.payment.warning', compact( 'message_content'));
+        return view('admin.payment.warning', compact( 'message_content', 'child'));
 
     }
 }

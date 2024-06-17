@@ -47,12 +47,16 @@ class PaymentService
 
     public function message_content($child){
         $payment = Payment::where('child_id', $child->id)->latest('created_at')->first();
-        if ($payment == null)
-        $dateToFormatted = Carbon::parse($payment->date_to)->format('d-m-Y');
+        if ($payment == null){
+            $dateToFormatted = Carbon::parse($child->created_at->addDays(3))->format('d-m-Y');
+        }
+        else{
+            $dateToFormatted = Carbon::parse($payment->date_to)->format('d-m-Y');
+        }
         $message_content = '';
         $lang = app()->getLocale();
         if ($lang == 'kg'){
-            $message_content = "Урматтуу ата-энелер,
+            $message_content = "Урматтуу ата-эне,
 
 Бул кат менен бала бакчага акча төлөө зарылдыгын эскертебиз. Биздин шарттарга ылайык, төлөм [{$dateToFormatted}] чейин кабыл алынышы керек.
 
@@ -65,7 +69,7 @@ class PaymentService
 Урматтоо менен, бала бакчанын администрациясы.";
         }
         elseif ($lang == 'ru'){
-            $message_content = "Уважаемые родители,
+            $message_content = "Уважаемый родитель,
 
 Настоящим письмом мы хотели бы напомнить Вам о необходимости оплаты за детский сад. В соответствии с нашими положениями и условиями, оплата должна быть произведена до [{$dateToFormatted}].
 

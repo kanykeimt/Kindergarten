@@ -8,15 +8,14 @@
                 <div class="row mb-3">
                     <label for="" class="col-sm-3 col-form-label">@lang('lang.full_name_child'):</label>
                     <div class="col-sm-7">
-                        <input type="text" class="form-control col-6" value="{{$warning_data->child_name}} {{$warning_data->child_surname}}" required disabled>
+                        <input type="text" class="form-control col-6" value="{{$child->name}} {{$child->surname}}" required disabled>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="child_id" class="col-sm-3 col-form-label">@lang('lang.full_name_parent'):</label>
                     <div class="col-sm-7">
-                        <input type="text" class="form-control col-6" value="{{$warning_data->user_name}} {{$warning_data->user_surname}}" required disabled>
-                        <input type="text" class="form-control col-6" id="to_user_id" name="to_user_id" value="{{$warning_data->user_id}}" required hidden="">
-                        <input type="text" class="form-control col-6" id="date" name="date" value="{{date('Y-m-d H:i:s')}}" required hidden="">
+                        <input type="text" class="form-control col-6" value="{{$child->parent->name}} {{$child->parent->surname}}" required disabled>
+                        <input type="text" class="form-control col-6" id="to_user_id" name="to_user_id" value="{{$child->parent->id}}" required hidden="">
 
                     </div>
                 </div>

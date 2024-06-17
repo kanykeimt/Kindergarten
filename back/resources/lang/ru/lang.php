@@ -280,5 +280,9 @@ return [
     'parents_list' => 'Список родителей',
     'archive_show' => 'Посмотреть архив',
     'add_media_to_gallery' => 'Добавить фото\видео',
-
+    'no_payment' => 'Клиент не произвел оплату',
+    'new_password' => 'Новый пароль',
+    'confirm_password' => 'Подтвердите пароль',
+    'change_password' => 'Изменить пароль',
+    'update_password' => 'Обновить пароль',
     ];
