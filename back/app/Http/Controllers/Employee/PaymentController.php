@@ -25,12 +25,10 @@ class PaymentController extends Controller
         return view('employee.payment.index',compact('monthsWithChildren'));
     }
 
-    public function warning(Payment $payment)
+    public function warning(Child $child)
     {
-        $warning_data = $this->service->warning_data($payment);
-        $message_content = $this->service->message_content($payment, $warning_data);
-
-        return view('employee.payment.warning', compact('warning_data', 'payment', 'message_content'));
+        $message_content = $this->service->message_content($child);
+        return view('employee.payment.warning', compact('child',  'message_content'));
 
     }
     public function edit(Child $child)

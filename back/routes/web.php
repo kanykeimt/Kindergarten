@@ -107,7 +107,7 @@ Route::group(
             });
             Route::group(['prefix' => 'payment'], function (){
                 Route::get('/index', [App\Http\Controllers\Employee\PaymentController::class, 'index'])->name('employee.payment.index');
-                Route::get('/warning/{payment}', [App\Http\Controllers\Employee\PaymentController::class, 'warning'])->name('employee.payment.warning');
+                Route::get('/warning/{child}', [App\Http\Controllers\Employee\PaymentController::class, 'warning'])->name('employee.payment.warning');
                 Route::get('/edit/{child}', [App\Http\Controllers\Employee\PaymentController::class, 'edit'])->name('employee.payment.edit');
                 Route::post('/create', [App\Http\Controllers\Employee\PaymentController::class, 'create'])->name('employee.payment.create');
             });

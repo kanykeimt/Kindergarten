@@ -39,8 +39,14 @@ class PaymentService
         return $data;
     }
 
-    public function message_content($payment, $warning_data){
-        $dateToFormatted = Carbon::parse($payment->date_to)->format('d-m-Y');
+    public function message_content($child){
+        $payment = Payment::where('child_id', $child->id)->latest('created_at')->first();
+        if ($payment == null){
+            $dateToFormatted = Carbon::parse($child->created_at->addDays(3))->format('d-m-Y');
+        }
+        else{
+            $dateToFormatted = Carbon::parse($payment->date_to)->format('d-m-Y');
+        }
         $message_content = '';
         $lang = app()->getLocale();
         if ($lang == 'kg'){
@@ -48,7 +54,7 @@ class PaymentService
 
 Бул кат менен бала бакчага акча төлөө зарылдыгын эскертебиз. Биздин шарттарга ылайык, төлөм [{$dateToFormatted}] чейин кабыл алынышы керек.
 
-Көрсөтүлгөн мөөнөткө чейин төлөөнү суранабыз. Төлөө убагында аткарылбаса, балаңыздын ({$warning_data->child_name} {$warning_data->child_surname}) бала бакчанын иш-чараларына катышуусу токтотулушу мүмкүн экенин эскертебиз.
+Көрсөтүлгөн мөөнөткө чейин төлөөнү суранабыз. Төлөө убагында аткарылбаса, балаңыздын ({$child->name} {$child->surname}) бала бакчанын иш-чараларына катышуусу токтотулушу мүмкүн экенин эскертебиз.
 
 Эгерде сизде кандайдыр бир суроолор же кыйынчылыктар болсо, жардам алуу үчүн биздин администратор менен байланышуудан тартынбаңыз.
 

@@ -340,7 +340,7 @@
                                             <div class="form-group">
                                                 <label for="exampleInput" class="form-label">@lang('lang.child_photo'):</label>
                                                 <div class="">
-                                                    <img class="img-fluid" src="{{asset($child->photo)}}" alt="Child's photo" style="width:70%;">
+                                                    <img class="img-fluid" src="{{asset($child->photo)}}" alt="Child's photo" style="width:20%;">
                                                 </div>
                                                 <br>
                                                 <input type="file" class="form-control col-6" accept="image/png, image/gif, image/jpeg" name="photo" id="photo">
@@ -352,7 +352,7 @@
                                             <div class="form-group">
                                                 <label for="exampleInput" class="form-label">@lang('lang.child_birth_cert'):</label>
                                                 <div class="">
-                                                    <img class="img-fluid img" src="{{asset($child->birth_certificate)}}" alt="Child's birth certificate" style="width:70%;">
+                                                    <img class="img-fluid img" src="{{asset($child->birth_certificate)}}" alt="Child's birth certificate" style="width:20%;">
                                                 </div>
                                                 <br>
                                                 <input type="file" class="form-control col-6" accept="image/png, image/gif, image/jpeg" name="birth_certificate" id="birth_certificate">

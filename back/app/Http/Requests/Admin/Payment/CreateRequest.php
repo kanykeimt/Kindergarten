@@ -24,7 +24,6 @@ class CreateRequest extends FormRequest
         return [
             'child_id' => 'required',
             'date_from' => 'required',
-            'date_to' => 'required',
             'payment_amount' => 'required',
         ];
     }

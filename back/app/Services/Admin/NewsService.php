@@ -49,7 +49,7 @@ class NewsService
         foreach ($data['media'] as $file) {
             $extension = $file->getClientOriginalExtension();
             $gallery = new Media();
-            if ($extension == 'jpg' || $extension == 'jpeg' || $extension == 'png') {
+            if ($extension == 'jpg' || $extension == 'jpeg' || $extension == 'png' ||$extension == 'JPG' || $extension == 'JPEG' || $extension == 'PNG') {
                 $media = Storage::disk('public')->put('news/photos', $file);
                 $media = "storage/".$media;
                 $gallery = Media::create([
